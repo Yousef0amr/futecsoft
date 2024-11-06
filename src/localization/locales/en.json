@@ -1,1 +1,9 @@
-{}
+{
+    "username_required": "Username is required",
+    "password_required": "Password is required",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "logout": "Logout",
+    "sign_to_your_account": "Sign in to your account"
+}

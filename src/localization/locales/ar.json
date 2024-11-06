@@ -1,1 +1,9 @@
-{}
+{
+    "username_required": "اسم المستخدم مطلوب",
+    "password_required": "كلمة المرور مطلوبة",
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "sign_to_your_account": "تسجيل الدخول الي حسابك"
+}

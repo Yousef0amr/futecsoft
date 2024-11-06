@@ -7,19 +7,27 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeProvider';
 import { Provider } from 'react-redux';
 import store from './app/store.js';
-
+import AuthProvider from './utils/auth.js';
+import { CookiesProvider } from 'react-cookie';
+import { ErrorBoundary } from 'react-error-boundary';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter >
-      <ThemeProvider >
-        <Provider store={store}>
-          <App />
-        </Provider>
-
-      </ThemeProvider>
-    </BrowserRouter>
+    <ErrorBoundary fallback={<h1>Something went wrong</h1>}>
+      <BrowserRouter >
+        <ThemeProvider >
+          <Provider store={store}>
+            <CookiesProvider>
+              <AuthProvider>
+                <App />
+              </AuthProvider>
+            </CookiesProvider>
+          </Provider>
+        </ThemeProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

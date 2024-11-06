@@ -8,6 +8,8 @@
 :root {
   --background-color: #FFFFFF;
   --text-color: #000000;
+  --background-color-dark: #212631;
+  --border-color-1: rgb(41.5, 48, 61);
   --primary-color: #4e54c8;
   --secondary-color: #DA4453;
   --transparent-color: rgba(240, 166, 17, 0);
@@ -21,19 +23,7 @@
 
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
 
-::-webkit-scrollbar-track {
-  background: #212631;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(41.5, 48, 61);
-  border-radius: 10px;
-  cursor: pointer;
-}
 
 
 
@@ -41,7 +31,6 @@ html {
   height: 100%;
   scroll-behavior: smooth;
   background-color: var(--background-color);
-
 
 }
 
@@ -52,5 +41,6 @@ html,
   margin: 0;
   padding: 0;
   font-family: "NeoSansArabic";
+  background-color: var(--background-color);
 
 }

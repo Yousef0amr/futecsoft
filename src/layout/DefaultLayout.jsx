@@ -4,33 +4,27 @@ import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import './../styles/drawer.css';
-import { Close, Group, Home, Logout, LogoutTwoTone } from '@mui/icons-material';
+import { Group, Home, LogoutTwoTone } from '@mui/icons-material';
 import Fade from '@mui/material/Fade';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button } from 'bootstrap';
 import SwitchMode from '../components/common/SwitchMode';
 import SwitchLanguage from '../components/common/SwitchLanguage';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../utils/auth';
-const drawerWidth = 240;
+import CustomMenu from '../components/common/CustomMenu';
+import AppStrings from '../utils/appStrings';
+const drawerWidth = 270;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -124,47 +118,23 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     ],
   }),
 );
-const menuList = [
-  {
-    label: 'القائمة الرئيسية',
-    icon: <MailIcon />,
-    href: '/',
-  },
-  {
-    label: 'ادارة المستخدمين',
-    icon: <Group />,
-    href: '/',
-  },
-  {
-    label: 'التقارير',
-    icon: <MailIcon />,
-    href: '/',
-  }
-  ,
-  {
-    label: 'التقارير',
-    icon: <MailIcon />,
-    href: '/',
-  }
-]
+
+
+
 
 
 export default function MiniDrawer({ darkMode, toggleDarkMode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [activeAccordion, setActiveAccordion] = React.useState(null);
-  const [directionVal, setDirection] = React.useState(localStorage.getItem('direction') || 'rtl');
+  const [directionVal, setDirection] = React.useState(localStorage.getItem('lang') === 'ar' ? 'rtl' : 'ltr');
   const { logoutLocal } = useAuth()
+  const { t } = useTranslation();
 
 
-
-  const handleDirection = () => {
-    setDirection(() => directionVal === 'rtl' ? 'ltr' : 'rtl');
+  const handleDirection = (direction) => {
+    setDirection(() => direction);
   };
 
-  const handleExpansion = (panel) => {
-    setActiveAccordion(activeAccordion === panel ? null : panel);
-  };
   const handleDrawerOpen = () => {
     if (open) {
       setOpen(false);
@@ -208,16 +178,12 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           >
             <MenuIcon />
           </IconButton>
-
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-
             <SwitchLanguage handleDirection={handleDirection} />
             <div style={{ width: '1px', height: '25px', backgroundColor: 'var(--text-color)' }}></div>
             <SwitchMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <div style={{ width: '1px', height: '25px', backgroundColor: 'var(--text-color)' }}></div>
           </div>
-
-
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" ModalProps={{
@@ -230,11 +196,11 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           justifyContent: 'center',
 
         }}>
-          <span>LOGO</span>
+          <span>{open ? 'FUTEC-SOFT' : 'LOGO'}</span>
         </DrawerHeader>
 
         <ul className='menu' style={{ direction: directionVal }}>
-          <li >
+          <li  >
             <Accordion
               disableGutters
               elevation={0}
@@ -243,162 +209,18 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
               <AccordionSummary
                 aria-controls="panel1-content"
                 id="panel1-header"
-                sx={{ '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)', color: 'white' } }}
+                sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '56px' }, '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)', color: 'white' } }}
               >
                 <ListItemIcon style={directionVal === 'rtl' ? { marginRight: open ? '' : '32px' } : { marginLeft: open ? '' : '32px' }}>
                   <Home />
                 </ListItemIcon>
-                <Typography color='white' style={{ display: open ? 'block' : 'none' }}>الرئيسية</Typography>
+                <Typography color='white' style={{ display: open ? 'block' : 'none', fontSize: '14px' }}>{t(AppStrings.home)}</Typography>
               </AccordionSummary>
             </Accordion>
           </li>
-          {
-            open && <span style={{ color: 'rgba(255, 255, 255, 0.38)' }}>القائمة الرئيسية</span>
-          }
-          <li>
-            <Accordion
-              expanded={activeAccordion === 'materials'}
-              onChange={() => open ? handleExpansion('materials') : handleDrawerOpen()}
-              disableGutters // Remove extra padding and borders
-              elevation={0} // Remove shadow
-              slots={{ transition: Fade }}
-              slotProps={{ transition: { timeout: 400 } }}
-              style={{ width: '100%', backgroundColor: 'transparent', color: 'white', direction: directionVal, borderRadius: '10px' }}
-              sx={
-                [
-                  activeAccordion === 'materials' && open
-                    ? {
-                      '& .MuiAccordion-region': {
-                        height: 'auto',
-                      },
-                      '& .MuiAccordionDetails-root': {
-                        display: 'block',
-                      },
-                    }
-                    : {
-                      '& .MuiAccordion-region': {
-                        height: 0,
-                      },
-                      '& .MuiAccordionDetails-root': {
-                        display: 'none',
-                      },
-                    },
-                ]
-              }
-            >
-              <AccordionSummary
-                expandIcon={open ? <ExpandMoreIcon sx={{ color: 'rgba(255, 255, 255, 0.38)' }} /> : null}
-                aria-controls="panel2-content"
-                id="panel2-header"
-                sx={{ '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' } }}
-              >
-                <ListItemIcon style={directionVal === 'rtl' ? { marginRight: open ? '' : '32px' } : { marginLeft: open ? '' : '32px' }} >
-                  <Group />
-                </ListItemIcon>
-                <Typography style={{ display: open ? 'block' : 'none' }}>المواد</Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{ padding: '2px', color: 'white' }}>
-                <ul style={{ padding: 0, marginRight: 5, paddingLeft: 5, listStyle: 'none', width: '100%' }}>
-                  <li>
-                    <Accordion
-                      disableGutters
-                      elevation={0}
-                      square
-                      style={{ width: '100%', backgroundColor: 'transparent', color: 'white', direction: 'rtl' }}
-                    >
-                      <AccordionSummary
-                        aria-controls="panel1-content"
-                        id="panel1-header"
-                        sx={{ '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' } }}
-                      >
-                        <ListItemIcon>
-                          <InboxIcon />
-                        </ListItemIcon>
-                        <Typography>Colors</Typography>
-                      </AccordionSummary>
-                    </Accordion>
 
-                  </li>
-                </ul>
-              </AccordionDetails>
-            </Accordion>
-          </li>
-          {
-            open && <span style={{ color: 'rgba(255, 255, 255, 0.38)' }}>اخري</span>
-          }
-          {
-            menuList.map((item, index) => (
-              <li>
-                <Accordion
-                  expanded={activeAccordion === `main${index}`}
-                  onChange={() => open ? handleExpansion(`main${index}`) : handleDrawerOpen()}
+          <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} />
 
-                  disableGutters // Remove extra padding and borders
-                  elevation={0} // Remove shadow
-                  slots={{ transition: Fade }}
-                  slotProps={{ transition: { timeout: 400 } }}
-                  style={{ width: '100%', backgroundColor: 'transparent', color: 'white', direction: directionVal, borderRadius: '10px' }}
-                  sx={
-                    [
-                      activeAccordion === `main${index}` && open
-                        ? {
-                          '& .MuiAccordion-region': {
-                            height: 'auto',
-                          },
-                          '& .MuiAccordionDetails-root': {
-                            display: 'block',
-                          },
-                        }
-                        : {
-                          '& .MuiAccordion-region': {
-                            height: 0,
-                          },
-                          '& .MuiAccordionDetails-root': {
-                            display: 'none',
-                          },
-                        },
-                    ]
-                  }
-                >
-                  <AccordionSummary
-                    expandIcon={open ? <ExpandMoreIcon sx={{ color: 'rgba(255, 255, 255, 0.38)' }} /> : null}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                    sx={{ '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' } }}
-                  >
-                    <ListItemIcon style={directionVal === 'rtl' ? { marginRight: open ? '' : '32px' } : { marginLeft: open ? '' : '32px' }} >
-                      {item.icon}
-                    </ListItemIcon>
-                    <Typography style={{ display: open ? 'block' : 'none' }}>{item.label}</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails sx={{ padding: '2px', color: 'white' }}>
-                    <ul style={{ padding: 0, marginRight: 5, paddingLeft: 5, listStyle: 'none', width: '100%' }}>
-                      <li>
-                        <Accordion
-                          disableGutters
-                          elevation={0}
-                          square
-                          style={{ width: '100%', backgroundColor: 'transparent', color: 'white', direction: directionVal }}
-                        >
-                          <AccordionSummary
-                            aria-controls="panel1-content"
-                            id="panel1-header"
-                            sx={{ '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' } }}
-                          >
-                            <ListItemIcon>
-                              <InboxIcon />
-                            </ListItemIcon>
-                            <Typography>Colors</Typography>
-                          </AccordionSummary>
-                        </Accordion>
-
-                      </li>
-                    </ul>
-                  </AccordionDetails>
-                </Accordion>
-              </li>
-            ))
-          }
 
 
         </ul>

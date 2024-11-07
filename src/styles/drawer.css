@@ -101,10 +101,8 @@
 .language-popup {
     /* total */
     --total_text_color: #e0e0e0;
-
     /* button */
     --btn_bg: #e0e0e0;
-
     --btn_height: 2em;
     --btn_border_radius: 0.3125em;
     --btn_outline_width: 0.0625em;

@@ -7,17 +7,19 @@ const SwitchLanguage = ({ handleDirection }) => {
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        handleDirection();
-        localStorage.setItem('direction', i18n.language === "en" ? "ltr" : "rtl");;
-        document.body.style.direction = i18n.language === "en" ? "ltr" : "rtl";
         document.getElementById("checkbox").checked = false;
+        localStorage.setItem('lang', i18n.language);
+        const direction = i18n.language === "en" ? "ltr" : "rtl";
+        document.body.style.direction = direction;
+        handleDirection(direction);
+
     };
 
 
     return (
         <div className="language-popup ">
-            <input type="radio" name="language" id="arabic" onClick={() => changeLanguage("ar")} />
-            <input type="radio" name="language" id="english" onClick={() => changeLanguage("en")} />
+            <input type="radio" checked={localStorage.getItem('lang') === 'ar'} name="language" id="arabic" onClick={() => changeLanguage("ar")} />
+            <input type="radio" checked={localStorage.getItem('lang') === 'en'} name="language" id="english" onClick={() => changeLanguage("en")} />
             <input type="checkbox" id="checkbox" />
 
             <label htmlFor="checkbox" className="language-popup__button" >
@@ -25,7 +27,7 @@ const SwitchLanguage = ({ handleDirection }) => {
             </label>
 
             <div className="language-popup__list-container" style={i18n.language === "en" ? { left: '10px' } : { right: '10px' }}>
-                <ul className="language-popup__list" style={i18n.language === "en" ? { direction: 'ltr' } : { direction: 'rtl' }}>
+                <ul className="language-popup__list" style={i18n.language === "en" ? { direction: 'rtl' } : { direction: 'ltr' }}>
                     <li>
                         <label htmlFor="arabic">
                             <span >Ar</span>

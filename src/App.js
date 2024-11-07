@@ -7,9 +7,13 @@ function App() {
   const { darkMode, toggleDarkMode } = useTheme()
   const { i18n } = useTranslation()
 
+
   useEffect(() => {
-    i18n.changeLanguage(localStorage.getItem('direction') === 'rtl' ? 'ar' : i18n.language);
-  }, [i18n]);
+    i18n.changeLanguage(localStorage.getItem('lang') || 'ar');
+    document.body.style.direction = localStorage.getItem('lang') === 'en' ? 'ltr' : 'rtl';
+  }, []);
+
+
   return (
     <div className={` ${darkMode ? ' dark-mode' : ''}`}>
       <AppRoutes darkMode={darkMode} toggleDarkMode={toggleDarkMode} />

@@ -6,6 +6,12 @@ const AppStrings = {
     username_required: 'username_required',
     password_required: 'password_required',
     sign_to_your_account: 'sign_to_your_account',
+    save: 'save',
+    cancel: 'cancel',
+    search: 'search',
+    reset: 'reset',
+    edit: 'edit',
+    delete: 'delete',
     home: 'home',
     add: 'add',
     list: 'list',
@@ -37,7 +43,19 @@ const AppStrings = {
     user_management: 'user_management',
     user_groups: 'user_groups',
     users: 'users',
-    user_permissions: 'user_permissions'
+    user_permissions: 'user_permissions',
+    branchId: 'branchId',
+    branchNameAr: 'branchNameAr',
+    branchNameEn: 'branchNameEn',
+    taxId: 'taxId',
+    phones: 'phones',
+    mobiles: 'mobiles',
+    website: 'website',
+    email: 'email',
+    address: 'address',
+    city: 'city',
+    street: 'street',
+    enter: 'enter',
 }
 
 export default AppStrings

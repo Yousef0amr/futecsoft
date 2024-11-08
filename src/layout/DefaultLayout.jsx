@@ -9,21 +9,17 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
 import './../styles/drawer.css';
-import { Group, Home, LogoutTwoTone } from '@mui/icons-material';
-import Fade from '@mui/material/Fade';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Home, LogoutTwoTone } from '@mui/icons-material';
 import SwitchMode from '../components/common/SwitchMode';
 import SwitchLanguage from '../components/common/SwitchLanguage';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../utils/auth';
 import CustomMenu from '../components/common/CustomMenu';
 import AppStrings from '../utils/appStrings';
+import { Outlet } from 'react-router-dom';
 const drawerWidth = 270;
 
 const openedMixin = (theme) => ({
@@ -238,6 +234,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: '100vh', backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
         <DrawerHeader />
+        <Outlet />
       </Box>
     </Box>
   );

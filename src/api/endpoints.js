@@ -1,3 +1,13 @@
 export const BASEURL = 'https://api.futec-soft.com/';
 export const VERSION = 'v1.0'
 export const PROFILE = `Profile/${VERSION}`;
+export const BRANCHES = `Branches/${VERSION}`;
+export const CATEGORIES = `Category/${VERSION}`;
+export const FLAVORS = `Flavors/${VERSION}`;
+export const OFFERS = `Offers/${VERSION}`;
+export const DISCOUNT = `Discount/${VERSION}`;
+export const CURRENCIES = `CurrenciesGuide/${VERSION}`;
+export const PAYMENTS_TYPES = `PaymentsType/${VERSION}`;
+export const SUPPLIERS = `Suppliers/${VERSION}`;
+export const DELIVERY_COMPANY = `DeliveryCompany/${VERSION}`;
+export const ITEMS = `Items/${VERSION}`;

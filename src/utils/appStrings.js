@@ -56,6 +56,7 @@ const AppStrings = {
     city: 'city',
     street: 'street',
     enter: 'enter',
+    add_new_branch: 'add_new_branch'
 }
 
 export default AppStrings

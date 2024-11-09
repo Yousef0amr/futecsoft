@@ -12,8 +12,6 @@
   --border-color-1: rgb(41.5, 48, 61);
   --primary-color: #4e54c8;
   --secondary-color: #DA4453;
-  --transparent-color: rgba(240, 166, 17, 0);
-  --highlight-color: rgba(255, 170, 0, 0);
   --shadow-effect: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
@@ -40,8 +38,7 @@ html {
 
 body,
 html,
-#root,
-.App {
+#root {
   margin: 0;
   padding: 0;
   font-family: "NeoSansArabic";
@@ -132,3 +129,23 @@ html,
   top: calc(50% - 1.25em);
   left: calc(50% - 1.25em);
 }
+
+
+.custom-input::placeholder {
+  color: var(--text-color) !important;
+  opacity: 0.5 !important;
+
+}
+
+/* 
+.ag-theme-quartz {
+  --ag-foreground-color: rgb(126, 46, 132) !important;
+  --ag-background-color: rgb(249, 245, 227) !important;
+  --ag-header-foreground-color: rgb(204, 245, 172) !important;
+  --ag-header-background-color: rgb(209, 64, 129) !important;
+  --ag-odd-row-background-color: rgb(0, 0, 0, 0.03) !important;
+  --ag-header-column-resize-handle-color: rgb(126, 46, 132) !important;
+
+  --ag-font-size: 14px !important;
+  --ag-font-family: 'NeoSansArabic' !important;
+} */

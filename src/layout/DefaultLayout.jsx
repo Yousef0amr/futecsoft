@@ -20,6 +20,7 @@ import { useAuth } from '../utils/auth';
 import CustomMenu from '../components/common/CustomMenu';
 import AppStrings from '../utils/appStrings';
 import { Outlet } from 'react-router-dom';
+
 const drawerWidth = 270;
 
 const openedMixin = (theme) => ({
@@ -30,6 +31,7 @@ const openedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
 });
+
 
 const closedMixin = (theme) => ({
   transition: theme.transitions.create('width', {
@@ -55,9 +57,7 @@ const closedMixin = (theme) => ({
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -71,14 +71,11 @@ const AppBar = styled(MuiAppBar, {
   }),
   backgroundColor: 'var(--background-color)',
   color: 'var(--text-color)',
-
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
   variants: [
     {
       props: ({ open }) => open,
       style: {
-
-
         width: `calc(100% - ${drawerWidth}px)`,
         transition: theme.transitions.create(['width', 'margin'], {
           easing: theme.transitions.easing.sharp,
@@ -95,7 +92,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-
     variants: [
       {
         props: ({ open }) => open,
@@ -122,7 +118,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer({ darkMode, toggleDarkMode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [directionVal, setDirection] = React.useState(localStorage.getItem('lang') === 'ar' ? 'rtl' : 'ltr');
+  const [directionVal, setDirection] = React.useState(localStorage.getItem('lang') === 'en' ? 'ltr' : 'rtl');
   const { logoutLocal } = useAuth()
   const { t } = useTranslation();
 
@@ -137,10 +133,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
     } else {
       setOpen(true);
     }
-
   };
-
-
 
   return (
     <Box sx={{ display: 'flex', direction: directionVal }}>
@@ -156,7 +149,6 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
               // Default margin for all screen sizes
               marginRight: directionVal === 'rtl' ? (open ? 0 : 1) : (open ? 1 : 0),
               marginLeft: directionVal === 'rtl' ? (open ? 1 : 0) : (open ? 0 : 1),
-
               // Responsive adjustments using breakpoints
               [theme.breakpoints.up('sm')]: {
                 marginRight: directionVal === 'rtl' ? (open ? 0 : 6) : (open ? 6 : 0),
@@ -183,7 +175,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" ModalProps={{
-        keepMounted: false,
+        keepMounted: true,
       }} anchor={directionVal === 'rtl' ? 'right' : 'left'} open={open}>
         <DrawerHeader style={{
           backgroundColor: 'var(--background-color-dark)',
@@ -194,7 +186,6 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
         }}>
           <span>{open ? 'FUTEC-SOFT' : 'LOGO'}</span>
         </DrawerHeader>
-
         <ul className='menu' style={{ direction: directionVal }}>
           <li  >
             <Accordion
@@ -214,13 +205,8 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
               </AccordionSummary>
             </Accordion>
           </li>
-
           <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} />
-
-
-
         </ul>
-
         <DrawerHeader style={{
           backgroundColor: 'var(--background-color-dark)',
           color: 'white',
@@ -232,7 +218,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           </IconButton>
         </DrawerHeader>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: '100vh', backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
+      <Box component="main" sx={{ overflow: 'auto', flexGrow: 1, p: 3, minHeight: '100vh', backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
         <DrawerHeader />
         <Outlet />
       </Box>

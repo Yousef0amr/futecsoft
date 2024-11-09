@@ -12,7 +12,7 @@ import InputField from '../common/InputFiled';
 
 
 
-const BranchForm = () => {
+const BranchForm = ({ isLoading }) => {
     const { branchSchema } = useValidators();
     const { t } = useTranslation();
 
@@ -39,7 +39,7 @@ const BranchForm = () => {
     return (
         <FormComponent schema={branchSchema} onSubmit={onSubmit}>
             {({ register, errors }) => (
-                <Row style={{ marginTop: '20px' }}>
+                <Row style={{ marginTop: '10px' }}>
                     {formFields.map((field) => (
                         <InputField
                             key={field.name}
@@ -50,11 +50,8 @@ const BranchForm = () => {
                             required={field.required}
                             type={field.type}
                             min={0}
-
                         />
-                    ))
-                    }
-
+                    ))}
                 </Row>
             )}
         </FormComponent>

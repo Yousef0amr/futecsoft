@@ -55,5 +55,6 @@
     "address": "Address",
     "city": "City",
     "street": "Street",
-    "enter": "Enter"
+    "enter": "Enter",
+    "add_new_branch": "Add New Branch"
 }

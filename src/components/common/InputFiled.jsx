@@ -18,7 +18,8 @@ const InputField = ({ name, label, register, errors, isInvalid, required, type =
                 min={min}
                 max={max}
                 step={step}
-                style={{'::placeholder': { color: 'var(--text-color) !important' }, color: 'var(--text-color)', fontSize: '14px', backgroundColor: 'var(--background-color)', borderColor: '#ced4da', appearance: 'none', WebkitAppearance: 'none', MozAppearance: 'textfield' }}
+                className='custom-input'
+                style={{ color: 'var(--text-color)', fontSize: '14px', backgroundColor: 'var(--background-color)', borderColor: '#ced4da', appearance: 'none', WebkitAppearance: 'none', MozAppearance: 'textfield' }}
             />
             <Form.Control.Feedback type="invalid">
                 {errors[name]?.message}

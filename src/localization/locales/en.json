@@ -56,5 +56,9 @@
     "city": "City",
     "street": "Street",
     "enter": "Enter",
-    "add_new_branch": "Add New Branch"
+    "add_new_branch": "Add New Branch",
+    "branchName": "Branch Name",
+    "list_branches": "Branches List",
+    "edit_branch": "Edit Branch",
+    "delete_branch": "Delete Branch"
 }

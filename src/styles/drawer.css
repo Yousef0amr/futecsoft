@@ -129,7 +129,7 @@
 
 #arabic,
 #english,
-#checkbox,
+#checkboxlang,
 .language-popup__list-container {
     display: none;
     transition: 1s;
@@ -195,13 +195,13 @@
 
 /* actions */
 
-#checkbox:checked~.language-popup__button {
+#checkboxlang:checked~.language-popup__button {
     border: none;
     outline: none;
     color: var(--secondary-color);
 }
 
-#checkbox:checked~.language-popup__list-container {
+#checkboxlang:checked~.language-popup__list-container {
     display: block;
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import CardTitle from './CardTitle'
-const FormCard = ({ icon, title, children }) => {
+const FormCard = ({ icon, title, optionComponent, children }) => {
     return (
         <Card style={{
             backgroundColor: 'var(--background-color)',
-            borderColor: 'var(--text-color)',
+            borderColor: 'var(--border-color-1)',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',
@@ -15,7 +15,9 @@ const FormCard = ({ icon, title, children }) => {
             minHeight: '80vh',
             color: 'var(--text-color)',
         }}>
-            <CardTitle icon={icon} title={title} />
+            <CardTitle icon={icon} title={title}  >
+                {optionComponent}
+            </CardTitle>
             {children}
         </Card>
     )

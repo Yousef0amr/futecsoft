@@ -12,13 +12,9 @@ import InputField from '../common/InputFiled';
 
 
 
-const BranchForm = ({ isLoading }) => {
+const BranchForm = ({ onSubmit, isLoading, defaultValues = {} }) => {
     const { branchSchema } = useValidators();
     const { t } = useTranslation();
-
-    const onSubmit = (data) => {
-        console.log('Form submitted:', data);
-    };
 
     const formFields = [
         { name: 'BranchId', label: t(AppStrings.branchId), required: false, type: 'number' },
@@ -34,10 +30,8 @@ const BranchForm = ({ isLoading }) => {
         { name: 'Street', label: t(AppStrings.street), required: false, type: 'text' },
     ];
 
-
-
     return (
-        <FormComponent schema={branchSchema} onSubmit={onSubmit}>
+        <FormComponent isLoading={isLoading} defaultValues={defaultValues} schema={branchSchema} onSubmit={onSubmit}>
             {({ register, errors }) => (
                 <Row style={{ marginTop: '10px' }}>
                     {formFields.map((field) => (

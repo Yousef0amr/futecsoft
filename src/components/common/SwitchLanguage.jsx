@@ -7,7 +7,7 @@ const SwitchLanguage = ({ handleDirection }) => {
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        document.getElementById("checkbox").checked = false;
+        document.getElementById("checkboxlang").checked = false;
         localStorage.setItem('lang', i18n.language);
         const direction = i18n.language === "en" ? "ltr" : "rtl";
         document.body.style.direction = direction;
@@ -20,9 +20,9 @@ const SwitchLanguage = ({ handleDirection }) => {
         <div className="language-popup ">
             <input type="radio" readOnly checked={localStorage.getItem('lang') === 'en' ? false : true} name="language" id="arabic" onClick={() => changeLanguage("ar")} />
             <input type="radio" readOnly checked={localStorage.getItem('lang') === 'en' ? true : false} name="language" id="english" onClick={() => changeLanguage("en")} />
-            <input type="checkbox" id="checkbox" />
+            <input type="checkbox" id="checkboxlang" />
 
-            <label htmlFor="checkbox" className="language-popup__button" >
+            <label htmlFor="checkboxlang" className="language-popup__button" >
                 <Language />
             </label>
 

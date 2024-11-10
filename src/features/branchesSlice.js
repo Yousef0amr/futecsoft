@@ -8,7 +8,7 @@ export const branchesApi = createApi({
     reducerPath: 'branchesApi',
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + BRANCHES,
-        credentials: 'include',
+        // credentials: 'include',
         prepareHeaders: (headers) => {
             headers.set('Authorization', `Bearer ${getCookie('accessToken')}`);
             return headers;

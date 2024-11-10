@@ -56,5 +56,9 @@
     "city": "المدينة",
     "street": "الشارع",
     "enter": "قم بادخال",
-    "add_new_branch": "اضافة فرع جديد"
+    "add_new_branch": "اضافة فرع جديد",
+    "branchName": "اسم الفرع",
+    "list_branches": "قائمة الفروع",
+    "edit_branch": "تعديل الفرع",
+    "delete_branch": "حذف الفرع"
 }

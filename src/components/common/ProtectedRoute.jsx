@@ -5,7 +5,7 @@ import { useAuth } from '../../utils/auth'
 const ProtectedRoute = ({ children = null }) => {
     const { isAuthenticated } = useAuth();
 
-    if (isAuthenticated) {
+    if (!isAuthenticated) {
         return <Navigate to={'/login'} replace />
     }
 
@@ -16,7 +16,7 @@ const LoginRoute = ({ children = null }) => {
 
     const { isAuthenticated } = useAuth();
 
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
         return <Navigate to={'/'} replace />
     }
     return children ? children : <Outlet />

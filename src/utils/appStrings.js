@@ -1,5 +1,6 @@
 const AppStrings = {
     login: 'login',
+    branchName: 'branchName',
     logout: 'logout',
     username: 'username',
     password: 'password',
@@ -56,7 +57,10 @@ const AppStrings = {
     city: 'city',
     street: 'street',
     enter: 'enter',
-    add_new_branch: 'add_new_branch'
+    add_new_branch: 'add_new_branch',
+    list_branches: 'list_branches',
+    edit_branch: 'edit_branch',
+    delete_branch: 'delete_branch',
 }
 
 export default AppStrings

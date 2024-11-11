@@ -95,26 +95,8 @@ export const menuList = [
                 icon: faBarcode,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/materials/finished/add' },
-                    { label: AppStrings.list, href: '/materials/finished/list' }
-                ]
-            },
-            {
-                label: AppStrings.raw_materials,
-                icon: faBarcode,
-
-                subActions: [
-                    { label: AppStrings.add, href: '/materials/raw/add' },
-                    { label: AppStrings.list, href: '/materials/raw/list' }
-                ]
-            },
-            {
-                label: AppStrings.assembled_materials,
-                icon: faBarcode,
-
-                subActions: [
-                    { label: AppStrings.add, href: '/materials/assembled/add' },
-                    { label: AppStrings.list, href: '/materials/assembled/list' }
+                    { label: AppStrings.add, href: '/products/add' },
+                    { label: AppStrings.list, href: '/products/list' }
                 ]
             },
             {
@@ -122,8 +104,8 @@ export const menuList = [
                 icon: faBarcode,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/materials/components/add' },
-                    { label: AppStrings.list, href: '/materials/components/list' }
+                    { label: AppStrings.add, href: '/products/components/add' },
+                    { label: AppStrings.list, href: '/products/components/list' }
                 ]
             },
             {
@@ -131,8 +113,8 @@ export const menuList = [
                 icon: faMoneyBill1Wave,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/materials/prices-costs/add' },
-                    { label: AppStrings.list, href: '/materials/prices-costs/list' }
+                    { label: AppStrings.add, href: '/products/prices-costs/add' },
+                    { label: AppStrings.list, href: '/products/prices-costs/list' }
                 ]
             }
         ]

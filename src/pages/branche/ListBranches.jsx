@@ -7,8 +7,10 @@ import { useGetBranchesQuery } from '../../features/branchesSlice';
 import AgGridTable from '../../components/common/AgGridTable';
 import FormCard from '../../components/common/FormCard';
 
-import { faShuffle } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faShuffle } from '@fortawesome/free-solid-svg-icons';
 import FilterSearch from '../../components/common/FilterSearch';
+import { Button } from '@mui/material';
+import NavButton from '../../components/common/NavButton';
 
 
 const ListBranches = () => {
@@ -32,6 +34,7 @@ const ListBranches = () => {
 
 
     const [quickFilterText, setQuickFilterText] = useState();
+
     const onFilterTextBoxChanged = useCallback(
         ({ target: { value } }) =>
             setQuickFilterText(value),
@@ -39,7 +42,13 @@ const ListBranches = () => {
     );
 
     return (
-        <FormCard icon={faShuffle} title={t(AppStrings.list_branches)} optionComponent={<FilterSearch onFilterTextBoxChanged={onFilterTextBoxChanged} />}>
+        <FormCard icon={faShuffle} title={t(AppStrings.list_branches)} optionComponent={
+            <>
+
+                <FilterSearch onFilterTextBoxChanged={onFilterTextBoxChanged} />
+                <NavButton icon={faAdd} title={AppStrings.add_new_branch} path={'/branches/add'} />
+            </>
+        }>
             <div className='w-100 p-1 mt-4'>
                 <AgGridTable dynamicColumns={colDefs} dataQuery={useGetBranchesQuery} quickFilterText={quickFilterText} />
             </div>

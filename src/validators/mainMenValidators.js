@@ -22,8 +22,24 @@ const MainMenuValidators = () => {
     }
 
 
+    const productSchemaValidator = {
+        Id: yup.string().required(t(AppStrings.branchId_required)),
+        NameAr: yup.string().required(t(AppStrings.branchNameAr_required)),
+        NameEn: yup.string().required(t(AppStrings.branchNameEn_required)),
+        Father: yup.string().optional(),
+        Barcode: yup.string().optional(),
+        Price1: yup.string().required(t(AppStrings.mobiles_required)),
+        Price2: yup.string().optional(),
+        Price3: yup.string().optional(),
+        Price4: yup.string().optional(),
+    }
+
+
+
+
     return {
-        branchSchemaValidator
+        branchSchemaValidator,
+        productSchemaValidator
     }
 }
 

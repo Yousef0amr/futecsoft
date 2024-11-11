@@ -1,33 +1,27 @@
 import React from 'react';
 import FormComponent from '../common/FormComponent';
 import useValidators from '../../hooks/useValidators';
-import Form from 'react-bootstrap/Form';
 import AppStrings from '../../utils/appStrings';
-import { useTranslation } from 'react-i18next';
 import { Row, Col } from 'react-bootstrap';
 import InputField from '../common/InputFiled';
 
 
-
-
-
-
 const BranchForm = ({ onSubmit, isLoading, defaultValues = {} }) => {
     const { branchSchema } = useValidators();
-    const { t } = useTranslation();
+
 
     const formFields = [
-        { name: 'BranchId', label: t(AppStrings.branchId), required: false, type: 'number' },
-        { name: 'BranchNameAr', label: t(AppStrings.branchNameAr), required: true, type: 'text' },
-        { name: 'BranchNameEn', label: t(AppStrings.branchNameEn), required: true, type: 'text' },
-        { name: 'TaxId', label: t(AppStrings.taxId), required: false, type: 'number' },
-        { name: 'Phones', label: t(AppStrings.phones), required: false, type: 'number' },
-        { name: 'Mobiles', label: t(AppStrings.mobiles), required: false, type: 'number' },
-        { name: 'Website', label: t(AppStrings.website), required: false, type: 'text' },
-        { name: 'Email', label: t(AppStrings.email), required: false, type: 'email' },
-        { name: 'Address', label: t(AppStrings.address), required: false, type: 'text' },
-        { name: 'City', label: t(AppStrings.city), required: false, type: 'text' },
-        { name: 'Street', label: t(AppStrings.street), required: false, type: 'text' },
+        { name: 'BranchId', label: AppStrings.branchId, required: false, type: 'number' },
+        { name: 'BranchNameAr', label: AppStrings.branchNameAr, required: true, type: 'text' },
+        { name: 'BranchNameEn', label: AppStrings.branchNameEn, required: true, type: 'text' },
+        { name: 'TaxId', label: AppStrings.taxId, required: false, type: 'number' },
+        { name: 'Phones', label: AppStrings.phones, required: false, type: 'number' },
+        { name: 'Mobiles', label: AppStrings.mobiles, required: false, type: 'number' },
+        { name: 'Website', label: AppStrings.website, required: false, type: 'text' },
+        { name: 'Email', label: AppStrings.email, required: false, type: 'email' },
+        { name: 'Address', label: AppStrings.address, required: false, type: 'text' },
+        { name: 'City', label: AppStrings.city, required: false, type: 'text' },
+        { name: 'Street', label: AppStrings.street, required: false, type: 'text' },
     ];
 
     return (
@@ -35,16 +29,16 @@ const BranchForm = ({ onSubmit, isLoading, defaultValues = {} }) => {
             {({ register, errors }) => (
                 <Row style={{ marginTop: '10px' }}>
                     {formFields.map((field) => (
-                        <InputField
-                            key={field.name}
-                            name={field.name}
-                            label={field.label}
-                            register={register}
-                            errors={errors}
-                            required={field.required}
-                            type={field.type}
-                            min={0}
-                        />
+                        <Col xs={12} md={6} key={field.name}>
+                            <InputField
+                                name={field.name}
+                                label={field.label}
+                                register={register}
+                                errors={errors}
+                                required={field.required}
+                                type={field.type}
+                                min={0}
+                            /></Col>
                     ))}
                 </Row>
             )}

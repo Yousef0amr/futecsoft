@@ -9,8 +9,10 @@ const CardTitle = ({ icon, title, children }) => {
                 fontWeight: '500', fontSize: '20px',
                 color: 'var(--text-color)', display: 'flex', alignItems:
                     'center', justifyContent: 'start', gap: '10px'
-            }}> <FontAwesomeIcon color='var(--secondary-color)' icon={icon} /> {title} </div>
-            <div>{children}</div>
+            }}>
+                <FontAwesomeIcon color='var(--secondary-color)' icon={icon} /> {title} </div>
+
+            {children}
         </div>
     )
 }

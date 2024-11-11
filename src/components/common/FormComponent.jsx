@@ -14,8 +14,9 @@ const FormComponent = ({ schema, onSubmit, isLoading, defaultValues = {}, childr
         register,
         handleSubmit,
         reset,
+        setValue,
+        watch,
         formState: { errors },
-
     } = useForm({
         defaultValues,
         resolver: yupResolver(schema),
@@ -23,11 +24,10 @@ const FormComponent = ({ schema, onSubmit, isLoading, defaultValues = {}, childr
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
-            {typeof children === 'function' ? children({ register, errors }) : children}
-
+            {typeof children === 'function' ? children({ register, errors, setValue, watch }) : children}
             <Stack direction="horizontal" gap={3} className='mt-4'>
-                <Button type="submit" sx={{ fontSize: '16px', width: '50%', color: 'white', padding: '6px', backgroundColor: 'var(--primary-color)' }} >{isLoading ? <SpinnerLoader /> : t(AppStrings.save)}</Button>
-                <Button onClick={() => reset()} sx={{ fontSize: '16px', width: '50%', color: 'white', padding: '6px', backgroundColor: 'var(--secondary-color)' }}>{t(AppStrings.reset)}</Button>
+                <Button type="submit" sx={{ fontSize: '16px', width: '50%', color: 'white', padding: '3px', backgroundColor: 'var(--primary-color)' }} >{isLoading ? <SpinnerLoader /> : t(AppStrings.save)}</Button>
+                <Button onClick={() => reset()} sx={{ fontSize: '16px', width: '50%', color: 'white', padding: '3px', backgroundColor: 'var(--secondary-color)' }}>{t(AppStrings.reset)}</Button>
             </Stack>
         </Form>
     );

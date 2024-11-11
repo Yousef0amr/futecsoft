@@ -5,6 +5,8 @@ import { ProtectedRoute, LoginRoute } from './../components/common/ProtectedRout
 import Login from '../pages/Login'
 import ListBranches from '../pages/branche/ListBranches'
 import AddBranch from '../pages/branche/AddBranch'
+import ListProduct from '../pages/product/ListProduct'
+import AddProduct from '../pages/product/AddProduct'
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
 
@@ -18,6 +20,8 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
 
                         <Route path='/branches/list' element={<ListBranches />} />
                         <Route path='/branches/add' element={<AddBranch />} />
+                        <Route path='/products/list' element={<ListProduct />} />
+                        <Route path='/products/add' element={<AddProduct />} />
 
                     </Route>
                 </Route>

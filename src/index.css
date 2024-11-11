@@ -151,7 +151,7 @@ html,
   --ag-font-family: 'NeoSansArabic' !important;
   --ag-font-weight: normal !important;
   --ag-font-size: 12px !important;
-
+  --ag-row-height: 55px !important;
 }
 
 
@@ -173,4 +173,294 @@ html,
 
 .ag-theme-alpine:hover::-webkit-scrollbar-thumb {
   background: var(--border-color-1);
+}
+
+.buttonCell {
+  display: flex;
+  gap: 8px;
+
+  padding: 10px;
+
+  button {
+    appearance: none;
+    display: inline-block;
+    padding: 0.375em 1em 0.5em;
+    white-space: nowrap;
+    border-radius: 6px;
+    box-shadow: 0 0 0 4px transparent, 0 1px 2px 0 #0c111d11;
+    outline: none;
+    background-color: var(--ag-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--ag-border-color);
+    cursor: pointer;
+  }
+}
+
+.removeButton {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+}
+
+.removeButton img {
+  width: 20px;
+}
+
+.editButton {
+
+  height: 35px;
+  line-height: 1.8;
+}
+
+.InputContainer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 1px 1px 3px var(--border-color-1)
+}
+
+.input-search {
+  background-color: var(--background-color);
+  width: 200px;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  caret-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.labelforsearch {
+  cursor: text;
+  padding: 0px 12px;
+}
+
+.searchIcon {
+  width: 13px;
+}
+
+
+.searchIcon path {
+  fill: rgb(114, 114, 114);
+}
+
+.file-preview {
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.file-upload-form {
+  width: 70%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+.file-upload-label input {
+  width: 200px;
+  display: none;
+}
+
+.file-upload-label svg {
+  height: 50px;
+  fill: rgb(82, 82, 82);
+  margin-bottom: 20px;
+}
+
+.file-upload-label {
+  cursor: pointer;
+  background-color: var(--background-color);
+  border-radius: 20px;
+}
+
+.file-upload-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.browse-button {
+  background-color: rgb(82, 82, 82);
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.3s;
+}
+
+.browse-button:hover {
+  background-color: rgb(14, 14, 14);
+}
+
+
+.file-upload-form.dragging {
+  background-color: #e0f7fa;
+  border-color: #00796b;
+}
+
+.uploaded-file-preview {
+
+  text-align: center;
+}
+
+.uploaded-image-preview {
+  max-height: 200px;
+  margin-top: 10px;
+
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.select-menu {
+  border: 1px solid #ccc;
+}
+
+.select-menu::selection {
+  outline: none !important;
+}
+
+
+
+
+
+.cbx {
+  position: relative;
+  top: 1px;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #c8ccd4;
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  margin-left: 5px;
+}
+
+
+input[type="checkbox"]:checked+.cbx {
+  background: #6871f1;
+  border-color: transparent;
+}
+
+input[type="checkbox"]:checked+.cbx:after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+
+.cbx:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  width: 7px;
+  height: 14px;
+  opacity: 0;
+  transform: rotate(45deg) scale(0);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transition: all 0.3s ease;
+  transition-delay: 0.01s;
+}
+
+
+.cntr {
+  position: relative;
+}
+
+.hidden-xs-up {
+  display: none !important;
+}
+
+
+@keyframes jelly {
+  from {
+    transform: scale(1, 1);
+  }
+
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+
+  50% {
+    transform: scale(1.15, 0.85);
+  }
+
+  65% {
+    transform: scale(0.95, 1.05);
+  }
+
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+
+/* From Uiverse.io by Yaya12085 */
+.radio-inputs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  background-color: var(--row-color);
+  box-sizing: border-box;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  width: 300px;
+  font-size: 14px;
+}
+
+.radio-inputs .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.radio-inputs .radio input {
+  display: none;
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: .5rem 0;
+  color: var(--text-color);
+  transition: all .15s ease-in-out;
+}
+
+.radio-inputs .radio input:checked+.name {
+  background-color: var(--primary-color);
+  font-weight: 600;
+  color: white;
 }

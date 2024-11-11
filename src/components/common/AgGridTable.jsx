@@ -7,10 +7,11 @@ import AppStrings from './../../utils/appStrings';
 import { AG_GRID_LOCALE_EG, AG_GRID_LOCALE_EN } from '@ag-grid-community/locale';
 import BranchForm from '../branch/BranchForm';
 import { Button } from '@mui/material';
-import { DeleteForever } from '@mui/icons-material';
+import { Close, DeleteForever } from '@mui/icons-material';
 import FilterSearch from './FilterSearch';
+import { ActionsCellRenderer } from './ActionsCellRenderer';
 
-const AgGridTable = ({ pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10, dataQuery, dynamicColumns = [], quickFilterText }) => {
+const AgGridTable = ({ onClose, open, pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10, dataQuery, dynamicColumns = [], quickFilterText }) => {
     const { t, i18n } = useTranslation();
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [pageNumber, setPageNumber] = useState(1);
@@ -30,10 +31,16 @@ const AgGridTable = ({ pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10
 
 
     const colDefs = useMemo(() => [
+        {
+            field: t(AppStrings.actions),
+            cellRenderer: ActionsCellRenderer,
+            cellRendererParams: {
+                setSelectedRowData,
+            },
+            minWidth: 194,
+        },
         ...dynamicColumns,
-
-    ], [t]);
-
+    ], [setSelectedRowData, dynamicColumns, t]);
 
 
 
@@ -58,39 +65,11 @@ const AgGridTable = ({ pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10
         }
     };
 
-    // Handle row selection event
-    const onSelectionChanged = () => {
-        const selectedRows = gridApiRef.current.getSelectedRows();
-        if (selectedRows.length > 0) {
-            setSelectedRowData(selectedRows[0]);
-        } else {
-            setSelectedRowData(null);
-        }
-    };
-
-    // const defCol = useMemo(() => {
-    //     return {
-    //         flex: 1,
-    //         minWidth: 100,
-    //         resizable: true,
-    //     };
-    // }, []);
-
-    const rowSelection = useMemo(() => {
-        return {
-            mode: 'singleRow',
-            enableClickSelection: true,
-        };
-    }, []);
-
     return (
         <div style={{ width: '100%' }}>
-
             <div className="ag-theme-alpine" style={{ height: '70vh' }}>
                 <AgGridReact
-
                     key={i18n.language}
-                    rowSelection={rowSelection}
                     pagination={true}
                     paginationPageSize={pageSize}
                     paginationPageSizeSelector={pageSizeOptions}
@@ -102,17 +81,14 @@ const AgGridTable = ({ pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10
                     localeText={localeText}
                     onGridReady={onGridReady}
                     onPaginationChanged={onPaginationChanged}
-                    onSelectionChanged={onSelectionChanged}
-                    scrollbarWidth={'thin'}
                 />
             </div>
             {selectedRowData && (
                 <div className='mt-5'>
                     <div className='d-flex justify-content-between align-items-center'>
                         <h3 className='d-flex justify-content-between align-items-center gap-2'>{t(AppStrings.edit_branch) + '  |  ' + selectedRowData.BranchId}</h3>
-                        <Button variant="text" color="error" ><DeleteForever /></Button>
+                        <Button variant="outlined" color="black" sx={{ color: 'var(--text-color)', fontSize: '17px', '&:hover': { backgroundColor: 'var(--secondary-color)', color: 'white' } }} onClick={() => setSelectedRowData(null)} >{t(AppStrings.finish_edit)} </Button>
                     </div>
-
                     <BranchForm defaultValues={selectedRowData} />
                 </div>
             )}

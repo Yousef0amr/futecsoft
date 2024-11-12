@@ -10,6 +10,7 @@
   --text-color: #000000;
   --background-color-dark: #212631;
   --border-color-1: rgb(41.5, 48, 61);
+  --border-color-2: rgb(206, 212, 218);
   --primary-color: #4e54c8;
   --secondary-color: #DA4453;
   --row-color: rgb(0, 0, 0, 0.03);
@@ -254,7 +255,6 @@ html,
 }
 
 .file-preview {
-  width: 30%;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: var(--background-color);
@@ -265,7 +265,6 @@ html,
 }
 
 .file-upload-form {
-  width: 70%;
   height: fit-content;
   display: flex;
   align-items: center;
@@ -320,16 +319,15 @@ html,
 }
 
 .uploaded-file-preview {
-
   text-align: center;
 }
 
 .uploaded-image-preview {
-  max-height: 200px;
+  max-height: 150px;
   margin-top: 10px;
-
   padding: 5px;
   border-radius: 5px;
+
 }
 
 .select-menu {
@@ -358,7 +356,7 @@ html,
 
 
 input[type="checkbox"]:checked+.cbx {
-  background: #6871f1;
+  background: var(--primary-color);
   border-color: transparent;
 }
 
@@ -423,8 +421,6 @@ input[type="checkbox"]:checked+.cbx:after {
   }
 }
 
-
-/* From Uiverse.io by Yaya12085 */
 .radio-inputs {
   position: relative;
   display: flex;
@@ -434,7 +430,8 @@ input[type="checkbox"]:checked+.cbx:after {
   box-sizing: border-box;
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
   padding: 0.25rem;
-  width: 300px;
+  min-width: 300px;
+  gap: 10px;
   font-size: 14px;
 }
 
@@ -454,7 +451,7 @@ input[type="checkbox"]:checked+.cbx:after {
   justify-content: center;
   border-radius: 0.5rem;
   border: none;
-  padding: .5rem 0;
+  padding: 8px 10px;
   color: var(--text-color);
   transition: all .15s ease-in-out;
 }
@@ -463,4 +460,30 @@ input[type="checkbox"]:checked+.cbx:after {
   background-color: var(--primary-color);
   font-weight: 600;
   color: white;
+}
+
+
+@media (max-width: 768px) {
+  .radio-inputs {
+    font-size: 12px;
+    min-width: 100%;
+    gap: 8px;
+  }
+
+  .radio-inputs .radio .name {
+    padding: 6px 8px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .radio-inputs {
+    font-size: 11px;
+
+    gap: 5px;
+  }
+
+  .radio-inputs .radio .name {
+    padding: 5px 7px;
+  }
 }

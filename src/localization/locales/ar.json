@@ -85,5 +85,10 @@
     "discountable": "قابل  للخصم",
     "isActive": "فعال",
     "isService": "مادة خدمة",
-    "choose": "اختر"
+    "choose": "اختر",
+    "noDataAvailable": "لا يوجد بيانات",
+    "drag_and_drop": "اسحب وأسقط",
+    "or": "أو",
+    "browse_file": "تصفح الملف",
+    "icon": "الايقونة"
 }

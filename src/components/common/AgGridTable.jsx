@@ -11,12 +11,14 @@ import { Close, DeleteForever } from '@mui/icons-material';
 import FilterSearch from './FilterSearch';
 import { ActionsCellRenderer } from './ActionsCellRenderer';
 
-const AgGridTable = ({ onClose, open, pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10, dataQuery, dynamicColumns = [], quickFilterText }) => {
+const AgGridTable = ({ EditForm, onClose, open, pageSizeOptions = [10, 20, 50, 100], initialPageSize = 10, dataQuery, dynamicColumns = [], quickFilterText }) => {
     const { t, i18n } = useTranslation();
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [pageNumber, setPageNumber] = useState(1);
     const gridApiRef = useRef(null);
+    const branch = undefined;
     const { data, isLoading } = dataQuery({ pageNumber, pageSize });
+    console.log(data);
     const [rowData, setRowData] = useState([]);
     const [selectedRowData, setSelectedRowData] = useState(null);
     const isRtl = useMemo(() => i18n.language !== 'en', [i18n.language]);
@@ -86,10 +88,10 @@ const AgGridTable = ({ onClose, open, pageSizeOptions = [10, 20, 50, 100], initi
             {selectedRowData && (
                 <div className='mt-5'>
                     <div className='d-flex justify-content-between align-items-center'>
-                        <h3 className='d-flex justify-content-between align-items-center gap-2'>{t(AppStrings.edit_branch) + '  |  ' + selectedRowData.BranchId}</h3>
+                        <h3 className='d-flex justify-content-between align-items-center gap-2'>{t(AppStrings.edit)}</h3>
                         <Button variant="outlined" color="black" sx={{ color: 'var(--text-color)', fontSize: '17px', '&:hover': { backgroundColor: 'var(--secondary-color)', color: 'white' } }} onClick={() => setSelectedRowData(null)} >{t(AppStrings.finish_edit)} </Button>
                     </div>
-                    <BranchForm defaultValues={selectedRowData} />
+                    <EditForm defaultValues={selectedRowData} />
                 </div>
             )}
         </div>

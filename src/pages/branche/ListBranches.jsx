@@ -6,11 +6,10 @@ import AppStrings from './../../utils/appStrings';
 import { useGetBranchesQuery } from '../../features/branchesSlice';
 import AgGridTable from '../../components/common/AgGridTable';
 import FormCard from '../../components/common/FormCard';
-
 import { faAdd, faShuffle } from '@fortawesome/free-solid-svg-icons';
 import FilterSearch from '../../components/common/FilterSearch';
-import { Button } from '@mui/material';
 import NavButton from '../../components/common/NavButton';
+import BranchForm from '../../components/branch/BranchForm';
 
 
 const ListBranches = () => {
@@ -44,13 +43,12 @@ const ListBranches = () => {
     return (
         <FormCard icon={faShuffle} title={t(AppStrings.list_branches)} optionComponent={
             <>
-
                 <FilterSearch onFilterTextBoxChanged={onFilterTextBoxChanged} />
                 <NavButton icon={faAdd} title={AppStrings.add_new_branch} path={'/branches/add'} />
             </>
         }>
             <div className='w-100 p-1 mt-4'>
-                <AgGridTable dynamicColumns={colDefs} dataQuery={useGetBranchesQuery} quickFilterText={quickFilterText} />
+                <AgGridTable EditForm={BranchForm} dynamicColumns={colDefs} dataQuery={useGetBranchesQuery} quickFilterText={quickFilterText} />
             </div>
 
         </FormCard>

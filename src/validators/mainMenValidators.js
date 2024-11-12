@@ -32,9 +32,16 @@ const MainMenuValidators = () => {
         Price2: yup.string().optional(),
         Price3: yup.string().optional(),
         Price4: yup.string().optional(),
+        Warehouse: yup.string().optional(),
+        UnitID: yup.string().optional(),
+        TaxPercentage: yup.string().optional(),
+        Discountable: yup.string().optional(),
+        IsService: yup.string().optional(),
+        IsActive: yup.string().optional(),
+        Saleable: yup.string().optional(),
+        Taxable: yup.string().optional(),
+        Icon: yup.string().optional(),
     }
-
-
 
 
     return {

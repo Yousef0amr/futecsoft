@@ -5,6 +5,7 @@ const CheckBox = ({
     label,
     isChecked,
     onChange,
+    required
 }) => {
     const { t } = useTranslation();
 
@@ -15,13 +16,13 @@ const CheckBox = ({
                     type="checkbox"
                     id={label}
                     className="hidden-xs-up"
-                    checked={isChecked}
+                    checked={isChecked || false}
                     onChange={(e) => onChange(e.target.checked)}
                     aria-label={label}
                 />
                 <label htmlFor={label} className="cbx"></label>
             </div>
-            <span style={{}}>{t(label)}</span>
+            <span >{t(label)}{required && <span style={{ color: 'red' }}>*</span>}</span>
         </div>
     );
 };

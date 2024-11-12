@@ -9,17 +9,19 @@ import TabsSelect from '../../components/common/TabsSelect';
 const AddProduct = () => {
     const { t } = useTranslation();
 
-    return (
+    const onSubmit = (data) => {
+        console.log(data);
+    }
 
+    return (
         <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)} optionComponent={
             <>
                 <TabsSelect />
                 <NavButton icon={faList} title={AppStrings.list_products} path={'/products/list'} />
             </>
         }  >
-            <ProductForm isLoading={null} />
+            <ProductForm isLoading={null} onSubmit={onSubmit} />
         </FormCard>
-
     )
 }
 

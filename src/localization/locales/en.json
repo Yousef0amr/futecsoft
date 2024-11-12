@@ -85,5 +85,10 @@
     "discountable": "Discountable",
     "isActive": "Active",
     "isService": "Is Service",
-    "choose": "Choose"
+    "choose": "Choose",
+    "noDataAvailable": "No Data Available",
+    "drag_and_drop": "Drag and Drop",
+    "or": "Or",
+    "browse_file": "Browse File",
+    "icon": "Icon"
 }

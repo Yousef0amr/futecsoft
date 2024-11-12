@@ -216,3 +216,50 @@ export const menuList = [
         ]
     }
 ];
+
+export const productCheckFormFields = [
+    { name: 'Discountable', label: AppStrings.discountable, required: false },
+    { name: 'IsService', label: AppStrings.isService, required: false },
+    { name: 'IsActive', label: AppStrings.isActive, required: false },
+    { name: 'Saleable', label: AppStrings.saleable, required: false },
+    { name: 'Taxable', label: AppStrings.taxable, required: false },
+];
+
+export const productPriceFormFields = [
+    { name: 'Price1', label: AppStrings.price1, required: true, type: 'number' },
+    { name: 'Price2', label: AppStrings.price2, required: true, type: 'number' },
+    { name: 'Price3', label: AppStrings.price3, required: true, type: 'number' },
+    { name: 'Price4', label: AppStrings.price4, required: true, type: 'number' },
+];
+export const productImageField = {
+    name: 'Icon',
+    required: true,
+};
+
+export const productformFields = [
+    { name: 'Id', label: AppStrings.productId, required: false, type: 'number' },
+    { name: 'NameAr', label: AppStrings.productNameAr, required: true, type: 'text' },
+    { name: 'NameEn', label: AppStrings.productNameEn, required: true, type: 'text' },
+    { name: 'Barcode', label: AppStrings.barcode, required: false, type: 'text' },
+];
+
+export const productSelectFormFields = [
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [{ value: '1', label: 'Warehouse 1' }, { value: '2', label: 'Warehouse 2' }] },
+    { name: 'Father', label: AppStrings.categoryId, required: true, options: [{ value: 'A', label: 'Category A' }, { value: 'B', label: 'Category B' }] },
+    { name: 'UnitID', label: AppStrings.unit, required: true, options: [{ value: 'kg', label: 'Kilogram' }, { value: 'ltr', label: 'Liter' }] },
+    { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [{ value: '0', label: '0%' }, { value: '5', label: '5%' }, { value: '10', label: '10%' }] },
+];
+
+export const branchFormFields = [
+    { name: 'BranchId', label: AppStrings.branchId, required: false, type: 'number' },
+    { name: 'BranchNameAr', label: AppStrings.branchNameAr, required: true, type: 'text' },
+    { name: 'BranchNameEn', label: AppStrings.branchNameEn, required: true, type: 'text' },
+    { name: 'TaxId', label: AppStrings.taxId, required: false, type: 'number' },
+    { name: 'Phones', label: AppStrings.phones, required: false, type: 'number' },
+    { name: 'Mobiles', label: AppStrings.mobiles, required: false, type: 'number' },
+    { name: 'Website', label: AppStrings.website, required: false, type: 'text' },
+    { name: 'Email', label: AppStrings.email, required: false, type: 'email' },
+    { name: 'Address', label: AppStrings.address, required: false, type: 'text' },
+    { name: 'City', label: AppStrings.city, required: false, type: 'text' },
+    { name: 'Street', label: AppStrings.street, required: false, type: 'text' },
+];

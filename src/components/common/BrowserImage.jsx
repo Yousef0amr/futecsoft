@@ -1,10 +1,14 @@
 import { Stack } from '@mui/material';
 import React, { useState } from 'react';
-import { Row } from 'react-bootstrap';
+import gallery from '../../assets/images/gallery.png';
+import { useTranslation } from 'react-i18next';
+import AppStrings from '../../utils/appStrings';
+import { Col, Row } from 'react-bootstrap';
 
-const BrowserImage = () => {
+const BrowserImage = ({ errors, setValue, field }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [uploadedFile, setUploadedFile] = useState(null);
+    const { t } = useTranslation();
 
     const handleDragOver = (event) => {
         event.preventDefault();
@@ -27,39 +31,26 @@ const BrowserImage = () => {
 
     const handleFileChange = (file) => {
         setUploadedFile(file);
-        console.log("File uploaded:", file);
+        getBase64Image(file);
+    };
+
+    const getBase64Image = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setValue(field.name, reader.result);
+        };
+        reader.onerror = (error) => {
+            console.error("Error converting file to Base64:", error);
+        };
     };
 
     return (
-        <Stack direction="row" gap={3}  >
-            <div
-                className={`file-upload-form ${isDragging ? 'dragging' : ''}`}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-            >
-                <label htmlFor="file" className="file-upload-label">
-                    <div className="file-upload-design">
-                        <svg viewBox="0 0 640 512" height="1em">
-                            <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z" />
-                        </svg>
-                        <p>Drag and Drop</p>
-                        <p>or</p>
-                        <span className="browse-button">Browse file</span>
-                    </div>
-                    <input
-                        id="file"
-                        type="file"
-                        onChange={(e) => handleFileChange(e.target.files[0])}
-                        style={{ display: 'none' }}
-                    />
-                </label>
-
-            </div>
-            <div className="file-preview">
+        <Row md={1} lg={2} className="p-0 mt-3 gap-3"  >
+            <Col className="file-preview" style={{ flex: 1 }} md={12} lg={3}>
                 {
                     !uploadedFile && (
-                        <p>No file selected</p>
+                        <img src={gallery} alt="No file selected" style={{ width: '100px', height: '100px', borderRadius: '10px' }} />
                     )
                 }
                 {uploadedFile && (
@@ -75,9 +66,33 @@ const BrowserImage = () => {
                         )}
                     </div>
                 )}
-            </div>
-
-        </Stack>
+            </Col>
+            <Col
+                md={12}
+                lg={8}
+                className={`file-upload-form ${isDragging ? 'dragging' : ''}`}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+            >
+                <label htmlFor="file" className="file-upload-label">
+                    <div className="file-upload-design">
+                        <svg viewBox="0 0 640 512" height="1em">
+                            <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z" />
+                        </svg>
+                        <p className="p-0 m-0">{t(AppStrings.drag_and_drop)}</p>
+                        <p className="p-0 m-0">{t(AppStrings.or)}</p>
+                        <span className="browse-button">{t(AppStrings.browse_file)}</span>
+                    </div>
+                    <input
+                        id="file"
+                        type="file"
+                        onChange={(e) => handleFileChange(e.target.files[0])}
+                        style={{ display: 'none' }}
+                    />
+                </label>
+            </Col>
+        </Row>
     );
 };
 

@@ -10,4 +10,4 @@ export const CURRENCIES = `CurrenciesGuide/${VERSION}`;
 export const PAYMENTS_TYPES = `PaymentsType/${VERSION}`;
 export const SUPPLIERS = `Suppliers/${VERSION}`;
 export const DELIVERY_COMPANY = `DeliveryCompany/${VERSION}`;
-export const ITEMS = `Items/${VERSION}`;
+export const ITEMS = `Item/${VERSION}`;

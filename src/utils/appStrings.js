@@ -86,6 +86,11 @@ const AppStrings = {
     isActive: 'isActive',
     isService: 'isService',
     choose: 'choose',
+    noDataAvailable: 'noDataAvailable',
+    drag_and_drop: 'drag_and_drop',
+    or: 'or',
+    browse_file: 'browse_file',
+    icon: 'icon',
 }
 
 export default AppStrings

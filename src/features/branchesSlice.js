@@ -24,7 +24,9 @@ export const branchesApi = createApi({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
+            transformResponse: (response) => response.Response
         }),
+
         getBranchesById: builder.query({
             query: (id) => ({
                 url: `/GetById?BranchId =${id}`,

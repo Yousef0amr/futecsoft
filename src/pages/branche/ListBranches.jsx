@@ -14,7 +14,7 @@ import BranchForm from '../../components/branch/BranchForm';
 
 const ListBranches = () => {
     const { t } = useTranslation();
-
+    const { data, isLoading } = useGetBranchesQuery({ pageNumber: 1, pageSize: 1 });
 
 
     const colDefs = [
@@ -48,7 +48,7 @@ const ListBranches = () => {
             </>
         }>
             <div className='w-100 p-1 mt-4'>
-                <AgGridTable EditForm={BranchForm} dynamicColumns={colDefs} dataQuery={useGetBranchesQuery} quickFilterText={quickFilterText} />
+                <AgGridTable EditForm={BranchForm} dynamicColumns={colDefs} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
             </div>
 
         </FormCard>

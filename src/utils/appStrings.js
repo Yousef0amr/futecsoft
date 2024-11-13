@@ -1,6 +1,7 @@
 const AppStrings = {
     login: 'login',
     branchName: 'branchName',
+    type: 'type',
     branch: 'branch',
     logout: 'logout',
     username: 'username',
@@ -73,7 +74,7 @@ const AppStrings = {
     productId: 'productId',
     productNameAr: 'productNameAr',
     productNameEn: 'productNameEn',
-    categoryId: 'categoryId',
+    category: 'category',
     barcode: 'barcode',
     price1: 'price1',
     price2: 'price2',
@@ -91,6 +92,8 @@ const AppStrings = {
     or: 'or',
     browse_file: 'browse_file',
     icon: 'icon',
+    yes: 'yes',
+    no: 'no',
 }
 
 export default AppStrings

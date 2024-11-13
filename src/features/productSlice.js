@@ -3,6 +3,44 @@ import { BASEURL, ITEMS } from './../api/endpoints.js';  // Assuming PRODUCTS en
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
 
+
+const transformProductData = (data) => {
+    return {
+        Id: data.ProID,
+        NameAr: data.Pro_AR_Name,
+        NameEn: data.Pro_EN_Name,
+        Father: data.CategoryAr,
+        CatID: data.CatID,
+        Tag: data.Tag,
+        Question1: data.Question1,
+        Question2: data.Question2,
+        Question3: data.Question3,
+        Question4: data.Question4,
+        Question5: data.Question5,
+        Compo: data.Compo,
+        ForeColor: data.ForeColor,
+        BackColor: data.BackColor,
+        PreparationTime: data.PreparationTime,
+        ImgPath: data.ImgPath,
+        Printer: data.Printer,
+        Printer2: data.Printer2,
+        Barcode: data.Barcode,
+        Price: data.Price,
+        Price2: data.Price2,
+        Price3: data.Price3,
+        Price4: data.Price4,
+        Warehouse: data.TagDesc,
+        UnitID: data.UnitID,
+        TaxPercentage: data.TaxPercentage,
+        Discountable: data.Discountable,
+        IsService: data.IsService,
+        IsActive: data.IsActive,
+        Saleable: data.Saleable,
+        Taxable: data.Taxable,
+        Icon: data.Icon
+    };
+};
+
 export const productsApi = createApi({
     reducerPath: 'productsApi',
     baseQuery: fetchBaseQuery({
@@ -17,18 +55,34 @@ export const productsApi = createApi({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformProductData(item));
+                } else {
+                    return [];
+                }
+            }
+
         }),
         getProductByType: builder.query({
             query: ({ pageNumber, pageSize, branch, productType }) => ({
                 url: `/GetAllByType?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}&Warehouse=${branch}&Type=${productType}`,
             }),
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformProductData(item));
+                } else {
+                    return [];
+                }
+            }
         }),
         getProductById: builder.query({
             query: (id) => ({
                 url: `/GetById?ProductId=${id}`,
             }),
         })
-
     }),
 });
 

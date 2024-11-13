@@ -71,7 +71,7 @@
     "productId": "Product ID",
     "productNameAr": "Product Name (Arabic)",
     "productNameEn": "Product Name (English)",
-    "categoryId": "Category",
+    "category": "Category",
     "barcode": "Barcode",
     "price1": "Price 1",
     "price2": "Price 2",
@@ -90,5 +90,8 @@
     "drag_and_drop": "Drag and Drop",
     "or": "Or",
     "browse_file": "Browse File",
-    "icon": "Icon"
+    "icon": "Icon",
+    "yes": "Yes",
+    "no": "No",
+    "type": "Type"
 }

@@ -28,7 +28,7 @@ const MainMenuValidators = () => {
         NameEn: yup.string().required(t(AppStrings.branchNameEn_required)),
         Father: yup.string().optional(),
         Barcode: yup.string().optional(),
-        Price1: yup.string().required(t(AppStrings.mobiles_required)),
+        Price: yup.string().required(t(AppStrings.mobiles_required)),
         Price2: yup.string().optional(),
         Price3: yup.string().optional(),
         Price4: yup.string().optional(),
@@ -42,6 +42,7 @@ const MainMenuValidators = () => {
         Taxable: yup.string().optional(),
         Icon: yup.string().optional(),
     }
+
 
 
     return {

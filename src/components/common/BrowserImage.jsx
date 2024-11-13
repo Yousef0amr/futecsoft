@@ -1,4 +1,3 @@
-import { Stack } from '@mui/material';
 import React, { useState } from 'react';
 import gallery from '../../assets/images/gallery.png';
 import { useTranslation } from 'react-i18next';

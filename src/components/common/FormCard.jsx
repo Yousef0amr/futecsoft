@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import CardTitle from './CardTitle'
-const FormCard = ({ icon, title, optionComponent, children }) => {
+const FormCard = ({ icon, title, optionComponent, navButton, children }) => {
     return (
         <Card style={{
             backgroundColor: 'var(--background-color)',
@@ -15,7 +15,7 @@ const FormCard = ({ icon, title, optionComponent, children }) => {
             minHeight: '80vh',
             color: 'var(--text-color)',
         }}>
-            <CardTitle icon={icon} title={title}  >
+            <CardTitle icon={icon} title={title} navButton={navButton}  >
                 {optionComponent}
             </CardTitle>
             {children}

@@ -11,15 +11,13 @@ export const ActionsCellRenderer = ({ api, node, setSelectedRowData }) => {
   const onRemoveClick = useCallback(() => {
     setOpen(true);
     setSelectedRowData(null);
-    // const rowData = node.data;
-    // api.applyTransaction({ remove: [rowData] });
   }, [node, api]);
 
-  const onEditClick = useCallback(() => {
+  const onEditClick = () => {
     const rowData = node.data;
     setSelectedRowData(rowData);
 
-  }, [node, setSelectedRowData]);
+  }
 
   return (
     <>

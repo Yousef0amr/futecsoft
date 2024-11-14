@@ -11,3 +11,5 @@ export const PAYMENTS_TYPES = `PaymentsType/${VERSION}`;
 export const SUPPLIERS = `Suppliers/${VERSION}`;
 export const DELIVERY_COMPANY = `DeliveryCompany/${VERSION}`;
 export const ITEMS = `Item/${VERSION}`;
+export const TAXES = `Tax/${VERSION}`;
+export const UNITS = `Units/${VERSION}`;

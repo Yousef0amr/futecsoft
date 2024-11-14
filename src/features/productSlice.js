@@ -51,6 +51,12 @@ export const productsApi = createApi({
         },
     }),
     endpoints: (builder) => ({
+        getCurrentProductkey: builder.query({
+            query: (categoryId) => ({
+                url: `/GetCurrentKey?fatherId=${categoryId}`
+            }),
+            transformResponse: (response) => response.Response
+        }),
         getProducts: builder.query({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
@@ -82,7 +88,14 @@ export const productsApi = createApi({
             query: (id) => ({
                 url: `/GetById?ProductId=${id}`,
             }),
-        })
+        }),
+        addProduct: builder.mutation({
+            query: (product) => ({
+                url: '/InsertRawMaterial',
+                method: 'POST',
+                body: convertToFormData(product),
+            }),
+        }),
     }),
 });
 
@@ -90,4 +103,6 @@ export const {
     useGetProductsQuery,
     useGetProductByIdQuery,
     useGetProductByTypeQuery,
+    useAddProductMutation,
+    useGetCurrentProductkeyQuery,
 } = productsApi;

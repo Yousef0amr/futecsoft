@@ -8,7 +8,7 @@ const MainMenuValidators = () => {
 
 
     const branchSchemaValidator = {
-        BranchId: yup.string().required(t(AppStrings.branchId_required)),
+        BranchId: yup.string().optional(),
         BranchNameAr: yup.string().required(t(AppStrings.branchNameAr_required)),
         BranchNameEn: yup.string().required(t(AppStrings.branchNameEn_required)),
         TaxId: yup.string().optional(),

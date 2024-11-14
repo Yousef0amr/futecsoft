@@ -6,11 +6,22 @@ import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
+import { useAddProductMutation } from '../../features/productSlice';
+
 const AddProduct = () => {
     const { t } = useTranslation();
+    const [addProduct, { isLoading }] = useAddProductMutation();
 
-    const onSubmit = (data) => {
-        console.log(data);
+
+    const onSubmit = async (data) => {
+        try {
+            const result = await addProduct(data).unwrap();
+            if (result) {
+                console.log(result);
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (

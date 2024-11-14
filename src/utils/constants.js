@@ -227,9 +227,9 @@ export const productCheckFormFields = [
 
 export const productPriceFormFields = [
     { name: 'Price', label: AppStrings.price1, required: true, type: 'number' },
-    { name: 'Price2', label: AppStrings.price2, required: true, type: 'number' },
-    { name: 'Price3', label: AppStrings.price3, required: true, type: 'number' },
-    { name: 'Price4', label: AppStrings.price4, required: true, type: 'number' },
+    { name: 'Price2', label: AppStrings.price2, required: false, type: 'number' },
+    { name: 'Price3', label: AppStrings.price3, required: false, type: 'number' },
+    { name: 'Price4', label: AppStrings.price4, required: false, type: 'number' },
 ];
 export const productImageField = {
     name: 'Icon',
@@ -244,14 +244,14 @@ export const productformFields = [
 ];
 
 export const productSelectFormFields = [
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [{ value: '1', label: 'Warehouse 1' }, { value: '2', label: 'Warehouse 2' }] },
-    { name: 'Father', label: AppStrings.category, required: true, options: [{ value: 'A', label: 'Category A' }, { value: 'B', label: 'Category B' }] },
-    { name: 'UnitID', label: AppStrings.unit, required: true, options: [{ value: 'kg', label: 'Kilogram' }, { value: 'ltr', label: 'Liter' }] },
-    { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [{ value: '0', label: '0%' }, { value: '5', label: '5%' }, { value: '10', label: '10%' }] },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [] },
+    { name: 'Father', label: AppStrings.category, required: true, options: [] },
+    { name: 'UnitID', label: AppStrings.unit, required: true, options: [] },
+    { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [] },
 ];
 
 export const branchFormFields = [
-    { name: 'BranchId', label: AppStrings.branchId, required: false, type: 'number' },
+    { name: 'BranchId', label: AppStrings.branchId, required: true, type: 'number' },
     { name: 'BranchNameAr', label: AppStrings.branchNameAr, required: true, type: 'text' },
     { name: 'BranchNameEn', label: AppStrings.branchNameEn, required: true, type: 'text' },
     { name: 'TaxId', label: AppStrings.taxId, required: false, type: 'number' },

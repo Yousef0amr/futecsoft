@@ -7,6 +7,7 @@ import ListBranches from '../pages/branche/ListBranches'
 import AddBranch from '../pages/branche/AddBranch'
 import ListProduct from '../pages/product/ListProduct'
 import AddProduct from '../pages/product/AddProduct'
+import GetBranchKey from '../components/branch/GetBranchKey'
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
 
@@ -19,7 +20,7 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                         <Route index element={<h3>Home</h3>} />
 
                         <Route path='/branches/list' element={<ListBranches />} />
-                        <Route path='/branches/add' element={<AddBranch />} />
+                        <Route path='/branches/add' element={<GetBranchKey />} />
                         <Route path='/products/list' element={<ListProduct />} />
                         <Route path='/products/add' element={<AddProduct />} />
 

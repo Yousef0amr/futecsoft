@@ -58,7 +58,6 @@ const AgGridTable = ({ EditForm, rowData, isLoading, pageSizeOptions = [10, 20, 
                 <AgGridReact
                     key={i18n.language}
                     loading={isLoading}
-
                     pagination={true}
                     paginationPageSize={pageSize}
                     paginationPageSizeSelector={pageSizeOptions}

@@ -1,60 +1,64 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASEURL, BRANCHES } from './../api/endpoints.js';
-import convertToFormData from './../utils/convertToFormData.js'
-import getCookie from './../utils/getCookie.js'
+import { BASEURL, UNITS } from './../api/endpoints.js'; // Update this constant as needed
+import convertToFormData from './../utils/convertToFormData.js';
+import getCookie from './../utils/getCookie.js';
 
-
-export const branchesApi = createApi({
-    reducerPath: 'branchesApi',
+export const unitsApi = createApi({
+    reducerPath: 'unitsApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: BASEURL + BRANCHES,
-        // credentials: 'include',
+        baseUrl: BASEURL + UNITS,
         prepareHeaders: (headers) => {
             headers.set('Authorization', `Bearer ${getCookie('accessToken')}`);
             return headers;
         },
     }),
     endpoints: (builder) => ({
-        getCurrentkey: builder.query({
+        getCurrentUnitKey: builder.query({
             query: () => ({
                 url: '/GetCurrentKey',
             }),
             transformResponse: (response) => response.Response
         }),
-        getBranches: builder.query({
+        getUnits: builder.query({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
             transformResponse: (response) => response.Response
         }),
-
-        getBranchesById: builder.query({
+        getUnitById: builder.query({
             query: (id) => ({
-                url: `/GetById?BranchId =${id}`,
+                url: `/GetById?UnitId=${id}`,
             }),
             transformResponse: (response) => response.Response
         }),
-        addBranch: builder.mutation({
-            query: (branch) => ({
+        addUnit: builder.mutation({
+            query: (unit) => ({
                 url: '/Insert',
                 method: 'POST',
-                body: convertToFormData(branch),
+                body: convertToFormData(unit),
             }),
         }),
-        UpdateBranch: builder.mutation({
-            query: (branch) => ({
+        updateUnit: builder.mutation({
+            query: (unit) => ({
                 url: '/Update',
                 method: 'POST',
-                body: convertToFormData(branch),
+                body: convertToFormData(unit),
             }),
         }),
-        deleteBranch: builder.mutation({
+        deleteUnit: builder.mutation({
             query: (id) => ({
-                url: `/Delete?BranchId=${id}`,
+                url: `/Delete?UnitId=${id}`,
                 method: 'POST',
             }),
         }),
     }),
 });
 
-export const { useGetCurrentkeyQuery, useGetBranchesQuery, useGetBranchesByIdQuery, useAddBranchMutation, useUpdateBranchMutation, useDeleteBranchMutation } = branchesApi;
+export const {
+    useGetCurrentUnitKeyQuery,
+    useGetUnitsQuery,
+    useGetUnitByIdQuery,
+    useAddUnitMutation,
+    useUpdateUnitMutation,
+    useDeleteUnitMutation,
+} = unitsApi;

@@ -58,7 +58,7 @@ const SelectMenu = ({ options, label, value, onChange, required }) => {
                     disableAutoFocusItem: true,
                 }}
             >
-                <MenuItem value="">
+                <MenuItem value="" disabled>
                     {t(`${AppStrings.choose}`) + ' ' + t(label)}
                 </MenuItem>
 

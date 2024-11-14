@@ -1,16 +1,57 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import InputField from '../common/InputFiled'
-import SelectMenu from '../common/SelectMenu'
-import { productformFields, productSelectFormFields } from '../../utils/constants'
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import InputField from '../common/InputFiled';
+import SelectMenu from '../common/SelectMenu';
+import { productformFields, productSelectFormFields } from '../../utils/constants';
+import { useGetCategoriesQuery } from '../../features/categorySlice';
+import { useGetBranchesQuery } from '../../features/branchesSlice';
+import { useGetCurrentProductkeyQuery } from '../../features/productSlice';
+import { useGetTaxesQuery } from '../../features/taxSlice';
+import { useGetUnitsQuery } from '../../features/unitSlice';
 
 const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
 
+    const { data: categoriesData, isLoading: isLoadingCategories } = useGetCategoriesQuery({ pageNumber: 1, pageSize: 10 });
+    const { data: branchesData, isLoading: isLoadingBranches } = useGetBranchesQuery({ pageNumber: 1, pageSize: 10 });
+    const { data: taxesData, isLoading: isLoadingTaxes } = useGetTaxesQuery({ pageNumber: 1, pageSize: 10 });
+    const { data: unitsData, isLoading: isLoadingUnits } = useGetUnitsQuery({ pageNumber: 1, pageSize: 10 });
 
+    const categories = !isLoadingCategories
+        ? categoriesData.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
+        : [];
+    const branches = !isLoadingBranches
+        ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
+        : [];
+    const taxes = !isLoadingTaxes
+        ? taxesData.map((item) => ({ value: item.TaxId, label: item.TaxAr }))
+        : [];
+    const units = !isLoadingUnits
+        ? unitsData.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
+        : [];
+
+
+    const [currentCategoryId, setCurrentCategoryId] = React.useState(null);
+    const { data: productKey, isLoading: isLoadingKey } = useGetCurrentProductkeyQuery(currentCategoryId, {
+        skip: !currentCategoryId,
+    });
+
+    React.useEffect(() => {
+        if (!isLoadingKey && productKey) {
+            setValue('Id', productKey);
+            setValue('Barcode', productKey);
+        }
+    }, [isLoadingKey, productKey, setValue]);
+
+    const onSelectChange = (value, name) => {
+        setValue(name, value);
+        if (name === 'Father') {
+            setCurrentCategoryId(value);
+        }
+    };
 
     return (
         <Col>
-            <Row className=''>
+            <Row>
                 {productformFields.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <InputField
@@ -20,18 +61,24 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                             errors={errors}
                             required={field.required}
                             type={field.type}
+                            disabled={field.name === 'Id'}
                             min={0}
                         />
                     </Col>
                 ))}
             </Row>
-            <Row className=''>
+            <Row>
                 {productSelectFormFields.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <SelectMenu
                             value={watch(field.name)}
-                            onChange={(e) => setValue(field.name, e.target.value)}
-                            options={field.options}
+                            onChange={(e) => onSelectChange(e.target.value, field.name)}
+                            options={
+                                field.name === 'Father' ?
+                                    categories : field.name === 'Warehouse' ?
+                                        branches : field.name === 'TaxPercentage' ?
+                                            taxes : units
+                            }
                             label={field.label}
                             required={field.required}
                         />
@@ -39,7 +86,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                 ))}
             </Row>
         </Col>
-    )
-}
+    );
+};
 
-export default ProductFormFields1
+export default ProductFormFields1;

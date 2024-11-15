@@ -16,7 +16,7 @@ const CheckBox = ({
                     type="checkbox"
                     id={label}
                     className="hidden-xs-up"
-                    checked={isChecked || false}
+                    checked={isChecked}
                     onChange={(e) => onChange(e.target.checked)}
                     aria-label={label}
                 />

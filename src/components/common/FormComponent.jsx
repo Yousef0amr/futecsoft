@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Stack } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
@@ -7,7 +7,7 @@ import AppStrings from '../../utils/appStrings';
 import { Button } from '@mui/material';
 import SpinnerLoader from '../common/Spinner';
 
-const FormComponent = ({ schema, onSubmit, isLoading, defaultValues = {}, children }) => {
+const FormComponent = ({ schema, restForm, onSubmit, isLoading, defaultValues = {}, children }) => {
     const { t } = useTranslation();
 
     const {
@@ -21,6 +21,19 @@ const FormComponent = ({ schema, onSubmit, isLoading, defaultValues = {}, childr
         defaultValues,
         resolver: yupResolver(schema),
     });
+
+    useEffect(() => {
+        reset(defaultValues);
+    }, [defaultValues, reset]);
+
+
+    useEffect(() => {
+        if (restForm) {
+            reset();
+        }
+
+    }, [restForm, reset]);
+
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>

@@ -55,7 +55,8 @@ export const productsApi = createApi({
             query: (categoryId) => ({
                 url: `/GetCurrentKey?fatherId=${categoryId}`
             }),
-            transformResponse: (response) => response.Response
+            transformResponse: (response) => response.Response,
+            providesTags: ['Product']
         }),
         getProducts: builder.query({
             query: ({ pageNumber, pageSize }) => ({
@@ -90,12 +91,20 @@ export const productsApi = createApi({
             }),
         }),
         addProduct: builder.mutation({
-            query: (product) => ({
-                url: '/InsertRawMaterial',
+            query: ({ type, product }) => ({
+                url: `/Insert${type}`,
                 method: 'POST',
                 body: convertToFormData(product),
             }),
+            invalidatesTags: ['Product'],
+
         }),
+        deleteProduct: builder.mutation({
+            query: (id) => ({
+                url: `/Delete?Id =${id}`,
+                method: 'DELETE',
+            }),
+        })
     }),
 });
 
@@ -105,4 +114,5 @@ export const {
     useGetProductByTypeQuery,
     useAddProductMutation,
     useGetCurrentProductkeyQuery,
+    useDeleteProductMutation
 } = productsApi;

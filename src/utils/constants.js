@@ -91,18 +91,17 @@ export const menuList = [
         label: AppStrings.materials,
         subList: [
             {
-                label: AppStrings.finished_materials,
+                label: AppStrings.materials,
                 icon: faBarcode,
 
                 subActions: [
+                    { label: AppStrings.list, href: '/products/list' },
                     { label: AppStrings.add, href: '/products/add' },
-                    { label: AppStrings.list, href: '/products/list' }
                 ]
             },
             {
                 label: AppStrings.assembled_material_components,
                 icon: faBarcode,
-
                 subActions: [
                     { label: AppStrings.add, href: '/products/components/add' },
                     { label: AppStrings.list, href: '/products/components/list' }
@@ -236,7 +235,7 @@ export const productImageField = {
     required: true,
 };
 
-export const productformFields = [
+export const productFormFields = [
     { name: 'Id', label: AppStrings.productId, required: false, type: 'number' },
     { name: 'NameAr', label: AppStrings.productNameAr, required: true, type: 'text' },
     { name: 'NameEn', label: AppStrings.productNameEn, required: true, type: 'text' },

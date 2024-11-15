@@ -23,24 +23,24 @@ const MainMenuValidators = () => {
 
 
     const productSchemaValidator = {
-        Id: yup.string().required(t(AppStrings.branchId_required)),
-        NameAr: yup.string().required(t(AppStrings.branchNameAr_required)),
-        NameEn: yup.string().required(t(AppStrings.branchNameEn_required)),
-        Father: yup.string().optional(),
-        Barcode: yup.string().optional(),
-        Price: yup.string().required(t(AppStrings.mobiles_required)),
+        Id: yup.string().required(t(AppStrings.branchId_required)).nullable(),
+        NameAr: yup.string().required(t(AppStrings.productNameAr_required)).nullable(),
+        NameEn: yup.string().required(t(AppStrings.productNameEn_required)).nullable(),
+        Father: yup.string().required(t(AppStrings.category_required)).nullable(),
+        Barcode: yup.string().required(t(AppStrings.barcode_required)).nullable(),
+        Price: yup.string().required(t(AppStrings.price_required)).nullable(),
         Price2: yup.string().optional(),
         Price3: yup.string().optional(),
         Price4: yup.string().optional(),
-        Warehouse: yup.string().optional(),
-        UnitID: yup.string().optional(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        UnitID: yup.string().required(t(AppStrings.unit_required)).nullable(),
         TaxPercentage: yup.string().optional(),
         Discountable: yup.string().optional(),
         IsService: yup.string().optional(),
         IsActive: yup.string().optional(),
         Saleable: yup.string().optional(),
         Taxable: yup.string().optional(),
-        Icon: yup.string().optional(),
+        Icon: yup.string().required(t(AppStrings.icon_required)).nullable(),
     }
 
 

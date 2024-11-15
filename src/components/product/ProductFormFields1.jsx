@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import InputField from '../common/InputFiled';
 import SelectMenu from '../common/SelectMenu';
-import { productformFields, productSelectFormFields } from '../../utils/constants';
+import { productFormFields, productSelectFormFields } from '../../utils/constants';
 import { useGetCategoriesQuery } from '../../features/categorySlice';
 import { useGetBranchesQuery } from '../../features/branchesSlice';
 import { useGetCurrentProductkeyQuery } from '../../features/productSlice';
@@ -33,14 +33,16 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     const [currentCategoryId, setCurrentCategoryId] = React.useState(null);
     const { data: productKey, isLoading: isLoadingKey } = useGetCurrentProductkeyQuery(currentCategoryId, {
         skip: !currentCategoryId,
+
     });
 
     React.useEffect(() => {
         if (!isLoadingKey && productKey) {
             setValue('Id', productKey);
             setValue('Barcode', productKey);
+            setValue('Father', currentCategoryId);
         }
-    }, [isLoadingKey, productKey, setValue]);
+    }, [isLoadingKey, productKey, setValue, currentCategoryId]);
 
     const onSelectChange = (value, name) => {
         setValue(name, value);
@@ -52,7 +54,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     return (
         <Col>
             <Row>
-                {productformFields.map((field) => (
+                {productFormFields.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <InputField
                             name={field.name}

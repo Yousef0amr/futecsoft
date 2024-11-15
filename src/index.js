@@ -13,22 +13,27 @@ import { ErrorBoundary } from 'react-error-boundary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
+import 'react-toastify/dist/ReactToastify.css';
+import NotificationProvider from './context/NotificationProvider.jsx';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary fallback={<h1>Something went wrong</h1>}>
-      <BrowserRouter >
-        <ThemeProvider >
-          <Provider store={store}>
-            <CookiesProvider>
-              <AuthProvider>
-                <App />
-              </AuthProvider>
-            </CookiesProvider>
-          </Provider>
-        </ThemeProvider>
-      </BrowserRouter>
+    <ErrorBoundary fallback={<h3>Something went wrong</h3>}>
+      <NotificationProvider>
+        <BrowserRouter >
+          <ThemeProvider >
+            <Provider store={store}>
+              <CookiesProvider>
+                <AuthProvider>
+                  <App />
+                </AuthProvider>
+              </CookiesProvider>
+            </Provider>
+          </ThemeProvider>
+        </BrowserRouter>
+      </NotificationProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );

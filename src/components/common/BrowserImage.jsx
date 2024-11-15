@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import gallery from '../../assets/images/gallery.png';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import { Col, Row } from 'react-bootstrap';
 
-const BrowserImage = ({ errors, setValue, field }) => {
+const BrowserImage = ({ errors, setValue, field, watch }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [uploadedFile, setUploadedFile] = useState(null);
     const { t } = useTranslation();
@@ -44,15 +44,16 @@ const BrowserImage = ({ errors, setValue, field }) => {
         };
     };
 
+
     return (
         <Row md={1} lg={2} className="p-0 mt-3 gap-3"  >
             <Col className="file-preview" style={{ flex: 1 }} md={12} lg={3}>
                 {
-                    !uploadedFile && (
+                    !watch(field.name) && (
                         <img src={gallery} alt="No file selected" style={{ width: '100px', height: '100px', borderRadius: '10px' }} />
                     )
                 }
-                {uploadedFile && (
+                {uploadedFile && watch(field.name) && (
                     <div className="uploaded-file-preview">
                         {uploadedFile.type.startsWith("image/") ? (
                             <img
@@ -62,6 +63,7 @@ const BrowserImage = ({ errors, setValue, field }) => {
                             />
                         ) : (
                             <p>{uploadedFile.name}</p>
+
                         )}
                     </div>
                 )}
@@ -90,6 +92,12 @@ const BrowserImage = ({ errors, setValue, field }) => {
                         style={{ display: 'none' }}
                     />
                 </label>
+
+            </Col>
+            <Col>
+                <div className='error-message'>
+                    {errors[field.name] && errors[field.name]?.message}
+                </div>
             </Col>
         </Row>
     );

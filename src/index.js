@@ -11,8 +11,8 @@ import AuthProvider from './utils/auth.js';
 import { CookiesProvider } from 'react-cookie';
 import { ErrorBoundary } from 'react-error-boundary';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 import 'react-toastify/dist/ReactToastify.css';
 import NotificationProvider from './context/NotificationProvider.jsx';
 

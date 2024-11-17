@@ -28,6 +28,7 @@ const AppStrings = {
     offers: 'offers',
     discount_types: 'discount_types',
     taxes: 'taxes',
+    description: 'description',
     currencies: 'currencies',
     payment_methods: 'payment_methods',
     suppliers: 'suppliers',
@@ -113,6 +114,15 @@ const AppStrings = {
     branch_updated_successfully: 'branch_updated_successfully',
     branch_deleted_successfully: 'branch_deleted_successfully',
     something_went_wrong: 'something_went_wrong',
+    preparationTime: 'preparationTime',
+    list_composite_components: 'list_composite_components',
+    list_components: 'list_components',
+    quantity: 'quantity',
+    quantity_required: 'quantity_required',
+    note: 'note',
+    componentId: 'componentId',
+    product_required: 'product_required',
+    component_added_successfully: 'component_added_successfully',
 }
 
 export default AppStrings

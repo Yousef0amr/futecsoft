@@ -103,8 +103,8 @@ export const menuList = [
                 label: AppStrings.assembled_material_components,
                 icon: faBarcode,
                 subActions: [
-                    { label: AppStrings.add, href: '/products/components/add' },
-                    { label: AppStrings.list, href: '/products/components/list' }
+                    { label: AppStrings.add, href: '/products/composite-components/add' },
+                    { label: AppStrings.list, href: '/products/composite-components/list' }
                 ]
             },
             {
@@ -222,6 +222,7 @@ export const productCheckFormFields = [
     { name: 'IsActive', label: AppStrings.isActive, required: false },
     { name: 'Saleable', label: AppStrings.saleable, required: false },
     { name: 'Taxable', label: AppStrings.taxable, required: false },
+    { name: 'PreparationTime', label: AppStrings.preparationTime, required: false, type: 'number' },
 ];
 
 export const productPriceFormFields = [
@@ -247,6 +248,20 @@ export const productSelectFormFields = [
     { name: 'Father', label: AppStrings.category, required: true, options: [] },
     { name: 'UnitID', label: AppStrings.unit, required: true, options: [] },
     { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [] },
+];
+
+export const productComponentsFormFields = [
+    { name: 'ItemID', label: AppStrings.productId, required: true },
+    { name: 'Name', label: AppStrings.description, required: false },
+    { name: 'FoodQty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'Note', label: AppStrings.note, required: false },
+];
+
+
+export const productComponentsFormFields1 = [
+    { name: 'Father', label: AppStrings.category, required: true, options: [] },
+    { name: 'SubItem', label: AppStrings.materials, required: true, options: [] },
+    { name: 'Unit', label: AppStrings.unit, required: true, options: [] },
 ];
 
 export const branchFormFields = [

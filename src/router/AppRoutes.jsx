@@ -8,6 +8,7 @@ import AddBranch from '../pages/branche/AddBranch'
 import ListProduct from '../pages/product/ListProduct'
 import AddProduct from '../pages/product/AddProduct'
 import GetBranchKey from '../components/branch/GetBranchKey'
+import ListCompositeComponents from '../pages/product/ListCompositeComponents'
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
 
@@ -23,6 +24,7 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                         <Route path='/branches/add' element={<GetBranchKey />} />
                         <Route path='/products/list' element={<ListProduct />} />
                         <Route path='/products/add' element={<AddProduct />} />
+                        <Route path='/products/composite-components/list' element={<ListCompositeComponents />} />
 
                     </Route>
                 </Route>

@@ -6,25 +6,27 @@ import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
-import { useAddProductMutation } from '../../features/productSlice';
+import { productsApi, useAddProductMutation } from '../../features/productSlice';
 import useNotification from '../../hooks/useNotification';
+import { useDispatch } from 'react-redux';
 
 const AddProduct = () => {
     const { t } = useTranslation();
     const { success, error } = useNotification();
     const [type, setType] = useState('Raw');
     const [defaultValues, setDefaultValues] = useState({
-        Discountable: false,
+        Discountable: true,
         IsService: false,
         IsActive: true,
-        Saleable: true,
-        Taxable: false,
+        Saleable: false,
+        Taxable: true,
         Price2: 0,
         Price3: 0,
         Price4: 0,
     });
 
     const [addProduct, { isLoading }] = useAddProductMutation();
+    const dispatch = useDispatch();
     const [reset, setReset] = useState(false);
 
     const onSubmit = async (data) => {
@@ -32,8 +34,24 @@ const AddProduct = () => {
         try {
             const result = await addProduct({ type: productType, product: data }).unwrap();
             if (result.Success) {
-                success(t(AppStrings.product_added_successfully));
                 setReset(true);
+                success(t(AppStrings.product_added_successfully));
+                try {
+                    dispatch(
+                        productsApi.util.updateQueryData(
+                            'getProductByType',
+                            { pageNumber: 1, pageSize: 10, branch: "", productType: type },
+                            (draft) => {
+                                if (Array.isArray(draft)) {
+                                    draft.unshift(data);
+                                } else {
+                                    throw new Error('Query data is not an array');
+                                }
+                            }
+                        ));
+                } catch (error) {
+                    console.log(error);
+                }
             } else {
                 error(t(AppStrings.something_went_wrong));
             }
@@ -49,17 +67,6 @@ const AddProduct = () => {
                 IsService: false,
                 IsActive: true,
                 Saleable: false,
-                Taxable: true,
-                Price2: 0,
-                Price3: 0,
-                Price4: 0,
-            });
-        } else if (type === 'Composite') {
-            setDefaultValues({
-                Discountable: true,
-                IsService: false,
-                IsActive: true,
-                Saleable: true,
                 Taxable: true,
                 Price2: 0,
                 Price3: 0,
@@ -86,7 +93,7 @@ const AddProduct = () => {
                 <NavButton icon={faList} title={AppStrings.list_products} path={'/products/list'} />
             </>
         }  >
-            <ProductForm isLoading={isLoading} restForm={reset} onSubmit={onSubmit} defaultValuesEdit={defaultValues} />
+            <ProductForm isLoading={isLoading} restForm={reset} onSubmit={onSubmit} defaultValuesEdit={defaultValues} composite={type === 'Composite'} />
         </FormCard>
     )
 }

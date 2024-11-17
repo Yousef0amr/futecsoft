@@ -5,6 +5,7 @@ import { productsApi } from "../features/productSlice";
 import { categoriesApi } from "../features/categorySlice";
 import { taxesApi } from "../features/taxSlice";
 import { unitsApi } from "../features/unitSlice";
+import { setupListeners } from '@reduxjs/toolkit/query'
 
 const store = configureStore({
     reducer: {
@@ -24,6 +25,9 @@ const store = configureStore({
         unitsApi.middleware
     ),
 });
+
+
+setupListeners(store.dispatch)
 
 
 export default store;

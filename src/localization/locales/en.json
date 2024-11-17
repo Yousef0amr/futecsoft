@@ -117,5 +117,15 @@
     "branch_added_successfully": "Branch added successfully",
     "branch_updated_successfully": "Branch updated successfully",
     "branch_deleted_successfully": "Branch deleted successfully",
-    "something_went_wrong": "Something went wrong"
+    "something_went_wrong": "Something went wrong",
+    "preparationTime": "Preparation Time",
+    "list_composite_components": "Composite Components List",
+    "list_components": "Components List",
+    "description": "Description",
+    "quantity": "Quantity",
+    "quantity_required": "Quantity is required",
+    "note": "Note",
+    "componentId": "Component ID",
+    "product_required": "Product is required",
+    "component_added_successfully": "Component added successfully"
 }

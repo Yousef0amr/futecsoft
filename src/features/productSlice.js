@@ -76,6 +76,7 @@ export const productsApi = createApi({
             query: ({ pageNumber, pageSize, branch, productType }) => ({
                 url: `/GetAllByType?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}&Warehouse=${branch}&Type=${productType}`,
             }),
+            keepUnusedDataFor: 1800,
             transformResponse: (response) => {
                 const data = response.Response || response;
                 if (Array.isArray(data)) {
@@ -84,6 +85,19 @@ export const productsApi = createApi({
                     return [];
                 }
             }
+        }),
+        getCompositeComponentsById: builder.query({
+            query: (id) => ({
+                url: `/AppGetItemRecipeById?Id=${id}`,
+            }),
+            keepUnusedDataFor: 600,
+            transformResponse: (response) => response.Response
+        }),
+        getProductsByCategory: builder.query({
+            query: (id) => ({
+                url: `/ApiGetByCategory?FatherID=${id}`,
+            }),
+            transformResponse: (response) => response.Response
         }),
         getProductById: builder.query({
             query: (id) => ({
@@ -104,7 +118,17 @@ export const productsApi = createApi({
                 url: `/Delete?Id =${id}`,
                 method: 'DELETE',
             }),
-        })
+        }),
+        addComponent: builder.mutation(
+            {
+                query: (component) => ({
+                    url: `/InsertRecipe`,
+                    method: 'POST',
+                    body: convertToFormData(component),
+                }),
+            }
+        )
+
     }),
 });
 
@@ -114,5 +138,8 @@ export const {
     useGetProductByTypeQuery,
     useAddProductMutation,
     useGetCurrentProductkeyQuery,
-    useDeleteProductMutation
+    useDeleteProductMutation,
+    useAddComponentMutation,
+    useGetProductsByCategoryQuery,
+    useGetCompositeComponentsByIdQuery,
 } = productsApi;

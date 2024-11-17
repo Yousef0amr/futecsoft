@@ -4,7 +4,7 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-const SelectMenu = ({ options, label, value, onChange, required }) => {
+const SelectMenu = ({ options, name, label, value, onChange, required, errors }) => {
     const [open, setOpen] = useState(false);
     const { t } = useTranslation();
 
@@ -74,6 +74,7 @@ const SelectMenu = ({ options, label, value, onChange, required }) => {
                     </MenuItem>
                 )}
             </Select>
+            {errors[name] && <div className="error-message">{errors[name].message}</div>}
         </FormControl>
     );
 };

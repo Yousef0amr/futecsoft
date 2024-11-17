@@ -4,11 +4,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InboxIcon from '@mui/icons-material/Inbox';
 import { menuList } from './../../utils/constants';
 import { useTranslation } from 'react-i18next';
-import { RadioButtonUnchecked } from '@mui/icons-material';
+import { RadioButtonChecked, RadioButtonUnchecked } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
-const CustomMenu = ({ open, directionVal, handleDrawerOpen }) => {
+const CustomMenu = ({ open, directionVal, handleDrawerOpen, selected }) => {
     const [activeAccordion, setActiveAccordion] = useState(null);
     const { t } = useTranslation();
 
@@ -74,11 +74,11 @@ const CustomMenu = ({ open, directionVal, handleDrawerOpen }) => {
                                                         padding: '4px',
                                                         borderRadius: '10px',
                                                         cursor: 'pointer',
-                                                        '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' }
+                                                        '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' },
+                                                        backgroundColor: selected === action.href ? 'rgb(41.5, 48, 61)' : 'transparent'
                                                     }}
-
                                                 >
-                                                    <RadioButtonUnchecked fontSize='8px' />
+                                                    {selected === action.href ? <RadioButtonChecked fontSize='2px' /> : <RadioButtonUnchecked fontSize='2px' />}
                                                     <Typography component={'span'} sx={{ textAlign: 'center', borderRadius: '10px', padding: '4px 10px', fontSize: '13px' }}>
                                                         {t(action.label)}
                                                     </Typography>

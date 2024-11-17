@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../utils/auth';
 import CustomMenu from '../components/common/CustomMenu';
 import AppStrings from '../utils/appStrings';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 const drawerWidth = 270;
 
@@ -121,6 +121,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
   const [directionVal, setDirection] = React.useState(localStorage.getItem('lang') === 'en' ? 'ltr' : 'rtl');
   const { logoutLocal } = useAuth()
   const { t } = useTranslation();
+  const location = useLocation();
 
 
   const handleDirection = (direction) => {
@@ -205,7 +206,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
               </AccordionSummary>
             </Accordion>
           </li>
-          <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} />
+          <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} selected={location.pathname} />
         </ul>
         <DrawerHeader style={{
           backgroundColor: 'var(--background-color-dark)',

@@ -75,6 +75,8 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                         <SelectMenu
                             value={watch(field.name)}
                             onChange={(e) => onSelectChange(e.target.value, field.name)}
+                            errors={errors}
+                            name={field.name}
                             options={
                                 field.name === 'Father' ?
                                     categories : field.name === 'Warehouse' ?

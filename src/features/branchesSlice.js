@@ -25,6 +25,7 @@ export const branchesApi = createApi({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
+            keepUnusedDataFor: 1800,
             transformResponse: (response) => response.Response
         }),
 

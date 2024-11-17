@@ -117,5 +117,15 @@
     "branch_added_successfully": "تم اضافة الفرع بنجاح",
     "branch_updated_successfully": "تم تعديل الفرع بنجاح",
     "branch_deleted_successfully": "تم حذف الفرع بنجاح",
-    "something_went_wrong": "حدث خطأ ما"
+    "something_went_wrong": "حدث خطأ ما",
+    "preparationTime": "وقت التحضير",
+    "list_composite_components": "قائمة المواد المجمعة",
+    "list_components": "قائمة المكونات",
+    "description": "الوصف",
+    "quantity": "الكمية",
+    "quantity_required": "الكمية مطلوبة",
+    "note": "ملاحظة",
+    "componentId": "رقم المكون",
+    "product_required": "المادة مطلوبة",
+    "component_added_successfully": "تم اضافة المكون بنجاح"
 }

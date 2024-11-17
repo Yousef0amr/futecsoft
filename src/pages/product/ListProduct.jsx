@@ -1,6 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../../utils/appStrings';
 import { useGetProductByTypeQuery, useDeleteProductMutation } from '../../features/productSlice';
@@ -25,8 +23,6 @@ const ListProduct = () => {
         pageSize: 10,
         branch: '',
         productType: activeTab,
-    }, {
-        skip: !activeTab
     });
     const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
 
@@ -90,8 +86,6 @@ const ListProduct = () => {
                     />
                 </div>
             }
-
-
         </FormCard>
     )
 }

@@ -43,11 +43,21 @@ const MainMenuValidators = () => {
         Icon: yup.string().required(t(AppStrings.icon_required)).nullable(),
     }
 
+    const componentSchemaValidator = {
+        ItemID: yup.string().required().nullable(),
+        FoodQty: yup.string().required(t(AppStrings.quantity_required)).nullable(),
+        SubItem: yup.string().required(t(AppStrings.product_required)).nullable(),
+        Unit: yup.string().required(t(AppStrings.unit_required)).nullable(),
+        Name: yup.string().optional(),
+        Note: yup.string().optional(),
+        Father: yup.string().optional(),
+    }
 
 
     return {
         branchSchemaValidator,
-        productSchemaValidator
+        productSchemaValidator,
+        componentSchemaValidator
     }
 }
 

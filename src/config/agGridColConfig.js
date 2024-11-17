@@ -64,5 +64,21 @@ export const useProductColDefs = () => {
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
         { field: "Saleable", headerName: t(AppStrings.saleable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
         { field: "Taxable", headerName: t(AppStrings.taxable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+        { field: "PreparationTime", headerName: t(AppStrings.preparationTime), filter: 'agTextColumnFilter' },
+    ], [t]);
+};
+
+export const useComponentsColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "ItemId", headerName: t(AppStrings.componentId), filter: 'agNumberColumnFilter' },
+        { field: "ItemArName", headerName: t(AppStrings.productNameAr), filter: 'agTextColumnFilter' },
+        { field: "ItemEnName", headerName: t(AppStrings.productNameEn), filter: 'agTextColumnFilter' },
+        { field: "FoodQty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
+        { field: "EnName", headerName: t(AppStrings.category), filter: 'agTextColumnFilter' },
+        { field: "UnitAr", headerName: t(AppStrings.unit) + ' -- Ar', filter: 'agNumberColumnFilter' },
+        { field: "UnitEn", headerName: t(AppStrings.unit) + ' -- En', filter: 'agNumberColumnFilter' },
+        { field: "Note", headerName: t(AppStrings.note), filter: 'agTextColumnFilter' },
     ], [t]);
 };

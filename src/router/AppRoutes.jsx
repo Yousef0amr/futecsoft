@@ -5,26 +5,31 @@ import { ProtectedRoute, LoginRoute } from './../components/common/ProtectedRout
 import Login from '../pages/Login'
 import ListBranches from '../pages/branche/ListBranches'
 import AddBranch from '../pages/branche/AddBranch'
+import Home from '../pages/Home'
 import ListProduct from '../pages/product/ListProduct'
 import AddProduct from '../pages/product/AddProduct'
 import GetBranchKey from '../components/branch/GetBranchKey'
 import ListCompositeComponents from '../pages/product/ListCompositeComponents'
+import PricesAndCosts from '../pages/product/PricesAndCosts'
+import Loader from '../components/common/Loader'
+import AddComponent from '../pages/product/AddComponent'
+import EditProduct from '../pages/product/EditProduct'
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
-
-
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
             <Routes >
                 <Route element={<ProtectedRoute />} >
                     <Route path="/" element={<DefaultLayout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} >
-                        <Route index element={<h3>Home</h3>} />
-
+                        <Route index element={<Home />} />
                         <Route path='/branches/list' element={<ListBranches />} />
                         <Route path='/branches/add' element={<GetBranchKey />} />
                         <Route path='/products/list' element={<ListProduct />} />
                         <Route path='/products/add' element={<AddProduct />} />
-                        <Route path='/products/composite-components/list' element={<ListCompositeComponents />} />
+                        <Route path='/products/edit' element={<EditProduct />} />
+                        <Route path='/products/composite-components' element={<ListCompositeComponents />} />
+                        <Route path='/products/composite-components/add' element={<AddComponent />} />
+                        <Route path='/products/prices-and-costs' element={<PricesAndCosts />} />
 
                     </Route>
                 </Route>

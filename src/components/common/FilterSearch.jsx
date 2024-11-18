@@ -8,7 +8,7 @@ const FilterSearch = ({ onFilterTextBoxChanged }) => {
     return (
         <div className="InputContainer">
             <input
-                onInput={onFilterTextBoxChanged}
+                onInput={(e) => onFilterTextBoxChanged(e.target.value)}
                 type="text"
                 name="text"
                 className="input-search"

@@ -1,7 +1,18 @@
-import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faHome, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './appStrings';
 
 export const menuList = [
+    {
+        label: AppStrings.home,
+        subList: [
+            {
+                label: AppStrings.home,
+                icon: faHome,
+                type: 'unExpanded',
+                href: '/'
+            }
+        ]
+    },
     {
         label: AppStrings.main_menu,
         subList: [
@@ -95,26 +106,22 @@ export const menuList = [
                 icon: faBarcode,
 
                 subActions: [
-                    { label: AppStrings.list, href: '/products/list' },
+                    { label: AppStrings.list, href: '/products/list', subHref: '/products/edit' },
                     { label: AppStrings.add, href: '/products/add' },
                 ]
             },
             {
                 label: AppStrings.assembled_material_components,
                 icon: faBarcode,
-                subActions: [
-                    { label: AppStrings.add, href: '/products/composite-components/add' },
-                    { label: AppStrings.list, href: '/products/composite-components/list' }
-                ]
+                href: '/products/composite-components',
+                subHref: '/products/composite-components/add',
+                type: 'unExpanded',
             },
             {
                 label: AppStrings.prices_and_costs,
                 icon: faMoneyBill1Wave,
-
-                subActions: [
-                    { label: AppStrings.add, href: '/products/prices-costs/add' },
-                    { label: AppStrings.list, href: '/products/prices-costs/list' }
-                ]
+                type: 'unExpanded',
+                href: '/products/prices-and-costs'
             }
         ]
     },

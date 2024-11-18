@@ -9,6 +9,9 @@ import ProductImageField from './ProductImageField';
 const ProductForm = ({ onSubmit, isLoading, restForm, defaultValuesEdit = {}, composite }) => {
     const { productSchema } = useValidators();
 
+
+    console.log(defaultValuesEdit)
+
     return (
         <FormComponent isLoading={isLoading} restForm={restForm} defaultValues={defaultValuesEdit} schema={productSchema} onSubmit={onSubmit}>
             {({ register, errors, setValue, watch }) => (

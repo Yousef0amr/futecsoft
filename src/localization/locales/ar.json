@@ -127,5 +127,8 @@
     "note": "ملاحظة",
     "componentId": "رقم المكون",
     "product_required": "المادة مطلوبة",
-    "component_added_successfully": "تم اضافة المكون بنجاح"
+    "component_added_successfully": "تم اضافة المكون بنجاح",
+    "back": "رجوع",
+    "add_new_component": "اضافة مكون جديد",
+    "edit_product": "تعديل المادة"
 }

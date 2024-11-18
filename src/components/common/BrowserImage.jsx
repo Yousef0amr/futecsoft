@@ -3,11 +3,21 @@ import gallery from '../../assets/images/gallery.png';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import { Col, Row } from 'react-bootstrap';
+import convertBase64ToBlob from '../../utils/ConvertBase64ToBlob';
 
 const BrowserImage = ({ errors, setValue, field, watch }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [uploadedFile, setUploadedFile] = useState(null);
     const { t } = useTranslation();
+
+
+    useEffect(() => {
+        if (watch(field.name)) {
+            const file = new File([convertBase64ToBlob(watch(field.name))], 'image.png', { type: 'image/png' });
+            setUploadedFile(file)
+        }
+    }, [watch, field.name]);
+
 
     const handleDragOver = (event) => {
         event.preventDefault();

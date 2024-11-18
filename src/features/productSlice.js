@@ -113,6 +113,13 @@ export const productsApi = createApi({
             invalidatesTags: ['Product'],
 
         }),
+        updateProduct: builder.mutation({
+            query: (product) => ({
+                url: `/Update`,
+                method: 'POST',
+                body: convertToFormData(product),
+            }),
+        }),
         deleteProduct: builder.mutation({
             query: (id) => ({
                 url: `/Delete?Id =${id}`,
@@ -127,7 +134,13 @@ export const productsApi = createApi({
                     body: convertToFormData(component),
                 }),
             }
-        )
+        ),
+        getProductsCost: builder.query({
+            query: ({ CatID, Warehouse }) => ({
+                url: `/GetItemsCost?CateID=${CatID}&Warehouse=${Warehouse}`,
+            }),
+            transformResponse: (response) => response.Response
+        }),
 
     }),
 });
@@ -142,4 +155,6 @@ export const {
     useAddComponentMutation,
     useGetProductsByCategoryQuery,
     useGetCompositeComponentsByIdQuery,
+    useGetProductsCostQuery,
+    useUpdateProductMutation
 } = productsApi;

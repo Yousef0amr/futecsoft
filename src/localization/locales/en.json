@@ -127,5 +127,8 @@
     "note": "Note",
     "componentId": "Component ID",
     "product_required": "Product is required",
-    "component_added_successfully": "Component added successfully"
+    "component_added_successfully": "Component added successfully",
+    "back": "Back",
+    "add_new_component": "Add New Component",
+    "edit_product": "Edit Product"
 }

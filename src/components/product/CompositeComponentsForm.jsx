@@ -1,13 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import FormComponent from '../common/FormComponent';
 import useValidators from '../../hooks/useValidators';
 import { Col, Row } from 'react-bootstrap';
-import { Stack } from '@mui/material';
-import FilterSearch from '../../components/common/FilterSearch';
-import NavButton from '../../components/common/NavButton';
 import AgGridTable from '../../components/common/AgGridTable';
-import FormCard from '../../components/common/FormCard';
-import { faAdd, faBarcode } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './../../utils/appStrings';
 import { useComponentsColDefs } from '../../config/agGridColConfig';
 import { productsApi, useAddComponentMutation, useGetCompositeComponentsByIdQuery } from '../../features/productSlice';
@@ -17,31 +12,35 @@ import { useDispatch } from 'react-redux';
 import useNotification from '../../hooks/useNotification';
 
 
-const CompositeComponentsForm = ({ isLoading, restForm, defaultValuesEdit = {} }) => {
+const CompositeComponentsForm = ({ quickFilterText, defaultValuesEdit = {} }) => {
     const { t } = useTranslation();
     const { componentSchema } = useValidators();
     const componentsColDefs = useComponentsColDefs();
     const { success, error } = useNotification();
-    const { data } = useGetCompositeComponentsByIdQuery(defaultValuesEdit.Id);
+    const { data, isLoading } = useGetCompositeComponentsByIdQuery(defaultValuesEdit.Id);
     const [reset, setReset] = useState(false);
     const dispatch = useDispatch();
 
     const [addComponent, { isLoading: isLoadingKey }] = useAddComponentMutation();
 
-    const [quickFilterText, setQuickFilterText] = useState();
-    const onFilterTextBoxChanged = useCallback(
-        ({ target: { value } }) =>
-            setQuickFilterText(value),
-        []
-    );
-
-
     const onSubmit = async (data) => {
+        console.log(data);
         try {
             const result = await addComponent(data).unwrap();
             if (result.Success) {
-                setReset(true);
                 success(t(AppStrings.component_added_successfully));
+                setReset(true);
+
+                const component = {
+                    ItemId: data.ItemID,
+                    Note: data.Note,
+                    UnitAr: data.Unit,
+                    UnitEn: data.Unit,
+                    ItemArName: data.Name,
+                    ItemEnName: data.Name,
+                    EnName: data.Father,
+                    FoodQty: data.FoodQty
+                }
                 try {
                     dispatch(
                         productsApi.util.updateQueryData(
@@ -50,7 +49,7 @@ const CompositeComponentsForm = ({ isLoading, restForm, defaultValuesEdit = {} }
                             (draft) => {
                                 console.log('draft', draft);
                                 if (Array.isArray(draft)) {
-                                    draft.unshift(data);
+                                    draft.unshift(component);
                                 } else {
                                     throw new Error('Query data is not an array');
                                 }
@@ -72,34 +71,27 @@ const CompositeComponentsForm = ({ isLoading, restForm, defaultValuesEdit = {} }
     return (
         <Row lg={2} >
             <Col style={{ marginTop: '20px' }}>
-                <FormCard icon={faBarcode} title={t(AppStrings.list_components)} optionComponent={
-                    <>
-                        <FilterSearch onFilterTextBoxChanged={onFilterTextBoxChanged} />
-                    </>
-                }>
-                    {
-                        <div className='w-100 p-1 mt-4'>
-                            <AgGridTableMemo
-                                EditForm={null}
-                                dynamicColumns={componentsColDefs}
-                                rowData={data}
-                                isLoading={isLoading}
-                                quickFilterText={quickFilterText}
-                            />
-                        </div>
-                    }
-                </FormCard>
+                {
+                    <div className='w-100 p-1 mt-4'>
+                        <AgGridTableMemo
+                            actions={{ handleOnEditClick: () => { }, handleDeleteClick: () => { } }}
+                            dynamicColumns={componentsColDefs}
+                            rowData={data}
+                            isLoading={isLoading}
+                            quickFilterText={quickFilterText}
+                        />
+                    </div>
+                }
             </Col>
-            <Col > <FormComponent isLoading={isLoading} restForm={reset} defaultValues={{ ItemID: defaultValuesEdit.Id, Father: defaultValuesEdit.CatID, Name: defaultValuesEdit.NameAr }} schema={componentSchema} onSubmit={onSubmit}>
-                {({ register, errors, setValue, watch }) => (
-                    <Row style={{ marginTop: '15px' }} lg={1}>
-                        <ComponentFormFields register={register} errors={errors} watch={watch} setValue={setValue} />
-                    </Row>
-                )}
-            </FormComponent>
+            <Col >
+                <FormComponent isLoading={isLoadingKey} restForm={reset} defaultValues={{ ItemID: defaultValuesEdit.Id, Father: defaultValuesEdit.CatID, Name: defaultValuesEdit.NameAr }} schema={componentSchema} onSubmit={onSubmit}>
+                    {({ register, errors, setValue, watch }) => (
+                        <Row style={{ marginTop: '15px' }} lg={1}>
+                            <ComponentFormFields register={register} errors={errors} watch={watch} setValue={setValue} />
+                        </Row>
+                    )}
+                </FormComponent>
             </Col>
-
-
         </Row>
     )
 }

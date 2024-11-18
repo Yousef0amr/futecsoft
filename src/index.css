@@ -51,6 +51,7 @@ html,
 
 
 .loader-indector {
+  width: 100%;
   min-height: 80vh;
   display: flex;
   justify-content: center;

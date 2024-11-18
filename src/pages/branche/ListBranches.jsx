@@ -15,20 +15,17 @@ import { useBranchColDefs } from '../../config/agGridColConfig';
 
 const ListBranches = () => {
     const { t } = useTranslation();
+    const [quickFilterText, setQuickFilterText] = useState();
     const { data, isLoading } = useGetBranchesQuery({ pageNumber: 1, pageSize: 1 });
     const branchColDefs = useBranchColDefs();
 
-    const [quickFilterText, setQuickFilterText] = useState();
-    const onFilterTextBoxChanged = useCallback(
-        ({ target: { value } }) =>
-            setQuickFilterText(value),
-        []
-    );
+
+
 
     return (
         <FormCard icon={faShuffle} title={t(AppStrings.list_branches)} optionComponent={
             <>
-                <FilterSearch onFilterTextBoxChanged={onFilterTextBoxChanged} />
+                <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 <NavButton icon={faAdd} title={AppStrings.add_new_branch} path={'/branches/add'} />
             </>
         }>

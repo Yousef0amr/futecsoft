@@ -5,21 +5,17 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import './../styles/drawer.css';
-import { Home, LogoutTwoTone } from '@mui/icons-material';
+import { LogoutTwoTone } from '@mui/icons-material';
 import SwitchMode from '../components/common/SwitchMode';
 import SwitchLanguage from '../components/common/SwitchLanguage';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../utils/auth';
 import CustomMenu from '../components/common/CustomMenu';
-import AppStrings from '../utils/appStrings';
 import { Outlet, useLocation } from 'react-router-dom';
+
 
 const drawerWidth = 270;
 
@@ -188,24 +184,6 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           <span>{open ? 'FUTEC-SOFT' : 'LOGO'}</span>
         </DrawerHeader>
         <ul className='menu' style={{ direction: directionVal }}>
-          <li  >
-            <Accordion
-              disableGutters
-              elevation={0}
-              style={{ width: '100%', backgroundColor: 'transparent', direction: directionVal }}
-            >
-              <AccordionSummary
-                aria-controls="panel1-content"
-                id="panel1-header"
-                sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '56px' }, '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)', color: 'white' } }}
-              >
-                <ListItemIcon style={directionVal === 'rtl' ? { marginRight: open ? '' : '32px' } : { marginLeft: open ? '' : '32px' }}>
-                  <Home />
-                </ListItemIcon>
-                <Typography color='white' style={{ display: open ? 'block' : 'none', fontSize: '14px' }}>{t(AppStrings.home)}</Typography>
-              </AccordionSummary>
-            </Accordion>
-          </li>
           <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} selected={location.pathname} />
         </ul>
         <DrawerHeader style={{

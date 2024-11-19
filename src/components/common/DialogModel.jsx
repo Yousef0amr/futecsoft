@@ -19,16 +19,9 @@ export default function DialogModel({ handleClose, open, title, text, children }
             keepMounted
             onClose={handleClose}
             aria-describedby="alert-dialog-slide-description"
+            role="dialog" aria-modal="true"
         >
-            <DialogTitle>{title}</DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-slide-description">
-                    {text}
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                {children}
-            </DialogActions>
+            {children}
         </Dialog>
     );
 }

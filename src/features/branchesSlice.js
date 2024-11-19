@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, BRANCHES } from './../api/endpoints.js';
 import convertToFormData from './../utils/convertToFormData.js'
 import getCookie from './../utils/getCookie.js'
+import { longCacheTime } from '../utils/constants.js';
 
 
 export const branchesApi = createApi({
@@ -25,7 +26,7 @@ export const branchesApi = createApi({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
-            keepUnusedDataFor: 1800,
+            keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response
         }),
 

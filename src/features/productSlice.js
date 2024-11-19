@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, ITEMS } from './../api/endpoints.js';  // Assuming PRODUCTS endpoint is defined in endpoints.js
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
+import { longCacheTime, shortCacheTime } from '../utils/constants.js';
 
 
 const transformProductData = (data) => {
@@ -58,25 +59,11 @@ export const productsApi = createApi({
             transformResponse: (response) => response.Response,
             providesTags: ['Product']
         }),
-        getProducts: builder.query({
-            query: ({ pageNumber, pageSize }) => ({
-                url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
-            }),
-            transformResponse: (response) => {
-                const data = response.Response || response;
-                if (Array.isArray(data)) {
-                    return data.map(item => transformProductData(item));
-                } else {
-                    return [];
-                }
-            }
-
-        }),
         getProductByType: builder.query({
             query: ({ pageNumber, pageSize, branch, productType }) => ({
                 url: `/GetAllByType?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}&Warehouse=${branch}&Type=${productType}`,
             }),
-            keepUnusedDataFor: 1800,
+            keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => {
                 const data = response.Response || response;
                 if (Array.isArray(data)) {
@@ -84,19 +71,22 @@ export const productsApi = createApi({
                 } else {
                     return [];
                 }
-            }
+            },
+            providesTags: ['Product_list']
         }),
         getCompositeComponentsById: builder.query({
             query: (id) => ({
                 url: `/AppGetItemRecipeById?Id=${id}`,
             }),
-            keepUnusedDataFor: 600,
-            transformResponse: (response) => response.Response
+            keepUnusedDataFor: longCacheTime,
+            transformResponse: (response) => response.Response,
+            providesTags: ['Components']
         }),
         getProductsByCategory: builder.query({
             query: (id) => ({
                 url: `/ApiGetByCategory?FatherID=${id}`,
             }),
+            keepUnusedDataFor: shortCacheTime,
             transformResponse: (response) => response.Response
         }),
         getProductById: builder.query({
@@ -119,12 +109,14 @@ export const productsApi = createApi({
                 method: 'POST',
                 body: convertToFormData(product),
             }),
+            invalidatesTags: ['Product_list'],
         }),
         deleteProduct: builder.mutation({
             query: (id) => ({
                 url: `/Delete?Id =${id}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['Product_list'],
         }),
         addComponent: builder.mutation(
             {
@@ -133,8 +125,15 @@ export const productsApi = createApi({
                     method: 'POST',
                     body: convertToFormData(component),
                 }),
+                invalidatesTags: ['Components']
             }
         ),
+        getProductUnitsById: builder.query({
+            query: (id) => ({
+                url: `/ApiGetItemUnits?Id=${id}`,
+            }),
+            transformResponse: (response) => response.Response
+        }),
         getProductsCost: builder.query({
             query: ({ CatID, Warehouse }) => ({
                 url: `/GetItemsCost?CateID=${CatID}&Warehouse=${Warehouse}`,
@@ -156,5 +155,6 @@ export const {
     useGetProductsByCategoryQuery,
     useGetCompositeComponentsByIdQuery,
     useGetProductsCostQuery,
-    useUpdateProductMutation
+    useUpdateProductMutation,
+    useGetProductUnitsByIdQuery
 } = productsApi;

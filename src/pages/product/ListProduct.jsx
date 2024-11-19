@@ -12,6 +12,7 @@ import { useProductColDefs } from '../../config/agGridColConfig';
 import { useNotification } from '../../hooks/useNotification';
 import Loader from '../../components/common/Loader';
 import { useNavigate } from 'react-router-dom';
+import DeleteComponent from '../../components/common/DeleteComponent';
 
 
 const ListProduct = () => {
@@ -30,18 +31,11 @@ const ListProduct = () => {
 
     const [loading, setLoading] = useState(true);
 
-
     useEffect(() => {
         if (!isLoading) {
             setLoading(false);
         }
     }, [data, isLoading]);
-
-
-
-
-
-
 
 
     const handleTabClick = (type) => {
@@ -53,16 +47,7 @@ const ListProduct = () => {
 
     const handleDeleteClick = async (data) => {
         setOpenDeleteModal(true);
-        // try {
-        //     const result = await deleteProduct(id).unwrap();
-        //     if (result.Success) {
-        //         success(t(AppStrings.product_deleted_successfully));
-        //     } else {
-        //         error(t(AppStrings.something_went_wrong));
-        //     }
-        // } catch (e) {
-        //     error(t(AppStrings.something_went_wrong));
-        // }
+
     }
 
     const handleOnEditClick = (data) => {
@@ -72,7 +57,7 @@ const ListProduct = () => {
     const AgGridTableMemo = React.memo(AgGridTable);
 
     return (
-        <FormCard open={openDeleteModal} handleClose={() => setOpenDeleteModal(false)} icon={faBarcode} title={t(AppStrings.list_products)} navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={'/products/add'} />} optionComponent={
+        <FormCard open={openDeleteModal} modelComponent={<DeleteComponent />} handleClose={() => setOpenDeleteModal(false)} icon={faBarcode} title={t(AppStrings.list_products)} navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={'/products/add'} />} optionComponent={
             <>
                 <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} />
                 <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />

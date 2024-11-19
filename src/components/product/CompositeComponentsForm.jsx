@@ -5,11 +5,12 @@ import { Col, Row } from 'react-bootstrap';
 import AgGridTable from '../../components/common/AgGridTable';
 import AppStrings from './../../utils/appStrings';
 import { useComponentsColDefs } from '../../config/agGridColConfig';
-import { productsApi, useAddComponentMutation, useGetCompositeComponentsByIdQuery } from '../../features/productSlice';
+import { useAddComponentMutation, useGetCompositeComponentsByIdQuery } from '../../features/productSlice';
 import { useTranslation } from 'react-i18next';
 import ComponentFormFields from './ComponentFormFields';
-import { useDispatch } from 'react-redux';
 import useNotification from '../../hooks/useNotification';
+
+
 
 
 const CompositeComponentsForm = ({ quickFilterText, defaultValuesEdit = {} }) => {
@@ -19,53 +20,23 @@ const CompositeComponentsForm = ({ quickFilterText, defaultValuesEdit = {} }) =>
     const { success, error } = useNotification();
     const { data, isLoading } = useGetCompositeComponentsByIdQuery(defaultValuesEdit.Id);
     const [reset, setReset] = useState(false);
-    const dispatch = useDispatch();
+
 
     const [addComponent, { isLoading: isLoadingKey }] = useAddComponentMutation();
 
     const onSubmit = async (data) => {
-        console.log(data);
         try {
             const result = await addComponent(data).unwrap();
             if (result.Success) {
-                success(t(AppStrings.component_added_successfully));
                 setReset(true);
-
-                const component = {
-                    ItemId: data.ItemID,
-                    Note: data.Note,
-                    UnitAr: data.Unit,
-                    UnitEn: data.Unit,
-                    ItemArName: data.Name,
-                    ItemEnName: data.Name,
-                    EnName: data.Father,
-                    FoodQty: data.FoodQty
-                }
-                try {
-                    dispatch(
-                        productsApi.util.updateQueryData(
-                            'getCompositeComponentsById',
-                            defaultValuesEdit.Id,
-                            (draft) => {
-                                console.log('draft', draft);
-                                if (Array.isArray(draft)) {
-                                    draft.unshift(component);
-                                } else {
-                                    throw new Error('Query data is not an array');
-                                }
-                            }
-                        ));
-                } catch (error) {
-                    console.log(error);
-                }
+                success(t(AppStrings.component_added_successfully));
             } else {
-                error(t(AppStrings.something_went_wrong));
+                throw new Error(result.Success);
             }
         } catch (e) {
-            error(t(AppStrings.something_went_wrong));
+            error(t(AppStrings.material_already_added));
         }
     }
-
 
     const AgGridTableMemo = React.memo(AgGridTable);
     return (

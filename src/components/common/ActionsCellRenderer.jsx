@@ -13,7 +13,7 @@ const ActionsCellRenderer = ({ node, handleOnEditClick, handleDeleteClick }) => 
 
   const onEditClick = useCallback(() => {
     const rowData = node.data;
-    handleOnEditClick(rowData);
+    handleOnEditClick({ ...rowData, index: node.rowIndex });
   }, [node, handleOnEditClick]);
 
   return (

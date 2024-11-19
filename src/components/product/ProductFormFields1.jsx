@@ -73,7 +73,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                 {productSelectFormFields.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <SelectMenu
-                            value={watch(field.name)}
+                            watch={watch}
                             onChange={(e) => onSelectChange(e.target.value, field.name)}
                             errors={errors}
                             name={field.name}

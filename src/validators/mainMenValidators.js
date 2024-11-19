@@ -35,11 +35,11 @@ const MainMenuValidators = () => {
         Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
         UnitID: yup.string().required(t(AppStrings.unit_required)).nullable(),
         TaxPercentage: yup.string().optional(),
-        Discountable: yup.string().optional(),
-        IsService: yup.string().optional(),
-        IsActive: yup.string().optional(),
-        Saleable: yup.string().optional(),
-        Taxable: yup.string().optional(),
+        Discountable: yup.boolean().optional(),
+        IsService: yup.boolean().optional(),
+        IsActive: yup.boolean().optional(),
+        Saleable: yup.boolean().optional(),
+        Taxable: yup.boolean().optional(),
         Icon: yup.string().required(t(AppStrings.icon_required)).nullable(),
     }
 

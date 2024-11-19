@@ -1,6 +1,11 @@
 import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faHome, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './appStrings';
 
+
+export const longCacheTime = 3500;
+export const shortCacheTime = 1000;
+
+
 export const menuList = [
     {
         label: AppStrings.home,

@@ -130,5 +130,8 @@
     "component_added_successfully": "تم اضافة المكون بنجاح",
     "back": "رجوع",
     "add_new_component": "اضافة مكون جديد",
-    "edit_product": "تعديل المادة"
+    "edit_product": "تعديل المادة",
+    "material_already_added": "المكون مضافة بالفعل",
+    "delete_title": "حذف العنصر؟",
+    "delete_confirmation": "هل انت متاكد من حذف العنصر؟"
 }

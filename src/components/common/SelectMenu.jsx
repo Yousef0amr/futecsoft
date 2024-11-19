@@ -4,7 +4,7 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-const SelectMenu = ({ options, name, label, value, onChange, required, errors }) => {
+const SelectMenu = ({ options, name, label, watch, onChange, required, errors }) => {
     const [open, setOpen] = useState(false);
     const { t } = useTranslation();
 
@@ -25,8 +25,10 @@ const SelectMenu = ({ options, name, label, value, onChange, required, errors })
                 open={open}
                 onClose={handleClose}
                 onOpen={handleOpen}
-                value={value || ''}
-                onChange={onChange}
+                value={options.some((option) => option.value === watch(name)) ? watch(name) : " "}
+                onChange={(event) => {
+                    onChange(event);
+                }}
                 displayEmpty
                 style={{
                     backgroundColor: 'var(--background-color)',
@@ -40,7 +42,7 @@ const SelectMenu = ({ options, name, label, value, onChange, required, errors })
                     border: '1px solid var(--border-color-2)',
                 }}
                 IconComponent={(props) => (
-                    <ArrowDropDownIcon {...props} style={{ color: 'var(--border-color-2' }} />
+                    <ArrowDropDownIcon {...props} style={{ color: 'var(--border-color-2)' }} />
                 )}
                 MenuProps={{
                     disableScrollLock: true,
@@ -58,7 +60,7 @@ const SelectMenu = ({ options, name, label, value, onChange, required, errors })
                     disableAutoFocusItem: true,
                 }}
             >
-                <MenuItem value="" >
+                <MenuItem value=" ">
                     {t(`${AppStrings.choose}`) + ' ' + t(label)}
                 </MenuItem>
 
@@ -74,6 +76,7 @@ const SelectMenu = ({ options, name, label, value, onChange, required, errors })
                     </MenuItem>
                 )}
             </Select>
+
             {errors[name] && <div className="error-message">{errors[name].message}</div>}
         </FormControl>
     );

@@ -6,14 +6,11 @@ import ProductFormFields1 from './ProductFormFields1';
 import ProductFormFields2 from './ProductFormFields2';
 import ProductImageField from './ProductImageField';
 
-const ProductForm = ({ onSubmit, isLoading, restForm, defaultValuesEdit = {}, composite }) => {
+const ProductForm = ({ onSubmit, isLoading, restForm, enableReset, defaultValuesEdit = {}, composite }) => {
     const { productSchema } = useValidators();
 
-
-    console.log(defaultValuesEdit)
-
     return (
-        <FormComponent isLoading={isLoading} restForm={restForm} defaultValues={defaultValuesEdit} schema={productSchema} onSubmit={onSubmit}>
+        <FormComponent enableReset={enableReset} isLoading={isLoading} restForm={restForm} defaultValues={defaultValuesEdit} schema={productSchema} onSubmit={onSubmit}>
             {({ register, errors, setValue, watch }) => (
                 <Row style={{ marginTop: '15px' }} lg={2}>
                     <ProductImageField errors={errors} setValue={setValue} watch={watch} />

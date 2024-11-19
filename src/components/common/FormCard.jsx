@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import CardTitle from './CardTitle'
 import DialogModel from './DialogModel'
-const FormCard = ({ icon, title, modelTitle, optionComponent, navButton, open, handleClose, modelComponent, children }) => {
+const FormCard = ({ icon, title, modelTitle, optionComponent, navButton, open = false, handleClose, modelComponent, children }) => {
     return (
         <>
             <Card style={{

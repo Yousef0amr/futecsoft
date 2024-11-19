@@ -13,7 +13,6 @@ import useNotification from '../../hooks/useNotification'
 
 
 
-
 const EditProduct = () => {
     const loaction = useLocation()
     const { t } = useTranslation();
@@ -21,32 +20,11 @@ const EditProduct = () => {
     const [updateProduct, { isLoading }] = useUpdateProductMutation()
     const { success, error } = useNotification()
 
-
     const onSubmit = async (data) => {
         try {
             const result = await updateProduct(data).unwrap();
             if (result.Success) {
                 success(t(AppStrings.product_updated_successfully))
-                // distPatch(
-                //     productsApi.util.updateQueryData(
-                //         'getProductByType',
-                //         {
-                //             pageNumber: 1,
-                //             pageSize: 10,
-                //             branch: '',
-                //             productType: loaction.state.type
-                //         },
-                //         (draft) => {
-                //             if (Array.isArray(draft)) {
-                //                 const index = draft.findIndex((item) => item.Id === data.Id)
-                //                 draft[index] = data
-                //             }
-                //             else {
-                //                 throw new Error('Query data is not an array')
-                //             }
-                //         }
-                //     )
-                // )
             }
         } catch (e) {
             error(t(AppStrings.something_went_wrong))
@@ -54,7 +32,7 @@ const EditProduct = () => {
     }
     return (
         <EditComponent icon={faBarcode} title={t(AppStrings.edit_product) + '  | ' + loaction.state.Id} path={'/products/list'} >
-            <ProductForm isLoading={isLoading} defaultValuesEdit={{ ...loaction.state, Father: loaction.state.CatID, Warehouse: loaction.state.Tag }} onSubmit={onSubmit} />
+            <ProductForm isLoading={isLoading} restForm={false} enableReset={false} defaultValuesEdit={{ ...loaction.state, Father: loaction.state.CatID, Warehouse: loaction.state.Tag }} onSubmit={onSubmit} />
         </EditComponent>
     )
 }

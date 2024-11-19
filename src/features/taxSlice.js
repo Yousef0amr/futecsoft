@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, TAXES } from './../api/endpoints.js'; // Update this constant as needed
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
+import { longCacheTime } from '../utils/constants.js';
 
 export const taxesApi = createApi({
     reducerPath: 'taxesApi',
@@ -23,7 +24,7 @@ export const taxesApi = createApi({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
-            keepUnusedDataFor: 1800,
+            keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response
         }),
         getTaxById: builder.query({

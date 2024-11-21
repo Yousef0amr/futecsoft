@@ -135,5 +135,6 @@
     "delete_title": "Delete Item?",
     "delete_confirmation": "Are you sure you want to delete?",
     "component_updated_successfully": "Component updated successfully",
+    "component_deleted_successfully": "Component deleted successfully",
     "update_just_quentity_or_note": "Update just Quantity or Note"
 }

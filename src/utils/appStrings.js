@@ -130,7 +130,8 @@ const AppStrings = {
     material_already_added: 'material_already_added',
     delete_title: 'delete_title',
     delete_confirmation: 'delete_confirmation',
-    update_just_quentity_or_note: 'update_just_quentity_or_note'
+    update_just_quentity_or_note: 'update_just_quentity_or_note',
+    component_deleted_successfully: 'component_deleted_successfully'
 }
 
 export default AppStrings

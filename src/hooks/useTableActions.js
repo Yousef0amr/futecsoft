@@ -19,7 +19,6 @@ const useTableActions = ({ path }) => {
                 } else {
                     setActive({ isOpen: false, editable: true, data });
                 }
-
             },
             handleDeleteClick: (data) => {
                 setActive({ isOpen: true, editable: false, data });

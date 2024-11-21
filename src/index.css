@@ -206,6 +206,11 @@ html,
   width: 35px;
 }
 
+.removeButton:hover {
+  background-color: rgba(255, 0, 0, 0.651);
+  color: white;
+}
+
 .removeButton img {
   width: 20px;
 }
@@ -214,6 +219,11 @@ html,
 
   height: 35px;
   line-height: 1.8;
+}
+
+.editButton:hover {
+  background-color: var(--border-color-1);
+  color: white;
 }
 
 .InputContainer {

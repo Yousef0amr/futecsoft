@@ -136,5 +136,6 @@
     "delete_confirmation": "هل انت متاكد من حذف العنصر؟",
     "component_updated_successfully": "تم تعديل المكون بنجاح",
     "component_deleted_successfully": "تم حذف المكون بنجاح",
-    "update_just_quentity_or_note": "يمكنك تحديث فقط الكمية او الملاحظة"
+    "update_just_quentity_or_note": "يمكنك تحديث فقط الكمية او الملاحظة",
+    "cancel_editing": "الغاء التعديل"
 }

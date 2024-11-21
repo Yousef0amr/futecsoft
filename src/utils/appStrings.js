@@ -131,7 +131,8 @@ const AppStrings = {
     delete_title: 'delete_title',
     delete_confirmation: 'delete_confirmation',
     update_just_quentity_or_note: 'update_just_quentity_or_note',
-    component_deleted_successfully: 'component_deleted_successfully'
+    component_deleted_successfully: 'component_deleted_successfully',
+    cancel_editing: 'cancel_editing',
 }
 
 export default AppStrings

@@ -7,6 +7,7 @@ import ProductForm from '../../components/product/ProductForm'
 import EditComponent from '../../components/common/EditComponent'
 import useNotification from '../../hooks/useNotification'
 import useProductManagement from '../../hook/useProductManagement'
+import { routes } from '../../utils/constants'
 
 
 
@@ -27,8 +28,8 @@ const EditProduct = () => {
         }
     }
     return (
-        <EditComponent icon={faBarcode} title={t(AppStrings.edit_product) + '  | ' + loaction.state.Id} path={'/products/list'} >
-            <ProductForm isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={{ ...loaction.state, Father: loaction.state.CatID, Warehouse: loaction.state.Tag }} onSubmit={onSubmit} />
+        <EditComponent icon={faBarcode} title={t(AppStrings.edit_product) + '  | ' + loaction.state.Id} path={routes.product.list} >
+            <ProductForm isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={{ ...loaction.state, Icon: loaction.state.Icon ? loaction.state.Icon : 'لا يوجد صورة', Father: loaction.state.CatID, Warehouse: loaction.state.Tag }} onSubmit={onSubmit} />
         </EditComponent>
     )
 }

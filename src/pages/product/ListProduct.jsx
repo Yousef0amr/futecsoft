@@ -54,6 +54,7 @@ const ListProduct = () => {
             handleCancel();
         }
     };
+    console.log(data)
 
     return (
         <FormCard

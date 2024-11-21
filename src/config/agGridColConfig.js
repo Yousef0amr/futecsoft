@@ -57,8 +57,7 @@ export const useProductColDefs = () => {
         // { field: "Price2", headerName: t(AppStrings.price2), filter: 'agNumberColumnFilter' },
         // { field: "Price3", headerName: t(AppStrings.price3), filter: 'agNumberColumnFilter' },
         // { field: "Price4", headerName: t(AppStrings.price4), filter: 'agNumberColumnFilter' },
-
-        { field: "UnitID", headerName: t(AppStrings.unit), filter: 'agTextColumnFilter' },
+        // { field: "UnitID", headerName: t(AppStrings.unit), filter: 'agTextColumnFilter' },
         { field: "TaxPercentage", headerName: t(AppStrings.taxPercentage), filter: 'agNumberColumnFilter' },
         { field: "Discountable", headerName: t(AppStrings.discountable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
         { field: "IsService", headerName: t(AppStrings.isService), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CompositeComponents from '../../components/product/CompositeComponents'
 import FormCard from '../../components/common/FormCard'
 import { faArrowRight, faBarcode } from '@fortawesome/free-solid-svg-icons'
@@ -23,18 +23,40 @@ const AddComponent = () => {
     const { data, isLoading, addEntity, isAdding, deleteEntity, isDeleting, isUpdating, updateEntity } = useCompComponentsManagement(location.state.Id || location.state.ItemId)
     const { t } = useTranslation();
     const { success, error } = useNotification();
+    const isEditing = active.editable;
+
+    const [editData, setEditData] = useState({
+        ItemID: location.state.Id, Father: location.state.CatID, Name: location.state.NameAr, FoodQty: ''
+    });
+
+    useEffect(() => {
+        if (isEditing) {
+            setEditData({
+                SubItem: active?.data?.SubItem,
+                Father: active?.data?.Father,
+                Unit: active?.data?.Unit,
+                Note: active?.data?.Note || '',
+                FoodQty: active?.data?.FoodQty,
+                ItemID: active?.data?.ItemId,
+                Name: active?.data?.ItemArName
+            });
+        } else {
+            setEditData({ ItemID: location.state.Id, Father: location.state.CatID, Name: location.state.NameAr, FoodQty: '' });
+        }
+    }, [isEditing, active, location]);
+
 
     const onSubmit = async (data) => {
         try {
-            const result = await addEntity(data).unwrap();
+            const result = isEditing ? await updateEntity(data).unwrap() : await addEntity(data).unwrap();
             if (result.Success) {
-
-                success(t(AppStrings.component_added_successfully));
+                setEditData((prev) => ({ ...prev, FoodQty: data.FoodQty, Note: data.Note }));
+                success(t(isEditing ? AppStrings.component_updated_successfully : AppStrings.component_added_successfully));
             } else {
                 throw new Error(result.Success);
             }
         } catch (e) {
-            error(t(AppStrings.material_already_added));
+            error(t(isEditing ? AppStrings.update_just_quentity_or_note : AppStrings.material_already_added));
         }
     }
 
@@ -42,7 +64,6 @@ const AddComponent = () => {
         try {
             const result = await deleteEntity({ ItemID: active.data.ItemId, SubItem: active.data.SubItem }).unwrap();
             if (result.Success) {
-
                 success(t(AppStrings.product_deleted_successfully));
             } else {
                 throw new Error(result.Success);
@@ -54,28 +75,6 @@ const AddComponent = () => {
         }
     };
 
-
-    // export const productComponentsFormFields = [
-    //     { name: 'ItemID', label: AppStrings.productId, required: true },
-    //     { name: 'Name', label: AppStrings.description, required: false },
-    //     { name: 'FoodQty', label: AppStrings.quantity, required: true, type: 'number' },
-    //     { name: 'Note', label: AppStrings.note, required: false },
-    // ];
-
-
-    // export const productComponentsFormFields1 = [
-    //     { name: 'Father', label: AppStrings.category, required: true, options: [] },
-    //     { name: 'SubItem', label: AppStrings.materials, required: true, options: [] },
-    //     { name: 'Unit', label: AppStrings.unit, required: true, options: [] },
-    // ];
-
-    const componentData = {
-        // ItemId: location.state.Id || location.state.ItemId,
-        // SubItem: location.state.SubItem, 
-
-    }
-
-    console.log(active)
     return (
         <FormCard open={active.isOpen}
             modelComponent={
@@ -89,7 +88,7 @@ const AddComponent = () => {
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }>
-            <CompositeComponents actionLoading={isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={location.state} />
+            <CompositeComponents resetForm={isEditing ? false : true} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={editData} />
         </FormCard>
     )
 }

@@ -6,11 +6,11 @@ import ComponentFormFields from './ComponentFormFields';
 
 
 
-const CompositeComponentsForm = ({ onSubmit, isLoadingKey, resetForm, defaultValuesEdit = {} }) => {
+const CompositeComponentsForm = ({ onSubmit, enableReset, isLoadingKey, resetForm, defaultValuesEdit = {} }) => {
     const { componentSchema } = useValidators();
 
     return (
-        <FormComponent isLoading={isLoadingKey} resetForm={resetForm} defaultValues={{ ItemID: defaultValuesEdit.Id, Father: defaultValuesEdit.CatID, Name: defaultValuesEdit.NameAr }} schema={componentSchema} onSubmit={onSubmit}>
+        <FormComponent enableReset={enableReset} isLoading={isLoadingKey} resetForm={resetForm} defaultValues={defaultValuesEdit} schema={componentSchema} onSubmit={onSubmit}>
             {({ register, errors, setValue, watch }) => (
                 <Row style={{ marginTop: '15px' }} lg={1}>
                     <ComponentFormFields register={register} errors={errors} watch={watch} setValue={setValue} />

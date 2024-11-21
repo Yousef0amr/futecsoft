@@ -5,9 +5,8 @@ import { useComponentsColDefs } from '../../config/agGridColConfig';
 import CompositeComponentsForm from './CompositeComponentsForm';
 
 
-const CompositeComponents = ({ data, isLoading, onSubmit, resetForm, actionLoading, actions, quickFilterText, defaultValuesEdit }) => {
+const CompositeComponents = ({ data, isLoading, enableReset, onSubmit, resetForm, actionLoading, actions, quickFilterText, defaultValuesEdit }) => {
     const componentsColDefs = useComponentsColDefs();
-
     const AgGridTableMemo = React.memo(AgGridTable);
     return (
         <Row lg={2} >
@@ -21,7 +20,7 @@ const CompositeComponents = ({ data, isLoading, onSubmit, resetForm, actionLoadi
                 />
             </Col>
             <Col >
-                <CompositeComponentsForm isLoadingKey={actionLoading} onSubmit={onSubmit} resetForm={resetForm} defaultValuesEdit={defaultValuesEdit} />
+                <CompositeComponentsForm enableReset={enableReset} isLoadingKey={actionLoading} onSubmit={onSubmit} resetForm={resetForm} defaultValuesEdit={defaultValuesEdit} />
             </Col>
         </Row>
     )

@@ -126,10 +126,11 @@ const AppStrings = {
     componentId: 'componentId',
     product_required: 'product_required',
     component_added_successfully: 'component_added_successfully',
+    component_updated_successfully: 'component_updated_successfully',
     material_already_added: 'material_already_added',
     delete_title: 'delete_title',
-    delete_confirmation: 'delete_confirmation'
-
+    delete_confirmation: 'delete_confirmation',
+    update_just_quentity_or_note: 'update_just_quentity_or_note'
 }
 
 export default AppStrings

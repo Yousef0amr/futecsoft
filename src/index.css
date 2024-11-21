@@ -204,6 +204,7 @@ html,
   align-items: center;
   height: 35px;
   width: 35px;
+  transition: 0.2s;
 }
 
 .removeButton:hover {
@@ -216,14 +217,19 @@ html,
 }
 
 .editButton {
-
   height: 35px;
   line-height: 1.8;
+  transition: 0.2s;
 }
 
 .editButton:hover {
   background-color: var(--border-color-1);
   color: white;
+}
+
+.activeEditButton {
+  background-color: var(--border-color-1) !important;
+  color: white !important;
 }
 
 .InputContainer {
@@ -467,11 +473,6 @@ input[type="checkbox"]:checked+.cbx:after {
   transition: all .15s ease-in-out;
 }
 
-/* .radio-inputs .radio input:checked+.name {
-  background-color: var(--primary-color);
-  font-weight: 600;
-  color: white;
-} */
 
 .activeTab {
   background-color: var(--primary-color) !important;

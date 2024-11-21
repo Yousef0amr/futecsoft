@@ -33,12 +33,22 @@ const AgGridTable = ({ actions, actionsCellRenderer = ActionsCellRenderer, rowDa
         return () => i18n.off('languageChanged', handleLanguageChange);
     }, [i18n]);
 
+    const rowSelection = useMemo(() => {
+        return {
+            mode: 'singleRow',
+            checkboxes: false,
+            enableClickSelection: true,
 
+        };
+    }, []);
+
+    <AgGridReact rowSelection={rowSelection} />
     return (
         <div style={{ width: '100%' }}>
             <div className="ag-theme-alpine" style={{ height: '70vh' }}>
                 <AgGridReact
                     key={i18n.language}
+                    rowSelection={rowSelection}
                     loading={isLoading}
                     pagination={true}
                     paginationPageSize={10}

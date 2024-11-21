@@ -77,6 +77,11 @@ const AddComponent = () => {
         }
     };
 
+    const handleAddClick = () => {
+        handleCancel();
+        localStorage.removeItem("selectedRows");
+    }
+
     return (
         <FormCard open={active.isOpen}
             modelComponent={
@@ -90,7 +95,7 @@ const AddComponent = () => {
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }>
-            <CompositeComponents resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={editData} />
+            <CompositeComponents handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={editData} />
         </FormCard>
     )
 }

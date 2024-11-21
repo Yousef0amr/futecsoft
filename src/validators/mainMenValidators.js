@@ -63,10 +63,17 @@ const MainMenuValidators = () => {
     }
 
 
+
+    const pricesAndCostsSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        CateID: yup.string().required(t(AppStrings.category_required)).nullable(),
+    }
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
-        componentSchemaValidator
+        componentSchemaValidator,
+        pricesAndCostsSchemaValidator
     }
 }
 

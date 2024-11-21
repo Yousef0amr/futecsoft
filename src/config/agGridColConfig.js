@@ -65,7 +65,7 @@ export const useProductColDefs = () => {
         { field: "Saleable", headerName: t(AppStrings.saleable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
         { field: "Taxable", headerName: t(AppStrings.taxable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
         { field: "PreparationTime", headerName: t(AppStrings.preparationTime), filter: 'agTextColumnFilter' },
-    ], [t]);
+    ], [t, i18n]);
 };
 
 export const useComponentsColDefs = () => {
@@ -79,4 +79,20 @@ export const useComponentsColDefs = () => {
         { field: "UnitEn", headerName: t(AppStrings.unit) + ' -- En', filter: 'agNumberColumnFilter' },
         { field: "Note", headerName: t(AppStrings.note), filter: 'agTextColumnFilter' },
     ], [t]);
+};
+export const usePricesAndCostsColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "ID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "En_Name" : "Ar_Name", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
+        { field: "Price1", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
+        { field: "Price2", headerName: t(AppStrings.price2), filter: 'agNumberColumnFilter' },
+        { field: "Price3", headerName: t(AppStrings.price3), filter: 'agNumberColumnFilter' },
+        { field: "Price4", headerName: t(AppStrings.price4), filter: 'agTextColumnFilter' },
+        { field: "Barcode", headerName: t(AppStrings.barcode), filter: 'agTextColumnFilter' },
+        { field: "DeliveryCost", headerName: t(AppStrings.deliveryCost), filter: 'agTextColumnFilter' },
+        { field: "DineINCost", headerName: t(AppStrings.dineINCost), filter: 'agTextColumnFilter' },
+        { field: "TakeawayCost", headerName: t(AppStrings.takeawayCost), filter: 'agTextColumnFilter' },
+    ], [t, i18n]);
 };

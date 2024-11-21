@@ -327,6 +327,14 @@ export const defaultProductValues = {
 
 
 
+export const pricesAndCostsFormFields = [
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [] },
+    { name: 'CateID', label: AppStrings.category, required: true, options: [] },
+
+];
+
+
+
 
 
 

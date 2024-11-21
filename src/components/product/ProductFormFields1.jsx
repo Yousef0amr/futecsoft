@@ -5,7 +5,7 @@ import SelectMenu from '../common/SelectMenu';
 import { productFormFields, productSelectFormFields } from '../../utils/constants';
 import { useGetCategoriesQuery } from '../../features/categorySlice';
 import { useGetBranchesQuery } from '../../features/branchesSlice';
-import { useGetCurrentProductkeyQuery } from '../../features/productSlice';
+import { useLazyGetCurrentProductkeyQuery } from '../../features/productSlice';
 import { useGetTaxesQuery } from '../../features/taxSlice';
 import { useGetUnitsQuery } from '../../features/unitSlice';
 
@@ -19,35 +19,34 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     const categories = !isLoadingCategories
         ? categoriesData.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
         : [];
+
     const branches = !isLoadingBranches
-        ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
+        ? branchesData.map((item) => ({ value: item.BranchId.toString(), label: item.BranchNameAr }))
         : [];
+
     const taxes = !isLoadingTaxes
         ? taxesData.map((item) => ({ value: item.TaxId, label: item.TaxAr }))
         : [];
+
     const units = !isLoadingUnits
         ? unitsData.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
         : [];
 
 
-    const [currentCategoryId, setCurrentCategoryId] = React.useState(null);
-    const { data: productKey, isLoading: isLoadingKey } = useGetCurrentProductkeyQuery(currentCategoryId, {
-        skip: !currentCategoryId,
 
-    });
+    const [triggerGetCurrentProductkey, { data: productKey, isLoading: isLoadingKey }] = useLazyGetCurrentProductkeyQuery();
 
     React.useEffect(() => {
         if (!isLoadingKey && productKey) {
             setValue('Id', productKey);
             setValue('Barcode', productKey);
-            setValue('Father', currentCategoryId);
         }
-    }, [isLoadingKey, productKey, setValue, currentCategoryId]);
+    }, [isLoadingKey, productKey, setValue]);
 
     const onSelectChange = (value, name) => {
         setValue(name, value);
         if (name === 'Father') {
-            setCurrentCategoryId(value);
+            triggerGetCurrentProductkey(value);
         }
     };
 
@@ -78,9 +77,9 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                             errors={errors}
                             name={field.name}
                             options={
-                                field.name === 'Father' ?
-                                    categories : field.name === 'Warehouse' ?
-                                        branches : field.name === 'TaxPercentage' ?
+                                field.name === 'Warehouse' ?
+                                    branches : field.name === 'Father' ?
+                                        categories : field.name === 'TaxPercentage' ?
                                             taxes : units
                             }
                             label={field.label}

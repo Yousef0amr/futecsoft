@@ -33,6 +33,12 @@ export const categoriesApi = createApi({
             }),
             transformResponse: (response) => response.Response
         }),
+        getAllCategoriesByBranch: builder.query({
+            query: (id) => ({
+                url: `/GetAllByWarehouse?Warehouse=${id}`,
+            }),
+            transformResponse: (response) => response.Response
+        }),
         addCategory: builder.mutation({
             query: (category) => ({
                 url: '/Insert',
@@ -63,4 +69,6 @@ export const {
     useAddCategoryMutation,
     useUpdateCategoryMutation,
     useDeleteCategoryMutation,
+    useGetAllCategoriesByBranchQuery,
+    useLazyGetAllCategoriesByBranchQuery
 } = categoriesApi;

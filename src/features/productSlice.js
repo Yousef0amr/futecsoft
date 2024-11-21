@@ -156,12 +156,18 @@ export const productsApi = createApi({
             }),
             transformResponse: (response) => response.Response
         }),
+        getProductsCosts: builder.query({
+            query: ({ CateID, Warehouse }) => ({
+                url: `/GetItemsCost?CateID=${CateID}&Warehouse=${Warehouse}`,
+            }),
+            transformResponse: (response) => response.Response
+        })
 
     }),
 });
 
 export const {
-    useGetProductsQuery,
+    useLazyGetCurrentProductkeyQuery,
     useGetProductByIdQuery,
     useGetProductByTypeQuery,
     useAddProductMutation,
@@ -170,9 +176,10 @@ export const {
     useAddComponentMutation,
     useGetProductsByCategoryQuery,
     useGetCompositeComponentsByIdQuery,
-    useGetProductsCostQuery,
+    useLazyGetProductsCostsQuery,
     useUpdateProductMutation,
     useGetProductUnitsByIdQuery,
+
     useUpdateComponentMutation,
     useDeleteComponentMutation
 } = productsApi;

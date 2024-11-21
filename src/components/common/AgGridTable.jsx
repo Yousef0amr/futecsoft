@@ -7,21 +7,21 @@ import AppStrings from './../../utils/appStrings';
 import { AG_GRID_LOCALE_EG, AG_GRID_LOCALE_EN } from '@ag-grid-community/locale';
 import ActionsCellRenderer from './ActionsCellRenderer';
 
-const AgGridTable = ({ actions, actionsCellRenderer = ActionsCellRenderer, rowData, isLoading, dynamicColumns = [], quickFilterText }) => {
+const AgGridTable = ({ enableActions = true, actions, actionsCellRenderer = ActionsCellRenderer, rowData, isLoading, dynamicColumns = [], quickFilterText }) => {
     const { t, i18n } = useTranslation();
     const gridApiRef = useRef(null);
     const isRtl = useMemo(() => i18n.language !== 'en', [i18n.language]);
     const localeText = useMemo(() => (isRtl ? AG_GRID_LOCALE_EG : AG_GRID_LOCALE_EN), [isRtl]);
 
     const colDefs = useMemo(() => [
-        {
+        enableActions ? {
             field: t(AppStrings.actions),
             cellRenderer: actionsCellRenderer,
             cellRendererParams: actions,
             minWidth: 194,
-        },
+        } : { width: 0 },
         ...dynamicColumns,
-    ], [dynamicColumns, t, actionsCellRenderer, actions]);
+    ], [dynamicColumns, t, actionsCellRenderer, actions, enableActions]);
 
     useEffect(() => {
         const handleLanguageChange = () => {

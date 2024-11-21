@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import CardTitle from './CardTitle'
 import DialogModel from './DialogModel'
-const FormCard = ({ icon, title, modelTitle, optionComponent, navButton, open = false, handleClose, modelComponent, children }) => {
+const FormCard = ({ icon, title, optionComponent, navButton, open = false, modelComponent, children }) => {
     return (
         <>
             <Card style={{
@@ -12,6 +12,7 @@ const FormCard = ({ icon, title, modelTitle, optionComponent, navButton, open = 
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                gap: '20px',
                 width: '100%',
                 overflow: 'auto',
                 minHeight: '80vh',
@@ -22,7 +23,7 @@ const FormCard = ({ icon, title, modelTitle, optionComponent, navButton, open = 
                 </CardTitle>
                 {children}
             </Card>
-            <DialogModel open={open} title={modelTitle} handleClose={handleClose}  >
+            <DialogModel open={open}    >
                 {modelComponent}
             </DialogModel>
         </>

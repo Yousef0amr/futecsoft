@@ -9,7 +9,7 @@ import SpinnerLoader from '../common/Spinner';
 
 const FormComponent = ({
     schema,
-    restForm,
+    resetForm,
     onSubmit,
     isLoading,
     defaultValues = {},
@@ -37,10 +37,10 @@ const FormComponent = ({
     }, [defaultValues, enableReset, reset]);
 
     useEffect(() => {
-        if (restForm) {
+        if (resetForm) {
             reset();
         }
-    }, [restForm, reset]);
+    }, [resetForm, reset]);
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>

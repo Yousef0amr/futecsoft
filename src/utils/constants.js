@@ -2,6 +2,21 @@ import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileIn
 import AppStrings from './appStrings';
 
 
+export const routes = {
+    product: {
+        list: '/products/list',
+        add: '/products/add',
+        edit: '/products/edit',
+        compositeComponents: '/products/composite-components',
+        compositeComponentsAdd: '/products/composite-components/add',
+        pricesAndCosts: '/products/prices-and-costs'
+    },
+    branch: {
+        list: '/branches/list',
+        add: '/branches/add'
+    },
+}
+
 export const longCacheTime = 3500;
 export const shortCacheTime = 1000;
 
@@ -25,8 +40,8 @@ export const menuList = [
                 label: AppStrings.branches,
                 icon: faShuffle,
                 subActions: [
-                    { label: AppStrings.list, href: '/branches/list' },
-                    { label: AppStrings.add, href: '/branches/add' }
+                    { label: AppStrings.list, href: routes.branch.list },
+                    { label: AppStrings.add, href: routes.branch.add }
                 ]
             },
             {
@@ -111,22 +126,22 @@ export const menuList = [
                 icon: faBarcode,
 
                 subActions: [
-                    { label: AppStrings.list, href: '/products/list', subHref: '/products/edit' },
-                    { label: AppStrings.add, href: '/products/add' },
+                    { label: AppStrings.list, href: routes.product.list, subHref: routes.product.edit },
+                    { label: AppStrings.add, href: routes.product.add },
                 ]
             },
             {
                 label: AppStrings.assembled_material_components,
                 icon: faBarcode,
-                href: '/products/composite-components',
-                subHref: '/products/composite-components/add',
+                href: routes.product.compositeComponents,
+                subHref: routes.product.compositeComponentsAdd,
                 type: 'unExpanded',
             },
             {
                 label: AppStrings.prices_and_costs,
                 icon: faMoneyBill1Wave,
                 type: 'unExpanded',
-                href: '/products/prices-and-costs'
+                href: routes.product.pricesAndCosts
             }
         ]
     },
@@ -238,14 +253,14 @@ export const productCheckFormFields = [
 ];
 
 export const productPriceFormFields = [
-    { name: 'Price', label: AppStrings.price1, required: true, type: 'number' },
+    { name: 'Price', label: AppStrings.price, required: true, type: 'number' },
     { name: 'Price2', label: AppStrings.price2, required: false, type: 'number' },
     { name: 'Price3', label: AppStrings.price3, required: false, type: 'number' },
     { name: 'Price4', label: AppStrings.price4, required: false, type: 'number' },
 ];
 export const productImageField = {
     name: 'Icon',
-    required: true,
+    required: false,
 };
 
 export const productFormFields = [
@@ -289,3 +304,30 @@ export const branchFormFields = [
     { name: 'City', label: AppStrings.city, required: false, type: 'text' },
     { name: 'Street', label: AppStrings.street, required: false, type: 'text' },
 ];
+
+export const defaultProductValues = {
+    Raw: {
+        Discountable: true,
+        IsService: false,
+        IsActive: true,
+        Saleable: false,
+        Taxable: true,
+        Icon: 'لا يوجد صورة'
+    },
+    Composite: {
+        Discountable: true,
+        IsService: false,
+        IsActive: true,
+        Saleable: true,
+        Taxable: true,
+        Icon: 'لا يوجد صورة'
+    }
+
+}
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import InputField from '../common/InputFiled'
 import CheckBox from '../common/CheckBox'
@@ -6,6 +6,12 @@ import { productCheckFormFields, productPriceFormFields } from '../../utils/cons
 
 const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) => {
 
+    const priceChange = watch('Price')
+    useEffect(() => {
+        ['Price2', 'Price3', 'Price4'].forEach((field) => {
+            setValue(field, priceChange);
+        });
+    }, [priceChange, setValue]);
     return (
         <Col>
             <Row className=''>
@@ -19,6 +25,7 @@ const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) =>
                             required={field.required}
                             type={field.type}
                             min={0}
+
                         />
                     </Col>
                 ))}

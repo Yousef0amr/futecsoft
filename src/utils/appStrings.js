@@ -79,7 +79,7 @@ const AppStrings = {
     productNameEn: 'productNameEn',
     category: 'category',
     barcode: 'barcode',
-    price1: 'price1',
+    price: 'price',
     price2: 'price2',
     price3: 'price3',
     price4: 'price4',

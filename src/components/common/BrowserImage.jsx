@@ -59,11 +59,11 @@ const BrowserImage = ({ errors, setValue, field, watch }) => {
         <Row md={1} lg={2} className="p-0 mt-3 gap-3"  >
             <Col className="file-preview" style={{ flex: 1 }} md={12} lg={3}>
                 {
-                    !watch(field.name) && (
+                    watch(field.name) === 'لا يوجد صورة' && (
                         <img src={gallery} alt="No file selected" style={{ width: '100px', height: '100px', borderRadius: '10px' }} />
                     )
                 }
-                {uploadedFile && watch(field.name) && (
+                {watch(field.name) !== 'لا يوجد صورة' && uploadedFile && watch(field.name) && (
                     <div className="uploaded-file-preview">
                         {uploadedFile.type.startsWith("image/") ? (
                             <img
@@ -73,7 +73,6 @@ const BrowserImage = ({ errors, setValue, field, watch }) => {
                             />
                         ) : (
                             <p>{uploadedFile.name}</p>
-
                         )}
                     </div>
                 )}

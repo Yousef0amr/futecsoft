@@ -113,10 +113,10 @@ export const productsApi = createApi({
         }),
         deleteProduct: builder.mutation({
             query: (id) => ({
-                url: `/Delete?Id =${id}`,
-                method: 'DELETE',
+                url: `/Delete`,
+                method: 'POST',
+                body: convertToFormData({ Id: id }),
             }),
-            invalidatesTags: ['Product_list'],
         }),
         addComponent: builder.mutation(
             {
@@ -128,6 +128,22 @@ export const productsApi = createApi({
                 invalidatesTags: ['Components']
             }
         ),
+        updateComponent: builder.mutation({
+            query: (component) => ({
+                url: `/UpdateItemRecipe`,
+                method: 'POST',
+                body: convertToFormData(component),
+            }),
+            invalidatesTags: ['Components']
+        }),
+        deleteComponent: builder.mutation({
+            query: ({ ItemID, SubItem }) => ({
+                url: `/DeleteItemRecipe`,
+                method: 'POST',
+                body: convertToFormData({ ItemID, SubItem }),
+            }),
+            invalidatesTags: ['Components']
+        }),
         getProductUnitsById: builder.query({
             query: (id) => ({
                 url: `/ApiGetItemUnits?Id=${id}`,
@@ -156,5 +172,7 @@ export const {
     useGetCompositeComponentsByIdQuery,
     useGetProductsCostQuery,
     useUpdateProductMutation,
-    useGetProductUnitsByIdQuery
+    useGetProductUnitsByIdQuery,
+    useUpdateComponentMutation,
+    useDeleteComponentMutation
 } = productsApi;

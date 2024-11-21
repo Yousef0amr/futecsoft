@@ -14,6 +14,7 @@ import PricesAndCosts from '../pages/product/PricesAndCosts'
 import Loader from '../components/common/Loader'
 import AddComponent from '../pages/product/AddComponent'
 import EditProduct from '../pages/product/EditProduct'
+import { routes } from '../utils/constants'
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
     return (
@@ -22,14 +23,14 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                 <Route element={<ProtectedRoute />} >
                     <Route path="/" element={<DefaultLayout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} >
                         <Route index element={<Home />} />
-                        <Route path='/branches/list' element={<ListBranches />} />
-                        <Route path='/branches/add' element={<GetBranchKey />} />
-                        <Route path='/products/list' element={<ListProduct />} />
-                        <Route path='/products/add' element={<AddProduct />} />
-                        <Route path='/products/edit' element={<EditProduct />} />
-                        <Route path='/products/composite-components' element={<ListCompositeComponents />} />
-                        <Route path='/products/composite-components/add' element={<AddComponent />} />
-                        <Route path='/products/prices-and-costs' element={<PricesAndCosts />} />
+                        <Route path={routes.branch.list} element={<ListBranches />} />
+                        <Route path={routes.branch.add} element={<GetBranchKey />} />
+                        <Route path={routes.product.list} element={<ListProduct />} />
+                        <Route path={routes.product.add} element={<AddProduct />} />
+                        <Route path={routes.product.edit} element={<EditProduct />} />
+                        <Route path={routes.product.compositeComponents} element={<ListCompositeComponents />} />
+                        <Route path={routes.product.compositeComponentsAdd} element={<AddComponent />} />
+                        <Route path={routes.product.pricesAndCosts} element={<PricesAndCosts />} />
 
                     </Route>
                 </Route>

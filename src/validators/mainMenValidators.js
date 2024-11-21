@@ -28,10 +28,19 @@ const MainMenuValidators = () => {
         NameEn: yup.string().required(t(AppStrings.productNameEn_required)).nullable(),
         Father: yup.string().required(t(AppStrings.category_required)).nullable(),
         Barcode: yup.string().required(t(AppStrings.barcode_required)).nullable(),
-        Price: yup.string().required(t(AppStrings.price_required)).nullable(),
-        Price2: yup.string().optional(),
-        Price3: yup.string().optional(),
-        Price4: yup.string().optional(),
+        Price: yup
+            .string()
+            .required(t(AppStrings.price_required))
+            .nullable(),
+        Price2: yup
+            .string()
+            .nullable(),
+        Price3: yup
+            .string()
+            .nullable(),
+        Price4: yup
+            .string()
+            .nullable(),
         Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
         UnitID: yup.string().required(t(AppStrings.unit_required)).nullable(),
         TaxPercentage: yup.string().optional(),
@@ -40,7 +49,7 @@ const MainMenuValidators = () => {
         IsActive: yup.boolean().optional(),
         Saleable: yup.boolean().optional(),
         Taxable: yup.boolean().optional(),
-        Icon: yup.string().required(t(AppStrings.icon_required)).nullable(),
+        Icon: yup.string().nullable(),
     }
 
     const componentSchemaValidator = {

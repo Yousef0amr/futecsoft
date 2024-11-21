@@ -13,7 +13,7 @@ const useNotification = () => {
             draggable: true,
             progress: undefined,
             theme: "dark",
-            transition: Bounce,
+            transition: Bounce
         });
     };
 
@@ -27,7 +27,7 @@ const useNotification = () => {
             draggable: true,
             progress: undefined,
             theme: "dark",
-            transition: Bounce,
+            transition: Bounce
         });
     };
 

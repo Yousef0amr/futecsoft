@@ -22,7 +22,7 @@ export const useBranchColDefs = () => {
 };
 
 export const useProductColDefs = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     return useMemo(() => [
         {
@@ -43,20 +43,21 @@ export const useProductColDefs = () => {
                         />
                     );
                 } else {
-                    return <div>Error: Image too small or invalid</div>;
+                    return <div>لا توجد صورة</div>;
                 }
             }
         },
         { field: "Id", headerName: t(AppStrings.productId), filter: 'agNumberColumnFilter' },
-        { field: "NameAr", headerName: t(AppStrings.productNameAr), filter: 'agTextColumnFilter' },
-        { field: "NameEn", headerName: t(AppStrings.productNameEn), filter: 'agTextColumnFilter' },
+
+        { field: i18n.language === 'en' ? "NameEn" : "NameAr", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
+        { field: "Warehouse", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
         { field: "Father", headerName: t(AppStrings.category), filter: 'agTextColumnFilter' },
         { field: "Barcode", headerName: t(AppStrings.barcode), filter: 'agTextColumnFilter' },
-        { field: "Price", headerName: t(AppStrings.price1), filter: 'agNumberColumnFilter' },
-        { field: "Price2", headerName: t(AppStrings.price2), filter: 'agNumberColumnFilter' },
-        { field: "Price3", headerName: t(AppStrings.price3), filter: 'agNumberColumnFilter' },
-        { field: "Price4", headerName: t(AppStrings.price4), filter: 'agNumberColumnFilter' },
-        { field: "Warehouse", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "Price", headerName: t(AppStrings.price), filter: 'agNumberColumnFilter' },
+        // { field: "Price2", headerName: t(AppStrings.price2), filter: 'agNumberColumnFilter' },
+        // { field: "Price3", headerName: t(AppStrings.price3), filter: 'agNumberColumnFilter' },
+        // { field: "Price4", headerName: t(AppStrings.price4), filter: 'agNumberColumnFilter' },
+
         { field: "UnitID", headerName: t(AppStrings.unit), filter: 'agTextColumnFilter' },
         { field: "TaxPercentage", headerName: t(AppStrings.taxPercentage), filter: 'agNumberColumnFilter' },
         { field: "Discountable", headerName: t(AppStrings.discountable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },

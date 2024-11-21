@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../../utils/appStrings';
-import { useGetProductByTypeQuery, useDeleteProductMutation } from '../../features/productSlice';
 import AgGridTable from '../../components/common/AgGridTable';
 import FormCard from '../../components/common/FormCard';
 import { faAdd, faBarcode } from '@fortawesome/free-solid-svg-icons';
@@ -9,27 +8,25 @@ import FilterSearch from '../../components/common/FilterSearch';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
 import { useProductColDefs } from '../../config/agGridColConfig';
-import { useNotification } from '../../hooks/useNotification';
-import Loader from '../../components/common/Loader';
-import { useNavigate } from 'react-router-dom';
 import DeleteComponent from '../../components/common/DeleteComponent';
-
+import useNotification from '../../hooks/useNotification';
+import useProductManagement from '../../hook/useProductManagement';
+import useTableActions from '../../hooks/useTableActions';
+import { routes } from '../../utils/constants';
 
 const ListProduct = () => {
     const { t } = useTranslation();
     const productColDefs = useProductColDefs();
-    const [quickFilterText, setQuickFilterText] = useState();
-    const navigate = useNavigate();
+    const { success, error } = useNotification();
     const [activeTab, setActiveTab] = useState("Raw");
-    const { data, isLoading } = useGetProductByTypeQuery({
-        pageNumber: 1,
-        pageSize: 10,
-        branch: '',
-        productType: activeTab,
-    });
-    const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
+    const { data, isLoading, deleteEntity, isDeleting, deleteEntityFromCache } = useProductManagement(activeTab);
+    const [quickFilterText, setQuickFilterText] = useState();
 
     const [loading, setLoading] = useState(true);
+
+    const { defaultActions, active, handleCancel } = useTableActions({
+        path: routes.product.edit
+    });
 
     useEffect(() => {
         if (!isLoading) {
@@ -37,46 +34,56 @@ const ListProduct = () => {
         }
     }, [data, isLoading]);
 
-
     const handleTabClick = (type) => {
         setActiveTab(type);
         setLoading(true);
     };
 
-    const [openDeleteModal, setOpenDeleteModal] = useState(false)
-
-    const handleDeleteClick = async (data) => {
-        setOpenDeleteModal(true);
-
-    }
-
-    const handleOnEditClick = (data) => {
-        navigate(`/products/edit`, { state: { ...data, type: activeTab } });
-    }
-
-    const AgGridTableMemo = React.memo(AgGridTable);
+    const handleOnDeleteClick = async () => {
+        try {
+            const result = await deleteEntity(active.data.Id).unwrap();
+            if (result.Success) {
+                deleteEntityFromCache(active.data.Id);
+                success(t(AppStrings.product_deleted_successfully));
+            } else {
+                throw new Error(result.Success);
+            }
+        } catch (e) {
+            error(t(AppStrings.something_went_wrong));
+        } finally {
+            handleCancel();
+        }
+    };
 
     return (
-        <FormCard open={openDeleteModal} modelComponent={<DeleteComponent />} handleClose={() => setOpenDeleteModal(false)} icon={faBarcode} title={t(AppStrings.list_products)} navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={'/products/add'} />} optionComponent={
-            <>
-                <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} />
-                <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
-            </>
-        }>
-            {
-                <div className='w-100 p-1 mt-4'>
-                    <AgGridTableMemo
-                        actions={{ handleOnEditClick, handleDeleteClick }}
-                        dynamicColumns={productColDefs}
-                        rowData={data}
-                        isLoading={loading}
-                        quickFilterText={quickFilterText}
-                        handleDeleteClick={handleDeleteClick}
-                    />
-                </div>
+        <FormCard
+            open={active.isOpen}
+            modelComponent={
+                <DeleteComponent
+                    handleCancel={handleCancel}
+                    handleDelete={handleOnDeleteClick}
+                    isLoading={isDeleting}
+                />
             }
+            icon={faBarcode}
+            title={t(AppStrings.list_products)}
+            navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={routes.product.add} />}
+            optionComponent={
+                <>
+                    <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} />
+                    <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
+                </>
+            }
+        >
+            <AgGridTable
+                actions={defaultActions}
+                dynamicColumns={productColDefs}
+                rowData={data}
+                isLoading={loading}
+                quickFilterText={quickFilterText}
+            />
         </FormCard>
-    )
-}
+    );
+};
 
-export default ListProduct
+export default ListProduct;

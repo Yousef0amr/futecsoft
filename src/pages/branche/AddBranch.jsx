@@ -6,46 +6,33 @@ import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import { useAddBranchMutation, useGetCurrentkeyQuery } from '../../features/branchesSlice';
 import NavButton from '../../components/common/NavButton';
-import { Button } from 'react-bootstrap';
+import { routes } from '../../utils/constants';
+import useBranchManagement from '../../hook/useBranchManagement';
+import useEntityOperations from '../../hooks/useEntityOperations';
 
 const AddBranch = () => {
     const { t } = useTranslation();
-
-    const [addBranch, { isLoading, refetch }] = useAddBranchMutation();
-
-    const { data, isLoading: isLoadingKey } = useGetCurrentkeyQuery();
-    const [key, setKey] = React.useState({ BranchId: data });
-
-    useEffect(() => {
-        if (!isLoadingKey) {
-            setKey({ BranchId: data })
-        }
-    }, [isLoadingKey, data]);
+    const { addEntity, isAdding, addEntityToCache } = useBranchManagement();
+    const { handleEntityOperation } = useEntityOperations({ addEntity });
+    const { data: currentKey } = useGetCurrentkeyQuery();
 
     const onSubmit = async (data) => {
-        const branch = {
-
-        };
-
-        console.log(data);
-        // try {
-        //     const result = await addBranch(data).unwrap();
-        //     if (result) {
-        //         refetch()
-        //     }
-        //     console.log(result);
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        handleEntityOperation({
+            operation: 'add',
+            data,
+            cacheUpdater: addEntityToCache,
+            successMessage: AppStrings.branch_added_successfully,
+            errorMessage: AppStrings.something_went_wrong
+        })
     }
 
     return (
         <FormCard icon={faShuffle} title={t(AppStrings.add_new_branch)} optionComponent={
             <>
-                <NavButton icon={faList} title={AppStrings.list_branches} path={'/branches/list'} />
+                <NavButton icon={faList} title={AppStrings.list_branches} path={routes.branch.list} />
             </>
         }  >
-            <BranchForm isLoading={isLoading} onSubmit={onSubmit} defaultValuesEdit={key} />
+            <BranchForm isLoading={isAdding} onSubmit={onSubmit} defaultValuesEdit={{ BranchId: currentKey }} />
         </FormCard>
     )
 }

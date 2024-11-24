@@ -12,7 +12,7 @@ import useTableActions from '../../hooks/useTableActions'
 import { routes } from '../../utils/constants'
 import DeleteComponent from '../../components/common/DeleteComponent'
 import useCompComponentsManagement from '../../hook/useCompComponentsManagement'
-import useNotification from '../../hooks/useNotification'
+import useEntityOperations from '../../hooks/useEntityOperations'
 
 
 
@@ -22,7 +22,7 @@ const AddComponent = () => {
     const { defaultActions, handleCancel, active } = useTableActions({ path: null });
     const { data, isLoading, addEntity, isAdding, deleteEntity, isDeleting, isUpdating, updateEntity } = useCompComponentsManagement(location.state.Id || location.state.ItemId)
     const { t } = useTranslation();
-    const { success, error } = useNotification();
+    const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
     const isEditing = active.editable;
 
     const componentData = useMemo(() => ({
@@ -49,32 +49,33 @@ const AddComponent = () => {
 
 
     const onSubmit = async (data) => {
-        try {
-            const result = isEditing ? await updateEntity(data).unwrap() : await addEntity(data).unwrap();
-            if (result.Success) {
-                isEditing ? setEditData((prev) => ({ ...prev, FoodQty: data.FoodQty, Note: data.Note })) : setEditData(componentData);
-                success(t(isEditing ? AppStrings.component_updated_successfully : AppStrings.component_added_successfully));
-            } else {
-                throw new Error(result.Success);
-            }
-        } catch (e) {
-            error(t(isEditing ? AppStrings.update_just_quentity_or_note : AppStrings.material_already_added));
-        }
-    }
+        const operationType = isEditing ? "update" : "add";
+        await handleEntityOperation({
+            operation: operationType,
+            data,
+            cacheUpdater: (updatedData) => {
+                isEditing
+                    ? setEditData((prev) => ({ ...prev, FoodQty: updatedData.FoodQty, Note: updatedData.Note }))
+                    : setEditData(componentData);
+            },
+            successMessage: isEditing
+                ? AppStrings.component_updated_successfully
+                : AppStrings.component_added_successfully,
+            errorMessage: isEditing
+                ? AppStrings.update_just_quentity_or_note
+                : AppStrings.material_already_added,
+        });
+    };
+
 
     const handleOnDeleteClick = async () => {
-        try {
-            const result = await deleteEntity({ ItemID: active.data.ItemId, SubItem: active.data.SubItem }).unwrap();
-            if (result.Success) {
-                success(t(AppStrings.component_deleted_successfully));
-            } else {
-                throw new Error(result.Success);
-            }
-        } catch (e) {
-            error(t(AppStrings.something_went_wrong));
-        } finally {
-            handleCancel();
-        }
+        handleEntityOperation({
+            operation: "delete",
+            data: { ItemID: active.data.ItemId, SubItem: active.data.SubItem },
+            successMessage: AppStrings.component_deleted_successfully,
+            errorMessage: AppStrings.something_went_wrong,
+            finalCallback: handleCancel
+        })
     };
 
     const handleAddClick = () => {

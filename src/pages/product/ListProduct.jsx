@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../../utils/appStrings';
 import AgGridTable from '../../components/common/AgGridTable';
@@ -9,17 +9,17 @@ import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
 import { useProductColDefs } from '../../config/agGridColConfig';
 import DeleteComponent from '../../components/common/DeleteComponent';
-import useNotification from '../../hooks/useNotification';
 import useProductManagement from '../../hook/useProductManagement';
 import useTableActions from '../../hooks/useTableActions';
 import { routes } from '../../utils/constants';
+import useEntityOperations from '../../hooks/useEntityOperations';
 
 const ListProduct = () => {
     const { t } = useTranslation();
     const productColDefs = useProductColDefs();
-    const { success, error } = useNotification();
     const [activeTab, setActiveTab] = useState("Raw");
     const { data, isLoading, deleteEntity, isDeleting, deleteEntityFromCache } = useProductManagement(activeTab);
+    const { handleEntityOperation } = useEntityOperations({ deleteEntity });
     const [quickFilterText, setQuickFilterText] = useState();
 
     const [loading, setLoading] = useState(true);
@@ -40,21 +40,15 @@ const ListProduct = () => {
     };
 
     const handleOnDeleteClick = async () => {
-        try {
-            const result = await deleteEntity(active.data.Id).unwrap();
-            if (result.Success) {
-                deleteEntityFromCache(active.data.Id);
-                success(t(AppStrings.product_deleted_successfully));
-            } else {
-                throw new Error(result.Success);
-            }
-        } catch (e) {
-            error(t(AppStrings.something_went_wrong));
-        } finally {
-            handleCancel();
-        }
+        handleEntityOperation({
+            operation: "delete",
+            data: { Id: active.data.Id },
+            cacheUpdater: deleteEntityFromCache,
+            successMessage: AppStrings.product_deleted_successfully,
+            errorMessage: AppStrings.something_went_wrong,
+            finalCallback: handleCancel
+        })
     };
-    console.log(data)
 
     return (
         <FormCard

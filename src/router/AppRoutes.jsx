@@ -8,7 +8,6 @@ import AddBranch from '../pages/branche/AddBranch'
 import Home from '../pages/Home'
 import ListProduct from '../pages/product/ListProduct'
 import AddProduct from '../pages/product/AddProduct'
-import GetBranchKey from '../components/branch/GetBranchKey'
 import ListCompositeComponents from '../pages/product/ListCompositeComponents'
 import PricesAndCosts from '../pages/product/PricesAndCosts'
 import Loader from '../components/common/Loader'
@@ -24,7 +23,7 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                     <Route path="/" element={<DefaultLayout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} >
                         <Route index element={<Home />} />
                         <Route path={routes.branch.list} element={<ListBranches />} />
-                        <Route path={routes.branch.add} element={<GetBranchKey />} />
+                        <Route path={routes.branch.add} element={<AddBranch />} />
                         <Route path={routes.product.list} element={<ListProduct />} />
                         <Route path={routes.product.add} element={<AddProduct />} />
                         <Route path={routes.product.edit} element={<EditProduct />} />

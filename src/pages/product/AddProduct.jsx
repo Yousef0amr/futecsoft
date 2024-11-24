@@ -6,33 +6,26 @@ import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
-import useNotification from '../../hooks/useNotification';
 import useProductManagement from '../../hook/useProductManagement';
 import { defaultProductValues, routes } from '../../utils/constants';
+import useEntityOperations from '../../hooks/useEntityOperations';
 
 const AddProduct = () => {
     const { t } = useTranslation();
-    const { success, error } = useNotification();
     const [type, setType] = useState('Raw');
     const [defaultValues, setDefaultValues] = useState(defaultProductValues.Raw);
-
     const { addEntity, isAdding, addEntityToCache } = useProductManagement(type)
-    const [reset, setReset] = useState(false);
+    const { handleEntityOperation } = useEntityOperations({ addEntity });
 
     const onSubmit = async (data) => {
         let productType = type === 'Composite' ? type : type === 'Raw' ? 'RawMaterial' : 'StandardItem';
-        try {
-            const result = await addEntity({ type: productType, product: data }).unwrap();
-            if (result.Success) {
-                setReset(true);
-                addEntityToCache(data);
-                success(t(AppStrings.product_added_successfully));
-            } else {
-                throw new Error(result.Success);
-            }
-        } catch (e) {
-            error(t(AppStrings.something_went_wrong));
-        }
+        handleEntityOperation({
+            operation: 'add',
+            data: { type: productType, product: data },
+            cacheUpdater: addEntityToCache,
+            successMessage: AppStrings.product_added_successfully,
+            errorMessage: AppStrings.something_went_wrong
+        })
     }
     const handleTabClick = (type) => {
         setType(type);
@@ -46,7 +39,7 @@ const AddProduct = () => {
                 <NavButton icon={faList} title={AppStrings.list_products} path={routes.product.list} />
             </>
         }  >
-            <ProductForm isLoading={isAdding} resetForm={reset} onSubmit={onSubmit} defaultValuesEdit={defaultValues} composite={type === 'Composite'} />
+            <ProductForm isLoading={isAdding} resetForm={!isAdding} onSubmit={onSubmit} defaultValuesEdit={defaultValues} composite={type === 'Composite'} />
         </FormCard>
     )
 }

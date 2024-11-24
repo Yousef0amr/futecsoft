@@ -12,15 +12,15 @@ const ComponentFormFields = ({ register, errors, watch, setValue }) => {
     const { data: productsData, isLoading: isLoadingProducts } = useGetProductsByCategoryQuery(watch('Father'));
 
     const categories = !isLoadingCategories
-        ? categoriesData.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
+        ? categoriesData?.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
         : [];
 
     const units = !isLoadingUnits
-        ? unitsData.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
+        ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
         : [];
 
     const products = !isLoadingProducts
-        ? productsData.map((item) => ({ value: item.ProID, label: item.Pro_AR_Name }))
+        ? productsData?.map((item) => ({ value: item.ProID, label: item.Pro_AR_Name }))
         : [];
 
     const onSelectChange = (value, name) => {

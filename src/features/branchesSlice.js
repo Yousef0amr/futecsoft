@@ -9,7 +9,6 @@ export const branchesApi = createApi({
     reducerPath: 'branchesApi',
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + BRANCHES,
-        // credentials: 'include',
         prepareHeaders: (headers) => {
             headers.set('Authorization', `Bearer ${getCookie('accessToken')}`);
             return headers;
@@ -20,7 +19,8 @@ export const branchesApi = createApi({
             query: () => ({
                 url: '/GetCurrentKey',
             }),
-            transformResponse: (response) => response.Response
+            transformResponse: (response) => response.Response,
+            providesTags: ['Branch_id']
         }),
         getBranches: builder.query({
             query: ({ pageNumber, pageSize }) => ({
@@ -42,6 +42,16 @@ export const branchesApi = createApi({
                 method: 'POST',
                 body: convertToFormData(branch),
             }),
+            onQueryStarted: async (branch, { dispatch, queryFulfilled }) => {
+                try {
+                    const { data } = await queryFulfilled;
+                    if (data?.Success) {
+                        dispatch(branchesApi.util.invalidateTags(['Brand_id']));
+                    }
+                } catch (error) {
+                    return error
+                }
+            },
         }),
         UpdateBranch: builder.mutation({
             query: (branch) => ({

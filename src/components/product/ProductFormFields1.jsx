@@ -17,19 +17,19 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     const { data: unitsData, isLoading: isLoadingUnits } = useGetUnitsQuery({ pageNumber: 1, pageSize: 10 });
 
     const categories = !isLoadingCategories
-        ? categoriesData.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
+        ? categoriesData?.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
         : [];
 
     const branches = !isLoadingBranches
-        ? branchesData.map((item) => ({ value: item.BranchId.toString(), label: item.BranchNameAr }))
+        ? branchesData?.map((item) => ({ value: item.BranchId.toString(), label: item.BranchNameAr }))
         : [];
 
     const taxes = !isLoadingTaxes
-        ? taxesData.map((item) => ({ value: item.TaxId, label: item.TaxAr }))
+        ? taxesData?.map((item) => ({ value: item.TaxId, label: item.TaxAr }))
         : [];
 
     const units = !isLoadingUnits
-        ? unitsData.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
+        ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
         : [];
 
 
@@ -53,7 +53,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     return (
         <Col>
             <Row>
-                {productFormFields.map((field) => (
+                {productFormFields?.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <InputField
                             name={field.name}
@@ -69,7 +69,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                 ))}
             </Row>
             <Row>
-                {productSelectFormFields.map((field) => (
+                {productSelectFormFields?.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <SelectMenu
                             watch={watch}

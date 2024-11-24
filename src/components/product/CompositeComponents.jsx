@@ -12,7 +12,7 @@ const CompositeComponents = ({ handleAddClick, isEditing, data, isLoading, enabl
     const AgGridTableMemo = React.memo(AgGridTable);
     const { t } = useTranslation();
     return (
-        <Row lg={2} >
+        <Row lg={2} md={1} sm={1} >
             <Col style={{ marginTop: '20px' }}>
                 <AgGridTableMemo
                     actions={actions}

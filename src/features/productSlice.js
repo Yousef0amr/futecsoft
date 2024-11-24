@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASEURL, ITEMS } from './../api/endpoints.js';  // Assuming PRODUCTS endpoint is defined in endpoints.js
+import { BASEURL, ITEMS } from './../api/endpoints.js';
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
 import { longCacheTime, shortCacheTime } from '../utils/constants.js';
@@ -57,7 +57,7 @@ export const productsApi = createApi({
                 url: `/GetCurrentKey?fatherId=${categoryId}`
             }),
             transformResponse: (response) => response.Response,
-            providesTags: ['Product']
+            providesTags: ['Product_id']
         }),
         getProductByType: builder.query({
             query: ({ pageNumber, pageSize, branch, productType }) => ({
@@ -100,8 +100,17 @@ export const productsApi = createApi({
                 method: 'POST',
                 body: convertToFormData(product),
             }),
-            invalidatesTags: ['Product'],
-
+            onQueryStarted: async (branch, { dispatch, queryFulfilled }) => {
+                try {
+                    const { data } = await queryFulfilled;
+                    console.log(data);
+                    if (data?.Success) {
+                        dispatch(productsApi.util.invalidateTags(['Product_id']));
+                    }
+                } catch (error) {
+                    return error
+                }
+            },
         }),
         updateProduct: builder.mutation({
             query: (product) => ({
@@ -115,7 +124,7 @@ export const productsApi = createApi({
             query: (id) => ({
                 url: `/Delete`,
                 method: 'POST',
-                body: convertToFormData({ Id: id }),
+                body: convertToFormData(id),
             }),
         }),
         addComponent: builder.mutation(

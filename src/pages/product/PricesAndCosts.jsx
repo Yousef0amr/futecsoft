@@ -52,9 +52,6 @@ const PricesAndCosts = () => {
     //     }
     // };
 
-    // const { t } = useTranslation();
-
-    // const { success, error } = useNotification();
     const productColDefs = usePricesAndCostsColDefs()
     return (
         <FormCard icon={faMoneyBill1Wave} title={t(AppStrings.prices_and_costs)}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryForm from '../../components/category/CategoryForm'
 import FormCard from '../../components/common/FormCard'
-import { faList, faShuffle } from '@fortawesome/free-solid-svg-icons';
+import { faList, faShuffle, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import { useGetCurrentCategoryKeyQuery } from '../../features/categorySlice';
@@ -26,7 +26,7 @@ const AddCategory = () => {
         })
     }
     return (
-        <FormCard icon={faShuffle} title={t(AppStrings.add_new_category)} optionComponent={
+        <FormCard icon={faWindowRestore} title={t(AppStrings.add_new_category)} optionComponent={
             <>
                 <NavButton icon={'list'} title={AppStrings.list_categories} path={routes.category.list} />
             </>

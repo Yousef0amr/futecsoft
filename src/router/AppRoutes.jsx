@@ -38,9 +38,9 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                         <Route path={routes.product.compositeComponentsAdd} element={<AddComponent />} />
                         <Route path={routes.product.pricesAndCosts} element={<PricesAndCosts />} />
                         {/* Categories */}
-                        <Route path="/categories/list" element={<ListCategory />} />
-                        <Route path="/categories/add" element={<AddCategory />} />
-                        <Route path="/categories/edit" element={<EditCategory />} />
+                        <Route path={routes.category.list} element={<ListCategory />} />
+                        <Route path={routes.category.add} element={<AddCategory />} />
+                        <Route path={routes.category.edit} element={<EditCategory />} />
 
 
                     </Route>

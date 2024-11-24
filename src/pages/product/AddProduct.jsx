@@ -36,7 +36,7 @@ const AddProduct = () => {
         <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)} optionComponent={
             <>
                 <TabsSelect handleTabClick={handleTabClick} activeTab={type} />
-                <NavButton icon={faList} title={AppStrings.list_products} path={routes.product.list} />
+                <NavButton icon={'list'} title={AppStrings.list_products} path={routes.product.list} />
             </>
         }  >
             <ProductForm isLoading={isAdding} resetForm={!isAdding} onSubmit={onSubmit} defaultValuesEdit={defaultValues} composite={type === 'Composite'} />

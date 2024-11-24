@@ -62,8 +62,9 @@ export const branchesApi = createApi({
         }),
         deleteBranch: builder.mutation({
             query: (id) => ({
-                url: `/Delete?BranchId=${id}`,
+                url: `/Delete`,
                 method: 'POST',
+                body: convertToFormData(id),
             }),
         }),
     }),

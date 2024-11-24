@@ -17,7 +17,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     const { data: unitsData, isLoading: isLoadingUnits } = useGetUnitsQuery({ pageNumber: 1, pageSize: 10 });
 
     const categories = !isLoadingCategories
-        ? categoriesData?.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
+        ? categoriesData?.map((item) => ({ value: item.Id, label: item.NameAr }))
         : [];
 
     const branches = !isLoadingBranches
@@ -62,7 +62,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                             errors={errors}
                             required={field.required}
                             type={field.type}
-                            disabled={field.name === 'Id'}
+                            disabled={field.disabled}
                             min={0}
                         />
                     </Col>

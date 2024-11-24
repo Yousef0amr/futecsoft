@@ -1,18 +1,18 @@
 import React from 'react'
 import { productComponentsFormFields, productComponentsFormFields1 } from '../../utils/constants'
-import { useGetCategoriesQuery } from '../../features/categorySlice'
 import { Col, Row } from 'react-bootstrap'
 import InputField from '../common/InputFiled'
 import SelectMenu from '../common/SelectMenu'
 import { useGetProductsByCategoryQuery, useGetProductUnitsByIdQuery } from '../../features/productSlice'
+import useCategoryManagement from '../../hook/useCategoryManagement'
 
 const ComponentFormFields = ({ register, errors, watch, setValue }) => {
-    const { data: categoriesData, isLoading: isLoadingCategories } = useGetCategoriesQuery({ pageNumber: 1, pageSize: 10 });
+    const { data: categoriesData, isLoading: isLoadingCategories } = useCategoryManagement();
     const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(watch('SubItem'));
     const { data: productsData, isLoading: isLoadingProducts } = useGetProductsByCategoryQuery(watch('Father'));
 
     const categories = !isLoadingCategories
-        ? categoriesData?.map((item) => ({ value: item.CatID, label: item.Cat_AR_Name }))
+        ? categoriesData?.map((item) => ({ value: item.Id, label: item.NameAr }))
         : [];
 
     const units = !isLoadingUnits
@@ -22,10 +22,6 @@ const ComponentFormFields = ({ register, errors, watch, setValue }) => {
     const products = !isLoadingProducts
         ? productsData?.map((item) => ({ value: item.ProID, label: item.Pro_AR_Name }))
         : [];
-
-    const onSelectChange = (value, name) => {
-        setValue(name, value);
-    };
 
     return (
         <Col>
@@ -39,7 +35,7 @@ const ComponentFormFields = ({ register, errors, watch, setValue }) => {
                             errors={errors}
                             required={field.required}
                             type={field.type}
-                            disabled={field.name === 'ItemID' || field.name === 'Name'}
+                            disabled={field.disabled}
                             min={0}
                         />
                     </Col>
@@ -49,7 +45,7 @@ const ComponentFormFields = ({ register, errors, watch, setValue }) => {
                 {productComponentsFormFields1.map((field) => (
                     <Col xs={12} md={6} key={field.name}>
                         <SelectMenu
-                            onChange={(e) => onSelectChange(e.target.value, field.name)}
+                            onChange={(e) => setValue(field.name, e.target.value)}
                             errors={errors}
                             name={field.name}
                             watch={watch}

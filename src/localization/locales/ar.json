@@ -137,5 +137,17 @@
     "component_updated_successfully": "تم تعديل المكون بنجاح",
     "component_deleted_successfully": "تم حذف المكون بنجاح",
     "update_just_quentity_or_note": "يمكنك تحديث فقط الكمية او الملاحظة",
-    "cancel_editing": "الغاء التعديل"
+    "cancel_editing": "الغاء التعديل",
+    "add_new_category": "اضافة تصنيف جديد",
+    "list_categories": "قائمة التصنيفات",
+    "edit_category": "تعديل التصنيف",
+    "categoryNameAr": "اسم التصنيف بالعربي",
+    "categoryNameEn": "اسم التصنيف بالانجليزي",
+    "categoryNameAr_required": "اسم التصنيف بالعربي مطلوب",
+    "categoryNameEn_required": "اسم التصنيف بالانجليزي مطلوب",
+    "category_added_successfully": "تم اضافة التصنيف بنجاح",
+    "category_updated_successfully": "تم تعديل التصنيف بنجاح",
+    "category_deleted_successfully": "تم حذف التصنيف بنجاح",
+    "categoryId": "رقم التصنيف",
+    "categoryId_required": "رقم التصنيف مطلوب"
 }

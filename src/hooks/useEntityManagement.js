@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 /**
  * A helper function to dynamically update query data in RTK Query cache.
@@ -31,13 +32,12 @@ const useEntityManagement = ({
     cacheKey,
     defaultQueryArgs,
     identifier = 'Id',
-    dispatch,
 }) => {
     const { data, isLoading } = queryHook(defaultQueryArgs);
     const [addEntity, { isLoading: isAdding }] = addMutationHook();
     const [updateEntity, { isLoading: isUpdating }] = updateMutationHook();
     const [deleteEntity, { isLoading: isDeleting }] = deleteMutationHook();
-
+    const dispatch = useDispatch();
     const deleteEntityFromCache = useCallback(
         (id) => {
             updateCache({

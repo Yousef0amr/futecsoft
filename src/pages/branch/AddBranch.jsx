@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import FormCard from '../../components/common/FormCard'
 import BranchForm from '../../components/branch/BranchForm'
-import { faList, faShuffle } from '@fortawesome/free-solid-svg-icons';
+import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
-import { useAddBranchMutation, useGetCurrentkeyQuery } from '../../features/branchesSlice';
+import { useGetCurrentkeyQuery } from '../../features/branchesSlice';
 import NavButton from '../../components/common/NavButton';
 import { routes } from '../../utils/constants';
 import useBranchManagement from '../../hook/useBranchManagement';
@@ -20,7 +20,7 @@ const AddBranch = () => {
         handleEntityOperation({
             operation: 'add',
             data,
-            cacheUpdater: addEntityToCache,
+            cacheUpdater: addEntityToCache(data),
             successMessage: AppStrings.branch_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })
@@ -29,7 +29,7 @@ const AddBranch = () => {
     return (
         <FormCard icon={faShuffle} title={t(AppStrings.add_new_branch)} optionComponent={
             <>
-                <NavButton icon={faList} title={AppStrings.list_branches} path={routes.branch.list} />
+                <NavButton icon={'list'} title={AppStrings.list_branches} path={routes.branch.list} />
             </>
         }  >
             <BranchForm isLoading={isAdding} onSubmit={onSubmit} defaultValuesEdit={{ BranchId: currentKey }} />

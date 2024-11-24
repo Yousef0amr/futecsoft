@@ -5,9 +5,6 @@ import FormCard from './FormCard'
 import NavButton from './NavButton'
 
 const EditComponent = ({ icon, title, path, children }) => {
-
-
-
     return (
         <FormCard open={false} icon={icon} title={title} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={path} />}>
             {children}

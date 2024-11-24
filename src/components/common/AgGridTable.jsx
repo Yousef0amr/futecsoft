@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo, memo } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -7,7 +7,7 @@ import AppStrings from './../../utils/appStrings';
 import { AG_GRID_LOCALE_EG, AG_GRID_LOCALE_EN } from '@ag-grid-community/locale';
 import ActionsCellRenderer from './ActionsCellRenderer';
 
-const AgGridTable = ({ enableActions = true, actions, actionsCellRenderer = ActionsCellRenderer, rowData, isLoading, dynamicColumns = [], quickFilterText }) => {
+const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer = ActionsCellRenderer, rowData, isLoading, dynamicColumns = [], quickFilterText }) => {
     const { t, i18n } = useTranslation();
     const gridApiRef = useRef(null);
     const isRtl = useMemo(() => i18n.language !== 'en', [i18n.language]);
@@ -64,6 +64,6 @@ const AgGridTable = ({ enableActions = true, actions, actionsCellRenderer = Acti
             </div>
         </div>
     );
-};
+});
 
 export default AgGridTable;

@@ -1,10 +1,9 @@
-import { useDispatch } from 'react-redux';
+
 import useEntityManagement from './../hooks/useEntityManagement';
 import { useAddComponentMutation, useGetCompositeComponentsByIdQuery, useDeleteComponentMutation, useUpdateComponentMutation, productsApi } from '../features/productSlice';
 
 
 const useCompComponentsManagement = (id) => {
-    const dispatch = useDispatch();
     return useEntityManagement({
         apiSlice: productsApi,
         queryHook: useGetCompositeComponentsByIdQuery,
@@ -14,7 +13,6 @@ const useCompComponentsManagement = (id) => {
         cacheKey: 'getCompositeComponentsById',
         defaultQueryArgs: id,
         identifier: 'Id',
-        dispatch,
     });
 };
 

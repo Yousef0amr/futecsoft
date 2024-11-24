@@ -8,7 +8,6 @@ import FilterSearch from '../../components/common/FilterSearch';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
 import { useProductColDefs } from '../../config/agGridColConfig';
-import DeleteComponent from '../../components/common/DeleteComponent';
 import useProductManagement from '../../hook/useProductManagement';
 import useTableActions from '../../hooks/useTableActions';
 import { routes } from '../../utils/constants';
@@ -43,7 +42,7 @@ const ListProduct = () => {
         handleEntityOperation({
             operation: "delete",
             data: { Id: active.data.Id },
-            cacheUpdater: deleteEntityFromCache,
+            cacheUpdater: deleteEntityFromCache(active.data.Id),
             successMessage: AppStrings.product_deleted_successfully,
             errorMessage: AppStrings.something_went_wrong,
             finalCallback: handleCancel
@@ -53,16 +52,12 @@ const ListProduct = () => {
     return (
         <FormCard
             open={active.isOpen}
-            modelComponent={
-                <DeleteComponent
-                    handleCancel={handleCancel}
-                    handleDelete={handleOnDeleteClick}
-                    isLoading={isDeleting}
-                />
-            }
+            handleDelete={handleOnDeleteClick}
+            handleCancel={handleCancel}
+            isLoading={isDeleting}
             icon={faBarcode}
             title={t(AppStrings.list_products)}
-            navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={routes.product.add} />}
+            navButton={<NavButton icon={'add'} title={AppStrings.add_new_product} path={routes.product.add} />}
             optionComponent={
                 <>
                     <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} />

@@ -103,7 +103,6 @@ export const productsApi = createApi({
             onQueryStarted: async (branch, { dispatch, queryFulfilled }) => {
                 try {
                     const { data } = await queryFulfilled;
-                    console.log(data);
                     if (data?.Success) {
                         dispatch(productsApi.util.invalidateTags(['Product_id']));
                     }

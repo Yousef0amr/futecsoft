@@ -133,6 +133,19 @@ const AppStrings = {
     update_just_quentity_or_note: 'update_just_quentity_or_note',
     component_deleted_successfully: 'component_deleted_successfully',
     cancel_editing: 'cancel_editing',
+    category_added_successfully: 'category_added_successfully',
+    category_updated_successfully: 'category_updated_successfully',
+    category_deleted_successfully: 'category_deleted_successfully',
+    add_new_category: 'add_new_category',
+    list_categories: 'list_categories',
+    edit_category: 'edit_category',
+    categoryNameAr: 'categoryNameAr',
+    categoryNameEn: 'categoryNameEn',
+    categoryNameAr_required: 'categoryNameAr_required',
+    categoryNameEn_required: 'categoryNameEn_required',
+    categoryId: 'categoryId',
+    categoryId_required: 'categoryId_required',
+
 }
 
 export default AppStrings

@@ -4,6 +4,17 @@ import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
 import { longCacheTime } from '../utils/constants.js';
 
+const transformCategoryData = (data) => {
+    return {
+        Id: data.CatID,
+        NameAr: data.Cat_AR_Name,
+        NameEn: data.Cat_EN_Name,
+        Warehouse: data.TagDesc,
+        BranchId: data.Tag,
+        Saleable: data.Saleable,
+        IsActive: data.Active
+    };
+};
 export const categoriesApi = createApi({
     reducerPath: 'categoriesApi',
     baseQuery: fetchBaseQuery({
@@ -18,14 +29,22 @@ export const categoriesApi = createApi({
             query: () => ({
                 url: '/GetCurrentKey',
             }),
-            transformResponse: (response) => response.Response
+            transformResponse: (response) => response.Response,
+            providesTags: ['Category_id']
         }),
         getCategories: builder.query({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
             keepUnusedDataFor: longCacheTime,
-            transformResponse: (response) => response.Response
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformCategoryData(item));
+                } else {
+                    return [];
+                }
+            },
         }),
         getCategoryById: builder.query({
             query: (id) => ({
@@ -45,6 +64,16 @@ export const categoriesApi = createApi({
                 method: 'POST',
                 body: convertToFormData(category),
             }),
+            onQueryStarted: async (category, { dispatch, queryFulfilled }) => {
+                try {
+                    const { data } = await queryFulfilled;
+                    if (data?.Success) {
+                        dispatch(categoriesApi.util.invalidateTags(['Category_id']));
+                    }
+                } catch (error) {
+                    return error
+                }
+            },
         }),
         updateCategory: builder.mutation({
             query: (category) => ({
@@ -55,8 +84,9 @@ export const categoriesApi = createApi({
         }),
         deleteCategory: builder.mutation({
             query: (id) => ({
-                url: `/Delete?CategoryId=${id}`,
+                url: `/Delete`,
                 method: 'POST',
+                body: convertToFormData(id),
             }),
         }),
     }),

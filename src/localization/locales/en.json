@@ -137,5 +137,17 @@
     "component_updated_successfully": "Component updated successfully",
     "component_deleted_successfully": "Component deleted successfully",
     "update_just_quentity_or_note": "Update just Quantity or Note",
-    "cancel_editing": "Cancel Editing"
+    "cancel_editing": "Cancel Editing",
+    "categoryId": "Category ID",
+    "category_added_successfully": "Category added successfully",
+    "category_updated_successfully": "Category updated successfully",
+    "category_deleted_successfully": "Category deleted successfully",
+    "add_new_category": "Add New Category",
+    "list_categories": "Categories List",
+    "edit_category": "Edit Category",
+    "categoryNameAr": "Category Name (Arabic)",
+    "categoryNameEn": "Category Name (English)",
+    "categoryNameAr_required": "Category Name (Arabic) is required",
+    "categoryNameEn_required": "Category Name (English) is required",
+    "categoryId_required": "Category ID is required"
 }

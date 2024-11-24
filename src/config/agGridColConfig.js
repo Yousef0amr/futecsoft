@@ -96,3 +96,16 @@ export const usePricesAndCostsColDefs = () => {
         { field: "TakeawayCost", headerName: t(AppStrings.takeawayCost), filter: 'agTextColumnFilter' },
     ], [t, i18n]);
 };
+
+export const useCategoriesColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Id", headerName: t(AppStrings.categoryId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "NameAr" : "NameEn", headerName: t(i18n.language === 'en' ? AppStrings.categoryNameEn : AppStrings.categoryNameAr), filter: 'agTextColumnFilter' },
+        { field: "Warehouse", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+        { field: "Saleable", headerName: t(AppStrings.saleable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+};
+

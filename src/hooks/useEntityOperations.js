@@ -12,7 +12,7 @@ const useEntityOperations = ({ addEntity = () => { }, updateEntity = () => { }, 
         cacheUpdater,
         successMessage,
         errorMessage,
-        finalCallback
+        finalCallback = () => { }
     }) => {
         try {
             let result;
@@ -37,6 +37,7 @@ const useEntityOperations = ({ addEntity = () => { }, updateEntity = () => { }, 
                 throw new Error(result?.Success);
             }
         } catch (e) {
+            console.log(e);
             error(t(errorMessage));
         } finally {
             finalCallback && finalCallback();

@@ -17,14 +17,14 @@ const ListCompositeComponents = () => {
     const { data, isLoading } = useProductManagement();
 
 
-    const AgGridTableMemo = React.memo(AgGridTable);
+
     return (
         <FormCard icon={faBarcode} title={t(AppStrings.list_composite_components)} navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={routes.product.add} />} optionComponent={
             <>
                 <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
             </>
         }>
-            <AgGridTableMemo
+            <AgGridTable
                 actionsCellRenderer={NavButton}
                 actions={{ icon: faAdd, path: routes.product.compositeComponentsAdd, title: AppStrings.add_new_component }}
                 dynamicColumns={productColDefs}

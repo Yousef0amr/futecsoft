@@ -2,7 +2,8 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import CardTitle from './CardTitle'
 import DialogModel from './DialogModel'
-const FormCard = ({ icon, title, optionComponent, navButton, open = false, modelComponent, children }) => {
+import DeleteComponent from './DeleteComponent'
+const FormCard = ({ icon, title, optionComponent, navButton, open = false, modelComponent, handleDelete, handleCancel, isLoading, children }) => {
     return (
         <>
             <Card style={{
@@ -24,7 +25,11 @@ const FormCard = ({ icon, title, optionComponent, navButton, open = false, model
                 {children}
             </Card>
             <DialogModel open={open}    >
-                {modelComponent}
+                {modelComponent ? modelComponent : <DeleteComponent
+                    handleDelete={handleDelete}
+                    handleCancel={handleCancel}
+                    isLoading={isLoading}
+                />}
             </DialogModel>
         </>
     )

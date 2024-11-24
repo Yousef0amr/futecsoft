@@ -84,14 +84,8 @@ const AddComponent = () => {
     }
 
     return (
-        <FormCard open={active.isOpen}
-            modelComponent={
-                <DeleteComponent
-                    handleCancel={handleCancel}
-                    handleDelete={handleOnDeleteClick}
-                    isLoading={isDeleting}
-                />
-            } icon={faBarcode} title={t(AppStrings.list_components)} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={routes.product.compositeComponents} />} optionComponent={
+        <FormCard open={active.isOpen} handleDelete={handleOnDeleteClick} handleCancel={handleCancel} isLoading={isDeleting}
+            icon={faBarcode} title={t(AppStrings.list_components)} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={routes.product.compositeComponents} />} optionComponent={
                 <>
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>

@@ -92,7 +92,7 @@ const MainMenuValidators = () => {
         FlavorAR: yup.string().required(t(AppStrings.flavorNameAr_required)).nullable(),
         FlavorEN: yup.string().required(t(AppStrings.flavorNameEn_required)).nullable(),
         Price: yup.string().required(t(AppStrings.price_required)).nullable(),
-        WareHouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        WareHouse: yup.string().required(t(AppStrings.branch_required)),
         Category: yup.array().min(1).required(t(AppStrings.category_required)),
         IsActive: yup.boolean().optional(),
     }

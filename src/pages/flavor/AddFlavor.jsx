@@ -20,7 +20,10 @@ const AddFlavor = () => {
         handleEntityOperation({
             operation: 'add',
             data,
-            cacheUpdater: addEntityToCache(data),
+            cacheUpdater: addEntityToCache({
+                ...data,
+                TagDesc: data.WareHouse
+            }),
             successMessage: AppStrings.flavor_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })

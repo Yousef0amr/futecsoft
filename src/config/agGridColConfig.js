@@ -126,7 +126,7 @@ export const useFlavorsColDefs = () => {
 
     return useMemo(() => [
         { field: "FlavorNo", headerName: t(AppStrings.flavorId), filter: 'agTextColumnFilter' },
-        { field: i18n.language === 'en' ? "FlavorEn" : "FlavorAr", headerName: t(i18n.language === 'en' ? AppStrings.flavorNameEn : AppStrings.flavorNameAr), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "FlavorEN" : "FlavorAR", headerName: t(i18n.language === 'en' ? AppStrings.flavorNameEn : AppStrings.flavorNameAr), filter: 'agTextColumnFilter' },
         { field: "TagDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
         { field: "Price", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },

@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap'
 import InputField from '../common/InputFiled'
 import CheckBox from '../common/CheckBox'
 import { productCheckFormFields, productPriceFormFields } from '../../utils/constants'
+import FormFieldsComponent from '../common/FormFieldsComponent'
 
 const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) => {
 
@@ -14,22 +15,7 @@ const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) =>
     }, [priceChange, setValue]);
     return (
         <Col>
-            <Row className=''>
-                {productPriceFormFields.map((field) => (
-                    <Col xs={12} md={6} key={field.name}>
-                        <InputField
-                            name={field.name}
-                            label={field.label}
-                            register={register}
-                            errors={errors}
-                            required={field.required}
-                            type={field.type}
-                            min={0}
-
-                        />
-                    </Col>
-                ))}
-            </Row>
+            <FormFieldsComponent fields={productPriceFormFields} setValue={setValue} errors={errors} register={register} watch={watch} />
             <Row className=''>
                 {productCheckFormFields.map((field) => (
 

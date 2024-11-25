@@ -27,7 +27,6 @@ const CompositeComponents = ({ handleAddClick, isEditing, data, isLoading, enabl
                     isEditing ?
                         <Button style={{ border: ' none', backgroundColor: 'rgba(255, 0, 0, 0.651)', fontSize: '14px', fontWeight: '600', marginTop: '20px', marginBottom: '20px' }} onClick={handleAddClick}>{t(AppStrings.cancel_editing)}</Button> : null
                 }
-
                 <CompositeComponentsForm enableReset={enableReset} isLoadingKey={actionLoading} onSubmit={onSubmit} resetForm={resetForm} defaultValuesEdit={defaultValuesEdit} />
             </Col>
         </Row>

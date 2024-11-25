@@ -1,39 +1,36 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASEURL, UNITS } from './../api/endpoints.js'; // Update this constant as needed
+import { BASEURL, FLAVORS } from './../api/endpoints.js';
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
 import { longCacheTime } from '../utils/constants.js';
 
-
-
-const transformUnitData = (data) => {
+const transformFlavorData = (data) => {
     return {
-        UnitID: data.UnitId,
-        Unit_AR: data.UnitAr,
-        Unit_EN: data.UnitEn,
-        Active: data.Active,
+        WareHouse: data.Warehouse,
+        FlavorAR: data.FlavorAr,
+        FlavorEN: data.FlavorEn,
+        ...data
     };
 };
 
-
-export const unitsApi = createApi({
-    reducerPath: 'unitsApi',
+export const flavorsApi = createApi({
+    reducerPath: 'flavorsApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: BASEURL + UNITS,
+        baseUrl: BASEURL + FLAVORS,
         prepareHeaders: (headers) => {
             headers.set('Authorization', `Bearer ${getCookie('accessToken')}`);
             return headers;
         },
     }),
     endpoints: (builder) => ({
-        getCurrentUnitKey: builder.query({
+        getCurrentFlavorKey: builder.query({
             query: () => ({
                 url: '/GetCurrentKey',
             }),
-            providesTags: ['Unit_id'],
+            providesTags: ['Flavor_id'],
             transformResponse: (response) => response.Response
         }),
-        getUnits: builder.query({
+        getFlavors: builder.query({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
@@ -41,43 +38,43 @@ export const unitsApi = createApi({
             transformResponse: (response) => {
                 const data = response.Response || response;
                 if (Array.isArray(data)) {
-                    return data.map(item => transformUnitData(item));
+                    return data.map(item => transformFlavorData(item));
                 } else {
                     return [];
                 }
             },
         }),
-        getUnitById: builder.query({
+        getFlavorById: builder.query({
             query: (id) => ({
-                url: `/GetById?UnitId=${id}`,
+                url: `/GetById?FlavorNo=${id}`,
             }),
             transformResponse: (response) => response.Response
         }),
-        addUnit: builder.mutation({
-            query: (unit) => ({
+        addFlavor: builder.mutation({
+            query: (flavor) => ({
                 url: '/Insert',
                 method: 'POST',
-                body: convertToFormData(unit),
+                body: convertToFormData(flavor),
             }),
-            onQueryStarted: async (unit, { dispatch, queryFulfilled }) => {
+            onQueryStarted: async (flavor, { dispatch, queryFulfilled }) => {
                 try {
                     const { data } = await queryFulfilled;
                     if (data?.Success) {
-                        dispatch(unitsApi.util.invalidateTags(['Unit_id']));
+                        dispatch(flavorsApi.util.invalidateTags(['Flavor_id']));
                     }
                 } catch (error) {
-                    return error
+                    return error;
                 }
             }
         }),
-        updateUnit: builder.mutation({
-            query: (unit) => ({
+        updateFlavor: builder.mutation({
+            query: (flavor) => ({
                 url: '/Update',
                 method: 'POST',
-                body: convertToFormData(unit),
+                body: convertToFormData(flavor),
             }),
         }),
-        deleteUnit: builder.mutation({
+        deleteFlavor: builder.mutation({
             query: (id) => ({
                 url: `/Delete`,
                 method: 'POST',
@@ -88,10 +85,10 @@ export const unitsApi = createApi({
 });
 
 export const {
-    useGetCurrentUnitKeyQuery,
-    useGetUnitsQuery,
-    useGetUnitByIdQuery,
-    useAddUnitMutation,
-    useUpdateUnitMutation,
-    useDeleteUnitMutation,
-} = unitsApi;
+    useGetCurrentFlavorKeyQuery,
+    useGetFlavorsQuery,
+    useGetFlavorByIdQuery,
+    useAddFlavorMutation,
+    useUpdateFlavorMutation,
+    useDeleteFlavorMutation,
+} = flavorsApi;

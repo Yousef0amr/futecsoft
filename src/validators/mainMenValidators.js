@@ -79,12 +79,32 @@ const MainMenuValidators = () => {
         IsActive: yup.boolean().optional(),
     }
 
+    const unitSchemaValidator = {
+        UnitID: yup.string().required(t(AppStrings.unitId_required)).nullable(),
+        Unit_AR: yup.string().required(t(AppStrings.unitNameAr_required)).nullable(),
+        Unit_EN: yup.string().required(t(AppStrings.unitNameEn_required)).nullable(),
+        Active: yup.boolean().optional(),
+    }
+
+
+    const flavorSchemaValidator = {
+        FlavorNo: yup.string().required(t(AppStrings.flavorId_required)).nullable(),
+        FlavorAR: yup.string().required(t(AppStrings.flavorNameAr_required)).nullable(),
+        FlavorEN: yup.string().required(t(AppStrings.flavorNameEn_required)).nullable(),
+        Price: yup.string().required(t(AppStrings.price_required)).nullable(),
+        WareHouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        Category: yup.array().min(1).required(t(AppStrings.category_required)),
+        IsActive: yup.boolean().optional(),
+    }
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
         componentSchemaValidator,
         pricesAndCostsSchemaValidator,
-        categorySchemaValidator
+        categorySchemaValidator,
+        unitSchemaValidator,
+        flavorSchemaValidator
     }
 }
 

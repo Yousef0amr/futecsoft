@@ -4,12 +4,37 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-const SelectMenu = ({ options, name, label, watch, onChange, required, errors }) => {
+import Checkbox from '@mui/material/Checkbox';
+
+const SelectMenu = ({
+    options,
+    name,
+    label,
+    watch,
+    multiple = false,
+    onChange,
+    required,
+    errors
+}) => {
     const [open, setOpen] = useState(false);
     const { t } = useTranslation();
 
     const handleClose = () => setOpen(false);
     const handleOpen = () => setOpen(true);
+
+    const selectedValue = multiple
+        ? Array.isArray(watch(name)) ? watch(name) : []
+        : watch(name) || "";
+
+    const handleChange = (event) => {
+        const value = event.target.value;
+        onChange({
+            target: {
+                name,
+                value: multiple ? [...value] : value,
+            },
+        });
+    };
 
     return (
         <FormControl
@@ -18,17 +43,19 @@ const SelectMenu = ({ options, name, label, watch, onChange, required, errors })
                 width: '100%',
             }}
         >
-            <span className="select-label mb-2">{t(label)}{required && <span style={{ color: 'red' }}>*</span>}</span>
+            <span className="select-label mb-2">
+                {t(label)}
+                {required && <span style={{ color: 'red' }}>*</span>}
+            </span>
             <Select
                 labelId={`${label}-select-label`}
                 id={`${label}-select`}
                 open={open}
                 onClose={handleClose}
                 onOpen={handleOpen}
-                value={options.some((option) => option.value === watch(name)) ? watch(name) : " "}
-                onChange={(event) => {
-                    onChange(event);
-                }}
+                value={selectedValue}
+                multiple={multiple}
+                onChange={handleChange}
                 displayEmpty
                 style={{
                     backgroundColor: 'var(--background-color)',
@@ -60,13 +87,20 @@ const SelectMenu = ({ options, name, label, watch, onChange, required, errors })
                     disableAutoFocusItem: true,
                 }}
             >
-                <MenuItem value=" ">
+
+
+                <MenuItem value="" disabled>
                     {t(`${AppStrings.choose}`) + ' ' + t(label)}
                 </MenuItem>
 
                 {options.length > 0 ? (
                     options.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
+                            {multiple && (
+                                <Checkbox
+                                    checked={selectedValue.includes(option.value)}
+                                />
+                            )}
                             {option.label}
                         </MenuItem>
                     ))
@@ -77,7 +111,10 @@ const SelectMenu = ({ options, name, label, watch, onChange, required, errors })
                 )}
             </Select>
 
-            {errors[name] && <div className="error-message">{errors[name].message}</div>}
+            {/* Error message */}
+            {errors[name] && (
+                <div className="error-message">{errors[name].message}</div>
+            )}
         </FormControl>
     );
 };
@@ -85,13 +122,17 @@ const SelectMenu = ({ options, name, label, watch, onChange, required, errors })
 SelectMenu.propTypes = {
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+                .isRequired,
             label: PropTypes.string.isRequired,
         })
     ).isRequired,
     label: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    watch: PropTypes.func.isRequired,
+    multiple: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
+    required: PropTypes.bool,
+    errors: PropTypes.object,
 };
 
 export default SelectMenu;

@@ -18,6 +18,12 @@ import ListBranch from '../pages/branch/ListBranch'
 import ListCategory from '../pages/category/ListCategory'
 import AddCategory from '../pages/category/AddCategory'
 import EditCategory from '../pages/category/EditCategory'
+import ListUnit from '../pages/unit/ListUnit'
+import AddUnit from '../pages/unit/AddUnit'
+import EditUnit from '../pages/unit/EditUnit'
+import ListFlavor from '../pages/flavor/ListFlavor'
+import AddFlavor from '../pages/flavor/AddFlavor'
+import EditFlavor from '../pages/flavor/EditFlavor'
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
     return (
@@ -41,6 +47,14 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                         <Route path={routes.category.list} element={<ListCategory />} />
                         <Route path={routes.category.add} element={<AddCategory />} />
                         <Route path={routes.category.edit} element={<EditCategory />} />
+                        {/* Units */}
+                        <Route path={routes.unit.list} element={<ListUnit />} />
+                        <Route path={routes.unit.add} element={<AddUnit />} />
+                        <Route path={routes.unit.edit} element={<EditUnit />} />
+                        {/* Flavors */}
+                        <Route path={routes.flavor.list} element={<ListFlavor />} />
+                        <Route path={routes.flavor.add} element={<AddFlavor />} />
+                        <Route path={routes.flavor.edit} element={<EditFlavor />} />
 
 
                     </Route>

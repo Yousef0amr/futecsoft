@@ -20,7 +20,18 @@ export const routes = {
         list: '/categories/list',
         add: '/categories/add',
         edit: '/categories/edit'
-    }
+    },
+    unit: {
+        list: '/units/list',
+        add: '/units/add',
+        edit: '/units/edit'
+    },
+    flavor: {
+        list: '/flavors/list',
+        add: '/flavors/add',
+        edit: '/flavors/edit'
+    },
+
 }
 
 export const longCacheTime = 3500;
@@ -62,16 +73,17 @@ export const menuList = [
                 label: AppStrings.units_of_measurement,
                 icon: faBalanceScale,
                 subActions: [
-                    { label: AppStrings.add, href: '/units/add' },
-                    { label: AppStrings.list, href: '/units/list' }
+                    { label: AppStrings.list, href: routes.unit.list },
+                    { label: AppStrings.add, href: routes.unit.add },
+
                 ]
             },
             {
                 label: AppStrings.flavors,
                 icon: faHeart,
                 subActions: [
-                    { label: AppStrings.add, href: '/flavors/add' },
-                    { label: AppStrings.list, href: '/flavors/list' }
+                    { label: AppStrings.list, href: routes.flavor.list },
+                    { label: AppStrings.add, href: routes.flavor.add }
                 ]
             },
             {
@@ -273,11 +285,11 @@ export const defaultProductValues = {
 // Form Fields
 
 export const productCheckFormFields = [
-    { name: 'Discountable', label: AppStrings.discountable, required: false },
-    { name: 'IsService', label: AppStrings.isService, required: false },
-    { name: 'IsActive', label: AppStrings.isActive, required: false },
-    { name: 'Saleable', label: AppStrings.saleable, required: false },
-    { name: 'Taxable', label: AppStrings.taxable, required: false },
+    { name: 'Discountable', label: AppStrings.discountable, required: false, type: 'check' },
+    { name: 'IsService', label: AppStrings.isService, required: false, type: 'check' },
+    { name: 'IsActive', label: AppStrings.isActive, required: false, type: 'check' },
+    { name: 'Saleable', label: AppStrings.saleable, required: false, type: 'check' },
+    { name: 'Taxable', label: AppStrings.taxable, required: false, type: 'check' },
     { name: 'PreparationTime', label: AppStrings.preparationTime, required: false, type: 'number' },
 ];
 
@@ -300,24 +312,23 @@ export const productFormFields = [
 ];
 
 export const productSelectFormFields = [
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [] },
-    { name: 'Father', label: AppStrings.category, required: true, options: [] },
-    { name: 'UnitID', label: AppStrings.unit, required: true, options: [] },
-    { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [] },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Father', label: AppStrings.category, required: true, options: [], type: 'select' },
+    { name: 'UnitID', label: AppStrings.unit, required: true, options: [], type: 'select' },
+    { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [], type: 'select' },
 ];
 
 export const productComponentsFormFields = [
-    { name: 'ItemID', label: AppStrings.productId, required: true, disabled: true },
-    { name: 'Name', label: AppStrings.description, required: false, disabled: true },
+    { name: 'ItemID', label: AppStrings.productId, required: true, disabled: true, type: 'number' },
+    { name: 'Name', label: AppStrings.description, required: false, disabled: true, type: 'text' },
     { name: 'FoodQty', label: AppStrings.quantity, required: true, type: 'number' },
-    { name: 'Note', label: AppStrings.note, required: false },
+    { name: 'Note', label: AppStrings.note, required: false, type: 'text' },
 ];
 
-
 export const productComponentsFormFields1 = [
-    { name: 'Father', label: AppStrings.category, required: true, options: [] },
-    { name: 'SubItem', label: AppStrings.materials, required: true, options: [] },
-    { name: 'Unit', label: AppStrings.unit, required: true, options: [] },
+    { name: 'Father', label: AppStrings.category, required: true, options: [], type: 'select' },
+    { name: 'SubItem', label: AppStrings.materials, required: true, options: [], type: 'select' },
+    { name: 'Unit', label: AppStrings.unit, required: true, options: [], type: 'select' },
 ];
 
 export const branchFormFields = [
@@ -335,20 +346,39 @@ export const branchFormFields = [
 ];
 
 export const pricesAndCostsFormFields = [
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [] },
-    { name: 'CateID', label: AppStrings.category, required: true, options: [] },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'CateID', label: AppStrings.category, required: true, options: [], type: 'select' },
 ];
 
 export const categoryFormFields = [
     { name: 'Id', label: AppStrings.categoryId, required: true, type: 'number', disabled: true },
     { name: 'NameAr', label: AppStrings.categoryNameAr, required: true, type: 'text' },
     { name: 'NameEn', label: AppStrings.categoryNameEn, required: true, type: 'text' },
-
     { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
-
     { name: 'Saleable', label: AppStrings.saleable, required: false, type: 'check' },
     { name: 'IsActive', label: AppStrings.isActive, required: false, type: 'check' },
 ]
+
+export const unitsFormFields = [
+    { name: 'UnitID', label: AppStrings.unitId, required: true, type: 'number', disabled: true },
+    { name: 'Unit_AR', label: AppStrings.unitNameAr, required: true, type: 'text' },
+    { name: 'Unit_EN', label: AppStrings.unitNameEn, required: true, type: 'text' },
+    { name: 'Active', label: AppStrings.isActive, type: 'check' },
+]
+
+
+export const flavorsFormFields = [
+    { name: 'FlavorNo', label: AppStrings.flavorId, required: true, type: 'number', disabled: true },
+    { name: 'FlavorAR', label: AppStrings.flavorNameAr, required: true, type: 'text' },
+    { name: 'FlavorEN', label: AppStrings.flavorNameEn, required: true, type: 'text' },
+    { name: 'Price', label: AppStrings.price, required: true, type: 'text' },
+
+    { name: 'WareHouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Category', label: AppStrings.category, required: true, multiple: true, options: [], type: 'select' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+
 
 
 

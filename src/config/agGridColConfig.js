@@ -102,10 +102,34 @@ export const useCategoriesColDefs = () => {
 
     return useMemo(() => [
         { field: "Id", headerName: t(AppStrings.categoryId), filter: 'agTextColumnFilter' },
-        { field: i18n.language === 'en' ? "NameAr" : "NameEn", headerName: t(i18n.language === 'en' ? AppStrings.categoryNameEn : AppStrings.categoryNameAr), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "NameEn" : "NameAr", headerName: t(i18n.language === 'en' ? AppStrings.categoryNameEn : AppStrings.categoryNameAr), filter: 'agTextColumnFilter' },
         { field: "Warehouse", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
         { field: "Saleable", headerName: t(AppStrings.saleable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+};
+
+
+export const useUnitsColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "UnitID", headerName: t(AppStrings.unitId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "Unit_EN" : "Unit_AR", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
+        { field: "Active", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+};
+
+
+export const useFlavorsColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "FlavorNo", headerName: t(AppStrings.flavorId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "FlavorEn" : "FlavorAr", headerName: t(i18n.language === 'en' ? AppStrings.flavorNameEn : AppStrings.flavorNameAr), filter: 'agTextColumnFilter' },
+        { field: "TagDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "Price", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
     ], [t, i18n]);
 };
 

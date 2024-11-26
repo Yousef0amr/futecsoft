@@ -422,7 +422,7 @@ export const offersFormFields = [
     { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
     { name: 'Branch', label: AppStrings.branch, required: true, options: [], type: 'select' },
-    { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
+    // { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
 

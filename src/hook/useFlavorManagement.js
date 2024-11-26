@@ -9,7 +9,7 @@ const useFlavorManagement = () => {
         addMutationHook: useAddFlavorMutation,
         updateMutationHook: useUpdateFlavorMutation,
         deleteMutationHook: useDeleteFlavorMutation,
-        cacheKey: 'getFlavors',
+        cacheKey: 'getAll',
         defaultQueryArgs: {
             pageNumber: 1,
             pageSize: 10,

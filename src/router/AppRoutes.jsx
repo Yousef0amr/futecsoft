@@ -24,6 +24,61 @@ import EditUnit from '../pages/unit/EditUnit'
 import ListFlavor from '../pages/flavor/ListFlavor'
 import AddFlavor from '../pages/flavor/AddFlavor'
 import EditFlavor from '../pages/flavor/EditFlavor'
+import ListOffer from '../pages/offer/ListOffer'
+import AddOffer from '../pages/offer/AddOffer'
+import EditOffer from '../pages/offer/EditOffer'
+
+
+const pagesList = [
+    { path: "/", component: <Home /> },
+    // Branches
+    { path: routes.branch.list, component: <ListBranch /> },
+    { path: routes.branch.add, component: <AddBranch /> },
+    { path: routes.branch.edit, component: <EditBranch /> },
+    // Products
+    { path: routes.product.list, component: <ListProduct /> },
+    { path: routes.product.add, component: <AddProduct /> },
+    { path: routes.product.edit, component: <EditProduct /> },
+    { path: routes.product.compositeComponents, component: <ListCompositeComponents /> },
+    { path: routes.product.compositeComponentsAdd, component: <AddComponent /> },
+    { path: routes.product.pricesAndCosts, component: <PricesAndCosts /> },
+    // Categories
+    { path: routes.category.list, component: <ListCategory /> },
+    { path: routes.category.add, component: <AddCategory /> },
+    { path: routes.category.edit, component: <EditCategory /> },
+    // Units
+    { path: routes.unit.list, component: <ListUnit /> },
+    { path: routes.unit.add, component: <AddUnit /> },
+    { path: routes.unit.edit, component: <EditUnit /> },
+    // Flavors
+    { path: routes.flavor.list, component: <ListFlavor /> },
+    { path: routes.flavor.add, component: <AddFlavor /> },
+    { path: routes.flavor.edit, component: <EditFlavor /> },
+    // Offers
+    { path: routes.offer.list, component: <ListOffer /> },
+    { path: routes.offer.add, component: <AddOffer /> },
+    { path: routes.offer.edit, component: <EditOffer /> },
+    // Discounts
+    { path: routes.discountType.list, component: <ListFlavor /> },
+    { path: routes.discountType.add, component: <AddFlavor /> },
+    { path: routes.discountType.edit, component: <EditFlavor /> },
+    // Taxes
+    { path: routes.tax.list, component: <ListFlavor /> },
+    { path: routes.tax.add, component: <AddFlavor /> },
+    { path: routes.tax.edit, component: <EditFlavor /> },
+    // Currencies
+    { path: routes.currency.list, component: <ListFlavor /> },
+    { path: routes.currency.add, component: <AddFlavor /> },
+    { path: routes.currency.edit, component: <EditFlavor /> },
+    // Payment Methods
+    { path: routes.paymentMethod.list, component: <ListFlavor /> },
+    { path: routes.paymentMethod.add, component: <AddFlavor /> },
+    { path: routes.paymentMethod.edit, component: <EditFlavor /> },
+    // Suppliers
+    { path: routes.supplier.list, component: <ListFlavor /> },
+    { path: routes.supplier.add, component: <AddFlavor /> },
+    { path: routes.supplier.edit, component: <EditFlavor /> },
+];
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
     return (
@@ -31,32 +86,13 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
             <Routes >
                 <Route element={<ProtectedRoute />} >
                     <Route path="/" element={<DefaultLayout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} >
-                        <Route index element={<Home />} />
-                        {/* Branches */}
-                        <Route path={routes.branch.list} element={<ListBranch />} />
-                        <Route path={routes.branch.add} element={<AddBranch />} />
-                        <Route path={routes.branch.edit} element={<EditBranch />} />
-                        {/* Products */}
-                        <Route path={routes.product.list} element={<ListProduct />} />
-                        <Route path={routes.product.add} element={<AddProduct />} />
-                        <Route path={routes.product.edit} element={<EditProduct />} />
-                        <Route path={routes.product.compositeComponents} element={<ListCompositeComponents />} />
-                        <Route path={routes.product.compositeComponentsAdd} element={<AddComponent />} />
-                        <Route path={routes.product.pricesAndCosts} element={<PricesAndCosts />} />
-                        {/* Categories */}
-                        <Route path={routes.category.list} element={<ListCategory />} />
-                        <Route path={routes.category.add} element={<AddCategory />} />
-                        <Route path={routes.category.edit} element={<EditCategory />} />
-                        {/* Units */}
-                        <Route path={routes.unit.list} element={<ListUnit />} />
-                        <Route path={routes.unit.add} element={<AddUnit />} />
-                        <Route path={routes.unit.edit} element={<EditUnit />} />
-                        {/* Flavors */}
-                        <Route path={routes.flavor.list} element={<ListFlavor />} />
-                        <Route path={routes.flavor.add} element={<AddFlavor />} />
-                        <Route path={routes.flavor.edit} element={<EditFlavor />} />
-
-
+                        {
+                            pagesList.map((page, index) => {
+                                return (
+                                    <Route key={index} path={page.path} element={page.component} />
+                                )
+                            })
+                        }
                     </Route>
                 </Route>
                 <Route element={<LoginRoute />} >

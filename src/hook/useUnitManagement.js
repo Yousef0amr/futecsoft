@@ -10,7 +10,7 @@ const useUnitManagement = () => {
         addMutationHook: useAddUnitMutation,
         updateMutationHook: useUpdateUnitMutation,
         deleteMutationHook: useDeleteUnitMutation,
-        cacheKey: 'getUnits',
+        cacheKey: 'getAll',
         defaultQueryArgs: {
             pageNumber: 1,
             pageSize: 10,

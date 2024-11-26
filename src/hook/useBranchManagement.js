@@ -11,7 +11,7 @@ const useBranchManagement = () => {
         addMutationHook: useAddBranchMutation,
         updateMutationHook: useUpdateBranchMutation,
         deleteMutationHook: useDeleteBranchMutation,
-        cacheKey: 'getBranches',
+        cacheKey: 'getAll',
         defaultQueryArgs: {
             pageNumber: 1,
             pageSize: 10,

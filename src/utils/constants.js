@@ -31,6 +31,36 @@ export const routes = {
         add: '/flavors/add',
         edit: '/flavors/edit'
     },
+    offer: {
+        list: '/offers/list',
+        add: '/offers/add',
+        edit: '/offers/edit'
+    },
+    discountType: {
+        list: '/discount-types/list',
+        add: '/discount-types/add',
+        edit: '/discount-types/edit'
+    },
+    tax: {
+        list: '/taxes/list',
+        add: '/taxes/add',
+        edit: '/taxes/edit'
+    },
+    currency: {
+        list: '/currencies/list',
+        add: '/currencies/add',
+        edit: '/currencies/edit'
+    },
+    paymentMethod: {
+        list: '/payment-methods/list',
+        add: '/payment-methods/add',
+        edit: '/payment-methods/edit'
+    },
+    supplier: {
+        list: '/suppliers/list',
+        add: '/suppliers/add',
+        edit: '/suppliers/edit'
+    }
 
 }
 
@@ -90,48 +120,52 @@ export const menuList = [
                 label: AppStrings.offers,
                 icon: faStar,
                 subActions: [
-                    { label: AppStrings.add, href: '/offers/add' },
-                    { label: AppStrings.list, href: '/offers/list' }
+                    { label: AppStrings.list, href: routes.offer.list },
+                    { label: AppStrings.add, href: routes.offer.add },
                 ]
             },
             {
                 label: AppStrings.discount_types,
                 icon: faPercent,
                 subActions: [
-                    { label: AppStrings.add, href: '/discount-types/add' },
-                    { label: AppStrings.list, href: '/discount-types/list' }
+                    { label: AppStrings.list, href: routes.discountType.list },
+                    { label: AppStrings.add, href: routes.discountType.add },
+
                 ]
             },
             {
                 label: AppStrings.taxes,
                 icon: faUsd,
                 subActions: [
-                    { label: AppStrings.add, href: '/taxes/add' },
-                    { label: AppStrings.list, href: '/taxes/list' }
+                    { label: AppStrings.list, href: routes.tax.list },
+                    { label: AppStrings.add, href: routes.tax.add },
+
                 ]
             },
             {
                 label: AppStrings.currencies,
                 icon: faMoneyBill,
                 subActions: [
-                    { label: AppStrings.add, href: '/currencies/add' },
-                    { label: AppStrings.list, href: '/currencies/list' }
+                    { label: AppStrings.list, href: routes.currency.list },
+                    { label: AppStrings.add, href: routes.currency.add },
+
                 ]
             },
             {
                 label: AppStrings.payment_methods,
                 icon: faCreditCard,
                 subActions: [
-                    { label: AppStrings.add, href: '/payment-methods/add' },
-                    { label: AppStrings.list, href: '/payment-methods/list' }
+                    { label: AppStrings.list, href: routes.paymentMethod.list },
+                    { label: AppStrings.add, href: routes.paymentMethod.add },
+
                 ]
             },
             {
                 label: AppStrings.suppliers,
                 icon: faVcard,
                 subActions: [
-                    { label: AppStrings.add, href: '/suppliers/add' },
-                    { label: AppStrings.list, href: '/suppliers/list' }
+                    { label: AppStrings.add, href: routes.supplier.add },
+                    { label: AppStrings.list, href: routes.supplier.list },
                 ]
             }
         ]
@@ -261,6 +295,8 @@ export const menuList = [
     }
 ];
 
+
+
 export const defaultProductValues = {
     Raw: {
         Discountable: true,
@@ -377,6 +413,43 @@ export const flavorsFormFields = [
     { name: 'Category', label: AppStrings.category, required: true, multiple: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
+
+
+
+
+export const offersFormFields = [
+    { name: 'OfferId', label: AppStrings.offerId, required: true, type: 'number', disabled: true },
+    { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
+    { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
+    { name: 'Branch', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+export const priceOfferFormFields = [
+    { name: 'Price', label: AppStrings.price, required: true, type: 'number' },
+]
+
+export const qtyOfferFormFields = [
+    ...priceOfferFormFields,
+    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+]
+
+export const extraOfferFormFields = [
+    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'ExtraProduct', label: AppStrings.free_product, required: true, type: 'text' },
+]
+
+export const offerTypeFormFields = [
+    { name: 'PriceOffer', label: AppStrings.isActive, type: 'check' },
+    { name: 'QtyOffer', label: AppStrings.isActive, type: 'check' },
+    { name: 'ExtraOffer', label: AppStrings.isActive, type: 'check' },
+]
+
+
+
+
+
 
 
 

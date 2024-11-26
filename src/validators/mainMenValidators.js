@@ -97,6 +97,22 @@ const MainMenuValidators = () => {
         IsActive: yup.boolean().optional(),
     }
 
+    const offerSchemaValidator = {
+        OfferId: yup.string().required(t(AppStrings.offerId_required)).nullable(),
+        Product: yup.string().required(t(AppStrings.flavorNameAr_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.flavorNameEn_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.price_required)).nullable(),
+        Branch: yup.string().required(t(AppStrings.branch_required)),
+        Price: yup.string().optional(),
+        Qty: yup.string().optional(),
+        ExtraProduct: yup.string().optional(),
+        isActive: yup.boolean().optional(),
+        PriceOffer: yup.boolean().optional(),
+        QtyOffer: yup.boolean().optional(),
+        ExtraOffer: yup.boolean().optional(),
+    }
+
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -104,7 +120,8 @@ const MainMenuValidators = () => {
         pricesAndCostsSchemaValidator,
         categorySchemaValidator,
         unitSchemaValidator,
-        flavorSchemaValidator
+        flavorSchemaValidator,
+        offerSchemaValidator
     }
 }
 

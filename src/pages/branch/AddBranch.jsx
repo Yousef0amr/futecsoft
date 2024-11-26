@@ -4,7 +4,7 @@ import BranchForm from '../../components/branch/BranchForm'
 import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
-import { useGetCurrentkeyQuery } from '../../features/branchesSlice';
+import { useGetCurrentBranchKeyQuery } from '../../features/branchesSlice';
 import NavButton from '../../components/common/NavButton';
 import { routes } from '../../utils/constants';
 import useBranchManagement from '../../hook/useBranchManagement';
@@ -14,7 +14,7 @@ const AddBranch = () => {
     const { t } = useTranslation();
     const { addEntity, isAdding, addEntityToCache } = useBranchManagement();
     const { handleEntityOperation } = useEntityOperations({ addEntity });
-    const { data: currentKey } = useGetCurrentkeyQuery();
+    const { data: currentKey } = useGetCurrentBranchKeyQuery();
 
     const onSubmit = async (data) => {
         handleEntityOperation({

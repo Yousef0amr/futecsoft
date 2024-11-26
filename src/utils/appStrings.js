@@ -168,7 +168,27 @@ const AppStrings = {
     flavor_deleted_successfully: 'flavor_deleted_successfully',
     add_new_flavor: 'add_new_flavor',
     list_flavors: 'list_flavors',
-    edit_flavor: 'edit_flavor'
+    edit_flavor: 'edit_flavor',
+    add_new_offer: 'add_new_offer',
+    list_offers: 'list_offers',
+    edit_offer: 'edit_offer',
+    offerId: 'offerId',
+    offerId_required: 'offerId_required',
+    offerNameAr: 'offerNameAr',
+    offerNameEn: 'offerNameEn',
+    offerNameAr_required: 'offerNameAr_required',
+    offerNameEn_required: 'offerNameEn_required',
+    offer_added_successfully: 'offer_added_successfully',
+    offer_updated_successfully: 'offer_updated_successfully',
+    offer_deleted_successfully: 'offer_deleted_successfully',
+    to_date: 'to_date',
+    from_date: 'from_date',
+    offerTypeAr: 'offerTypeAr',
+    offerTypeEn: 'offerTypeEn',
+    offerValue: 'offerValue',
+    free_product: 'free_product',
+    product: 'product',
+
 
 }
 

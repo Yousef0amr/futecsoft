@@ -37,7 +37,6 @@ const useEntityOperations = ({ addEntity = () => { }, updateEntity = () => { }, 
                 throw new Error(result?.Success);
             }
         } catch (e) {
-            console.log(e);
             error(t(errorMessage));
         } finally {
             finalCallback && finalCallback();

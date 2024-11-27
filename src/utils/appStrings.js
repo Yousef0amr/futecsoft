@@ -188,8 +188,9 @@ const AppStrings = {
     offerValue: 'offerValue',
     free_product: 'free_product',
     product: 'product',
-
-
+    price_offer: 'price_offer',
+    from_date_required: 'from_date_required',
+    to_date_required: 'to_date_required'
 }
 
 export default AppStrings

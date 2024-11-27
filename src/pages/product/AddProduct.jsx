@@ -7,7 +7,7 @@ import AppStrings from '../../utils/appStrings';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
 import useProductManagement from '../../hook/useProductManagement';
-import { defaultProductValues, routes } from '../../utils/constants';
+import { defaultProductValues, productTypeFormFields, routes } from '../../utils/constants';
 import useEntityOperations from '../../hooks/useEntityOperations';
 
 const AddProduct = () => {
@@ -35,7 +35,7 @@ const AddProduct = () => {
     return (
         <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)} optionComponent={
             <>
-                <TabsSelect handleTabClick={handleTabClick} activeTab={type} />
+                <TabsSelect handleTabClick={handleTabClick} activeTab={type} options={productTypeFormFields} />
                 <NavButton icon={'list'} title={AppStrings.list_products} path={routes.product.list} />
             </>
         }  >

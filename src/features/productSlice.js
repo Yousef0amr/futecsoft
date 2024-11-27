@@ -59,6 +59,20 @@ export const productsApi = createApi({
             transformResponse: (response) => response.Response,
             providesTags: ['Product_id']
         }),
+        getAllProducts: builder.query({
+            query: ({ pageNumber, pageSize }) => ({
+                url: `/GetAll?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
+            }),
+            keepUnusedDataFor: longCacheTime,
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformProductData(item));
+                } else {
+                    return [];
+                }
+            },
+        }),
         getProductByType: builder.query({
             query: ({ pageNumber, pageSize, branch, productType }) => ({
                 url: `/GetAllByType?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}&Warehouse=${branch}&Type=${productType}`,
@@ -187,7 +201,8 @@ export const {
     useLazyGetProductsCostsQuery,
     useUpdateProductMutation,
     useGetProductUnitsByIdQuery,
-
+    useLazyGetProductsByCategoryQuery,
     useUpdateComponentMutation,
-    useDeleteComponentMutation
+    useDeleteComponentMutation,
+    useGetAllProductsQuery
 } = productsApi;

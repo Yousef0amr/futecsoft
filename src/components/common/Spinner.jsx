@@ -1,12 +1,12 @@
 import React from 'react'
 import Spinner from 'react-bootstrap/Spinner';
-const SpinnerLoader = () => {
+const SpinnerLoader = ({ size = 'sm' }) => {
     return (
 
         <Spinner
             as="span"
             animation="border"
-            size="sm"
+            size={size}
             role="status"
             aria-hidden="true"
         />

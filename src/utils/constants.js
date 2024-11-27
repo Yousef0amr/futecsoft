@@ -367,6 +367,14 @@ export const productComponentsFormFields1 = [
     { name: 'Unit', label: AppStrings.unit, required: true, options: [], type: 'select' },
 ];
 
+
+export const productTypeFormFields = [
+    { name: 'Raw', label: AppStrings.raw_materials, type: 'check' },
+    { name: 'Standard', label: AppStrings.finished_materials, type: 'check' },
+    { name: 'Composite', label: AppStrings.assembled_materials, type: 'check' },
+]
+
+
 export const branchFormFields = [
     { name: 'BranchId', label: AppStrings.branchId, required: true, type: 'number', disabled: true },
     { name: 'BranchNameAr', label: AppStrings.branchNameAr, required: true, type: 'text' },
@@ -422,28 +430,28 @@ export const offersFormFields = [
     { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
     { name: 'Branch', label: AppStrings.branch, required: true, options: [], type: 'select' },
-    // { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
+    { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
 
 export const priceOfferFormFields = [
-    { name: 'Price', label: AppStrings.price, required: true, type: 'number' },
+    { name: 'Price', label: AppStrings.price, required: false, type: 'number' },
 ]
 
 export const qtyOfferFormFields = [
     ...priceOfferFormFields,
-    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'Qty', label: AppStrings.quantity, required: false, type: 'number' },
 ]
 
 export const extraOfferFormFields = [
-    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
-    { name: 'ExtraProduct', label: AppStrings.free_product, required: true, type: 'text' },
+    { name: 'Qty', label: AppStrings.quantity, required: false, type: 'number' },
+    { name: 'ExtraProduct', label: AppStrings.free_product, required: false, options: [], type: 'select' },
 ]
 
 export const offerTypeFormFields = [
-    { name: 'PriceOffer', label: AppStrings.isActive, type: 'check' },
-    { name: 'QtyOffer', label: AppStrings.isActive, type: 'check' },
-    { name: 'ExtraOffer', label: AppStrings.isActive, type: 'check' },
+    { name: 'PriceOffer', label: AppStrings.price_offer, type: 'check' },
+    { name: 'QtyOffer', label: AppStrings.quantity, type: 'check' },
+    { name: 'ExtraOffer', label: AppStrings.free_product, type: 'check' },
 ]
 
 

@@ -2,18 +2,21 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { productFormFields, productSelectFormFields } from '../../utils/constants';
 import { useLazyGetCurrentProductkeyQuery } from '../../features/productSlice';
-import { useGetTaxesQuery } from '../../features/taxSlice';
 import FormFieldsComponent from '../common/FormFieldsComponent';
 import useCategoryManagement from './../../hook/useCategoryManagement'
 import useBranchManagement from './../../hook/useBranchManagement'
 import useUnitManagement from './../../hook/useUnitManagement'
+import useTaxManagement from '../../hook/useTaxManagement';
 
 const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
 
     const { data: categoriesData, isLoading: isLoadingCategories } = useCategoryManagement();
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
-    const { data: taxesData, isLoading: isLoadingTaxes } = useGetTaxesQuery({ pageNumber: 1, pageSize: 10 });
+    const { data: taxesData, isLoading: isLoadingTaxes } = useTaxManagement();
     const { data: unitsData, isLoading: isLoadingUnits } = useUnitManagement();
+
+
+
 
     const categories = !isLoadingCategories
         ? categoriesData?.map((item) => ({ value: item.Id, label: item.NameAr }))

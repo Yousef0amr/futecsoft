@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Checkbox from '@mui/material/Checkbox';
+import SpinnerLoader from '../common/Spinner';
 
 const SelectMenu = ({
     options,
@@ -14,7 +15,8 @@ const SelectMenu = ({
     multiple = false,
     onChange,
     required,
-    errors
+    errors,
+    isLoading
 }) => {
     const [open, setOpen] = useState(false);
     const { t } = useTranslation();
@@ -89,8 +91,8 @@ const SelectMenu = ({
             >
 
 
-                <MenuItem value="" disabled>
-                    {t(`${AppStrings.choose}`) + ' ' + t(label)}
+                <MenuItem value={'' || '-1'} disabled className='d-flex align-items-center gap-2' >
+                    {t(`${AppStrings.choose}`) + ' ' + t(label)}    {isLoading && <SpinnerLoader />}
                 </MenuItem>
 
                 {options.length > 0 ? (

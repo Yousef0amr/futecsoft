@@ -5,7 +5,7 @@ import SelectMenu from './SelectMenu'
 import CheckBox from './CheckBox'
 
 
-const FormFieldsComponent = ({ fields, options, triggerEvent = () => { }, register, errors, watch, setValue }) => {
+const FormFieldsComponent = ({ isLoading, fields, options, triggerEvent = () => { }, register, errors, watch, setValue }) => {
     return (
         <Row style={{ marginTop: '10px' }}>
             {fields.map((field) => {
@@ -37,6 +37,7 @@ const FormFieldsComponent = ({ fields, options, triggerEvent = () => { }, regist
                             }
                             label={field.label}
                             required={field.required}
+                            isLoading={isLoading}
                         />
                     }
                     {

@@ -176,8 +176,8 @@
     "edit_flavor": "تعديل النكهة",
     "offerId": "رقم العرض",
     "offerId_required": "رقم العرض مطلوب",
-    "offerNameAr": "اسم العرض (بالعربية)",
-    "offerNameEn": "اسم العرض (بالإنجليزية)",
+    "offerNameAr": "مادة العرض (بالعربية)",
+    "offerNameEn": "مادة العرض (بالإنجليزية)",
     "offerNameAr_required": "اسم العرض باللغة العربية مطلوب",
     "offerNameEn_required": "اسم العرض باللغة الإنجليزية مطلوب",
     "offer_added_successfully": "تمت إضافة العرض بنجاح",
@@ -192,5 +192,9 @@
     "from_date": "تاريخ البدء",
     "to_date": "تاريخ الانتهاء",
     "free_products": "مادة مجانية",
-    "product": "المادة"
+    "product": "المادة",
+    "price_offer": "سعر البيع",
+    "free_product": "مادة مجانية",
+    "from_date_required": "تاريخ البدء مطلوب",
+    "to_date_required": "تاريخ الانتهاء مطلوب"
 }

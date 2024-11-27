@@ -3,7 +3,7 @@ import createDynamicApi from '../utils/generateApiSlice.js';
 
 export const taxesApi = createDynamicApi({
     reducerPath: 'taxesApi',
-    baseUrl: BASEURL + TAXES,
+    baseEndpoint: BASEURL + TAXES,
 });
 
 export const {

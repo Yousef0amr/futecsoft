@@ -4,9 +4,9 @@ import AppStrings from '../../utils/appStrings'
 import FormCard from './FormCard'
 import NavButton from './NavButton'
 
-const EditComponent = ({ icon, title, path, children }) => {
+const EditComponent = ({ icon, title, path, optionComponent, children }) => {
     return (
-        <FormCard open={false} icon={icon} title={title} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={path} />}>
+        <FormCard open={false} icon={icon} title={title} optionComponent={optionComponent} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={path} />}>
             {children}
         </FormCard>
     )

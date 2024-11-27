@@ -99,9 +99,9 @@ const MainMenuValidators = () => {
 
     const offerSchemaValidator = {
         OfferId: yup.string().required(t(AppStrings.offerId_required)).nullable(),
-        Product: yup.string().required(t(AppStrings.flavorNameAr_required)).nullable(),
-        FromDate: yup.string().required(t(AppStrings.flavorNameEn_required)).nullable(),
-        ToDate: yup.string().required(t(AppStrings.price_required)).nullable(),
+        Product: yup.string().required(t(AppStrings.product_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
         Branch: yup.string().required(t(AppStrings.branch_required)),
         Price: yup.string().optional(),
         Qty: yup.string().optional(),

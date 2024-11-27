@@ -56,6 +56,7 @@ export const categoriesApi = createApi({
             query: (id) => ({
                 url: `/GetAllByWarehouse?Warehouse=${id}`,
             }),
+            keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response
         }),
         addCategory: builder.mutation({

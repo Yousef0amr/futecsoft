@@ -10,13 +10,13 @@ import TabsSelect from '../../components/common/TabsSelect';
 import { useProductColDefs } from '../../config/agGridColConfig';
 import useProductManagement from '../../hook/useProductManagement';
 import useTableActions from '../../hooks/useTableActions';
-import { routes } from '../../utils/constants';
+import { productTypeFormFields, routes } from '../../utils/constants';
 import useEntityOperations from '../../hooks/useEntityOperations';
 
 const ListProduct = () => {
     const { t } = useTranslation();
     const productColDefs = useProductColDefs();
-    const [activeTab, setActiveTab] = useState("Raw");
+    const [activeTab, setActiveTab] = useState(productTypeFormFields[0].name);
     const { data, isLoading, deleteEntity, isDeleting, deleteEntityFromCache } = useProductManagement(activeTab);
     const { handleEntityOperation } = useEntityOperations({ deleteEntity });
     const [quickFilterText, setQuickFilterText] = useState();
@@ -60,7 +60,7 @@ const ListProduct = () => {
             navButton={<NavButton icon={'add'} title={AppStrings.add_new_product} path={routes.product.add} />}
             optionComponent={
                 <>
-                    <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} />
+                    <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} options={productTypeFormFields} />
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }

@@ -33,7 +33,7 @@ const useEntityManagement = ({
     defaultQueryArgs,
     identifier = 'Id',
 }) => {
-    const { data, isLoading } = queryHook(defaultQueryArgs);
+    const { data, isLoading, refetch } = queryHook(defaultQueryArgs);
     const [addEntity, { isLoading: isAdding }] = addMutationHook();
     const [updateEntity, { isLoading: isUpdating }] = updateMutationHook();
     const [deleteEntity, { isLoading: isDeleting }] = deleteMutationHook();
@@ -101,6 +101,7 @@ const useEntityManagement = ({
     return {
         data,
         isLoading,
+        refetch,
         addEntity,
         isAdding,
         updateEntity,

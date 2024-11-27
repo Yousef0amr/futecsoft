@@ -141,11 +141,9 @@ export const useOffersColDefs = () => {
         { field: "OfferId", headerName: t(AppStrings.offerId), filter: 'agTextColumnFilter' },
         { field: i18n.language === 'en' ? "ProductNameEn" : "ProductNameAr", headerName: t(i18n.language === 'en' ? AppStrings.offerNameEn : AppStrings.offerNameAr), filter: 'agTextColumnFilter' },
         { field: i18n.language === 'en' ? "OfferTypeEn" : "OfferTypeAr", headerName: t(i18n.language === 'en' ? AppStrings.offerTypeEn : AppStrings.offerTypeAr), filter: 'agTextColumnFilter' },
-        { field: "offerValueAr", headerName: t(AppStrings.offerValue), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "offerValueEn" : "offerValueAr", headerName: t(AppStrings.offerValue), filter: 'agTextColumnFilter' },
         { field: "FromDate", headerName: t(AppStrings.from_date), filter: 'agTextColumnFilter' },
         { field: "ToDate", headerName: t(AppStrings.to_date), filter: 'agTextColumnFilter' },
-        { field: "Price", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
-        { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
     ], [t, i18n]);
 };

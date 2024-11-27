@@ -73,7 +73,7 @@
     "productNameEn": "Product Name (English)",
     "category": "Category",
     "barcode": "Barcode",
-    "price": "Price 1",
+    "price": "Price",
     "price2": "Price 2",
     "price3": "Price 3",
     "price4": "Price 4",
@@ -178,8 +178,8 @@
     "edit_flavor": "Edit Flavor",
     "offerId": "Offer ID",
     "offerId_required": "Offer ID is required",
-    "offerNameAr": "Offer Name (Arabic)",
-    "offerNameEn": "Offer Name (English)",
+    "offerNameAr": "Offer Product (Arabic)",
+    "offerNameEn": "Offer Product (English)",
     "offerNameAr_required": "Offer Name (Arabic) is required",
     "offerNameEn_required": "Offer Name (English) is required",
     "offer_added_successfully": "Offer added successfully",
@@ -194,5 +194,8 @@
     "to_date": "To Date",
     "from_date": "From Date",
     "free_product": "Free Product",
-    "product": "Product"
+    "product": "Product",
+    "price_offer": "Price Offer",
+    "from_date_required": "From Date is required",
+    "to_date_required": "To Date is required"
 }

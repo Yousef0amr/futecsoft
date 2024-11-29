@@ -37,9 +37,7 @@ const ListOffer = () => {
                 <NavButton icon={'add'} title={AppStrings.add_new_offer} path={routes.offer.add} />
             </>
         }>
-            <div className='w-100 p-1 mt-4'>
-                <AgGridTable actions={defaultActions} dynamicColumns={offerCols} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
-            </div>
+            <AgGridTable actions={defaultActions} dynamicColumns={offerCols} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
         </FormCard>
     )
 }

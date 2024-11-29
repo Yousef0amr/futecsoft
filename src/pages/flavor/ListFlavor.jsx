@@ -38,9 +38,7 @@ const ListFlavor = () => {
                 <NavButton icon={'add'} title={AppStrings.add_new_flavor} path={routes.flavor.add} />
             </>
         }>
-            <div className='w-100 p-1 mt-4'>
-                <AgGridTable actions={defaultActions} dynamicColumns={flavorCols} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
-            </div>
+            <AgGridTable actions={defaultActions} dynamicColumns={flavorCols} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
         </FormCard>
     )
 }

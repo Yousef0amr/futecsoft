@@ -456,6 +456,26 @@ export const offerTypeFormFields = [
 
 
 
+export const discountsFormFields = [
+    { name: 'Serial', label: AppStrings.discountId, required: true, type: 'number', disabled: true },
+    { name: 'DiscountPercentage', label: AppStrings.discount_percentage, required: true, type: 'number' },
+    { name: 'DiscountTypeAR', label: AppStrings.discount_type_ar, required: true, type: 'text' },
+    { name: 'DiscountTypeEN', label: AppStrings.discount_type_en, required: true, type: 'text' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+export const taxsFormFields = [
+    { name: 'TaxId', label: AppStrings.tax_type_id, required: true, type: 'number', disabled: true },
+    { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: true, type: 'number' },
+    { name: 'TaxAr', label: AppStrings.tax_type_ar, required: true, type: 'text' },
+    { name: 'TaxEn', label: AppStrings.tax_type_en, required: true, type: 'text' },
+    { name: 'TaxIsActive', label: AppStrings.isActive, type: 'check' },
+    { name: 'IsDefault', label: AppStrings.isDefault, type: 'check' },
+]
+
+
+
+
 
 
 

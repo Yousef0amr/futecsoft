@@ -148,3 +148,33 @@ export const useOffersColDefs = () => {
     ], [t, i18n]);
 };
 
+
+
+export const useDiscountsColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Serial", headerName: t(AppStrings.discountId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "DiscountTypeEN" : "DiscountTypeAR", headerName: t(i18n.language === 'en' ? AppStrings.discount_type_en : AppStrings.discount_type_ar), filter: 'agTextColumnFilter' },
+        { field: "DiscountPercentage", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+};
+
+
+export const useTaxsColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "TaxId", headerName: t(AppStrings.tax_type_id), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "TaxEn" : "TaxAr", headerName: t(i18n.language === 'en' ? AppStrings.tax_type_en : AppStrings.tax_type_ar), filter: 'agTextColumnFilter' },
+        { field: "TaxPercentage", headerName: t(AppStrings.taxPercentage), filter: 'agTextColumnFilter' },
+        { field: "TaxIsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+        { field: "IsDefault", headerName: t(AppStrings.isDefault), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+};
+
+
+
+
+

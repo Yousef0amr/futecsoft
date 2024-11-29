@@ -8,7 +8,6 @@ import FormCard from '../../components/common/FormCard';
 import { faAdd, faShuffle } from '@fortawesome/free-solid-svg-icons';
 import FilterSearch from '../../components/common/FilterSearch';
 import NavButton from '../../components/common/NavButton';
-import BranchForm from '../../components/branch/BranchForm';
 import { useBranchColDefs } from '../../config/agGridColConfig';
 import useBranchManagement from '../../hook/useBranchManagement';
 import { routes } from '../../utils/constants';
@@ -43,9 +42,7 @@ const ListBranch = () => {
                 <NavButton icon={faAdd} title={AppStrings.add_new_branch} path={routes.branch.add} />
             </>
         }>
-            <div className='w-100 p-1 mt-4'>
-                <AgGridTable actions={defaultActions} EditForm={BranchForm} dynamicColumns={branchColDefs} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
-            </div>
+            <AgGridTable actions={defaultActions} dynamicColumns={branchColDefs} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
         </FormCard>
     );
 };

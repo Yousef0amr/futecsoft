@@ -18,7 +18,7 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
             field: t(AppStrings.actions),
             cellRenderer: actionsCellRenderer,
             cellRendererParams: actions,
-            minWidth: 194,
+            minWidth: 194
         } : { width: 0 },
         ...dynamicColumns,
     ], [dynamicColumns, t, actionsCellRenderer, actions, enableActions]);
@@ -44,24 +44,22 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
 
     <AgGridReact rowSelection={rowSelection} />
     return (
-        <div style={{ width: '100%' }}>
-            <div className="ag-theme-alpine" style={{ height: '70vh' }}>
-                <AgGridReact
-                    key={i18n.language}
-                    rowSelection={rowSelection}
-                    loading={isLoading}
-                    pagination={true}
-                    paginationPageSize={10}
-                    rowData={rowData}
-                    paginationPageSizeSelector={[10, 20, 50, 100]}
-                    columnDefs={colDefs}
-                    quickFilterText={quickFilterText}
-                    defaultColDef={{ cellStyle: { display: 'flex', justifyContent: 'center', alignItems: 'center' } }}
-                    domLayout='normal'
-                    enableRtl={isRtl}
-                    localeText={localeText}
-                />
-            </div>
+        <div className="ag-theme-alpine w-100 p-1 mt-4" style={{ height: '70vh' }}>
+            <AgGridReact
+                key={i18n.language}
+                rowSelection={rowSelection}
+                loading={isLoading}
+                pagination={true}
+                paginationPageSize={10}
+                rowData={rowData}
+                paginationPageSizeSelector={[10, 20, 50, 100]}
+                columnDefs={colDefs}
+                quickFilterText={quickFilterText}
+                defaultColDef={{ cellStyle: { display: 'flex', alignItems: 'center' } }}
+                domLayout='normal'
+                enableRtl={isRtl}
+                localeText={localeText}
+            />
         </div>
     );
 });

@@ -113,6 +113,28 @@ const MainMenuValidators = () => {
     }
 
 
+
+
+
+    const discountSchemaValidator = {
+        Serial: yup.string().optional(),
+        DiscountPercentage: yup.number().required(t(AppStrings.discount_percentage_required)).nullable(),
+        DiscountTypeAR: yup.string().required(t(AppStrings.discount_type_ar_required)).nullable(),
+        DiscountTypeEN: yup.string().required(t(AppStrings.discount_type_en_required)).nullable(),
+        IsActive: yup.boolean().optional(),
+    }
+
+
+    const taxSchemaValidator = {
+        TaxId: yup.string().required(t(AppStrings.taxId_required)).nullable(),
+        TaxPercentage: yup.string().required(t(AppStrings.taxPercentage_required)).nullable(),
+        TaxAr: yup.string().required(t(AppStrings.tax_type_ar_required)).nullable(),
+        TaxEn: yup.string().required(t(AppStrings.tax_type_en_required)).nullable(),
+        TaxIsActive: yup.boolean().optional(),
+        IsDefault: yup.boolean().optional(),
+    }
+
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -121,7 +143,9 @@ const MainMenuValidators = () => {
         categorySchemaValidator,
         unitSchemaValidator,
         flavorSchemaValidator,
-        offerSchemaValidator
+        offerSchemaValidator,
+        discountSchemaValidator,
+        taxSchemaValidator
     }
 }
 

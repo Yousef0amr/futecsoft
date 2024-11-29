@@ -27,6 +27,12 @@ import EditFlavor from '../pages/flavor/EditFlavor'
 import ListOffer from '../pages/offer/ListOffer'
 import AddOffer from '../pages/offer/AddOffer'
 import EditOffer from '../pages/offer/EditOffer'
+import AddDiscount from '../pages/discount/AddDiscount'
+import ListDiscount from '../pages/discount/ListDiscount'
+import EditDiscount from '../pages/discount/EditDiscount'
+import ListTax from '../pages/tax/ListTax'
+import AddTax from '../pages/tax/AddTax'
+import EditTax from '../pages/tax/EditTax'
 
 
 const pagesList = [
@@ -59,13 +65,13 @@ const pagesList = [
     { path: routes.offer.add, component: <AddOffer /> },
     { path: routes.offer.edit, component: <EditOffer /> },
     // Discounts
-    { path: routes.discountType.list, component: <ListFlavor /> },
-    { path: routes.discountType.add, component: <AddFlavor /> },
-    { path: routes.discountType.edit, component: <EditFlavor /> },
+    { path: routes.discountType.list, component: <ListDiscount /> },
+    { path: routes.discountType.add, component: <AddDiscount /> },
+    { path: routes.discountType.edit, component: <EditDiscount /> },
     // Taxes
-    { path: routes.tax.list, component: <ListFlavor /> },
-    { path: routes.tax.add, component: <AddFlavor /> },
-    { path: routes.tax.edit, component: <EditFlavor /> },
+    { path: routes.tax.list, component: <ListTax /> },
+    { path: routes.tax.add, component: <AddTax /> },
+    { path: routes.tax.edit, component: <EditTax /> },
     // Currencies
     { path: routes.currency.list, component: <ListFlavor /> },
     { path: routes.currency.add, component: <AddFlavor /> },

@@ -10,7 +10,9 @@ const useValidators = () => {
         categorySchemaValidator,
         unitSchemaValidator,
         flavorSchemaValidator,
-        offerSchemaValidator
+        offerSchemaValidator,
+        discountSchemaValidator,
+        taxSchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -21,6 +23,8 @@ const useValidators = () => {
     const unitSchema = yup.object(unitSchemaValidator);
     const flavorSchema = yup.object(flavorSchemaValidator);
     const offerSchema = yup.object(offerSchemaValidator);
+    const discountSchema = yup.object(discountSchemaValidator);
+    const taxSchema = yup.object(taxSchemaValidator);
 
 
     return {
@@ -31,7 +35,9 @@ const useValidators = () => {
         categorySchema,
         unitSchema,
         flavorSchema,
-        offerSchema
+        offerSchema,
+        discountSchema,
+        taxSchema
     };
 };
 

@@ -40,9 +40,7 @@ const ListCategory = () => {
                 <NavButton icon={'add'} title={AppStrings.add_new_category} path={routes.category.add} />
             </>
         }>
-            <div className='w-100 p-1 mt-4'>
-                <AgGridTable actions={defaultActions} dynamicColumns={categoryCols} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
-            </div>
+            <AgGridTable actions={defaultActions} dynamicColumns={categoryCols} rowData={data} isLoading={isLoading} quickFilterText={quickFilterText} />
         </FormCard>
     )
 }

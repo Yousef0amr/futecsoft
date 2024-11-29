@@ -8,6 +8,7 @@ import { unitsApi } from "../features/unitSlice";
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { flavorsApi } from "../features/flavorsSlice";
 import { offersApi } from "../features/offerSlice";
+import { discountsApi } from "../features/discountSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,7 +19,8 @@ const store = configureStore({
         [taxesApi.reducerPath]: taxesApi.reducer,
         [unitsApi.reducerPath]: unitsApi.reducer,
         [flavorsApi.reducerPath]: flavorsApi.reducer,
-        [offersApi.reducerPath]: offersApi.reducer
+        [offersApi.reducerPath]: offersApi.reducer,
+        [discountsApi.reducerPath]: discountsApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
@@ -28,7 +30,8 @@ const store = configureStore({
         taxesApi.middleware,
         unitsApi.middleware,
         flavorsApi.middleware,
-        offersApi.middleware
+        offersApi.middleware,
+        discountsApi.middleware
     ),
 });
 

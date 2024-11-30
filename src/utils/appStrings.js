@@ -216,7 +216,18 @@ const AppStrings = {
     list_taxes: 'list_taxes',
     edit_tax: 'edit_tax',
     taxId_required: 'taxId_required',
-    tax_type_id: 'tax_type_id'
+    tax_type_id: 'tax_type_id',
+    currencyId: 'currencyId',
+    currencyId_required: 'currencyId_required',
+    iDigits: 'iDigits',
+    iDigits_required: 'iDigits_required',
+    currency_added_successfully: 'currency_added_successfully',
+    currency_updated_successfully: 'currency_updated_successfully',
+    currency_deleted_successfully: 'currency_deleted_successfully',
+    add_new_currency: 'add_new_currency',
+    list_currencies: 'list_currencies',
+    edit_currency: 'edit_currency',
+
 }
 
 export default AppStrings

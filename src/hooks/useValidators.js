@@ -12,7 +12,8 @@ const useValidators = () => {
         flavorSchemaValidator,
         offerSchemaValidator,
         discountSchemaValidator,
-        taxSchemaValidator
+        taxSchemaValidator,
+        currencySchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -25,6 +26,7 @@ const useValidators = () => {
     const offerSchema = yup.object(offerSchemaValidator);
     const discountSchema = yup.object(discountSchemaValidator);
     const taxSchema = yup.object(taxSchemaValidator);
+    const currencySchema = yup.object(currencySchemaValidator);
 
 
     return {
@@ -37,7 +39,8 @@ const useValidators = () => {
         flavorSchema,
         offerSchema,
         discountSchema,
-        taxSchema
+        taxSchema,
+        currencySchema
     };
 };
 

@@ -33,6 +33,9 @@ import EditDiscount from '../pages/discount/EditDiscount'
 import ListTax from '../pages/tax/ListTax'
 import AddTax from '../pages/tax/AddTax'
 import EditTax from '../pages/tax/EditTax'
+import ListCurreny from '../pages/Currency/ListCurreny'
+import EditCurrency from '../pages/Currency/EditCurrency'
+import AddCurrency from '../pages/Currency/AddCurrency'
 
 
 const pagesList = [
@@ -73,9 +76,9 @@ const pagesList = [
     { path: routes.tax.add, component: <AddTax /> },
     { path: routes.tax.edit, component: <EditTax /> },
     // Currencies
-    { path: routes.currency.list, component: <ListFlavor /> },
-    { path: routes.currency.add, component: <AddFlavor /> },
-    { path: routes.currency.edit, component: <EditFlavor /> },
+    { path: routes.currency.list, component: <ListCurreny /> },
+    { path: routes.currency.add, component: <AddCurrency /> },
+    { path: routes.currency.edit, component: <EditCurrency /> },
     // Payment Methods
     { path: routes.paymentMethod.list, component: <ListFlavor /> },
     { path: routes.paymentMethod.add, component: <AddFlavor /> },

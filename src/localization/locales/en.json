@@ -227,5 +227,15 @@
     "taxTypeEn": "Tax Type (English)",
     "taxTypeAr_required": "Tax Type (Arabic) is required",
     "taxTypeEn_required": "Tax Type (English) is required",
-    "tax_type_id": "Tax  ID"
+    "tax_type_id": "Tax  ID",
+    "currencyId": "Currency ID",
+    "currencyId_required": "Currency ID is required",
+    "iDigits": "Digits",
+    "iDigits_required": "Digits is required",
+    "currency_added_successfully": "Currency added successfully",
+    "currency_updated_successfully": "Currency updated successfully",
+    "currency_deleted_successfully": "Currency deleted successfully",
+    "add_new_currency": "Add New Currency",
+    "list_currencies": "List of Currencies",
+    "edit_currency": "Edit Currency"
 }

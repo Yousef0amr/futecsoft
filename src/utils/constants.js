@@ -475,6 +475,14 @@ export const taxsFormFields = [
 
 
 
+export const currenciesFormFields = [
+    { name: 'CurrencyId', label: AppStrings.currencyId, required: true, type: 'text', disabled: true },
+    { name: 'IDigits', label: AppStrings.iDigits, required: true, type: 'number' },
+    { name: 'IsDefault', label: AppStrings.isDefault, type: 'check' },
+]
+
+
+
 
 
 

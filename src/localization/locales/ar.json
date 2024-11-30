@@ -222,5 +222,15 @@
     "list_taxes": "قائمة الضرايب",
     "edit_tax": "تعديل الضريبة",
     "taxId_required": "رقم الضريبة مطلوب",
-    "tax_type_id": "رقم الضريبة"
+    "tax_type_id": "رقم الضريبة",
+    "currencyId": "رقم العملة",
+    "currencyId_required": "رقم العملة مطلوب",
+    "iDigits": "الخانات العشرية",
+    "iDigits_required": "الخانات العشرية مطلوبة",
+    "currency_added_successfully": "تمت إضافة العملة بنجاح",
+    "currency_updated_successfully": "تم تحديث العملة بنجاح",
+    "currency_deleted_successfully": "تم حذف العملة بنجاح",
+    "add_new_currency": "إضافة عملة جديدة",
+    "list_currencies": "قائمة العملات",
+    "edit_currency": "تعديل العملة"
 }

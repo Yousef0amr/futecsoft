@@ -9,6 +9,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { flavorsApi } from "../features/flavorsSlice";
 import { offersApi } from "../features/offerSlice";
 import { discountsApi } from "../features/discountSlice";
+import { currenciesApi } from "../features/currencySlice";
 
 const store = configureStore({
     reducer: {
@@ -20,7 +21,8 @@ const store = configureStore({
         [unitsApi.reducerPath]: unitsApi.reducer,
         [flavorsApi.reducerPath]: flavorsApi.reducer,
         [offersApi.reducerPath]: offersApi.reducer,
-        [discountsApi.reducerPath]: discountsApi.reducer
+        [discountsApi.reducerPath]: discountsApi.reducer,
+        [currenciesApi.reducerPath]: currenciesApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
@@ -31,7 +33,8 @@ const store = configureStore({
         unitsApi.middleware,
         flavorsApi.middleware,
         offersApi.middleware,
-        discountsApi.middleware
+        discountsApi.middleware,
+        currenciesApi.middleware
     ),
 });
 

@@ -134,6 +134,11 @@ const MainMenuValidators = () => {
         IsDefault: yup.boolean().optional(),
     }
 
+    const currencySchemaValidator = {
+        CurrencyId: yup.string().required(t(AppStrings.currencyId_required)).nullable(),
+        IDigits: yup.number().required(t(AppStrings.iDigits_required)).nullable(),
+        IsDefault: yup.boolean().optional(),
+    }
 
     return {
         branchSchemaValidator,
@@ -145,7 +150,8 @@ const MainMenuValidators = () => {
         flavorSchemaValidator,
         offerSchemaValidator,
         discountSchemaValidator,
-        taxSchemaValidator
+        taxSchemaValidator,
+        currencySchemaValidator
     }
 }
 

@@ -174,6 +174,23 @@ export const useTaxsColDefs = () => {
     ], [t, i18n]);
 };
 
+export const currenciesFormFields = [
+    { name: 'CurrencyId', label: AppStrings.currencyId, required: true, type: 'number', disabled: true },
+    { name: 'IDigits', label: AppStrings.iDigits, required: true, type: 'number' },
+    { name: 'IsDefault', label: AppStrings.isDefault, type: 'check' },
+]
+
+
+export const useCurrenciesColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "CurrencyId", headerName: t(AppStrings.currencyId), filter: 'agTextColumnFilter' },
+        { field: "IDigits", headerName: t(AppStrings.iDigits), filter: 'agTextColumnFilter' },
+        { field: "IsDefault", headerName: t(AppStrings.isDefault), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t]);
+};
+
 
 
 

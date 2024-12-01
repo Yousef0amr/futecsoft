@@ -1,18 +1,18 @@
 import React from 'react'
 import EditComponent from '../../components/common/EditComponent'
-import { faMoneyBill } from '@fortawesome/free-solid-svg-icons'
-import useCurrencyManagment from '../../hook/useCurrencyManagment'
+import { faVcard } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from 'react-router-dom'
 import { routes } from '../../utils/constants'
 import { useTranslation } from 'react-i18next'
-import AppStrings from '../../utils/appStrings'
+import SupplierForm from '../../components/supplier/SupplierForm'
+import useSupplierManagement from '../../hook/useSupplierManagement'
 import useEntityOperations from '../../hooks/useEntityOperations'
-import CurrencyForm from '../../components/currency/CurrencyForm'
+import AppStrings from '../../utils/appStrings'
 
-const EditCurrency = () => {
+const EditSupplier = () => {
     const loaction = useLocation()
     const { t } = useTranslation();
-    const { updateEntity, isUpdating, updateEntityInCache } = useCurrencyManagment()
+    const { updateEntity, isUpdating, updateEntityInCache } = useSupplierManagement()
     const { handleEntityOperation } = useEntityOperations({ updateEntity })
 
     const onSubmit = async (data) => {
@@ -20,16 +20,16 @@ const EditCurrency = () => {
             operation: 'update',
             data,
             cacheUpdater: updateEntityInCache(data),
-            successMessage: AppStrings.currency_updated_successfully,
+            successMessage: AppStrings.supplier_updated_successfully,
             errorMessage: AppStrings.something_went_wrong
         })
     }
 
     return (
-        <EditComponent icon={faMoneyBill} title={t(AppStrings.edit_currency) + '  | ' + loaction.state.CurrencyId} path={routes.currency.list} >
-            <CurrencyForm isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={loaction.state} onSubmit={onSubmit} />
+        <EditComponent icon={faVcard} title={t(AppStrings.edit_supplier) + '  | ' + loaction.state.SupplierId} path={routes.supplier.list} >
+            <SupplierForm isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={loaction.state} onSubmit={onSubmit} />
         </EditComponent>
     )
 }
 
-export default EditCurrency
+export default EditSupplier

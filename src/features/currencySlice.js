@@ -8,7 +8,6 @@ export const currenciesApi = createDynamicApi({
 
 export const {
     useGetAllQuery: useGetCurrenciesQuery,
-    useGetCurrentKeyQuery: useGetCurrentCurrencyKeyQuery,
     useAddMutation: useAddCurrencyMutation,
     useUpdateMutation: useUpdateCurrencyMutation,
     useDeleteMutation: useDeleteCurrencyMutation,

@@ -164,8 +164,9 @@ export const menuList = [
                 label: AppStrings.suppliers,
                 icon: faVcard,
                 subActions: [
-                    { label: AppStrings.add, href: routes.supplier.add },
                     { label: AppStrings.list, href: routes.supplier.list },
+                    { label: AppStrings.add, href: routes.supplier.add },
+
                 ]
             }
         ]
@@ -476,9 +477,45 @@ export const taxsFormFields = [
 
 
 export const currenciesFormFields = [
-    { name: 'CurrencyId', label: AppStrings.currencyId, required: true, type: 'text', disabled: true },
+    { name: 'CurrencyId', label: AppStrings.currencyId, required: true, type: 'text' },
     { name: 'IDigits', label: AppStrings.iDigits, required: true, type: 'number' },
     { name: 'IsDefault', label: AppStrings.isDefault, type: 'check' },
+]
+
+
+
+export const paymentTypesFormFields = [
+    { name: 'Ptype', label: AppStrings.paymentTypeId, required: true, type: 'number', disabled: true },
+    { name: 'PaymentArDesc', label: AppStrings.paymentTypeAr, required: true, type: 'text' },
+    { name: 'PaymentEnDesc', label: AppStrings.paymentTypeEn, required: true, type: 'text' },
+    { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: true, type: 'select' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+    { name: 'CashMoney', label: AppStrings.cashMoney, type: 'check' },
+    { name: 'Commissions', label: AppStrings.commissions, required: false, type: 'number' },
+    { name: 'IsCredit', label: AppStrings.isCredit, type: 'check' },
+]
+
+
+export const suppliersFormFields = [
+    { name: 'SupplierId', label: AppStrings.supplierId, required: true, type: 'number', disabled: true },
+    { name: 'SupplierCompany', label: AppStrings.supplierCompany, required: true, type: 'text' },
+    { name: 'ContactName', label: AppStrings.contactName, required: true, type: 'text' },
+    { name: 'Email', label: AppStrings.email, required: false, type: 'email' },
+    { name: 'Phones', label: AppStrings.phones, required: false, type: 'text' },
+    { name: 'Mobiles', label: AppStrings.mobiles, required: false, type: 'text' },
+    { name: 'Warehouse', label: AppStrings.branch, options: [], required: true, type: 'select' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+
+export const deliveryCompaniesFormFields = [
+    { name: 'CompanyID', label: AppStrings.deliveryCompanyId, required: true, type: 'number', disabled: true },
+    { name: 'CompanyName', label: AppStrings.deliveryCompanyName, required: true, type: 'text' },
+    { name: 'Email', label: AppStrings.email, required: false, type: 'email' },
+    { name: 'Phone', label: AppStrings.phones, required: false, type: 'string' },
+    { name: 'percent', label: AppStrings.deliveryPercentage, required: true, type: 'number' },
+    { name: 'PriceCategory', label: AppStrings.priceCategory, options: [], required: true, type: 'select' },
+    { name: 'Active', label: AppStrings.isActive, type: 'check' },
 ]
 
 

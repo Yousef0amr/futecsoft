@@ -13,7 +13,10 @@ const useValidators = () => {
         offerSchemaValidator,
         discountSchemaValidator,
         taxSchemaValidator,
-        currencySchemaValidator
+        currencySchemaValidator,
+        deliveryCompaniesSchemaValidator,
+        paymentTypesSchemaValidator,
+        supplierSchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -27,6 +30,9 @@ const useValidators = () => {
     const discountSchema = yup.object(discountSchemaValidator);
     const taxSchema = yup.object(taxSchemaValidator);
     const currencySchema = yup.object(currencySchemaValidator);
+    const deliveryCompaniesSchema = yup.object(deliveryCompaniesSchemaValidator);
+    const paymentTypesSchema = yup.object(paymentTypesSchemaValidator);
+    const supplierSchema = yup.object(supplierSchemaValidator);
 
 
     return {
@@ -40,7 +46,10 @@ const useValidators = () => {
         offerSchema,
         discountSchema,
         taxSchema,
-        currencySchema
+        currencySchema,
+        deliveryCompaniesSchema,
+        paymentTypesSchema,
+        supplierSchema
     };
 };
 

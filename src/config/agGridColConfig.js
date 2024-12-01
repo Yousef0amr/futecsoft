@@ -192,6 +192,55 @@ export const useCurrenciesColDefs = () => {
 };
 
 
+export const usePaymentTypesColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Ptype", headerName: t(AppStrings.paymentTypeId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "PaymentEnDesc" : "PaymentArDesc", headerName: t(i18n.language === 'en' ? AppStrings.paymentTypeEn : AppStrings.paymentTypeEn), filter: 'agTextColumnFilter' },
+        { field: "CompanyID", headerName: t(AppStrings.deliveryCompany), filter: 'agTextColumnFilter' },
+        { field: "Commissions", headerName: t(AppStrings.commissions), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+        { field: "CashMoney", headerName: t(AppStrings.cashMoney), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+        { field: "IsCredit", headerName: t(AppStrings.isCredit), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+}
+
+
+export const useSuppliersColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "SupplierId", headerName: t(AppStrings.supplierId), filter: 'agTextColumnFilter' },
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "SupplierCompany", headerName: t(AppStrings.supplierCompany), filter: 'agTextColumnFilter' },
+        { field: "ContactName", headerName: t(AppStrings.contactName), filter: 'agTextColumnFilter' },
+        { field: "Email", headerName: t(AppStrings.email), filter: 'agTextColumnFilter' },
+        { field: "Phones", headerName: t(AppStrings.phones), filter: 'agTextColumnFilter' },
+        { field: "Mobiles", headerName: t(AppStrings.mobiles), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t]);
+}
+export const useDeliveryCompaniesColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "CompanyID", headerName: t(AppStrings.deliveryCompanyId), filter: 'agTextColumnFilter' },
+        { field: "CompanyName", headerName: t(AppStrings.deliveryCompanyName), filter: 'agTextColumnFilter' },
+        { field: "Email", headerName: t(AppStrings.email), filter: 'agTextColumnFilter' },
+        { field: "Phone", headerName: t(AppStrings.phones), filter: 'agTextColumnFilter' },
+        { field: "percent", headerName: t(AppStrings.deliveryPercentage), filter: 'agTextColumnFilter' },
+        { field: "PriceCategory", headerName: t(AppStrings.priceCategory), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t]);
+}
+
+
+
+
+
+
+
 
 
 

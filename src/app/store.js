@@ -10,6 +10,9 @@ import { flavorsApi } from "../features/flavorsSlice";
 import { offersApi } from "../features/offerSlice";
 import { discountsApi } from "../features/discountSlice";
 import { currenciesApi } from "../features/currencySlice";
+import { deliveryCompaniesApi } from "../features/deliveryCompanySlice";
+import { paymentTypesApi } from "../features/paymentTypeSlice";
+import { suppliersApi } from "../features/supplierSlice";
 
 const store = configureStore({
     reducer: {
@@ -22,7 +25,10 @@ const store = configureStore({
         [flavorsApi.reducerPath]: flavorsApi.reducer,
         [offersApi.reducerPath]: offersApi.reducer,
         [discountsApi.reducerPath]: discountsApi.reducer,
-        [currenciesApi.reducerPath]: currenciesApi.reducer
+        [currenciesApi.reducerPath]: currenciesApi.reducer,
+        [deliveryCompaniesApi.reducerPath]: deliveryCompaniesApi.reducer,
+        [paymentTypesApi.reducerPath]: paymentTypesApi.reducer,
+        [suppliersApi.reducerPath]: suppliersApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
@@ -34,7 +40,10 @@ const store = configureStore({
         flavorsApi.middleware,
         offersApi.middleware,
         discountsApi.middleware,
-        currenciesApi.middleware
+        currenciesApi.middleware,
+        deliveryCompaniesApi.middleware,
+        paymentTypesApi.middleware,
+        suppliersApi.middleware
     ),
 });
 

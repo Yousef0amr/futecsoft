@@ -36,6 +36,13 @@ import EditTax from '../pages/tax/EditTax'
 import ListCurreny from '../pages/Currency/ListCurreny'
 import EditCurrency from '../pages/Currency/EditCurrency'
 import AddCurrency from '../pages/Currency/AddCurrency'
+import ListPaymentType from '../pages/payment_type/ListPaymentType'
+import AddPaymentType from '../pages/payment_type/AddPaymentType'
+import EditPaymentType from '../pages/payment_type/EditPaymentType'
+import ListSupplier from '../pages/supplier/ListSupplier'
+import AddSupplier from '../pages/supplier/AddSupplier'
+import EditSupplier from '../pages/supplier/EditSupplier'
+
 
 
 const pagesList = [
@@ -80,13 +87,13 @@ const pagesList = [
     { path: routes.currency.add, component: <AddCurrency /> },
     { path: routes.currency.edit, component: <EditCurrency /> },
     // Payment Methods
-    { path: routes.paymentMethod.list, component: <ListFlavor /> },
-    { path: routes.paymentMethod.add, component: <AddFlavor /> },
-    { path: routes.paymentMethod.edit, component: <EditFlavor /> },
+    { path: routes.paymentMethod.list, component: <ListPaymentType /> },
+    { path: routes.paymentMethod.add, component: <AddPaymentType /> },
+    { path: routes.paymentMethod.edit, component: <EditPaymentType /> },
     // Suppliers
-    { path: routes.supplier.list, component: <ListFlavor /> },
-    { path: routes.supplier.add, component: <AddFlavor /> },
-    { path: routes.supplier.edit, component: <EditFlavor /> },
+    { path: routes.supplier.list, component: <ListSupplier /> },
+    { path: routes.supplier.add, component: <AddSupplier /> },
+    { path: routes.supplier.edit, component: <EditSupplier /> },
 ];
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {

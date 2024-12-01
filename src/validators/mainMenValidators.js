@@ -140,6 +140,41 @@ const MainMenuValidators = () => {
         IsDefault: yup.boolean().optional(),
     }
 
+
+    const paymentTypesSchemaValidator = {
+        Ptype: yup.string().required(t(AppStrings.paymentTypeId_required)).nullable(),
+        PaymentArDesc: yup.string().required(t(AppStrings.paymentTypeAr_required)).nullable(),
+        PaymentEnDesc: yup.string().required(t(AppStrings.paymentTypeEn_required)).nullable(),
+        CompanyID: yup.string().required(t(AppStrings.deliveryCompany_required)).nullable(),
+        Commissions: yup.number().required(t(AppStrings.commissions_required)).nullable(),
+        IsActive: yup.boolean().optional(),
+        CashMoney: yup.boolean().optional(),
+        IsCredit: yup.boolean().optional(),
+    }
+
+
+
+    const supplierSchemaValidator = {
+        SupplierId: yup.number().required(t(AppStrings.supplierId_required)).nullable(),
+        SupplierCompany: yup.string().required(t(AppStrings.supplierCompany_required)).nullable(),
+        ContactName: yup.string().nullable(),
+        Email: yup.string().optional(),
+        Phones: yup.string().optional(),
+        Mobiles: yup.string().optional(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        IsActive: yup.boolean().optional(),
+    }
+
+    const deliveryCompaniesSchemaValidator = {
+        CompanyID: yup.string().required(t(AppStrings.deliveryCompanyId_required)).nullable(),
+        CompanyName: yup.string().required(t(AppStrings.deliveryCompanyName_required)).nullable(),
+        Email: yup.string().optional(),
+        Phone: yup.string().optional(),
+        percent: yup.number().required(t(AppStrings.deliveryPercentage_required)).nullable(),
+        PriceCategory: yup.string().required(t(AppStrings.priceCategory_required)).nullable(),
+        Active: yup.boolean().optional(),
+    }
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -151,7 +186,10 @@ const MainMenuValidators = () => {
         offerSchemaValidator,
         discountSchemaValidator,
         taxSchemaValidator,
-        currencySchemaValidator
+        currencySchemaValidator,
+        paymentTypesSchemaValidator,
+        deliveryCompaniesSchemaValidator,
+        supplierSchemaValidator
     }
 }
 

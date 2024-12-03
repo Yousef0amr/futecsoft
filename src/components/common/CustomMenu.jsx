@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { menuList } from './../../utils/constants';
+import { menuList } from './../../config/constants';
 import { useTranslation } from 'react-i18next';
 import AccordionWithExpend from '../sideBar/AccordionWithExpend';
 import AccordionWithoutExpend from '../sideBar/AccordionWithoutExpend';

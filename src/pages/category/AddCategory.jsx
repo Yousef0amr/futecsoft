@@ -1,13 +1,13 @@
 import React from 'react'
 import CategoryForm from '../../components/category/CategoryForm'
 import FormCard from '../../components/common/FormCard'
-import { faList, faShuffle, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { useGetCurrentCategoryKeyQuery } from '../../features/categorySlice';
 import useCategoryManagement from '../../hook/useCategoryManagement';
 import useEntityOperations from '../../hooks/useEntityOperations';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import NavButton from '../../components/common/NavButton';
 
 const AddCategory = () => {

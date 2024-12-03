@@ -1,6 +1,6 @@
 import React from 'react'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 import FormCard from './FormCard'
 import NavButton from './NavButton'
 import useEntityOperations from '../../hooks/useEntityOperations'

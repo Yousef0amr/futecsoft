@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FormFieldsComponent from '../common/FormFieldsComponent'
-import { paymentTypesFormFields } from '../../utils/constants';
+import { paymentTypesFormFields } from '../../config/formFields';
 import useDeliveryCompanyManagement from '../../hook/useDeliveryCompanyManagement';
 
 

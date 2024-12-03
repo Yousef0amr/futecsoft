@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import AppStrings from "../../utils/appStrings";
+import AppStrings from "./../../config/appStrings";
 import { DeleteOutline } from "@mui/icons-material";
 
 const ActionsCellRenderer = ({ node, api, handleOnEditClick, handleDeleteClick }) => {

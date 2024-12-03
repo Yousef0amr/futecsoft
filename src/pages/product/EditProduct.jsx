@@ -1,12 +1,12 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { faBarcode } from '@fortawesome/free-solid-svg-icons'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 import { useTranslation } from 'react-i18next'
 import ProductForm from '../../components/product/ProductForm'
 import EditComponent from '../../components/common/EditComponent'
 import useProductManagement from '../../hook/useProductManagement'
-import { routes } from '../../utils/constants'
+import { routes } from '../../config/constants'
 
 
 const EditProduct = () => {

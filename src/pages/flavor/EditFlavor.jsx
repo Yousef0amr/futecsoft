@@ -5,8 +5,8 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import useFlavorManagement from '../../hook/useFlavorManagement';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import AppStrings from '../../utils/appStrings';
-import { routes } from '../../utils/constants';
+import AppStrings from '../../config/appStrings';
+import { routes } from '../../config/constants';
 
 const EditFlavor = () => {
     const loaction = useLocation()

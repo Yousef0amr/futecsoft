@@ -2,6 +2,7 @@ import createDynamicApi from '../utils/generateApiSlice.js';
 import { BASEURL, DELIVERY_COMPANY } from '../api/endpoints.js';
 
 
+
 const transformDeliveryCompanyData = (data) => ({
     ...data,
     CompanyID: data.CompanyId,

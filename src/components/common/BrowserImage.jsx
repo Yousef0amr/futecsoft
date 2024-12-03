@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import gallery from '../../assets/images/gallery.png';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { Col, Row } from 'react-bootstrap';
 import convertBase64ToBlob from '../../utils/ConvertBase64ToBlob';
 

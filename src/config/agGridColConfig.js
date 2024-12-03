@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../utils/appStrings';
+import AppStrings from './../config/appStrings';
 import convertBase64ToBlob from '../utils/ConvertBase64ToBlob';
 
 export const useBranchColDefs = () => {

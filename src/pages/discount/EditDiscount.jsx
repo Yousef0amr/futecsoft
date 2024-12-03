@@ -1,8 +1,8 @@
 import React from 'react'
 import useDiscountManagement from '../../hook/useDiscountManagement';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { faPercent } from '@fortawesome/free-solid-svg-icons';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import EditComponent from '../../components/common/EditComponent';
 import DiscountForm from '../../components/discount/DiscountForm';
 import { useTranslation } from 'react-i18next';

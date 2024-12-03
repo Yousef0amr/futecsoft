@@ -2,11 +2,11 @@ import React from 'react'
 import EditComponent from '../../components/common/EditComponent'
 import { faVcard } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from 'react-router-dom'
-import { routes } from '../../utils/constants'
+import { routes } from '../../config/constants'
 import { useTranslation } from 'react-i18next'
 import SupplierForm from '../../components/supplier/SupplierForm'
 import useSupplierManagement from '../../hook/useSupplierManagement'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 
 const EditSupplier = () => {
     const loaction = useLocation()

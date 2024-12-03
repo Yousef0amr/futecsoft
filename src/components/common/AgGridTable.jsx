@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { useTranslation } from 'react-i18next';
-import AppStrings from './../../utils/appStrings';
+import AppStrings from './../../config/appStrings';
 import { AG_GRID_LOCALE_EG, AG_GRID_LOCALE_EN } from '@ag-grid-community/locale';
 import ActionsCellRenderer from './ActionsCellRenderer';
 

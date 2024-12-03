@@ -1,9 +1,9 @@
 import React from 'react'
 import useUnitManagement from '../../hook/useUnitManagement';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import { useUnitsColDefs } from '../../config/agGridColConfig';
 import { faBalanceScale } from '@fortawesome/free-solid-svg-icons';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import ListComponent from '../../components/common/ListComponent';
 
 const ListUnit = () => {

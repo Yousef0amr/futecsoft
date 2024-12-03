@@ -1,5 +1,5 @@
 import React from 'react'
-import { categoryFormFields as categoryFormFieldsConstants } from '../../utils/constants'
+import { categoryFormFields } from '../../config/formFields'
 import useBranchManagement from '../../hook/useBranchManagement'
 import FormFieldsComponent from '../common/FormFieldsComponent'
 
@@ -11,7 +11,7 @@ const CategoryFormFields = ({ register, errors, setValue, watch }) => {
         : [];
 
     return (
-        <FormFieldsComponent errors={errors} register={register} setValue={setValue} watch={watch} fields={categoryFormFieldsConstants} options={{ Warehouse: branches }} />
+        <FormFieldsComponent errors={errors} register={register} setValue={setValue} watch={watch} fields={categoryFormFields} options={{ Warehouse: branches }} />
     )
 }
 

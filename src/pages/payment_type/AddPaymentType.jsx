@@ -6,8 +6,8 @@ import PaymentTypeForm from './../../components/payment_type/PaymentTypeForm';
 import usePaymentTypeManagement from '../../hook/usePaymentTypeManagement';
 import useEntityOperations from '../../hooks/useEntityOperations';
 import { useGetCurrentPaymentTypeKeyQuery } from '../../features/paymentTypeSlice';
-import { routes } from '../../utils/constants';
-import AppStrings from '../../utils/appStrings';
+import { routes } from '../../config/constants';
+import AppStrings from '../../config/appStrings';
 import NavButton from '../../components/common/NavButton';
 
 

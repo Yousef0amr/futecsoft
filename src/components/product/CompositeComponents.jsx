@@ -3,7 +3,7 @@ import { Button, Col, Row } from 'react-bootstrap';
 import AgGridTable from '../../components/common/AgGridTable';
 import { useComponentsColDefs } from '../../config/agGridColConfig';
 import CompositeComponentsForm from './CompositeComponentsForm';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { useTranslation } from 'react-i18next';
 
 

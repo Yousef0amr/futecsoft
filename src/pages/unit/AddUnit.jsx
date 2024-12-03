@@ -1,9 +1,9 @@
 import React from 'react'
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { useTranslation } from 'react-i18next';
 import useUnitManagement from '../../hook/useUnitManagement';
 import useEntityOperations from '../../hooks/useEntityOperations';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import NavButton from '../../components/common/NavButton';
 import FormCard from '../../components/common/FormCard';
 import { faBalanceScale } from '@fortawesome/free-solid-svg-icons';

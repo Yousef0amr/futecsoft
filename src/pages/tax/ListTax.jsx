@@ -1,6 +1,6 @@
 import React from 'react'
-import AppStrings from '../../utils/appStrings';
-import { routes } from '../../utils/constants';
+import AppStrings from '../../config/appStrings';
+import { routes } from '../../config/constants';
 import { faUsd } from '@fortawesome/free-solid-svg-icons';
 import useTaxManagement from '../../hook/useTaxManagement';
 import { useTaxsColDefs } from '../../config/agGridColConfig';

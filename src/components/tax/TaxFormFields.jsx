@@ -1,6 +1,6 @@
 import React from 'react'
 import FormFieldsComponent from '../common/FormFieldsComponent'
-import { taxsFormFields } from '../../utils/constants'
+import { taxsFormFields } from '../../config/formFields'
 
 const TaxFormFields = ({ register, errors, setValue, watch }) => {
     return (

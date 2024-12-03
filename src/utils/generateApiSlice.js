@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
-import { longCacheTime } from '../utils/constants.js';
+import { longCacheTime } from '../config/constants.js';
 
-const createDynamicApi = ({ reducerPath, baseEndpoint, transformData, additionalEndpoints = {} }) => {
+const createDynamicApi = ({ reducerPath, baseEndpoint, transformData, additionalEndpoints = () => { } }) => {
     const api = createApi({
         reducerPath,
         baseQuery: fetchBaseQuery({
@@ -68,7 +68,7 @@ const createDynamicApi = ({ reducerPath, baseEndpoint, transformData, additional
                     }),
                 }),
             };
-            const mergedEndpoints = { ...defaultEndpoints, ...additionalEndpoints };
+            const mergedEndpoints = { ...defaultEndpoints, ...additionalEndpoints(builder) };
             return mergedEndpoints;
         },
     });

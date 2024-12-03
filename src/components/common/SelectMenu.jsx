@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormControl, MenuItem, Select } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Checkbox from '@mui/material/Checkbox';
 import SpinnerLoader from '../common/Spinner';

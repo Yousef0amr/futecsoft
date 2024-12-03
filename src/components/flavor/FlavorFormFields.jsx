@@ -1,6 +1,6 @@
 import React from 'react'
 import FormFieldsComponent from '../common/FormFieldsComponent'
-import { flavorsFormFields } from '../../utils/constants'
+import { flavorsFormFields } from '../../config/formFields'
 import useBranchManagement from '../../hook/useBranchManagement'
 import useCategoryManagement from '../../hook/useCategoryManagement'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import useCategoryManagement from '../../hook/useCategoryManagement';
 import { useCategoriesColDefs } from '../../config/agGridColConfig';
-import { routes } from '../../utils/constants';
-import AppStrings from '../../utils/appStrings';
+import { routes } from '../../config/constants';
+import AppStrings from '../../config/appStrings';
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import ListComponent from '../../components/common/ListComponent';
 

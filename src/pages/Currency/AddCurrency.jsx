@@ -1,12 +1,12 @@
 import React from 'react'
 import { faMoneyBill } from '@fortawesome/free-solid-svg-icons'
 import { useTranslation } from 'react-i18next'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 import useEntityOperations from '../../hooks/useEntityOperations'
 import FormCard from '../../components/common/FormCard'
 import CurrencyForm from '../../components/currency/CurrencyForm'
 import useCurrencyManagment from '../../hook/useCurrencyManagment'
-import { routes } from '../../utils/constants'
+import { routes } from '../../config/constants'
 import NavButton from '../../components/common/NavButton'
 
 const AddCurrency = () => {

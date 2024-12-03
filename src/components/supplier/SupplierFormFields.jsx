@@ -1,6 +1,6 @@
 import React from 'react'
 import useBranchManagement from '../../hook/useBranchManagement';
-import { suppliersFormFields } from '../../utils/constants';
+import { suppliersFormFields } from '../../config/formFields';
 import FormFieldsComponent from '../common/FormFieldsComponent';
 
 

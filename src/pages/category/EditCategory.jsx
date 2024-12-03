@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons'
 import EditComponent from '../../components/common/EditComponent'
-import { routes } from '../../utils/constants'
+import { routes } from '../../config/constants'
 import useCategoryManagement from '../../hook/useCategoryManagement'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 import CategoryForm from '../../components/category/CategoryForm'
 
 const EditCategory = () => {

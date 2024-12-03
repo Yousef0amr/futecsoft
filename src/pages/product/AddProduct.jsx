@@ -3,11 +3,12 @@ import FormCard from '../../components/common/FormCard'
 import ProductForm from '../../components/product/ProductForm'
 import { faList, faBarcode } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
 import useProductManagement from '../../hook/useProductManagement';
-import { defaultProductValues, productTypeFormFields, routes } from '../../utils/constants';
+import { defaultProductValues, routes } from '../../config/constants';
+import { productTypeFormFields } from '../../config/formFields';
 import useEntityOperations from '../../hooks/useEntityOperations';
 
 const AddProduct = () => {

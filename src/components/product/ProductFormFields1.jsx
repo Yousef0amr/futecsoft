@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import { productFormFields, productSelectFormFields } from '../../utils/constants';
+import { productFormFields, productSelectFormFields } from '../../config/formFields';
 import { useLazyGetCurrentProductkeyQuery } from '../../features/productSlice';
 import FormFieldsComponent from '../common/FormFieldsComponent';
 import useCategoryManagement from './../../hook/useCategoryManagement'

@@ -3,9 +3,9 @@ import EditComponent from '../../components/common/EditComponent'
 import { faMoneyBill } from '@fortawesome/free-solid-svg-icons'
 import useCurrencyManagment from '../../hook/useCurrencyManagment'
 import { useLocation } from 'react-router-dom'
-import { routes } from '../../utils/constants'
+import { routes } from '../../config/constants'
 import { useTranslation } from 'react-i18next'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 import CurrencyForm from '../../components/currency/CurrencyForm'
 
 const EditCurrency = () => {

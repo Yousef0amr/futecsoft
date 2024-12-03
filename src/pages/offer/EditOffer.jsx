@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import useOfferManagement from '../../hook/useOfferManagement';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import EditComponent from '../../components/common/EditComponent';
-import { offerTypeFormFields, routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
+import { offerTypeFormFields } from '../../config/formFields';
 import OfferForm from '../../components/offer/OfferForm';
 import { useTranslation } from 'react-i18next';
 import TabsSelect from '../../components/common/TabsSelect';

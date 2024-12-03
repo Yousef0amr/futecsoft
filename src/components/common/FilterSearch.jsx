@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 
 const FilterSearch = ({ onFilterTextBoxChanged }) => {
     const { t } = useTranslation();

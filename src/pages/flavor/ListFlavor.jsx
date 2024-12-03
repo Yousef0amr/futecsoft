@@ -1,8 +1,8 @@
 import React from 'react'
 import { useFlavorsColDefs } from '../../config/agGridColConfig';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import useFlavorManagement from '../../hook/useFlavorManagement';
 import ListComponent from '../../components/common/ListComponent';
 

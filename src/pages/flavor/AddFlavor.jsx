@@ -1,9 +1,9 @@
 import React from 'react'
 import useFlavorManagement from '../../hook/useFlavorManagement';
 import useEntityOperations from '../../hooks/useEntityOperations';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import NavButton from '../../components/common/NavButton';
 import FormCard from '../../components/common/FormCard';
 import { useGetCurrentFlavorKeyQuery } from '../../features/flavorsSlice';

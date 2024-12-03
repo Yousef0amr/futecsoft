@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import InputField from '../common/InputFiled'
 import CheckBox from '../common/CheckBox'
-import { productCheckFormFields, productPriceFormFields } from '../../utils/constants'
+import { productCheckFormFields, productPriceFormFields } from '../../config/formFields'
 import FormFieldsComponent from '../common/FormFieldsComponent'
 
 const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) => {

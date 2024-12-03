@@ -1,11 +1,11 @@
 import React from 'react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { useBranchColDefs } from '../../config/agGridColConfig';
 import useBranchManagement from '../../hook/useBranchManagement';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import ListComponent from '../../components/common/ListComponent';
 
 

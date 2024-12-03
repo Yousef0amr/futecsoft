@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, CATEGORIES } from './../api/endpoints.js';
 import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
-import { longCacheTime } from '../utils/constants.js';
+import { longCacheTime } from './../config/constants.js';
 
 const transformCategoryData = (data) => {
     return {

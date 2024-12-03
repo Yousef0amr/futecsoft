@@ -1,5 +1,5 @@
 import React from 'react'
-import { branchFormFields } from '../../utils/constants'
+import { branchFormFields } from '../../config/formFields'
 import FormFieldsComponent from '../common/FormFieldsComponent'
 
 const BranchFormFields = ({ register, errors }) => {

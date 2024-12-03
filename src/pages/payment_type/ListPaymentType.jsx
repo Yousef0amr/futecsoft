@@ -2,8 +2,8 @@ import React from 'react'
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons'
 import usePaymentTypeManagement from '../../hook/usePaymentTypeManagement'
 import { usePaymentTypesColDefs } from '../../config/agGridColConfig'
-import { routes } from '../../utils/constants'
-import AppStrings from '../../utils/appStrings'
+import { routes } from '../../config/constants'
+import AppStrings from '../../config/appStrings'
 import ListComponent from '../../components/common/ListComponent'
 
 

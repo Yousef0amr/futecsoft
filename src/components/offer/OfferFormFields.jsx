@@ -1,6 +1,6 @@
 import React from 'react'
 import FormFieldsComponent from '../common/FormFieldsComponent'
-import { extraOfferFormFields, offersFormFields, priceOfferFormFields, qtyOfferFormFields } from '../../utils/constants'
+import { extraOfferFormFields, offersFormFields, priceOfferFormFields, qtyOfferFormFields } from '../../config/formFields'
 import useBranchManagement from '../../hook/useBranchManagement'
 import { useGetAllProductsQuery } from '../../features/productSlice'
 

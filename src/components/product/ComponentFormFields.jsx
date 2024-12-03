@@ -1,5 +1,5 @@
 import React from 'react'
-import { productComponentsFormFields, productComponentsFormFields1 } from '../../utils/constants'
+import { productComponentsFormFields, productComponentsFormFields1 } from '../../config/formFields'
 import { Col } from 'react-bootstrap'
 import { useGetProductsByCategoryQuery, useGetProductUnitsByIdQuery } from '../../features/productSlice'
 import useCategoryManagement from '../../hook/useCategoryManagement'

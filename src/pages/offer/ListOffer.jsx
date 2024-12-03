@@ -1,8 +1,8 @@
 import React from 'react'
 import useOfferManagement from '../../hook/useOfferManagement';
 import { useOffersColDefs } from '../../config/agGridColConfig';
-import AppStrings from '../../utils/appStrings';
-import { routes } from '../../utils/constants';
+import AppStrings from '../../config/appStrings';
+import { routes } from '../../config/constants';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import ListComponent from '../../components/common/ListComponent';
 

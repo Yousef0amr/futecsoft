@@ -1,9 +1,9 @@
 import React from 'react'
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import useCurrencyManagment from '../../hook/useCurrencyManagment';
 import { useCurrenciesColDefs } from '../../config/agGridColConfig';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import ListComponent from '../../components/common/ListComponent';
 
 

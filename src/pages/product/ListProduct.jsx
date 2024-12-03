@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import AppStrings from './../../utils/appStrings';
+import AppStrings from './../../config/appStrings';
 import AgGridTable from '../../components/common/AgGridTable';
 import FormCard from '../../components/common/FormCard';
-import { faAdd, faBarcode } from '@fortawesome/free-solid-svg-icons';
+import { faBarcode } from '@fortawesome/free-solid-svg-icons';
 import FilterSearch from '../../components/common/FilterSearch';
 import NavButton from '../../components/common/NavButton';
 import TabsSelect from '../../components/common/TabsSelect';
 import { useProductColDefs } from '../../config/agGridColConfig';
 import useProductManagement from '../../hook/useProductManagement';
 import useTableActions from '../../hooks/useTableActions';
-import { productTypeFormFields, routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
+import { productTypeFormFields } from '../../config/formFields';
 import useEntityOperations from '../../hooks/useEntityOperations';
 
 const ListProduct = () => {

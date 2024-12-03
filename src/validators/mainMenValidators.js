@@ -1,4 +1,4 @@
-import AppStrings from "./../utils/appStrings";
+import AppStrings from "./../config/appStrings";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 

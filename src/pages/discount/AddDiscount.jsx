@@ -1,7 +1,7 @@
 import React from 'react'
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { faPercent } from '@fortawesome/free-solid-svg-icons';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import FormCard from '../../components/common/FormCard';
 import DiscountForm from '../../components/discount/DiscountForm';
 import useDiscountManagement from '../../hook/useDiscountManagement';

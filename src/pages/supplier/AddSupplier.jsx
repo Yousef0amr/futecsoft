@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import useSupplierManagement from '../../hook/useSupplierManagement';
 import SupplierForm from './../../components/supplier/SupplierForm';
 import useEntityOperations from '../../hooks/useEntityOperations';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import FormCard from '../../components/common/FormCard';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import NavButton from '../../components/common/NavButton';
 import { useGetCurrentSupplierKeyQuery } from '../../features/supplierSlice';
 

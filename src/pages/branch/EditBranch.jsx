@@ -1,10 +1,10 @@
 import React from 'react'
 import useBranchManagement from '../../hook/useBranchManagement';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import EditComponent from '../../components/common/EditComponent';
 import BranchForm from '../../components/branch/BranchForm';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

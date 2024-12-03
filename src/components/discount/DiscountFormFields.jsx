@@ -1,5 +1,5 @@
 import React from 'react'
-import { discountsFormFields } from '../../utils/constants'
+import { discountsFormFields } from '../../config/formFields'
 import FormFieldsComponent from '../common/FormFieldsComponent'
 
 const DiscountFormFields = ({ register, errors, watch, setValue }) => {

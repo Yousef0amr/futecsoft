@@ -5,12 +5,12 @@ import OfferForm from '../../components/offer/OfferForm'
 import useOfferManagement from '../../hook/useOfferManagement'
 import { useGetCurrentOfferKeyQuery } from '../../features/offerSlice'
 import { useTranslation } from 'react-i18next'
-import AppStrings from '../../utils/appStrings'
+import AppStrings from '../../config/appStrings'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { routes } from '../../utils/constants'
+import { routes } from '../../config/constants'
 import useEntityOperations from '../../hooks/useEntityOperations'
 import TabsSelect from '../../components/common/TabsSelect'
-import { offerTypeFormFields } from '../../utils/constants'
+import { offerTypeFormFields } from '../../config/formFields'
 
 const AddOffer = () => {
     const { t } = useTranslation();

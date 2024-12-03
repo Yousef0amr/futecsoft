@@ -3,10 +3,10 @@ import FormCard from '../../components/common/FormCard'
 import BranchForm from '../../components/branch/BranchForm'
 import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { useGetCurrentBranchKeyQuery } from '../../features/branchesSlice';
 import NavButton from '../../components/common/NavButton';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 import useBranchManagement from '../../hook/useBranchManagement';
 import useEntityOperations from '../../hooks/useEntityOperations';
 

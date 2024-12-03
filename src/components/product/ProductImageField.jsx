@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
 import BrowserImage from '../common/BrowserImage'
-import { productImageField } from '../../utils/constants'
+import { productImageField } from '../../config/formFields'
 
 const ProductImageField = ({ errors, setValue, watch }) => {
 

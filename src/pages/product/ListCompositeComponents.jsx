@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import AppStrings from './../../utils/appStrings';
+import AppStrings from './../../config/appStrings';
 import AgGridTable from '../../components/common/AgGridTable';
 import FormCard from '../../components/common/FormCard';
 import { faAdd, faBarcode } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ import FilterSearch from '../../components/common/FilterSearch';
 import NavButton from '../../components/common/NavButton';
 import { useProductColDefs } from '../../config/agGridColConfig';
 import useProductManagement from '../../hook/useProductManagement';
-import { routes } from '../../utils/constants';
+import { routes } from '../../config/constants';
 
 const ListCompositeComponents = () => {
     const [quickFilterText, setQuickFilterText] = useState();

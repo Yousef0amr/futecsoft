@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { useForm } from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import { Col, Row, Button } from 'react-bootstrap';
-import AppStrings from '../../utils/appStrings';
+import AppStrings from '../../config/appStrings';
 import { useTranslation } from 'react-i18next';
 import { useLoginMutation } from '../../features/authSlice';
 import { useAuth } from '../../utils/auth';

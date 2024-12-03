@@ -33,10 +33,9 @@ const AddProduct = () => {
     };
 
     return (
-        <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)} optionComponent={
+        <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)} navButton={<NavButton icon={faList} title={AppStrings.list_products} path={routes.product.list} />} optionComponent={
             <>
                 <TabsSelect handleTabClick={handleTabClick} activeTab={type} options={productTypeFormFields} />
-                <NavButton icon={'list'} title={AppStrings.list_products} path={routes.product.list} />
             </>
         }  >
             <ProductForm isLoading={isAdding} resetForm={!isAdding} onSubmit={onSubmit} defaultValuesEdit={defaultValues} composite={type === 'Composite'} />

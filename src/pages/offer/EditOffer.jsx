@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import useOfferManagement from '../../hook/useOfferManagement';
-import useEntityOperations from '../../hooks/useEntityOperations';
 import AppStrings from '../../utils/appStrings';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
@@ -13,19 +12,8 @@ import TabsSelect from '../../components/common/TabsSelect';
 const EditOffer = () => {
     const loaction = useLocation()
     const { t } = useTranslation();
-    const { updateEntity, isUpdating, updateEntityInCache } = useOfferManagement()
-    const { handleEntityOperation } = useEntityOperations({ updateEntity })
     const [activeTab, setActiveTab] = useState(loaction.state.OfferTypeEn.replace(/\s+/g, ''));
 
-    const onSubmit = async (data) => {
-        handleEntityOperation({
-            operation: 'update',
-            data,
-            cacheUpdater: updateEntityInCache(data),
-            successMessage: AppStrings.offer_updated_successfully,
-            errorMessage: AppStrings.something_went_wrong
-        })
-    }
 
     const offerType = activeTab === 'PriceOffer' ? {
         PriceOffer: true,
@@ -45,9 +33,17 @@ const EditOffer = () => {
     };
 
     return (
-        <EditComponent optionComponent={<TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} options={offerTypeFormFields} />} icon={faStar} title={t(AppStrings.edit_offer) + '  | ' + loaction.state.OfferId} path={routes.offer.list} >
-            <OfferForm isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={{ ...loaction.state, Product: loaction.state.ProductId, ...offerType }} onSubmit={onSubmit} />
-        </EditComponent>
+        <EditComponent
+            optionComponent={<TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} options={offerTypeFormFields} />}
+            errorMessage={AppStrings.something_went_wrong}
+            successMessage={AppStrings.offer_updated_successfully}
+            fetchHook={useOfferManagement}
+            icon={faStar}
+            title={t(AppStrings.edit_offer) + '  | ' + loaction.state.OfferId}
+            path={routes.offer.list}
+            Form={OfferForm}
+            editData={{ ...loaction.state, Product: loaction.state.ProductId, ...offerType }}
+        />
     )
 }
 

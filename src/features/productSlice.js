@@ -86,7 +86,7 @@ export const productsApi = createApi({
                     return [];
                 }
             },
-            providesTags: ['Product_list']
+
         }),
         getCompositeComponentsById: builder.query({
             query: (id) => ({
@@ -131,7 +131,7 @@ export const productsApi = createApi({
                 method: 'POST',
                 body: convertToFormData(product),
             }),
-            invalidatesTags: ['Product_list'],
+
         }),
         deleteProduct: builder.mutation({
             query: (id) => ({

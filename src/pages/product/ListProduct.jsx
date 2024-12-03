@@ -20,9 +20,7 @@ const ListProduct = () => {
     const { data, isLoading, deleteEntity, isDeleting, deleteEntityFromCache } = useProductManagement(activeTab);
     const { handleEntityOperation } = useEntityOperations({ deleteEntity });
     const [quickFilterText, setQuickFilterText] = useState();
-
     const [loading, setLoading] = useState(true);
-
     const { defaultActions, active, handleCancel } = useTableActions({
         path: routes.product.edit
     });

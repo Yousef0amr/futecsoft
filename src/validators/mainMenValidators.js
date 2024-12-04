@@ -175,6 +175,16 @@ const MainMenuValidators = () => {
         Active: yup.boolean().optional(),
     }
 
+    const deliveryDiscountSchemaValidator = {
+        LineID: yup.string().nullable(),
+        CompanyID: yup.string().required(t(AppStrings.deliveryCompany_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+        DiscountValue: yup.number().required(t(AppStrings.discount_percentage_required)).nullable(),
+        BranchID: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        IsActive: yup.boolean().optional(),
+    }
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -189,7 +199,8 @@ const MainMenuValidators = () => {
         currencySchemaValidator,
         paymentTypesSchemaValidator,
         deliveryCompaniesSchemaValidator,
-        supplierSchemaValidator
+        supplierSchemaValidator,
+        deliveryDiscountSchemaValidator
     }
 }
 

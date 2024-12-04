@@ -198,6 +198,16 @@ export const deliveryCompaniesFormFields = [
     { name: 'Active', label: AppStrings.isActive, type: 'check' },
 ]
 
+export const deliveryDiscountFormFields = [
+    { name: 'LineID', label: AppStrings.discountId, required: true, type: 'number', disabled: true },
+    { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: true, type: 'select' },
+    { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
+    { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
+    { name: 'DiscountValue', label: AppStrings.discount_percentage, required: true, type: 'number' },
+    { name: 'BranchID', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
 
 
 

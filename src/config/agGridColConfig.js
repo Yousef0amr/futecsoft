@@ -236,6 +236,21 @@ export const useDeliveryCompaniesColDefs = () => {
 }
 
 
+export const useDeliveryDiscountColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "LineID", headerName: t(AppStrings.discountId), filter: 'agTextColumnFilter' },
+        { field: "CompanyDesc", headerName: t(AppStrings.deliveryCompany), filter: 'agTextColumnFilter' },
+        { field: "FromDate", headerName: t(AppStrings.from_date), filter: 'agTextColumnFilter' },
+        { field: "ToDate", headerName: t(AppStrings.to_date), filter: 'agTextColumnFilter' },
+        { field: "DiscountValue", headerName: t(AppStrings.deliveryPercentage), filter: 'agTextColumnFilter' },
+        { field: "Branche", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t]);
+}
+
+
 
 
 

@@ -60,7 +60,18 @@ export const routes = {
         list: '/suppliers/list',
         add: '/suppliers/add',
         edit: '/suppliers/edit'
-    }
+    },
+    delivery_company: {
+        list: '/delivery/companies/list',
+        add: '/delivery/companies/add',
+        edit: '/delivery/companies/edit'
+    },
+    delivery_discount: {
+        list: '/delivery/discounts/list',
+        add: '/delivery/discounts/add',
+        edit: '/delivery/discounts/edit'
+    },
+
 
 }
 
@@ -246,9 +257,9 @@ export const menuList = [
                 label: AppStrings.define_companies,
                 icon: faCar,
 
-                subActions: [
-                    { label: AppStrings.add, href: '/delivery/companies/add' },
-                    { label: AppStrings.list, href: '/delivery/companies/list' }
+                subActions: [{ label: AppStrings.list, href: routes.delivery_company.list },
+                { label: AppStrings.add, href: routes.delivery_company.add },
+
                 ]
             },
             {
@@ -256,8 +267,9 @@ export const menuList = [
                 icon: faCar,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/delivery/discounts/add' },
-                    { label: AppStrings.list, href: '/delivery/discounts/list' }
+                    { label: AppStrings.list, href: routes.delivery_discount.list },
+                    { label: AppStrings.add, href: routes.delivery_discount.add },
+
                 ]
             }
         ]

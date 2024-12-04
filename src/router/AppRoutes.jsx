@@ -42,6 +42,12 @@ import EditPaymentType from '../pages/payment_type/EditPaymentType'
 import ListSupplier from '../pages/supplier/ListSupplier'
 import AddSupplier from '../pages/supplier/AddSupplier'
 import EditSupplier from '../pages/supplier/EditSupplier'
+import ListDeliveryCompany from '../pages/delivery_company/ListDeliveryCompany'
+import AddDeliveryCompany from '../pages/delivery_company/AddDeliveryCompany'
+import EditDeliveryCompany from '../pages/delivery_company/EditDeliveryCompany'
+import ListDeliveryDiscount from '../pages/delivery_discount/ListDeliveryDiscount'
+import AddDeliveryDiscount from '../pages/delivery_discount/AddDeliveryDiscount'
+import EditDeliveryDiscount from '../pages/delivery_discount/EditDeliveryDiscount'
 
 
 
@@ -94,6 +100,16 @@ const pagesList = [
     { path: routes.supplier.list, component: <ListSupplier /> },
     { path: routes.supplier.add, component: <AddSupplier /> },
     { path: routes.supplier.edit, component: <EditSupplier /> },
+    // Delivery Companies
+    { path: routes.delivery_company.list, component: <ListDeliveryCompany /> },
+    { path: routes.delivery_company.add, component: <AddDeliveryCompany /> },
+    { path: routes.delivery_company.edit, component: <EditDeliveryCompany /> },
+
+    // Delivery Discounts
+    { path: routes.delivery_discount.list, component: <ListDeliveryDiscount /> },
+    { path: routes.delivery_discount.add, component: <AddDeliveryDiscount /> },
+    { path: routes.delivery_discount.edit, component: <EditDeliveryDiscount /> },
+
 ];
 
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {

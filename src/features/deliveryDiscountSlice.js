@@ -4,6 +4,15 @@ import convertToFormData from "../utils/convertToFormData";
 import getCookie from "../utils/getCookie";
 import { longCacheTime } from "../utils/constants";
 
+
+const transformData = (data) => ({
+    ...data,
+    CompanyID: data.CompanyId,
+    LineID: data.LineId
+});
+
+
+
 export const deliveryDiscountApi = createApi({
     reducerPath: 'deliveryDiscountApi',
     baseQuery: fetchBaseQuery({
@@ -26,7 +35,14 @@ export const deliveryDiscountApi = createApi({
                 url: `/GetAllDeliveryDiscount?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
             keepUnusedDataFor: longCacheTime,
-            transformResponse: (response) => response.Response
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformData(item));
+                } else {
+                    return [];
+                }
+            },
         }),
         add: builder.mutation({
             query: (data) => ({

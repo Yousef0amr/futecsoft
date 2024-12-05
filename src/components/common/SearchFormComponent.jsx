@@ -1,12 +1,8 @@
 import React from 'react';
-import { Form, Stack } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import AppStrings from '../../config/appStrings';
-import { Button } from '@mui/material';
-import SpinnerLoader from '../common/Spinner';
-import { Search } from '@mui/icons-material';
+
 
 const SearchFormComponent = ({
     schema,
@@ -14,7 +10,7 @@ const SearchFormComponent = ({
     isLoading,
     children,
 }) => {
-    const { t } = useTranslation();
+
 
     const {
         register,

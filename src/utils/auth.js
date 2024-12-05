@@ -24,6 +24,10 @@ const AuthProvider = ({ children }) => {
     }, []);
 
     const getAccessToken = useCallback(() => cookies.accessToken, [cookies.accessToken]);
+    const logoutLocal = useCallback(() => () => {
+        removeCookie('accessToken');
+        setIsAuthenticated(false);
+    }, [removeCookie]);
 
     const checkAuth = useCallback(() => {
         const token = getAccessToken();
@@ -44,7 +48,7 @@ const AuthProvider = ({ children }) => {
         }
 
         setIsLoading(false);
-    }, [getAccessToken, getDecodedToken]);
+    }, [getAccessToken, getDecodedToken, logoutLocal]);
 
     useEffect(() => {
         checkAuth();
@@ -57,10 +61,6 @@ const AuthProvider = ({ children }) => {
     }, [setCookie]);
 
 
-    const logoutLocal = () => {
-        removeCookie('accessToken');
-        setIsAuthenticated(false);
-    };
 
     const handleNavigateToLogin = () => {
         setShowLoginModal(false);

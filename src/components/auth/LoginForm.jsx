@@ -1,6 +1,5 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import { jwtDecode } from 'jwt-decode';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from 'react-hook-form';

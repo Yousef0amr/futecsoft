@@ -29,7 +29,7 @@ export const productFormFields = [
 ];
 
 export const productSelectFormFields = [
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'Father', label: AppStrings.category, required: true, options: [], type: 'select' },
     { name: 'UnitID', label: AppStrings.unit, required: true, options: [], type: 'select' },
     { name: 'TaxPercentage', label: AppStrings.taxPercentage, required: false, options: [], type: 'select' },
@@ -71,7 +71,7 @@ export const branchFormFields = [
 ];
 
 export const pricesAndCostsFormFields = [
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'CateID', label: AppStrings.category, required: true, options: [], type: 'select' },
 ];
 
@@ -79,7 +79,7 @@ export const categoryFormFields = [
     { name: 'Id', label: AppStrings.categoryId, required: true, type: 'number', disabled: true },
     { name: 'NameAr', label: AppStrings.categoryNameAr, required: true, type: 'text' },
     { name: 'NameEn', label: AppStrings.categoryNameEn, required: true, type: 'text' },
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'Saleable', label: AppStrings.saleable, required: false, type: 'check' },
     { name: 'IsActive', label: AppStrings.isActive, required: false, type: 'check' },
 ]
@@ -98,7 +98,7 @@ export const flavorsFormFields = [
     { name: 'FlavorEN', label: AppStrings.flavorNameEn, required: true, type: 'text' },
     { name: 'Price', label: AppStrings.price, required: true, type: 'text' },
 
-    { name: 'WareHouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'WareHouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'Category', label: AppStrings.category, required: true, multiple: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
@@ -110,7 +110,7 @@ export const offersFormFields = [
     { name: 'OfferId', label: AppStrings.offerId, required: true, type: 'number', disabled: true },
     { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
-    { name: 'Branch', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Branch', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
@@ -183,7 +183,7 @@ export const suppliersFormFields = [
     { name: 'Email', label: AppStrings.email, required: false, type: 'email' },
     { name: 'Phones', label: AppStrings.phones, required: false, type: 'text' },
     { name: 'Mobiles', label: AppStrings.mobiles, required: false, type: 'text' },
-    { name: 'Warehouse', label: AppStrings.branch, options: [], required: true, type: 'select' },
+    { name: 'Warehouse', label: AppStrings.branch, options: [], multiple: true, required: true, type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
 
@@ -204,7 +204,7 @@ export const deliveryDiscountFormFields = [
     { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
     { name: 'DiscountValue', label: AppStrings.discount_percentage, required: true, type: 'number' },
-    { name: 'BranchID', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'BranchID', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
 

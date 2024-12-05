@@ -41,7 +41,7 @@ const MainMenuValidators = () => {
         Price4: yup
             .string()
             .nullable(),
-        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        Warehouse: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
         UnitID: yup.string().required(t(AppStrings.unit_required)).nullable(),
         TaxPercentage: yup.string().optional(),
         Discountable: yup.boolean().optional(),
@@ -65,7 +65,7 @@ const MainMenuValidators = () => {
 
 
     const pricesAndCostsSchemaValidator = {
-        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        Warehouse: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
         CateID: yup.string().required(t(AppStrings.category_required)).nullable(),
     }
 
@@ -75,7 +75,7 @@ const MainMenuValidators = () => {
         NameAr: yup.string().required(t(AppStrings.categoryNameAr_required)).nullable(),
         NameEn: yup.string().required(t(AppStrings.categoryNameEn_required)).nullable(),
         Saleable: yup.boolean().optional(),
-        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        Warehouse: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
         IsActive: yup.boolean().optional(),
     }
 
@@ -92,7 +92,7 @@ const MainMenuValidators = () => {
         FlavorAR: yup.string().required(t(AppStrings.flavorNameAr_required)).nullable(),
         FlavorEN: yup.string().required(t(AppStrings.flavorNameEn_required)).nullable(),
         Price: yup.string().required(t(AppStrings.price_required)).nullable(),
-        WareHouse: yup.string().required(t(AppStrings.branch_required)),
+        WareHouse: yup.array().min(1).required(t(AppStrings.branch_required)),
         Category: yup.array().min(1).required(t(AppStrings.category_required)),
         IsActive: yup.boolean().optional(),
     }
@@ -102,7 +102,7 @@ const MainMenuValidators = () => {
         Product: yup.string().required(t(AppStrings.product_required)).nullable(),
         FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
         ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
-        Branch: yup.string().required(t(AppStrings.branch_required)),
+        Branch: yup.array().min(1).required(t(AppStrings.branch_required)),
         Price: yup.string().optional(),
         Qty: yup.string().optional(),
         ExtraProduct: yup.string().optional(),
@@ -161,7 +161,7 @@ const MainMenuValidators = () => {
         Email: yup.string().optional(),
         Phones: yup.string().optional(),
         Mobiles: yup.string().optional(),
-        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        Warehouse: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
         IsActive: yup.boolean().optional(),
     }
 
@@ -181,7 +181,7 @@ const MainMenuValidators = () => {
         FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
         ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
         DiscountValue: yup.number().required(t(AppStrings.discount_percentage_required)).nullable(),
-        BranchID: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        BranchID: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
         IsActive: yup.boolean().optional(),
     }
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import FormComponent from '../common/FormComponent'
-import { useValidators } from '../../utils/validators'
-import DeliveryCompanyFormFields from './deliveryCompanyFormFields'
+import useValidators from '../../hooks/useValidators'
+import DeliveryCompanyFormFields from './DeliveryCompanyFormFields'
 
 const DeliveryCompanyForm = ({ onSubmit, isLoading, defaultValuesEdit = {} }) => {
-    const { currencySchema } = useValidators();
+    const { deliveryCompaniesSchema } = useValidators();
     return (
-        <FormComponent isLoading={isLoading} defaultValues={defaultValuesEdit} schema={currencySchema} onSubmit={onSubmit}>
+        <FormComponent isLoading={isLoading} defaultValues={defaultValuesEdit} schema={deliveryCompaniesSchema} onSubmit={onSubmit}>
             {({ register, errors, setValue, watch }) => (
                 <DeliveryCompanyFormFields register={register} errors={errors} setValue={setValue} watch={watch} />
             )}

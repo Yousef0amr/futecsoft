@@ -276,5 +276,12 @@
     "add_new_supplier": "إضافة مورد جديد",
     "list_suppliers": "قائمة الموردين",
     "edit_supplier": "تعديل المورد",
-    "supplierCompany_required": "اسم المورد مطلوب"
+    "supplierCompany_required": "اسم المورد مطلوب",
+    "list_delivery_discount": "قائمة خصومات التوصيل",
+    "add_new_delivery_discount": "إضافة خصم توصيل جديد",
+    "edit_delivery_discount": "تعديل خصم التوصيل",
+    "delivery_discount_added_successfully": "تمت إضافة خصم التوصيل بنجاح",
+    "delivery_discount_updated_successfully": "تم تحديث خصم التوصيل بنجاح",
+    "delivery_discount_deleted_successfully": "تم حذف خصم التوصيل بنجاح",
+    "price1": "السعر الاساسي"
 }

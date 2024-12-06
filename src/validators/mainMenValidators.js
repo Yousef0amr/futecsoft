@@ -168,8 +168,8 @@ const MainMenuValidators = () => {
     const deliveryCompaniesSchemaValidator = {
         CompanyID: yup.string().required(t(AppStrings.deliveryCompanyId_required)).nullable(),
         CompanyName: yup.string().required(t(AppStrings.deliveryCompanyName_required)).nullable(),
-        Email: yup.string().optional(),
-        Phone: yup.string().optional(),
+        Email: yup.string().optional().nullable(),
+        Phone: yup.string().optional().nullable(),
         percent: yup.number().required(t(AppStrings.deliveryPercentage_required)).nullable(),
         PriceCategory: yup.string().required(t(AppStrings.priceCategory_required)).nullable(),
         Active: yup.boolean().optional(),
@@ -180,7 +180,7 @@ const MainMenuValidators = () => {
         CompanyID: yup.string().required(t(AppStrings.deliveryCompany_required)).nullable(),
         FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
         ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
-        DiscountValue: yup.number().required(t(AppStrings.discount_percentage_required)).nullable(),
+        DiscountValue: yup.number().nullable(),
         BranchID: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
         IsActive: yup.boolean().optional(),
     }

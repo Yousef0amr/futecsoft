@@ -13,6 +13,7 @@ import { currenciesApi } from "../features/currencySlice";
 import { deliveryCompaniesApi } from "../features/deliveryCompanySlice";
 import { paymentTypesApi } from "../features/paymentTypeSlice";
 import { suppliersApi } from "../features/supplierSlice";
+import { deliveryDiscountApi } from "../features/deliveryDiscountSlice";
 
 const store = configureStore({
     reducer: {
@@ -28,13 +29,15 @@ const store = configureStore({
         [currenciesApi.reducerPath]: currenciesApi.reducer,
         [deliveryCompaniesApi.reducerPath]: deliveryCompaniesApi.reducer,
         [paymentTypesApi.reducerPath]: paymentTypesApi.reducer,
-        [suppliersApi.reducerPath]: suppliersApi.reducer
+        [suppliersApi.reducerPath]: suppliersApi.reducer,
+        [deliveryDiscountApi.reducerPath]: deliveryDiscountApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
         branchesApi.middleware,
         productsApi.middleware,
         categoriesApi.middleware,
+        deliveryDiscountApi.middleware,
         taxesApi.middleware,
         unitsApi.middleware,
         flavorsApi.middleware,
@@ -43,7 +46,8 @@ const store = configureStore({
         currenciesApi.middleware,
         deliveryCompaniesApi.middleware,
         paymentTypesApi.middleware,
-        suppliersApi.middleware
+        suppliersApi.middleware,
+
     ),
 });
 

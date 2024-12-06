@@ -1,5 +1,6 @@
 import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faHome, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './../config/appStrings';
+import { useTranslation } from 'react-i18next';
 
 
 export const routes = {
@@ -327,6 +328,30 @@ export const defaultProductValues = {
         Icon: 'لا يوجد صورة'
     }
 
+}
+
+export const useDefaultPriceCategory = () => {
+    const { t } = useTranslation()
+    return (
+        [
+            {
+                label: t(AppStrings.price1),
+                value: 1
+            },
+            {
+                label: t(AppStrings.price2),
+                value: 2
+            },
+            {
+                label: t(AppStrings.price3),
+                value: 3
+            },
+            {
+                label: t(AppStrings.price4),
+                value: 4
+            }
+        ]
+    )
 }
 
 

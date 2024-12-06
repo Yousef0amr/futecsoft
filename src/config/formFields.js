@@ -192,7 +192,7 @@ export const deliveryCompaniesFormFields = [
     { name: 'CompanyID', label: AppStrings.deliveryCompanyId, required: true, type: 'number', disabled: true },
     { name: 'CompanyName', label: AppStrings.deliveryCompanyName, required: true, type: 'text' },
     { name: 'Email', label: AppStrings.email, required: false, type: 'email' },
-    { name: 'Phone', label: AppStrings.phones, required: false, type: 'string' },
+    { name: 'Phone', label: AppStrings.phones, required: false, type: 'text' },
     { name: 'percent', label: AppStrings.deliveryPercentage, required: true, type: 'number' },
     { name: 'PriceCategory', label: AppStrings.priceCategory, options: [], required: true, type: 'select' },
     { name: 'Active', label: AppStrings.isActive, type: 'check' },
@@ -203,7 +203,7 @@ export const deliveryDiscountFormFields = [
     { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: true, type: 'select' },
     { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
-    { name: 'DiscountValue', label: AppStrings.discount_percentage, required: true, type: 'number' },
+    { name: 'DiscountValue', label: AppStrings.discount_percentage, required: false, type: 'number' },
     { name: 'BranchID', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]

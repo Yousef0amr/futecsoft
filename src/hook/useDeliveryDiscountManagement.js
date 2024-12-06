@@ -1,20 +1,20 @@
-import { deliveryDiscountApi, useAddMutation, useDeleteMutation, useGetAllQuery, useUpdateMutation } from "../features/deliveryDiscountSlice";
+import { deliveryDiscountApi, useAddMutation, useDeleteMutation, useGetAllDeliveryDiscountQuery, useUpdateMutation } from "../features/deliveryDiscountSlice";
 import useEntityManagement from "../hooks/useEntityManagement";
 
 
 const useDeliveryDiscountManagement = () => {
     return useEntityManagement({
         apiSlice: deliveryDiscountApi,
-        queryHook: useGetAllQuery,
+        queryHook: useGetAllDeliveryDiscountQuery,
         addMutationHook: useAddMutation,
         updateMutationHook: useUpdateMutation,
         deleteMutationHook: useDeleteMutation,
-        cacheKey: 'getAll',
+        cacheKey: 'getAllDeliveryDiscount',
         defaultQueryArgs: {
             pageNumber: 1,
             pageSize: 10,
         },
-        identifier: 'CompanyID',
+        identifier: 'LindID',
     });
 }
 

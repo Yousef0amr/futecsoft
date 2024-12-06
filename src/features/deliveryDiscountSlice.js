@@ -1,14 +1,21 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, DELIVERY_COMPANY } from "../api/endpoints";
 import convertToFormData from "../utils/convertToFormData";
 import getCookie from "../utils/getCookie";
-import { longCacheTime } from "../utils/constants";
+import { longCacheTime } from "../config/constants";
 
 
 const transformData = (data) => ({
     ...data,
     CompanyID: data.CompanyId,
-    LineID: data.LineId
+    LineID: data.LineId,
+    FromDate: data.FromDate
+        ? new Date(data.FromDate).toISOString().split('T')[0]
+        : null,
+    ToDate: data.ToDate
+        ? new Date(data.ToDate).toISOString().split('T')[0]
+        : null,
+    BranchID: data.Branche
 });
 
 
@@ -30,7 +37,7 @@ export const deliveryDiscountApi = createApi({
             providesTags: [`deliveryDiscount_id`],
             transformResponse: (response) => response.Response,
         }),
-        getAll: builder.query({
+        getAllDeliveryDiscount: builder.query({
             query: ({ pageNumber, pageSize }) => ({
                 url: `/GetAllDeliveryDiscount?paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
@@ -79,6 +86,11 @@ export const deliveryDiscountApi = createApi({
 })
 
 
-
-export const { useGetCurrentKeyQuery, useGetAllQuery, useAddMutation, useUpdateMutation, useDeleteMutation } = deliveryDiscountApi;
+export const {
+    useGetCurrentKeyQuery,
+    useGetAllDeliveryDiscountQuery,
+    useAddMutation,
+    useUpdateMutation,
+    useDeleteMutation
+} = deliveryDiscountApi;
 

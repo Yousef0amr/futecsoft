@@ -64,6 +64,7 @@ const AppStrings = {
     city: 'city',
     street: 'street',
     enter: 'enter',
+    price1: 'price1',
     add_new_branch: 'add_new_branch',
     list_branches: 'list_branches',
     edit_branch: 'edit_branch',
@@ -271,6 +272,12 @@ const AppStrings = {
     list_suppliers: 'list_suppliers',
     edit_supplier: 'edit_supplier',
     supplierCompany_required: 'supplierCompany_required',
+    list_delivery_discount: 'list_delivery_discount',
+    add_new_delivery_discount: 'add_new_delivery_discount',
+    edit_delivery_discount: 'edit_delivery_discount',
+    delivery_discount_added_successfully: 'delivery_discount_added_successfully',
+    delivery_discount_updated_successfully: 'delivery_discount_updated_successfully',
+    delivery_discount_deleted_successfully: 'delivery_discount_deleted_successfully',
 
 }
 

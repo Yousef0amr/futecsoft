@@ -222,7 +222,7 @@ export const useSuppliersColDefs = () => {
     ], [t]);
 }
 export const useDeliveryCompaniesColDefs = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     return useMemo(() => [
         { field: "CompanyID", headerName: t(AppStrings.deliveryCompanyId), filter: 'agTextColumnFilter' },
@@ -230,9 +230,9 @@ export const useDeliveryCompaniesColDefs = () => {
         { field: "Email", headerName: t(AppStrings.email), filter: 'agTextColumnFilter' },
         { field: "Phone", headerName: t(AppStrings.phones), filter: 'agTextColumnFilter' },
         { field: "percent", headerName: t(AppStrings.deliveryPercentage), filter: 'agTextColumnFilter' },
-        { field: "PriceCategory", headerName: t(AppStrings.priceCategory), filter: 'agTextColumnFilter' },
-        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
-    ], [t]);
+        { field: i18n.language === 'en' ? "PriceCategoryEn" : "PriceCategoryAr", headerName: t(AppStrings.priceCategory), filter: 'agTextColumnFilter' },
+        { field: "Active", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
 }
 
 
@@ -245,7 +245,7 @@ export const useDeliveryDiscountColDefs = () => {
         { field: "FromDate", headerName: t(AppStrings.from_date), filter: 'agTextColumnFilter' },
         { field: "ToDate", headerName: t(AppStrings.to_date), filter: 'agTextColumnFilter' },
         { field: "DiscountValue", headerName: t(AppStrings.deliveryPercentage), filter: 'agTextColumnFilter' },
-        { field: "Branche", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "BranchID", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
     ], [t]);
 }

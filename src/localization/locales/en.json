@@ -281,5 +281,12 @@
     "add_new_supplier": "Add New Supplier",
     "list_suppliers": "List of Suppliers",
     "edit_supplier": "Edit Supplier",
-    "supplierCompany_required": "Supplier Company is required"
+    "supplierCompany_required": "Supplier Company is required",
+    "list_delivery_discount": "List of Delivery Discounts",
+    "add_new_delivery_discount": "Add New Delivery Discount",
+    "edit_delivery_discount": "Edit Delivery Discount",
+    "delivery_discount_added_successfully": "Delivery Discount added successfully",
+    "delivery_discount_updated_successfully": "Delivery Discount updated successfully",
+    "delivery_discount_deleted_successfully": "Delivery Discount deleted successfully",
+    "price1": "Base Price"
 }

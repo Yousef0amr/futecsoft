@@ -299,8 +299,8 @@ export const menuList = [
                 icon: faAddressBook,
 
                 subActions: [
-                    { label: AppStrings.list, href: routes.group.list },
-                    { label: AppStrings.add, href: routes.group.add },
+                    { label: AppStrings.list, href: routes.user_group.list },
+                    { label: AppStrings.add, href: routes.user_group.add },
 
                 ]
             },
@@ -317,12 +317,8 @@ export const menuList = [
             {
                 label: AppStrings.user_permissions,
                 icon: faUserLock,
-
-                subActions: [
-                    { label: AppStrings.list, href: routes.permission.list },
-                    { label: AppStrings.add, href: routes.permission.add },
-
-                ]
+                type: 'unExpanded',
+                href: routes.permission.list
             }
         ]
     }

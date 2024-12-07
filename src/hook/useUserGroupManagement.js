@@ -5,9 +5,9 @@ const useUserGroupManagement = () => {
     return useEntityManagement({
         apiSlice: userGroupsApi,
         queryHook: useGetUserGroupsQuery,
-        addMutation: useAddUserGroupMutation,
-        deleteMutation: useDeleteUserGroupMutation,
-        updateMutation: useUpdateUserGroupMutation,
+        addMutationHook: useAddUserGroupMutation,
+        deleteMutationHook: useDeleteUserGroupMutation,
+        updateMutationHook: useUpdateUserGroupMutation,
         cacheKey: 'getAll',
         defaultQueryArgs: {
             pageNumber: 1,

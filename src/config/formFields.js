@@ -168,12 +168,18 @@ export const paymentTypesFormFields = [
     { name: 'Ptype', label: AppStrings.paymentTypeId, required: true, type: 'number', disabled: true },
     { name: 'PaymentArDesc', label: AppStrings.paymentTypeAr, required: true, type: 'text' },
     { name: 'PaymentEnDesc', label: AppStrings.paymentTypeEn, required: true, type: 'text' },
+    { name: 'Commissions', label: AppStrings.commissions, required: false, type: 'number' },
     { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: true, type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+
+export const paymentTypeFormFields = [
     { name: 'CashMoney', label: AppStrings.cashMoney, type: 'check' },
-    { name: 'Commissions', label: AppStrings.commissions, required: false, type: 'number' },
     { name: 'IsCredit', label: AppStrings.isCredit, type: 'check' },
 ]
+
+
 
 
 export const suppliersFormFields = [

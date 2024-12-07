@@ -5,9 +5,9 @@ const useUserManagement = () => {
     return useEntityManagement({
         apiSlice: usersApi,
         queryHook: useGetUsersQuery,
-        addMutation: useAddUserMutation,
-        deleteMutation: useDeleteUserMutation,
-        updateMutation: useUpdateUserMutation,
+        addMutationHook: useAddUserMutation,
+        deleteMutationHook: useDeleteUserMutation,
+        updateMutationHook: useUpdateUserMutation,
         cacheKey: 'getAll',
         defaultQueryArgs: {
             pageNumber: 1,

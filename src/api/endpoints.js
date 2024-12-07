@@ -13,3 +13,6 @@ export const DELIVERY_COMPANY = `DeliveyCompany/${VERSION}`;
 export const ITEMS = `Item/${VERSION}`;
 export const TAXES = `Tax/${VERSION}`;
 export const UNITS = `Units/${VERSION}`;
+export const USERS = `Users/${VERSION}`;
+export const USERS_GROUP = `UsersGroup/${VERSION}`;
+export const USERS_PERMISSIONS = `UsersPermissions/${VERSION}`;

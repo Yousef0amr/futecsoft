@@ -48,6 +48,14 @@ import EditDeliveryCompany from '../pages/delivery_company/EditDeliveryCompany'
 import ListDeliveryDiscount from '../pages/delivery_discount/ListDeliveryDiscount'
 import AddDeliveryDiscount from '../pages/delivery_discount/AddDeliveryDiscount'
 import EditDeliveryDiscount from '../pages/delivery_discount/EditDeliveryDiscount'
+import ListUserGroup from '../pages/user_group/ListUserGroup'
+import AddUserGroup from '../pages/user_group/AddUserGroup'
+import EditUserGroup from '../pages/user_group/EditUserGroup'
+import ListUser from '../pages/user/ListUser'
+import AddUser from '../pages/user/AddUser'
+import EditUser from '../pages/user/EditUser'
+import EditUserPermission from '../pages/user_permission/EditUserPermission'
+import ListUserPermission from '../pages/user_permission/ListUserPermission'
 
 
 
@@ -109,6 +117,17 @@ const pagesList = [
     { path: routes.delivery_discount.list, component: <ListDeliveryDiscount /> },
     { path: routes.delivery_discount.add, component: <AddDeliveryDiscount /> },
     { path: routes.delivery_discount.edit, component: <EditDeliveryDiscount /> },
+    //User Groups
+    { path: routes.user_group.list, component: <ListUserGroup /> },
+    { path: routes.user_group.add, component: <AddUserGroup /> },
+    { path: routes.user_group.edit, component: <EditUserGroup /> },
+    //Users
+    { path: routes.user.list, component: <ListUser /> },
+    { path: routes.user.add, component: <AddUser /> },
+    { path: routes.user.edit, component: <EditUser /> },
+    //User Permissions
+    { path: routes.permission.edit, component: <EditUserPermission /> },
+    { path: routes.permission.list, component: <ListUserPermission /> },
 
 ];
 

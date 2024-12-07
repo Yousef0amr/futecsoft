@@ -7,7 +7,7 @@ import useDeliveryCompanyManagement from '../../hook/useDeliveryCompanyManagemen
 const DeliveryDiscountFormFields = ({ register, errors, watch, setValue }) => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement()
     const branches = !isLoadingBranches
-        ? branchesData?.map((item) => ({ value: item.BranchId.toString(), label: item.BranchNameAr }))
+        ? branchesData?.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
         : [];
 
     const { data: deliveryCompanyData, isLoading: isLoadingDeliveryCompany } = useDeliveryCompanyManagement()

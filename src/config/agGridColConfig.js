@@ -249,6 +249,53 @@ export const useDeliveryDiscountColDefs = () => {
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
     ], [t]);
 }
+export const useUserGroupColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "GroupId", headerName: t(AppStrings.groupId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "GroupEnName" : "GroupArName", headerName: t(i18n.language === 'en' ? AppStrings.group_name_en : AppStrings.group_name_ar), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+}
+
+
+
+export const useUsersColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "UserNo", headerName: t(AppStrings.userId), filter: 'agTextColumnFilter' },
+        { field: "UserName", headerName: t(AppStrings.username), filter: 'agTextColumnFilter' },
+        { field: "BranchDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "GroupEnName" : "GroupArName", headerName: t(i18n.language === 'en' ? AppStrings.group_name_en : AppStrings.group_name_ar), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t, i18n]);
+}
+
+export const useUserPermissionsColDefs = () => {
+    const { t, } = useTranslation();
+
+    return useMemo(() => [
+        { field: "UserNo", headerName: t(AppStrings.userId), filter: 'agTextColumnFilter' },
+        { field: "UserName", headerName: t(AppStrings.username), filter: 'agTextColumnFilter' },
+        { field: "BranchDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "StartWork", headerName: t(AppStrings.startWork), filter: 'agTextColumnFilter' },
+        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+    ], [t,]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

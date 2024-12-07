@@ -72,9 +72,25 @@ export const routes = {
         add: '/delivery/discounts/add',
         edit: '/delivery/discounts/edit'
     },
+    user_group: {
+        list: '/user-management/groups/list',
+        add: '/user-management/groups/add',
+        edit: '/user-management/groups/edit'
+    },
+    user: {
+        list: '/user-management/users/list',
+        add: '/user-management/users/add',
+        edit: '/user-management/users/edit'
+    },
+    permission: {
+        list: '/user-management/permissions/list',
+        edit: '/user-management/permissions/edit'
+    }
 
 
 }
+
+
 
 export const longCacheTime = 3500;
 export const shortCacheTime = 1000;
@@ -283,8 +299,9 @@ export const menuList = [
                 icon: faAddressBook,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/user-management/groups/add' },
-                    { label: AppStrings.list, href: '/user-management/groups/list' }
+                    { label: AppStrings.list, href: routes.group.list },
+                    { label: AppStrings.add, href: routes.group.add },
+
                 ]
             },
             {
@@ -292,8 +309,9 @@ export const menuList = [
                 icon: faUser,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/user-management/users/add' },
-                    { label: AppStrings.list, href: '/user-management/users/list' }
+                    { label: AppStrings.list, href: routes.user.list },
+                    { label: AppStrings.add, href: routes.user.add },
+
                 ]
             },
             {
@@ -301,8 +319,9 @@ export const menuList = [
                 icon: faUserLock,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/user-management/permissions/add' },
-                    { label: AppStrings.list, href: '/user-management/permissions/list' }
+                    { label: AppStrings.list, href: routes.permission.list },
+                    { label: AppStrings.add, href: routes.permission.add },
+
                 ]
             }
         ]

@@ -210,4 +210,35 @@ export const deliveryDiscountFormFields = [
 
 
 
+export const userGroupsFormFields = [
+    { name: 'GroupId', label: AppStrings.groupId, required: true, type: 'number', disabled: true },
+    { name: 'GroupArName', label: AppStrings.group_name_ar, required: true, type: 'text' },
+    { name: 'GroupEnName', label: AppStrings.group_name_en, required: true, type: 'text' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+export const usersFormFields = [
+    { name: 'UserNo', label: AppStrings.userId, required: true, type: 'number', disabled: true },
+    { name: 'UserName', label: AppStrings.username, required: true, type: 'text' },
+    { name: 'UserPassword', label: AppStrings.password, required: true, type: 'password' },
+    { name: 'GroupType', label: AppStrings.user_group, required: true, options: [], type: 'select' },
+    { name: 'Branch', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
+    { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
+]
+
+
+export const userPermissionsFormFields = [
+    { name: 'UserNo', label: AppStrings.userId, required: true, type: 'number', disabled: true },
+    { name: 'PermissionId', label: AppStrings.username, required: true, type: 'text' },
+    { name: 'WarehouseId', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
+    { name: 'Allow', label: AppStrings.isActive, type: 'check' },
+]
+
+
+
+
+
+
+
+
 

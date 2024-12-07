@@ -185,6 +185,31 @@ const MainMenuValidators = () => {
         IsActive: yup.boolean().optional(),
     }
 
+    const userGroupSchemaValidator = {
+        GroupId: yup.string().required(t(AppStrings.groupId_required)).nullable(),
+        GroupArName: yup.string().required(t(AppStrings.group_name_ar_required)).nullable(),
+        GroupEnName: yup.string().required(t(AppStrings.group_name_en_required)).nullable(),
+        IsActive: yup.boolean().optional(),
+    }
+
+    const userSchemaValidator = {
+        UserNo: yup.string().required(t(AppStrings.userId_required)).nullable(),
+        UserName: yup.string().required(t(AppStrings.username_required)).nullable(),
+        UserPassword: yup.string().required(t(AppStrings.password_required)).nullable(),
+        GroupType: yup.string().required(t(AppStrings.user_group_required)).nullable(),
+        Branch: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
+        IsActive: yup.boolean().optional(),
+    }
+
+    const userPermissionsSchemaValidator = {
+        UserNo: yup.string().required(t(AppStrings.userId_required)).nullable(),
+        PermissionId: yup.string().required(t(AppStrings.username_required)).nullable(),
+        WarehouseId: yup.array().min(1).required(t(AppStrings.branch_required)).nullable(),
+        Allow: yup.boolean().optional(),
+    }
+
+
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -200,7 +225,10 @@ const MainMenuValidators = () => {
         paymentTypesSchemaValidator,
         deliveryCompaniesSchemaValidator,
         supplierSchemaValidator,
-        deliveryDiscountSchemaValidator
+        deliveryDiscountSchemaValidator,
+        userGroupSchemaValidator,
+        userSchemaValidator,
+        userPermissionsSchemaValidator
     }
 }
 

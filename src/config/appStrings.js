@@ -278,7 +278,27 @@ const AppStrings = {
     delivery_discount_added_successfully: 'delivery_discount_added_successfully',
     delivery_discount_updated_successfully: 'delivery_discount_updated_successfully',
     delivery_discount_deleted_successfully: 'delivery_discount_deleted_successfully',
-
+    groupId: 'groupId',
+    group_name_ar: 'group_name_ar',
+    group_name_en: 'group_name_en',
+    group_name_ar_required: 'group_name_ar_required',
+    group_name_en_required: 'group_name_en_required',
+    group_added_successfully: 'group_added_successfully',
+    group_updated_successfully: 'group_updated_successfully',
+    group_deleted_successfully: 'group_deleted_successfully',
+    add_new_group: 'add_new_group',
+    list_groups: 'list_groups',
+    edit_group: 'edit_group',
+    user_group: 'user_group',
+    userId: 'userId',
+    user_added_successfully: 'user_added_successfully',
+    user_updated_successfully: 'user_updated_successfully',
+    user_deleted_successfully: 'user_deleted_successfully',
+    add_new_user: 'add_new_user',
+    list_users: 'list_users',
+    edit_user: 'edit_user',
+    user_group_required: 'user_group_required',
+    startWork: 'startWork',
 }
 
 

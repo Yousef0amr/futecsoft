@@ -279,8 +279,8 @@ export const useUserPermissionsColDefs = () => {
     return useMemo(() => [
         { field: "UserNo", headerName: t(AppStrings.userId), filter: 'agTextColumnFilter' },
         { field: "UserName", headerName: t(AppStrings.username), filter: 'agTextColumnFilter' },
-        { field: "BranchDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
-        { field: "StartWork", headerName: t(AppStrings.startWork), filter: 'agTextColumnFilter' },
+        { field: "BranhDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        // { field: "StartWork", headerName: t(AppStrings.startWork), filter: 'agTextColumnFilter' },
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
     ], [t,]);
 }

@@ -242,6 +242,34 @@ export const userPermissionsFormFields = [
 
 
 
+export const permissionsFormFields = [
+    { name: '0101', label: AppStrings.permission0101, type: 'check' },
+    { name: '0102', label: AppStrings.permission0102, type: 'check' },
+    { name: '0103', label: AppStrings.permission0103, type: 'check' },
+    { name: '0104', label: AppStrings.permission0104, type: 'check' },
+    { name: '0105', label: AppStrings.permission0105, type: 'check' },
+    { name: '0106', label: AppStrings.permission0106, type: 'check' },
+    { name: '0107', label: AppStrings.permission0107, type: 'check' },
+    { name: '0108', label: AppStrings.permission0108, type: 'check' },
+    { name: '0109', label: AppStrings.permission0109, type: 'check' },
+    { name: '0110', label: AppStrings.permission0110, type: 'check' },
+    { name: '0111', label: AppStrings.permission0111, type: 'check' },
+    { name: '0112', label: AppStrings.permission0112, type: 'check' },
+    { name: '0113', label: AppStrings.permission0113, type: 'check' },
+    { name: '0114', label: AppStrings.permission0114, type: 'check' },
+    { name: '0115', label: AppStrings.permission0115, type: 'check' },
+    { name: '0116', label: AppStrings.permission0116, type: 'check' },
+    { name: '0117', label: AppStrings.permission0117, type: 'check' },
+    { name: '0118', label: AppStrings.permission0118, type: 'check' },
+    { name: '0119', label: AppStrings.permission0119, type: 'check' },
+    { name: '0120', label: AppStrings.permission0120, type: 'check' },
+    { name: '0121', label: AppStrings.permission0121, type: 'check' },
+    { name: '0122', label: AppStrings.permission0122, type: 'check' },
+    { name: '0123', label: AppStrings.permission0123, type: 'check' },
+];
+
+
+
 
 
 

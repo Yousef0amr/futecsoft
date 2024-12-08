@@ -18,7 +18,7 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
             field: t(AppStrings.actions),
             cellRenderer: actionsCellRenderer,
             cellRendererParams: actions,
-            minWidth: 194
+
         } : { width: 0 },
         ...dynamicColumns,
     ], [dynamicColumns, t, actionsCellRenderer, actions, enableActions]);

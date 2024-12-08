@@ -12,7 +12,7 @@ const UserFormFields = ({ errors, register, watch, setValue }) => {
 
     const { data: usersGroupData, isLoading: isLoadingGroup } = useUserGroupManagement()
     const usersGroup = !isLoadingGroup
-        ? usersGroupData?.map((item) => ({ value: item.GroupId, label: item.GroupArName }))
+        ? usersGroupData?.map((item) => ({ value: item.GroupId.toString(), label: item.GroupArName }))
         : [];
 
 

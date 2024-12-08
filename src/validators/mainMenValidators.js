@@ -209,6 +209,31 @@ const MainMenuValidators = () => {
     }
 
 
+    const permissionSchemaValidator = {
+        "0101": yup.boolean().optional(),
+        "0102": yup.boolean().optional(),
+        "0103": yup.boolean().optional(),
+        "0104": yup.boolean().optional(),
+        "0105": yup.boolean().optional(),
+        "0106": yup.boolean().optional(),
+        "0107": yup.boolean().optional(),
+        "0108": yup.boolean().optional(),
+        "0109": yup.boolean().optional(),
+        "0110": yup.boolean().optional(),
+        "0111": yup.boolean().optional(),
+        "0112": yup.boolean().optional(),
+        "0113": yup.boolean().optional(),
+        "0114": yup.boolean().optional(),
+        "0115": yup.boolean().optional(),
+        "0116": yup.boolean().optional(),
+        "0117": yup.boolean().optional(),
+        "0118": yup.boolean().optional(),
+        "0119": yup.boolean().optional(),
+        "0120": yup.boolean().optional(),
+        "0121": yup.boolean().optional(),
+        "0122": yup.boolean().optional(),
+        "0123": yup.boolean().optional(),
+    }
 
     return {
         branchSchemaValidator,
@@ -228,7 +253,8 @@ const MainMenuValidators = () => {
         deliveryDiscountSchemaValidator,
         userGroupSchemaValidator,
         userSchemaValidator,
-        userPermissionsSchemaValidator
+        userPermissionsSchemaValidator,
+        permissionSchemaValidator
     }
 }
 

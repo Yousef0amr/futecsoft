@@ -16,6 +16,7 @@ import { suppliersApi } from "../features/supplierSlice";
 import { deliveryDiscountApi } from "../features/deliveryDiscountSlice";
 import { userGroupsApi } from "../features/userGroupSlice";
 import { usersApi } from "../features/userSlice";
+import { userPermissionsApi } from "../features/userPermissionSlice";
 
 const store = configureStore({
     reducer: {
@@ -34,7 +35,8 @@ const store = configureStore({
         [suppliersApi.reducerPath]: suppliersApi.reducer,
         [deliveryDiscountApi.reducerPath]: deliveryDiscountApi.reducer,
         [userGroupsApi.reducerPath]: userGroupsApi.reducer,
-        [usersApi.reducerPath]: usersApi.reducer
+        [usersApi.reducerPath]: usersApi.reducer,
+        [userPermissionsApi.reducerPath]: userPermissionsApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
@@ -52,6 +54,7 @@ const store = configureStore({
         paymentTypesApi.middleware,
         suppliersApi.middleware,
         userGroupsApi.middleware,
+        userPermissionsApi.middleware,
         usersApi.middleware
 
     ),

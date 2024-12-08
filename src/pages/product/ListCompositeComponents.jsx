@@ -25,6 +25,7 @@ const ListCompositeComponents = () => {
             </>
         }>
             <AgGridTable
+
                 actionsCellRenderer={NavButton}
                 actions={{ icon: faAdd, path: routes.product.compositeComponentsAdd, title: AppStrings.add_new_component }}
                 dynamicColumns={productColDefs}

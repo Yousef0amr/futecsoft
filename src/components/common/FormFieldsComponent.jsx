@@ -10,7 +10,7 @@ const FormFieldsComponent = ({ isLoading, fields, options, triggerEvent = () => 
         <Row style={{ marginTop: '10px' }}>
             {fields.map((field) => {
                 return <Col xs={12} md={6} key={field.name}>
-                    {(field.type === 'text' || field.type === 'number' || field.type === 'email' || field.type === 'date') &&
+                    {(field.type === 'text' || field.type === 'number' || field.type === 'email' || field.type === 'date' || field.type === 'password') &&
                         <InputField
                             name={field.name}
                             label={field.label}

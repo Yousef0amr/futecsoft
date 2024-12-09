@@ -234,10 +234,10 @@ export const usersFormFields = [
 
 
 export const userPermissionsFormFields = [
-    { name: 'UserNo', label: AppStrings.userId, required: true, type: 'number', disabled: true },
-    { name: 'PermissionId', label: AppStrings.username, required: true, type: 'text' },
-    { name: 'WarehouseId', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
-    { name: 'Allow', label: AppStrings.isActive, type: 'check' },
+    { name: 'UserNo' },
+    { name: 'PermissionId' },
+    { name: 'WarehouseId' },
+    { name: 'Allow' },
 ]
 
 

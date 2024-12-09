@@ -85,9 +85,27 @@ export const routes = {
     permission: {
         list: '/user-management/permissions/list',
         edit: '/user-management/permissions/edit'
+    },
+    invoice: {
+        list: '/purchases/invoices/list',
+        add: '/purchases/invoices/add',
+        edit: '/purchases/invoices/edit'
+    },
+    input_voucher: {
+        list: '/purchases/input-vouchers/list',
+        add: '/purchases/input-vouchers/add',
+        edit: '/purchases/input-vouchers/edit'
+    },
+    output_voucher: {
+        list: '/purchases/output-vouchers/list',
+        add: '/purchases/output-vouchers/add',
+        edit: '/purchases/output-vouchers/edit'
+    },
+    transfer_voucher: {
+        list: '/purchases/transfer-vouchers/list',
+        add: '/purchases/transfer-vouchers/add',
+        edit: '/purchases/transfer-vouchers/edit'
     }
-
-
 }
 
 
@@ -233,27 +251,27 @@ export const menuList = [
                 label: AppStrings.purchase_invoices,
                 icon: faFileInvoice,
 
-                subActions: [
-                    { label: AppStrings.add, href: '/purchases/invoices/add' },
-                    { label: AppStrings.list, href: '/purchases/invoices/list' }
+                subActions: [{ label: AppStrings.list, href: routes.invoice.list },
+                { label: AppStrings.add, href: routes.invoice.add },
+
                 ]
             },
             {
                 label: AppStrings.input_vouchers,
                 icon: faTruck,
 
-                subActions: [
-                    { label: AppStrings.add, href: '/purchases/input-vouchers/add' },
-                    { label: AppStrings.list, href: '/purchases/input-vouchers/list' }
+                subActions: [{ label: AppStrings.list, href: routes.input_voucher.list },
+                { label: AppStrings.add, href: routes.input_voucher.add },
+
                 ]
             },
             {
                 label: AppStrings.output_vouchers,
                 icon: faTruck,
 
-                subActions: [
-                    { label: AppStrings.add, href: '/purchases/output-vouchers/add' },
-                    { label: AppStrings.list, href: '/purchases/output-vouchers/list' }
+                subActions: [{ label: AppStrings.list, href: routes.output_voucher.list },
+                { label: AppStrings.add, href: routes.output_voucher.add },
+
                 ]
             },
             {
@@ -261,8 +279,9 @@ export const menuList = [
                 icon: faTruck,
 
                 subActions: [
-                    { label: AppStrings.add, href: '/purchases/transfer-vouchers/add' },
-                    { label: AppStrings.list, href: '/purchases/transfer-vouchers/list' }
+                    { label: AppStrings.list, href: routes.transfer_voucher.list },
+                    { label: AppStrings.add, href: routes.transfer_voucher.add },
+
                 ]
             }
         ]
@@ -367,6 +386,33 @@ export const useDefaultPriceCategory = () => {
             }
         ]
     )
+}
+
+
+export const permissionsDefaultValues = {
+    "0101": false,
+    "0102": false,
+    "0103": false,
+    "0104": false,
+    "0105": false,
+    "0106": false,
+    "0107": false,
+    "0108": false,
+    "0109": false,
+    "0110": false,
+    "0111": false,
+    "0112": false,
+    "0113": false,
+    "0114": false,
+    "0115": false,
+    "0116": false,
+    "0117": false,
+    "0118": false,
+    "0119": false,
+    "0120": false,
+    "0121": false,
+    "0122": false,
+    "0123": false,
 }
 
 

@@ -56,6 +56,19 @@ import AddUser from '../pages/user/AddUser'
 import EditUser from '../pages/user/EditUser'
 import EditUserPermission from '../pages/user_permission/EditUserPermission'
 import ListUserPermission from '../pages/user_permission/ListUserPermission'
+import ListInvoice from '../pages/invoice/ListInvoice'
+import AddInvoice from '../pages/invoice/AddInvoice'
+import EditInvoice from '../pages/invoice/EditInvoice'
+import ListInputVoucher from '../pages/input_voucher/ListInputVoucher'
+import AddInputVoucher from '../pages/input_voucher/AddInputVoucher'
+import EditInputVoucher from '../pages/input_voucher/EditInputVoucher'
+import ListOutputVoucher from '../pages/output_voucher/ListOutputVoucher'
+import AddOutputVoucher from '../pages/output_voucher/AddOutputVoucher'
+import EditOutputVoucher from '../pages/output_voucher/EditOutputVoucher'
+import ListTransferVoucher from '../pages/transfer_voucher/ListTransferVoucher'
+import AddTransferVoucher from '../pages/transfer_voucher/AddTransferVoucher'
+import EditTransferVoucher from '../pages/transfer_voucher/EditTransferVoucher'
+
 
 
 
@@ -128,6 +141,22 @@ const pagesList = [
     //User Permissions
     { path: routes.permission.edit, component: <EditUserPermission /> },
     { path: routes.permission.list, component: <ListUserPermission /> },
+    //Invoices
+    { path: routes.invoice.list, component: <ListInvoice /> },
+    { path: routes.invoice.add, component: <AddInvoice /> },
+    { path: routes.invoice.edit, component: <EditInvoice /> },
+    //Input Vouchers
+    { path: routes.input_voucher.list, component: <ListInputVoucher /> },
+    { path: routes.input_voucher.add, component: <AddInputVoucher /> },
+    { path: routes.input_voucher.edit, component: <EditInputVoucher /> },
+    //Output Vouchers
+    { path: routes.output_voucher.list, component: <ListOutputVoucher /> },
+    { path: routes.output_voucher.add, component: <AddOutputVoucher /> },
+    { path: routes.output_voucher.edit, component: <EditOutputVoucher /> },
+    //Transfer Vouchers
+    { path: routes.transfer_voucher.list, component: <ListTransferVoucher /> },
+    { path: routes.transfer_voucher.add, component: <AddTransferVoucher /> },
+    { path: routes.transfer_voucher.edit, component: <EditTransferVoucher /> },
 
 ];
 

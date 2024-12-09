@@ -17,7 +17,6 @@ const EditCategory = () => {
             errorMessage={AppStrings.something_went_wrong}
             successMessage={AppStrings.category_updated_successfully}
             fetchHook={useCategoryManagement}
-            isRefetch={true}
             icon={faWindowRestore}
             title={t(AppStrings.edit_category) + '  | ' + loaction.state.Id}
             path={routes.category.list}

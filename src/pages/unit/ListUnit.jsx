@@ -10,7 +10,7 @@ const ListUnit = () => {
     return (
         <ListComponent
             entityName="unit"
-            entityKey="UnitId"
+            entityKey="UnitID"
             fetchHook={useUnitManagement}
             columnDefsHook={useUnitsColDefs}
             routes={routes.unit}

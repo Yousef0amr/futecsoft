@@ -3,7 +3,7 @@ import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
 import { longCacheTime } from '../config/constants.js';
 
-const createDynamicApi = ({ reducerPath, baseEndpoint, transformData, additionalEndpoints = () => { } }) => {
+const createDynamicApi = ({ reducerPath, baseEndpoint, transformData }) => {
     const api = createApi({
         reducerPath,
         baseQuery: fetchBaseQuery({
@@ -68,8 +68,7 @@ const createDynamicApi = ({ reducerPath, baseEndpoint, transformData, additional
                     }),
                 }),
             };
-            const mergedEndpoints = { ...defaultEndpoints, ...additionalEndpoints(builder) };
-            return mergedEndpoints;
+            return defaultEndpoints;
         },
     });
 

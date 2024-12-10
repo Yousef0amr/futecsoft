@@ -16,3 +16,8 @@ export const UNITS = `Units/${VERSION}`;
 export const USERS = `Users/${VERSION}`;
 export const USERS_GROUP = `UsersGroup/${VERSION}`;
 export const USERS_PERMISSIONS = `UsersPermissions/${VERSION}`;
+export const INVOICES = `PurchaseInvoice/${VERSION}`;
+export const VOUCHER_INPUT = `VoucherInput/${VERSION}`;
+export const VOUCHER_OUTPUT = `VoucherOutput/${VERSION}`;
+export const VOUCHER_TRANSFER = `VoucherTransfer/${VERSION}`;
+

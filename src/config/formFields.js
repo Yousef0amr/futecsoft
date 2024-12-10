@@ -269,6 +269,36 @@ export const permissionsFormFields = [
 ];
 
 
+export const invoiceInfFormFields = [
+    { name: 'DocID', label: AppStrings.invoiceNo, required: true, type: 'number', disabled: true },
+    { name: 'InvoiceNo', label: AppStrings.invoiceNo, required: true, type: 'text', disabled: true },
+    { name: 'Vtype', label: AppStrings.invoiceNo, required: true, type: 'number', disabled: true },
+    { name: 'PayType', label: AppStrings.invoiceNo, required: true, type: 'text', disabled: true },
+    { name: 'Note', label: AppStrings.invoiceNo, required: true, type: 'number', disabled: true },
+    { name: 'DocDate', label: AppStrings.from_date, required: true, type: 'date' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
+    { name: 'Supplier', label: AppStrings.customer, required: true, options: [], type: 'select' },
+    { name: 'InvoiceType', label: AppStrings.invoiceType, required: true, options: [], type: 'select' },
+    { name: 'InvoiceStatus', label: AppStrings.invoiceStatus, required: true, options: [], type: 'select' },
+    { name: 'PriceIncludeTax', label: AppStrings.isActive, type: 'check' },
+    { name: 'TaxExc', label: AppStrings.isActive, type: 'check' },
+]
+
+export const invoiceItemsFormFields = [
+    { name: 'ItemId', label: AppStrings.itemNo, required: true, type: 'number', disabled: true },
+    { name: 'Unit', label: AppStrings.product, required: true, options: [], type: 'select' },
+    { name: 'UnitPrice', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'Qty', label: AppStrings.unit, required: true, type: 'number' },
+    { name: 'TaxPercentage', label: AppStrings.price, required: true, type: 'number' },
+    { name: 'ItemDiscountPercentage', label: AppStrings.discount, required: true, type: 'number' },
+    { name: 'ItemDiscount', label: AppStrings.amount, required: true, type: 'number' },
+
+]
+
+
+
+
+
 
 
 

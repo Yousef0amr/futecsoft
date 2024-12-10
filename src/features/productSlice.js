@@ -125,6 +125,20 @@ export const productsApi = createApi({
                 }
             },
         }),
+        getStandardAndRawMaterials: builder.query({
+            query: ({ branch, pageNumber, pageSize }) => ({
+                url: `/StandardAndRawMaterial?Warehouse=${branch}&paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
+            }),
+            keepUnusedDataFor: longCacheTime,
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformProductData(item));
+                } else {
+                    return [];
+                }
+            },
+        }),
         updateProduct: builder.mutation({
             query: (product) => ({
                 url: `/Update`,
@@ -204,5 +218,6 @@ export const {
     useLazyGetProductsByCategoryQuery,
     useUpdateComponentMutation,
     useDeleteComponentMutation,
-    useGetAllProductsQuery
+    useGetAllProductsQuery,
+    useGetStandardAndRawMaterialsQuery
 } = productsApi;

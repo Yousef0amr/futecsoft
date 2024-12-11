@@ -1,9 +1,9 @@
 import React from 'react'
 import ListComponent from '../../components/common/ListComponent'
 import useVoucherOutputManagement from '../../hook/useVoucherOutputManagement'
-import { useVoucherInputColDefs } from '../../config/agGridColConfig'
+import { useVoucherOutputColDefs } from '../../config/agGridColConfig'
 import { routes } from '../../config/constants'
-import { faTruckArrowRight, faTruckFront } from '@fortawesome/free-solid-svg-icons'
+import { faTruckFront } from '@fortawesome/free-solid-svg-icons'
 import AppStrings from '../../config/appStrings'
 
 const ListOutputVoucher = () => {
@@ -12,13 +12,13 @@ const ListOutputVoucher = () => {
             entityName="voucher_output"
             entityKey="DocNo"
             fetchHook={useVoucherOutputManagement}
-            columnDefsHook={useVoucherInputColDefs}
+            columnDefsHook={useVoucherOutputColDefs}
             routes={routes.output_voucher}
             icon={faTruckFront}
-            deleteSuccessMessage={AppStrings.invoice_deleted_successfully}
+            deleteSuccessMessage={AppStrings.voucher_deleted_successfully}
             deleteErrorMessage={AppStrings.something_went_wrong}
-            formTitle={AppStrings.list_invoices}
-            addButtonTitle={AppStrings.add_new_invoice}
+            formTitle={AppStrings.list_vouchers_output}
+            addButtonTitle={AppStrings.add_new_voucher_output}
         />
     )
 }

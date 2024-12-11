@@ -344,5 +344,16 @@
     "invoiceNo": "رقم الفاتورة",
     "date": "التاريخ",
     "subTotal": "المجموع الفرعي",
-    "taxValue": "قيمة الضريبة"
+    "taxValue": "قيمة الضريبة",
+    "createdBy": "بواسطة",
+    "voucherId": "رقم السند",
+    "voucher_deleted_successfully": "تم حذف السند بنجاح",
+    "add_new_voucher_output": "اضافة سند اخراج جديد",
+    "list_vouchers_output": "قائمة سندات الاخراج",
+    "edit_voucher_output": "تعديل سند الاخراج",
+    "list_vouchers_input": "قائمة سندات الوارد",
+    "add_new_voucher_input": "اضافة سند وارد جديد",
+    "edit_voucher_input": "تعديل سند الوارد",
+    "voucher_added_successfully": "تمت اضافة السند بنجاح",
+    "voucher_updated_successfully": "تم تحديث السند بنجاح"
 }

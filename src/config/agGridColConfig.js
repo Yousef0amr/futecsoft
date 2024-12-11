@@ -310,7 +310,19 @@ export const useVoucherInputColDefs = () => {
         { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
         { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
         { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
-        { field: "Note", headerName: t(AppStrings.paymentType), filter: 'agTextColumnFilter' },
+        { field: "Note", headerName: t(AppStrings.note), filter: 'agTextColumnFilter' },
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+export const useVoucherOutputColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "DocNo", headerName: t(AppStrings.voucherId), filter: 'agTextColumnFilter' },
+        { field: "CreatedByDesc", headerName: t(AppStrings.createdBy), filter: 'agTextColumnFilter' },
+        { field: "DocDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "Note", headerName: t(AppStrings.note), filter: 'agTextColumnFilter' },
         { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
     ], [t]);
 }

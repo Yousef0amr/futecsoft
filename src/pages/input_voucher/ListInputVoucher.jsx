@@ -15,10 +15,10 @@ const ListInputVoucher = () => {
             columnDefsHook={useVoucherInputColDefs}
             routes={routes.input_voucher}
             icon={faTruckArrowRight}
-            deleteSuccessMessage={AppStrings.invoice_deleted_successfully}
+            deleteSuccessMessage={AppStrings.voucher_deleted_successfully}
             deleteErrorMessage={AppStrings.something_went_wrong}
-            formTitle={AppStrings.list_invoices}
-            addButtonTitle={AppStrings.add_new_invoice}
+            formTitle={AppStrings.list_vouchers_input}
+            addButtonTitle={AppStrings.add_new_voucher_input}
         />
     )
 }

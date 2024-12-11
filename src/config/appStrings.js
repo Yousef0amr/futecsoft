@@ -338,7 +338,17 @@ const AppStrings = {
     date: 'date',
     subTotal: 'subTotal',
     taxValue: 'taxValue',
-
+    createdBy: 'createdBy',
+    voucherId: 'voucherId',
+    voucher_deleted_successfully: 'voucher_deleted_successfully',
+    add_new_voucher_output: 'add_new_voucher_output',
+    list_vouchers_output: 'list_vouchers_output',
+    edit_voucher_output: 'edit_voucher_output',
+    list_vouchers_input: 'list_vouchers_input',
+    add_new_voucher_input: 'add_new_voucher_input',
+    edit_voucher_input: 'edit_voucher_input',
+    voucher_added_successfully: 'voucher_added_successfully',
+    voucher_updated_successfully: 'voucher_updated_successfully',
 
 }
 

@@ -349,5 +349,16 @@
     "invoiceNo": "Invoice No",
     "date": "Date",
     "subTotal": "Sub Total",
-    "taxValue": "Tax Value"
+    "taxValue": "Tax Value",
+    "createdBy": "Created By",
+    "voucherId": "Voucher ID",
+    "voucher_deleted_successfully": "Voucher deleted successfully",
+    "add_new_voucher_output": "Add New Voucher Output",
+    "list_vouchers_output": "List of Vouchers Output",
+    "edit_voucher_output": "Edit Voucher Output",
+    "list_vouchers_input": "List of Vouchers Input",
+    "add_new_voucher_input": "Add New Voucher Input",
+    "edit_voucher_input": "Edit Voucher Input",
+    "voucher_added_successfully": "Voucher added successfully",
+    "voucher_updated_successfully": "Voucher updated successfully"
 }

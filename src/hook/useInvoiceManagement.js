@@ -1,5 +1,5 @@
 import { invoicesApi, useAddInvoiceMutation, useDeleteInvoiceMutation, useGetInvoicesQuery, useUpdateInvoiceMutation } from "../features/invoiceSlice";
-import useEntityManagement from "./useEntityManagement";
+import useEntityManagement from "./../hooks/useEntityManagement";
 
 const useInvoiceManagement = () => {
     return useEntityManagement({

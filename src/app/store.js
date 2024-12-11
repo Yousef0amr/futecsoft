@@ -17,6 +17,10 @@ import { deliveryDiscountApi } from "../features/deliveryDiscountSlice";
 import { userGroupsApi } from "../features/userGroupSlice";
 import { usersApi } from "../features/userSlice";
 import { userPermissionsApi } from "../features/userPermissionSlice";
+import { invoiceDetailsApi, invoicesApi } from "../features/invoiceSlice";
+import { voucherInputDetailsApi, voucherInputsApi } from "../features/voucherInputSlice";
+import { voucherOutputsApi, voucherOutputDetailsApi } from "../features/voucherOutputSlice";
+import { voucherTransferDetailsApi, voucherTransferApi } from "../features/voucherTransferSlice";
 
 const store = configureStore({
     reducer: {
@@ -36,7 +40,17 @@ const store = configureStore({
         [deliveryDiscountApi.reducerPath]: deliveryDiscountApi.reducer,
         [userGroupsApi.reducerPath]: userGroupsApi.reducer,
         [usersApi.reducerPath]: usersApi.reducer,
-        [userPermissionsApi.reducerPath]: userPermissionsApi.reducer
+        [userPermissionsApi.reducerPath]: userPermissionsApi.reducer,
+        [invoicesApi.reducerPath]: invoicesApi.reducer,
+        [invoiceDetailsApi.reducerPath]: invoiceDetailsApi.reducer,
+        [voucherInputsApi.reducerPath]: voucherInputsApi.reducer,
+        [voucherInputDetailsApi.reducerPath]: voucherInputDetailsApi.reducer,
+        [voucherOutputsApi.reducerPath]: voucherOutputsApi.reducer,
+        [voucherOutputDetailsApi.reducerPath]: voucherOutputDetailsApi.reducer,
+        [voucherTransferApi.reducerPath]: voucherTransferApi.reducer,
+        [voucherTransferDetailsApi.reducerPath]: voucherTransferDetailsApi.reducer
+
+
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
@@ -55,7 +69,15 @@ const store = configureStore({
         suppliersApi.middleware,
         userGroupsApi.middleware,
         userPermissionsApi.middleware,
-        usersApi.middleware
+        usersApi.middleware,
+        invoicesApi.middleware,
+        invoiceDetailsApi.middleware,
+        voucherInputsApi.middleware,
+        voucherInputDetailsApi.middleware,
+        voucherOutputsApi.middleware,
+        voucherOutputDetailsApi.middleware,
+        voucherTransferApi.middleware,
+        voucherTransferDetailsApi.middleware
 
     ),
 });

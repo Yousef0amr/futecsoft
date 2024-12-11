@@ -325,7 +325,20 @@ const AppStrings = {
     permission0121: 'permission0121',
     permission0122: 'permission0122',
     permission0123: 'permission0123',
-    edit_user_permission: 'edit_user_permission'
+    edit_user_permission: 'edit_user_permission',
+    list_invoices: 'list_invoices',
+    add_new_invoice: 'add_new_invoice',
+    invoice_added_successfully: 'invoice_added_successfully',
+    invoice_updated_successfully: 'invoice_updated_successfully',
+    invoice_deleted_successfully: 'invoice_deleted_successfully',
+    edit_invoice: 'edit_invoice',
+    grandTotal: 'grandTotal',
+    invoiceId: 'invoiceId',
+    invoiceNo: 'invoiceNo',
+    date: 'date',
+    subTotal: 'subTotal',
+    taxValue: 'taxValue',
+
 
 }
 

@@ -336,5 +336,18 @@
     "permission0121": "Open Cash Drawer",
     "permission0122": "Transfer Data",
     "permission0123": "Sales by Date",
-    "edit_user_permission": "Edit User Permissions"
+    "edit_user_permission": "Edit User Permissions",
+    "list_invoices": "List of Invoices",
+    "add_new_invoice": "Add New Invoice",
+    "invoice_added_successfully": "Invoice added successfully",
+    "invoice_updated_successfully": "Invoice updated successfully",
+    "invoice_deleted_successfully": "Invoice deleted successfully",
+    "edit_invoice": "Edit Invoice",
+    "invoice_details": "Invoice Details",
+    "grandTotal": "Grand Total",
+    "invoiceId": "Invoice ID",
+    "invoiceNo": "Invoice No",
+    "date": "Date",
+    "subTotal": "Sub Total",
+    "taxValue": "Tax Value"
 }

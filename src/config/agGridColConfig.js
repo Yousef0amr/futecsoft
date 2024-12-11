@@ -280,10 +280,47 @@ export const useUserPermissionsColDefs = () => {
         { field: "UserNo", headerName: t(AppStrings.userId), filter: 'agTextColumnFilter' },
         { field: "UserName", headerName: t(AppStrings.username), filter: 'agTextColumnFilter' },
         { field: "BranhDesc", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
-        // { field: "StartWork", headerName: t(AppStrings.startWork), filter: 'agTextColumnFilter' },
         { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
     ], [t,]);
 }
+
+export const useInvoicesColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "DocId", headerName: t(AppStrings.invoiceId), filter: 'agTextColumnFilter' },
+        { field: "InvoiceNo", headerName: t(AppStrings.invoiceNo), filter: 'agTextColumnFilter' },
+        { field: "DocDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "SupplierDesc", headerName: t(AppStrings.suppliers), filter: 'agTextColumnFilter' },
+        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+        { field: "PaymentDescAr", headerName: t(AppStrings.paymentType), filter: 'agTextColumnFilter' },
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+export const useVoucherInputColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "DocId", headerName: t(AppStrings.voucherId), filter: 'agTextColumnFilter' },
+        { field: "DocDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+        { field: "Note", headerName: t(AppStrings.paymentType), filter: 'agTextColumnFilter' },
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+
+
+
+
+
 
 
 

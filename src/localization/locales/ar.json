@@ -331,5 +331,18 @@
     "permission0121": "فتح الدرج",
     "permission0122": "ترحيل البيانات",
     "permission0123": "مبيعات حسب التاريخ",
-    "edit_user_permission": "تعديل صلاحيات المستخدم"
+    "edit_user_permission": "تعديل صلاحيات المستخدم",
+    "list_invoices": "قائمة الفواتير",
+    "add_new_invoice": "إضافة فاتورة جديدة",
+    "invoice_added_successfully": "تمت إضافة الفاتورة بنجاح",
+    "invoice_updated_successfully": "تم تحديث الفاتورة بنجاح",
+    "invoice_deleted_successfully": "تم حذف الفاتورة بنجاح",
+    "edit_invoice": "تعديل الفاتورة",
+    "invoice_details": "تفاصيل الفاتورة",
+    "grandTotal": "المجموع الكلي",
+    "invoiceId": "التسلسل",
+    "invoiceNo": "رقم الفاتورة",
+    "date": "التاريخ",
+    "subTotal": "المجموع الفرعي",
+    "taxValue": "قيمة الضريبة"
 }

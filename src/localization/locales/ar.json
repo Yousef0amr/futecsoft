@@ -355,5 +355,6 @@
     "add_new_voucher_input": "اضافة سند وارد جديد",
     "edit_voucher_input": "تعديل سند الوارد",
     "voucher_added_successfully": "تمت اضافة السند بنجاح",
-    "voucher_updated_successfully": "تم تحديث السند بنجاح"
+    "voucher_updated_successfully": "تم تحديث السند بنجاح",
+    "materials_list": "قائمة المواد"
 }

@@ -1,4 +1,4 @@
-import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faHome, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faHome, faList, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWarehouse, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './../config/appStrings';
 import { useTranslation } from 'react-i18next';
 
@@ -115,20 +115,11 @@ export const shortCacheTime = 1000;
 
 
 export const menuList = [
-    {
-        label: AppStrings.home,
-        subList: [
-            {
-                label: AppStrings.home,
-                icon: faHome,
-                type: 'unExpanded',
-                href: '/'
-            }
-        ]
-    },
+
     {
         label: AppStrings.main_menu,
-        subList: [
+        icon: faList,
+        subActions: [
             {
                 label: AppStrings.branches,
                 icon: faShuffle,
@@ -218,8 +209,9 @@ export const menuList = [
         ]
     },
     {
-        label: AppStrings.materials,
-        subList: [
+        label: AppStrings.materials_list,
+        icon: faBarcode,
+        subActions: [
             {
                 label: AppStrings.materials,
                 icon: faBarcode,
@@ -246,7 +238,8 @@ export const menuList = [
     },
     {
         label: AppStrings.purchases_and_warehouses,
-        subList: [
+        icon: faWarehouse,
+        subActions: [
             {
                 label: AppStrings.purchase_invoices,
                 icon: faFileInvoice,
@@ -288,7 +281,8 @@ export const menuList = [
     },
     {
         label: AppStrings.delivery_companies,
-        subList: [
+        icon: faCar,
+        subActions: [
             {
                 label: AppStrings.define_companies,
                 icon: faCar,
@@ -312,7 +306,8 @@ export const menuList = [
     },
     {
         label: AppStrings.user_management,
-        subList: [
+        icon: faUser,
+        subActions: [
             {
                 label: AppStrings.user_groups,
                 icon: faAddressBook,

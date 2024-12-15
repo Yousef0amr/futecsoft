@@ -169,7 +169,7 @@ export const paymentTypesFormFields = [
     { name: 'PaymentArDesc', label: AppStrings.paymentTypeAr, required: true, type: 'text' },
     { name: 'PaymentEnDesc', label: AppStrings.paymentTypeEn, required: true, type: 'text' },
     { name: 'Commissions', label: AppStrings.commissions, required: false, type: 'number' },
-    { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: true, type: 'select' },
+    { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: false, type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
 
@@ -233,12 +233,12 @@ export const usersFormFields = [
 ]
 
 
-export const userPermissionsFormFields = [
-    { name: 'UserNo' },
-    { name: 'PermissionId' },
-    { name: 'WarehouseId' },
-    { name: 'Allow' },
-]
+// export const userPermissionsFormFields = [
+//     { name: 'UserNo' },
+//     { name: 'PermissionId' },
+//     { name: 'WarehouseId' },
+//     { name: 'Allow' },
+// ]
 
 
 
@@ -270,30 +270,31 @@ export const permissionsFormFields = [
 
 
 export const invoiceInfFormFields = [
-    { name: 'DocID', label: AppStrings.invoiceNo, required: true, type: 'number', disabled: true },
-    { name: 'InvoiceNo', label: AppStrings.invoiceNo, required: true, type: 'text', disabled: true },
-    { name: 'Vtype', label: AppStrings.invoiceNo, required: true, type: 'number', disabled: true },
-    { name: 'PayType', label: AppStrings.invoiceNo, required: true, type: 'text', disabled: true },
-    { name: 'Note', label: AppStrings.invoiceNo, required: true, type: 'number', disabled: true },
-    { name: 'DocDate', label: AppStrings.from_date, required: true, type: 'date' },
-    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
-    { name: 'Supplier', label: AppStrings.customer, required: true, options: [], type: 'select' },
-    { name: 'InvoiceType', label: AppStrings.invoiceType, required: true, options: [], type: 'select' },
-    { name: 'InvoiceStatus', label: AppStrings.invoiceStatus, required: true, options: [], type: 'select' },
-    { name: 'PriceIncludeTax', label: AppStrings.isActive, type: 'check' },
-    { name: 'TaxExc', label: AppStrings.isActive, type: 'check' },
+    { name: 'DocID', label: AppStrings.invoiceId, required: true, type: 'number', disabled: true },
+    { name: 'InvoiceNo', label: AppStrings.invoiceNo, required: false, type: 'text' },
+    { name: 'DocDate', label: AppStrings.date, required: false, type: 'date' },
+    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+    { name: 'Supplier', label: AppStrings.suppliers, required: false, options: [], type: 'select' },
+    { name: 'PayType', label: AppStrings.paymentType, required: false, options: [], type: 'select' },
+    { name: 'Note', label: AppStrings.note, required: false, type: 'text' },
 ]
 
 export const invoiceItemsFormFields = [
-    { name: 'ItemId', label: AppStrings.itemNo, required: true, type: 'number', disabled: true },
+    { name: 'ItemId', label: AppStrings.product, required: true, options: [], type: 'select' },
     { name: 'Unit', label: AppStrings.product, required: true, options: [], type: 'select' },
-    { name: 'UnitPrice', label: AppStrings.quantity, required: true, type: 'number' },
     { name: 'Qty', label: AppStrings.unit, required: true, type: 'number' },
-    { name: 'TaxPercentage', label: AppStrings.price, required: true, type: 'number' },
-    { name: 'ItemDiscountPercentage', label: AppStrings.discount, required: true, type: 'number' },
-    { name: 'ItemDiscount', label: AppStrings.amount, required: true, type: 'number' },
-
+    { name: 'UnitPrice', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'ItemDiscountPercentage', label: AppStrings.discount_percentage, required: false, type: 'number' },
+    { name: 'ItemDiscount', label: AppStrings.taxValue, required: false, type: 'number' },
 ]
+
+
+
+// export const invoiceOthersFormFields = [
+//     { name: 'Vtype', required: false, type: 'number' },
+//     { name: 'TaxExc', required: false, type: 'check' },
+//     { name: 'TaxPercentage', required: false, type: 'check' }
+// ]
 
 
 

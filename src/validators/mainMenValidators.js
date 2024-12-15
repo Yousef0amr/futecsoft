@@ -145,7 +145,7 @@ const MainMenuValidators = () => {
         Ptype: yup.string().required(t(AppStrings.paymentTypeId_required)).nullable(),
         PaymentArDesc: yup.string().required(t(AppStrings.paymentTypeAr_required)).nullable(),
         PaymentEnDesc: yup.string().required(t(AppStrings.paymentTypeEn_required)).nullable(),
-        CompanyID: yup.string().required(t(AppStrings.deliveryCompany_required)).nullable(),
+        CompanyID: yup.string().nullable(),
         Commissions: yup.number().required(t(AppStrings.commissions_required)).nullable(),
         IsActive: yup.boolean().optional(),
         CashMoney: yup.boolean().optional(),

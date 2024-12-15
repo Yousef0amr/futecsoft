@@ -3,7 +3,14 @@ import { menuList } from './../../config/constants';
 import { useTranslation } from 'react-i18next';
 import AccordionWithExpend from '../sideBar/AccordionWithExpend';
 import AccordionWithoutExpend from '../sideBar/AccordionWithoutExpend';
-
+import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import InboxIcon from '@mui/icons-material/Inbox';
+import { ListItemIcon, Typography } from '@mui/material';
+import AppStrings from '../../config/appStrings';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { ExpandCircleDownRounded, ExpandLess } from '@mui/icons-material';
 const CustomMenu = ({ open, directionVal, handleDrawerOpen, selected }) => {
     const [activeAccordion, setActiveAccordion] = useState(null);
     const { t } = useTranslation();
@@ -14,22 +21,56 @@ const CustomMenu = ({ open, directionVal, handleDrawerOpen, selected }) => {
     };
 
     return (
-        menuList.map((menu, index) => {
-            return (
-                <React.Fragment key={`main-${index}`}>
-                    {open && <span style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.38)' }}> {t(menu.label)}</span>}
-                    {menu.subList.map((subItem, subIndex) => (
-                        <li key={`sub-${index}-${subIndex}`}>
-                            {
-                                subItem.type === 'unExpanded' ? <AccordionWithoutExpend open={open} location={selected} subItem={subItem} directionVal={directionVal} /> :
-                                    <AccordionWithExpend activeAccordion={activeAccordion} index={index} subIndex={subIndex} open={open} handleDrawerOpen={handleDrawerOpen} handleExpansion={handleExpansion} directionVal={directionVal} subItem={subItem} selected={selected} />
-                            }
-                        </li>
-                    ))}
-                </ React.Fragment >
-            )
-        })
+        <>
+            <AccordionWithoutExpend open={open} location={selected} subItem={{
+                label: AppStrings.home,
+                icon: faHome,
+                href: '/'
+
+            }} directionVal={directionVal} />
+            {
+                menuList.map((menu, index) => {
+                    return (
+                        <Accordion key={`main-${index}`}
+                            disableGutters
+                            elevation={0}
+                            square
+                            style={{
+                                backgroundColor: 'transparent',
+                                width: '100%',
+                                color: 'white',
+                                direction: directionVal
+                            }}
+                        >
+                            <AccordionSummary
+                                expandIcon={open ? <ExpandCircleDownRounded sx={{ color: 'rgba(255, 255, 255, 0.38)' }} /> : null}
+                                aria-controls={`panel-${index}-content`}
+                                id={`panel-${index}-header`}
+                                sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '' }, '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' } }}
+                            >
+                                <ListItemIcon>
+                                    {<FontAwesomeIcon color='rgba(255, 255, 255, 0.38)' icon={menu.icon} /> || <InboxIcon />}
+                                </ListItemIcon>
+                                <Typography style={{ display: open ? 'block' : 'none', fontSize: '14px' }}>{t(menu.label)}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails sx={{ padding: '4px', color: 'white', backgroundColor: 'var(--border-color-1)' }}>
+                                {menu.subActions.map((subItem, subIndex) => (
+                                    <li key={`sub-${index}-${subIndex}`}>
+                                        {
+                                            subItem.type === 'unExpanded' ? <AccordionWithoutExpend open={open} location={selected} subItem={subItem} directionVal={directionVal} /> :
+                                                <AccordionWithExpend activeAccordion={activeAccordion} index={index} subIndex={subIndex} open={open} handleDrawerOpen={handleDrawerOpen} handleExpansion={handleExpansion} directionVal={directionVal} subItem={subItem} selected={selected} />
+                                        }
+                                    </li>
+                                ))}
+                            </AccordionDetails>
+
+                        </ Accordion>
+                    )
+                })
+            }   </>
     );
+
+
 };
 
 export default CustomMenu;

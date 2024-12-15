@@ -350,6 +350,7 @@ const AppStrings = {
     edit_voucher_input: 'edit_voucher_input',
     voucher_added_successfully: 'voucher_added_successfully',
     voucher_updated_successfully: 'voucher_updated_successfully',
+    add_first_item_invoice: 'add_first_item_invoice',
 
 }
 

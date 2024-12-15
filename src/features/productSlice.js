@@ -219,5 +219,7 @@ export const {
     useUpdateComponentMutation,
     useDeleteComponentMutation,
     useGetAllProductsQuery,
-    useGetStandardAndRawMaterialsQuery
+    useGetStandardAndRawMaterialsQuery,
+    useLazyGetStandardAndRawMaterialsQuery,
+    useLazyGetProductUnitsByIdQuery
 } = productsApi;

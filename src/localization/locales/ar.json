@@ -356,5 +356,6 @@
     "edit_voucher_input": "تعديل سند الوارد",
     "voucher_added_successfully": "تمت اضافة السند بنجاح",
     "voucher_updated_successfully": "تم تحديث السند بنجاح",
-    "materials_list": "قائمة المواد"
+    "materials_list": "قائمة المواد",
+    "add_first_item_invoice": "يرجى اضافة الصنف الاول في الفاتورة"
 }

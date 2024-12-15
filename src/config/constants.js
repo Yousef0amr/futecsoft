@@ -359,6 +359,24 @@ export const defaultProductValues = {
 
 }
 
+export const defaultVoucherTypes = {
+    invoice: 11,
+    inputVoucher: 1,
+    outputVoucher: 2,
+    transferVoucher: -1
+}
+
+export const defaultInvoiceItem = {
+    Qty: 0,
+    UnitPrice: 0,
+    ItemDiscount: 0,
+    ItemDiscountPercentage: 0,
+    TaxPercentage: 0,
+    TaxExc: false,
+    PriceIncludeTax: false
+}
+
+
 export const useDefaultPriceCategory = () => {
     const { t } = useTranslation()
     return (

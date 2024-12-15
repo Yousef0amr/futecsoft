@@ -19,6 +19,7 @@ const ListInvoice = () => {
             deleteErrorMessage={AppStrings.something_went_wrong}
             formTitle={AppStrings.list_invoices}
             addButtonTitle={AppStrings.add_new_invoice}
+            optionId={"Warehouse"}
         />
     )
 }

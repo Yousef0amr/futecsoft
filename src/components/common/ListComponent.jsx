@@ -19,6 +19,7 @@ const ListComponent = ({
     deleteErrorMessage,
     formTitle,
     addButtonTitle,
+    optionId
 }) => {
     const { t } = useTranslation();
     const [quickFilterText, setQuickFilterText] = useState();
@@ -26,11 +27,11 @@ const ListComponent = ({
     const columnDefs = columnDefsHook();
     const { active, handleCancel, defaultActions } = useTableActions({ path: routes.edit });
     const { handleEntityOperation } = useEntityOperations({ deleteEntity });
-
+    console.log(data)
     const handleOnDeleteClick = async () => {
         handleEntityOperation({
             operation: "delete",
-            data: { [entityKey]: active.data[entityKey] },
+            data: { [entityKey]: active.data[entityKey], [optionId]: active.data[optionId] },
             cacheUpdater: deleteEntityFromCache(active.data[entityKey]),
             successMessage: deleteSuccessMessage,
             errorMessage: deleteErrorMessage,

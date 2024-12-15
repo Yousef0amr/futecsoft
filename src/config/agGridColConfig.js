@@ -288,7 +288,7 @@ export const useInvoicesColDefs = () => {
     const { t } = useTranslation();
 
     return useMemo(() => [
-        { field: "DocId", headerName: t(AppStrings.invoiceId), filter: 'agTextColumnFilter' },
+        { field: "DocID", headerName: t(AppStrings.invoiceId), filter: 'agTextColumnFilter' },
         { field: "InvoiceNo", headerName: t(AppStrings.invoiceNo), filter: 'agTextColumnFilter' },
         { field: "DocDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
         { field: "SupplierDesc", headerName: t(AppStrings.suppliers), filter: 'agTextColumnFilter' },

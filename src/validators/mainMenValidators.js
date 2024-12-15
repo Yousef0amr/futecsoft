@@ -235,6 +235,29 @@ const MainMenuValidators = () => {
         "0123": yup.boolean().optional(),
     }
 
+    const invoiceSchemaValidator = {
+        DocID: yup.string().required().nullable(),
+        InvoiceNo: yup.string().optional(),
+        DocDate: yup.string().optional(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)),
+        Supplier: yup.string().required(t(AppStrings.supplierId_required)),
+        PayType: yup.string().required(t(AppStrings.paymentTypeId_required)),
+        Note: yup.string().optional(),
+        ItemId: yup.string().required(t(AppStrings.product_required)).nullable(),
+        Unit: yup.string().required(t(AppStrings.unit_required)).nullable(),
+        Qty: yup.number().required(t(AppStrings.quantity_required)),
+        UnitPrice: yup.number().required(t(AppStrings.price_required)),
+        ItemDiscountPercentage: yup.number().optional(),
+        ItemDiscount: yup.number().optional(),
+        TaxPercentage: yup.number().optional(),
+        TaxExc: yup.boolean().optional(),
+        Vtype: yup.number().required().nullable(),
+        PriceIncludeTax: yup.boolean().optional(),
+    }
+
+
+
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -254,7 +277,8 @@ const MainMenuValidators = () => {
         userGroupSchemaValidator,
         userSchemaValidator,
         userPermissionsSchemaValidator,
-        permissionSchemaValidator
+        permissionSchemaValidator,
+        invoiceSchemaValidator
     }
 }
 

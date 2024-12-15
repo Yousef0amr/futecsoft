@@ -361,5 +361,6 @@
     "edit_voucher_input": "Edit Voucher Input",
     "voucher_added_successfully": "Voucher added successfully",
     "voucher_updated_successfully": "Voucher updated successfully",
-    "materials_list": "Products List"
+    "materials_list": "Products List",
+    "add_first_item_invoice": "Please add first item in invoice"
 }

@@ -7,12 +7,17 @@ import convertToFormData from '../utils/convertToFormData.js';
 
 const transformData = (data) => ({
     ...data,
+    DocID: data.DocId,
+    DocDate: data.DocDate
+        ? new Date(data.DocDate).toISOString().split('T')[0]
+        : null,
 });
 
 
 export const invoicesApi = createDynamicApi({
     reducerPath: 'invoicesApi',
-    baseEndpoint: BASEURL + INVOICES
+    baseEndpoint: BASEURL + INVOICES,
+    transformData: (data) => transformData(data),
 });
 
 export const invoiceDetailsApi = createApi({

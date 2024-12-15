@@ -281,20 +281,15 @@ export const invoiceInfFormFields = [
 
 export const invoiceItemsFormFields = [
     { name: 'ItemId', label: AppStrings.product, required: true, options: [], type: 'select' },
-    { name: 'Unit', label: AppStrings.product, required: true, options: [], type: 'select' },
-    { name: 'Qty', label: AppStrings.unit, required: true, type: 'number' },
-    { name: 'UnitPrice', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'Unit', label: AppStrings.unit, required: true, options: [], type: 'select' },
+    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'UnitPrice', label: AppStrings.price, required: true, type: 'number' },
     { name: 'ItemDiscountPercentage', label: AppStrings.discount_percentage, required: false, type: 'number' },
     { name: 'ItemDiscount', label: AppStrings.taxValue, required: false, type: 'number' },
 ]
 
 
 
-// export const invoiceOthersFormFields = [
-//     { name: 'Vtype', required: false, type: 'number' },
-//     { name: 'TaxExc', required: false, type: 'check' },
-//     { name: 'TaxPercentage', required: false, type: 'check' }
-// ]
 
 
 

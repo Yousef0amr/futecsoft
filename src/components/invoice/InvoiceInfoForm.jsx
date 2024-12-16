@@ -6,11 +6,11 @@ import FormComponent from './../common/FormComponent';
 import AppStrings from '../../config/appStrings';
 import { useTranslation } from 'react-i18next';
 const InvoiceInfoForm = ({ onSubmit, isLoading, defaultValuesEdit = {}, isAdd = false }) => {
-    const { invoiceSchema } = useValidators();
+    const { invoiceSchema, invoiceUpdatedSchema } = useValidators();
     const { t } = useTranslation();
 
     return (
-        <FormComponent isLoading={isLoading} defaultValues={defaultValuesEdit} schema={invoiceSchema} onSubmit={onSubmit}>
+        <FormComponent isLoading={isLoading} defaultValues={defaultValuesEdit} schema={isAdd ? invoiceSchema : invoiceUpdatedSchema} onSubmit={onSubmit}>
             {({ register, errors, setValue, watch }) =>
                 <>
 

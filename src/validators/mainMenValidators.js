@@ -242,7 +242,7 @@ const MainMenuValidators = () => {
         Warehouse: yup.string().required(t(AppStrings.branch_required)),
         Supplier: yup.string().required(t(AppStrings.supplierId_required)),
         PayType: yup.string().required(t(AppStrings.paymentTypeId_required)),
-        Note: yup.string().optional(),
+        Note: yup.string().optional().nullable(),
         ItemId: yup.string().required(t(AppStrings.product_required)).nullable(),
         Unit: yup.string().required(t(AppStrings.unit_required)).nullable(),
         Qty: yup.number().required(t(AppStrings.quantity_required)),
@@ -252,6 +252,18 @@ const MainMenuValidators = () => {
         TaxPercentage: yup.number().optional(),
         TaxExc: yup.boolean().optional(),
         Vtype: yup.number().required().nullable(),
+        PriceIncludeTax: yup.boolean().optional(),
+    }
+
+    const invoiceUpdatedSchemaValidator = {
+        DocID: yup.string().required().nullable(),
+        InvoiceNo: yup.string().optional(),
+        DocDate: yup.string().optional(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)),
+        Supplier: yup.string().required(t(AppStrings.supplierId_required)),
+        PayType: yup.string().required(t(AppStrings.paymentTypeId_required)),
+        Note: yup.string().optional().nullable(),
+        TaxExc: yup.boolean().optional(),
         PriceIncludeTax: yup.boolean().optional(),
     }
 
@@ -278,7 +290,8 @@ const MainMenuValidators = () => {
         userSchemaValidator,
         userPermissionsSchemaValidator,
         permissionSchemaValidator,
-        invoiceSchemaValidator
+        invoiceSchemaValidator,
+        invoiceUpdatedSchemaValidator
     }
 }
 

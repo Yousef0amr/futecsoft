@@ -32,7 +32,7 @@ export const invoiceDetailsApi = createApi({
     endpoints: (builder) => ({
         getAllInvoiceDetails: builder.query({
             query: ({ id }) => ({
-                url: `/GetDatailsByDocIDAll?DocID=${id}`,
+                url: `/GetDatailsByDocID?DocID=${id}`,
             }),
             keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response || response,

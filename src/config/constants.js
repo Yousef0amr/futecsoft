@@ -1,4 +1,4 @@
-import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faHome, faList, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWarehouse, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faList, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWarehouse, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './../config/appStrings';
 import { useTranslation } from 'react-i18next';
 
@@ -367,8 +367,8 @@ export const defaultVoucherTypes = {
 }
 
 export const defaultInvoiceItem = {
-    Qty: 0,
-    UnitPrice: 0,
+    Qty: 1,
+    UnitPrice: 1,
     ItemDiscount: 0,
     ItemDiscountPercentage: 0,
     TaxPercentage: 0,

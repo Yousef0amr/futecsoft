@@ -1,4 +1,4 @@
-import { invoicesApi, useAddInvoiceMutation, useDeleteInvoiceMutation, useGetInvoicesQuery, useUpdateInvoiceMutation } from "../features/invoiceSlice";
+import { invoiceDetailsApi, invoicesApi, useAddInvoiceMutation, useDeleteInvoiceDetailsMutation, useDeleteInvoiceMutation, useGetAllInvoiceDetailsQuery, useGetInvoicesQuery, useUpdateInvoiceDetailsMutation, useUpdateInvoiceMutation } from "../features/invoiceSlice";
 import useEntityManagement from "./../hooks/useEntityManagement";
 
 const useInvoiceManagement = () => {
@@ -14,6 +14,21 @@ const useInvoiceManagement = () => {
             pageSize: 10,
         },
         identifier: 'DocID'
+    });
+}
+
+export const useInvoiceItemsManagement = ({ id }) => {
+    return useEntityManagement({
+        apiSlice: invoiceDetailsApi,
+        queryHook: useGetAllInvoiceDetailsQuery,
+        addMutationHook: useUpdateInvoiceDetailsMutation,
+        updateMutationHook: useUpdateInvoiceDetailsMutation,
+        deleteMutationHook: useDeleteInvoiceDetailsMutation,
+        cacheKey: 'getAllInvoiceDetails',
+        defaultQueryArgs: {
+            id
+        },
+        identifier: 'ItemID'
     });
 }
 

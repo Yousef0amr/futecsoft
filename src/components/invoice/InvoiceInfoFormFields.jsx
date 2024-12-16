@@ -8,12 +8,12 @@ import useSupplierManagement from '../../hook/useSupplierManagement'
 const InvoiceInfoFormFields = ({ register, errors, setValue, watch }) => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement()
     const branches = !isLoadingBranches
-        ? branchesData?.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
+        ? branchesData?.map((item) => ({ value: item.BranchId.toString(), label: item.BranchNameAr }))
         : [];
 
     const { data: suppliersData, isLoading: isLoadingSuppliers } = useSupplierManagement()
     const suppliers = !isLoadingSuppliers
-        ? suppliersData?.map((item) => ({ value: item.SupplierId, label: item.SupplierCompany }))
+        ? suppliersData?.map((item) => ({ value: item.SupplierId.toString(), label: item.SupplierCompany }))
         : [];
 
     const { data: payTypesData, isLoading: isLoadingPayTypes } = usePaymentTypeManagement()

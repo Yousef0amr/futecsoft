@@ -357,5 +357,6 @@
     "voucher_added_successfully": "تمت اضافة السند بنجاح",
     "voucher_updated_successfully": "تم تحديث السند بنجاح",
     "materials_list": "قائمة المواد",
-    "add_first_item_invoice": "يرجى اضافة الصنف الاول في الفاتورة"
+    "add_first_item_invoice": "يرجى اضافة الصنف الاول في الفاتورة",
+    "add_item_for_invoice": " اضافة صنف جديد الي الفاتورة"
 }

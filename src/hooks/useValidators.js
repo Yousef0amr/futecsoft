@@ -22,7 +22,8 @@ const useValidators = () => {
         userPermissionsSchemaValidator,
         userSchemaValidator,
         permissionSchemaValidator,
-        invoiceSchemaValidator
+        invoiceSchemaValidator,
+        invoiceUpdatedSchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -45,6 +46,7 @@ const useValidators = () => {
     const userSchema = yup.object(userSchemaValidator);
     const permissionSchema = yup.object(permissionSchemaValidator);
     const invoiceSchema = yup.object(invoiceSchemaValidator);
+    const invoiceUpdatedSchema = yup.object(invoiceUpdatedSchemaValidator);
 
 
     return {
@@ -67,7 +69,8 @@ const useValidators = () => {
         userPermissionsSchema,
         userSchema,
         permissionSchema,
-        invoiceSchema
+        invoiceSchema,
+        invoiceUpdatedSchema
     };
 };
 

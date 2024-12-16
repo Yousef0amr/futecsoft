@@ -351,7 +351,7 @@ const AppStrings = {
     voucher_added_successfully: 'voucher_added_successfully',
     voucher_updated_successfully: 'voucher_updated_successfully',
     add_first_item_invoice: 'add_first_item_invoice',
-
+    add_item_for_invoice: 'add_item_for_invoice',
 }
 
 

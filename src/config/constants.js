@@ -368,12 +368,14 @@ export const defaultVoucherTypes = {
 
 export const defaultInvoiceItem = {
     Qty: 1,
+    Cost: 1,
     UnitPrice: 1,
     ItemDiscount: 0,
     ItemDiscountPercentage: 0,
     TaxPercentage: 0,
     TaxExc: false,
-    PriceIncludeTax: false
+    PriceIncludeTax: false,
+    Note: ""
 }
 
 
@@ -397,6 +399,22 @@ export const useDefaultPriceCategory = () => {
                 label: t(AppStrings.price4),
                 value: 4
             }
+        ]
+    )
+}
+
+export const useDefaultOutputType = () => {
+    const { t } = useTranslation()
+    return (
+        [
+            {
+                label: t(AppStrings.normal_output),
+                value: -1
+            },
+            {
+                label: t(AppStrings.damaged),
+                value: 1
+            },
         ]
     )
 }

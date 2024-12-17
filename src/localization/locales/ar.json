@@ -358,5 +358,13 @@
     "voucher_updated_successfully": "تم تحديث السند بنجاح",
     "materials_list": "قائمة المواد",
     "add_first_item_invoice": "يرجى اضافة الصنف الاول في الفاتورة",
-    "add_item_for_invoice": " اضافة صنف جديد الي الفاتورة"
+    "add_item_for_invoice": " اضافة صنف جديد الي الفاتورة",
+    "output_type": "نوع الاخراج",
+    "from_branch": "من الفرع",
+    "to_branch": "الى الفرع",
+    "add_first_item_voucher": "يرجى اضافة الصنف الاول في السند",
+    "add_new_voucher_transfer": "اضافة سند نقل جديد",
+    "list_vouchers_transfer": "قائمة سندات النقل",
+    "damaged": "تالف",
+    "normal_output": "اخراج عادي"
 }

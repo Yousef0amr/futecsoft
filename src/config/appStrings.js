@@ -352,6 +352,15 @@ const AppStrings = {
     voucher_updated_successfully: 'voucher_updated_successfully',
     add_first_item_invoice: 'add_first_item_invoice',
     add_item_for_invoice: 'add_item_for_invoice',
+    output_type: 'output_type',
+    from_branch: 'from_branch',
+    to_branch: 'to_branch',
+    add_first_item_voucher: 'add_first_item_voucher',
+    add_new_voucher_transfer: 'add_new_voucher_transfer',
+    list_vouchers_transfer: 'list_vouchers_transfer',
+    damaged: 'damaged',
+    normal_output: 'normal_output',
+
 }
 
 

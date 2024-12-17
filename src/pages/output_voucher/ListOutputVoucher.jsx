@@ -19,6 +19,7 @@ const ListOutputVoucher = () => {
             deleteErrorMessage={AppStrings.something_went_wrong}
             formTitle={AppStrings.list_vouchers_output}
             addButtonTitle={AppStrings.add_new_voucher_output}
+            optionId={"Warehouse"}
         />
     )
 }

@@ -27,7 +27,7 @@ const ListComponent = ({
     const columnDefs = columnDefsHook();
     const { active, handleCancel, defaultActions } = useTableActions({ path: routes.edit });
     const { handleEntityOperation } = useEntityOperations({ deleteEntity });
-
+    console.log(data)
     const handleOnDeleteClick = async () => {
         handleEntityOperation({
             operation: "delete",

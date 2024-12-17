@@ -23,7 +23,13 @@ const useValidators = () => {
         userSchemaValidator,
         permissionSchemaValidator,
         invoiceSchemaValidator,
-        invoiceUpdatedSchemaValidator
+        invoiceUpdatedSchemaValidator,
+        voucherInputSchemaValidator,
+        voucherInputUpdatedSchemaValidator,
+        voucherOutputSchemaValidator,
+        voucherOutputUpdatedSchemaValidator,
+        voucherTransferSchemaValidator,
+        voucherTransferUpdatedSchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -47,6 +53,12 @@ const useValidators = () => {
     const permissionSchema = yup.object(permissionSchemaValidator);
     const invoiceSchema = yup.object(invoiceSchemaValidator);
     const invoiceUpdatedSchema = yup.object(invoiceUpdatedSchemaValidator);
+    const voucherInputSchema = yup.object(voucherInputSchemaValidator);
+    const voucherInputUpdatedSchema = yup.object(voucherInputUpdatedSchemaValidator);
+    const voucherOutputSchema = yup.object(voucherOutputSchemaValidator);
+    const voucherOutputUpdatedSchema = yup.object(voucherOutputUpdatedSchemaValidator);
+    const voucherTransferSchema = yup.object(voucherTransferSchemaValidator);
+    const voucherTransferUpdatedSchema = yup.object(voucherTransferUpdatedSchemaValidator);
 
 
     return {
@@ -70,7 +82,13 @@ const useValidators = () => {
         userSchema,
         permissionSchema,
         invoiceSchema,
-        invoiceUpdatedSchema
+        invoiceUpdatedSchema,
+        voucherInputSchema,
+        voucherInputUpdatedSchema,
+        voucherOutputSchema,
+        voucherOutputUpdatedSchema,
+        voucherTransferSchema,
+        voucherTransferUpdatedSchema
     };
 };
 

@@ -13,12 +13,12 @@ const ListTransferVoucher = () => {
             entityKey="DocNo"
             fetchHook={useVoucherTransferManagement}
             columnDefsHook={useVoucherInputColDefs}
-            routes={routes.input_voucher}
+            routes={routes.transfer_voucher}
             icon={faTruckArrowRight}
-            deleteSuccessMessage={AppStrings.invoice_deleted_successfully}
+            deleteSuccessMessage={AppStrings.voucher_deleted_successfully}
             deleteErrorMessage={AppStrings.something_went_wrong}
-            formTitle={AppStrings.list_invoices}
-            addButtonTitle={AppStrings.add_new_invoice}
+            formTitle={AppStrings.list_vouchers_transfer}
+            addButtonTitle={AppStrings.add_new_voucher_transfer}
         />
     )
 }

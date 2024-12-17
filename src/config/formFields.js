@@ -288,6 +288,58 @@ export const invoiceItemsFormFields = [
     { name: 'ItemDiscount', label: AppStrings.taxValue, required: false, type: 'number' },
 ]
 
+export const voucherInputFormFields = [
+    { name: 'DocID', label: AppStrings.voucherId, required: true, type: 'number', disabled: true },
+    { name: 'DocDate', label: AppStrings.date, required: false, type: 'date' },
+    { name: 'Note', label: AppStrings.note, required: false, type: 'text' },
+    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+]
+
+export const voucherInputItemsFormFields = [
+    { name: 'ItemId', label: AppStrings.product, required: true, options: [], type: 'select' },
+    { name: 'Unit', label: AppStrings.unit, required: true, options: [], type: 'select' },
+    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'UnitPrice', label: AppStrings.price, required: true, type: 'number' },
+]
+
+
+
+export const voucherOutputFormFields = [
+    { name: 'DocNo', label: AppStrings.voucherId, required: true, type: 'number', disabled: true },
+    { name: 'DocDate', label: AppStrings.date, required: false, type: 'date' },
+    { name: 'Note', label: AppStrings.note, required: false, type: 'text' },
+    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+    { name: 'OutputType', label: AppStrings.output_type, required: false, options: [], type: 'select' },
+]
+
+
+export const voucherOutputItemsFormFields = [
+    { name: 'ItemId', label: AppStrings.product, required: true, options: [], type: 'select' },
+    { name: 'Unit', label: AppStrings.unit, required: true, options: [], type: 'select' },
+    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'Cost', label: AppStrings.price, required: true, type: 'number' },
+]
+
+
+
+export const voucherTransferFormFields = [
+    { name: 'DocNo', label: AppStrings.invoiceId, required: true, type: 'number', disabled: true },
+    { name: 'TransferNo', label: AppStrings.voucherId, required: false, type: 'text' },
+    { name: 'DocDate', label: AppStrings.date, required: false, type: 'date' },
+    { name: 'Note', label: AppStrings.note, required: false, type: 'text' },
+    { name: 'FromWarehouse', label: AppStrings.from_branch, required: false, options: [], type: 'select' },
+    { name: 'ToWarehouse', label: AppStrings.to_branch, required: false, options: [], type: 'select' },
+]
+
+
+export const voucherTransferItemsFormFields = [
+    { name: 'ItemID', label: AppStrings.product, required: true, options: [], type: 'select' },
+    { name: 'Unit', label: AppStrings.unit, required: true, options: [], type: 'select' },
+    { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
+    { name: 'Cost', label: AppStrings.price, required: true, type: 'number' },
+]
+
+
 
 
 

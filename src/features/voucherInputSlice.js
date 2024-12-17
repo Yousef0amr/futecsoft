@@ -5,14 +5,16 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import getCookie from '../utils/getCookie.js';
 import convertToFormData from '../utils/convertToFormData.js';
 
-const transformData = (data) => ({
+const transformVoucherData = (data) => ({
     ...data,
+    DocID: data.DocId
 });
 
 
 export const voucherInputsApi = createDynamicApi({
     reducerPath: 'voucherInputsApi',
-    baseEndpoint: BASEURL + VOUCHER_INPUT
+    baseEndpoint: BASEURL + VOUCHER_INPUT,
+    transformData: transformVoucherData
 });
 
 export const voucherInputDetailsApi = createApi({

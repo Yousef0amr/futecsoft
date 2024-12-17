@@ -268,7 +268,70 @@ const MainMenuValidators = () => {
     }
 
 
+    const voucherInputSchemaValidator = {
+        DocID: yup.string().required().nullable(),
+        Vtype: yup.number().required().nullable(),
+        DocDate: yup.string().optional().nullable(),
+        Note: yup.string().optional().nullable(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        ItemId: yup.string().required(t(AppStrings.product_required)).nullable(),
+        Unit: yup.string().required(t(AppStrings.unit_required)).nullable(),
+        Qty: yup.number().required(t(AppStrings.quantity_required)),
+        UnitPrice: yup.number().required(t(AppStrings.price_required)),
+    }
 
+    const voucherInputUpdatedSchemaValidator = {
+        DocID: yup.string().required().nullable(),
+        Vtype: yup.number().required().nullable(),
+        DocDate: yup.string().optional().nullable(),
+        Note: yup.string().optional().nullable(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+    }
+
+    const voucherOutputSchemaValidator = {
+        DocNo: yup.string().required().nullable(),
+        DocType: yup.number().required().nullable(),
+        DocDate: yup.string().optional().nullable(),
+        Note: yup.string().optional().nullable(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        OutputType: yup.string().required().nullable(),
+        ItemId: yup.string().required(t(AppStrings.product_required)).nullable(),
+        Unit: yup.string().required(t(AppStrings.unit_required)).nullable(),
+        Qty: yup.number().required(t(AppStrings.quantity_required)),
+        Cost: yup.number().required(t(AppStrings.price_required)),
+    }
+
+    const voucherOutputUpdatedSchemaValidator = {
+        DocNo: yup.string().required().nullable(),
+        DocType: yup.number().required().nullable(),
+        DocDate: yup.string().optional().nullable(),
+        Note: yup.string().optional().nullable(),
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        OutputType: yup.string().required().nullable(),
+    }
+
+
+    const voucherTransferSchemaValidator = {
+        DocNo: yup.string().required().nullable(),
+        TransferNo: yup.string().nullable(),
+        DocDate: yup.string().optional().nullable(),
+        Note: yup.string().optional().nullable(),
+        FromWarehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        ToWarehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        ItemID: yup.string().required(t(AppStrings.product_required)).nullable(),
+        Unit: yup.string().required(t(AppStrings.unit_required)).nullable(),
+        Qty: yup.number().required(t(AppStrings.quantity_required)),
+        Cost: yup.number().required(t(AppStrings.price_required)),
+    }
+
+    const voucherTransferUpdatedSchemaValidator = {
+        DocNo: yup.string().required().nullable(),
+        TransferNo: yup.string().nullable(),
+        DocDate: yup.string().optional().nullable(),
+        Note: yup.string().optional().nullable(),
+        FromWarehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        ToWarehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+    }
 
     return {
         branchSchemaValidator,
@@ -291,7 +354,13 @@ const MainMenuValidators = () => {
         userPermissionsSchemaValidator,
         permissionSchemaValidator,
         invoiceSchemaValidator,
-        invoiceUpdatedSchemaValidator
+        invoiceUpdatedSchemaValidator,
+        voucherInputSchemaValidator,
+        voucherInputUpdatedSchemaValidator,
+        voucherOutputSchemaValidator,
+        voucherOutputUpdatedSchemaValidator,
+        voucherTransferSchemaValidator,
+        voucherTransferUpdatedSchemaValidator
     }
 }
 

@@ -363,5 +363,13 @@
     "voucher_updated_successfully": "Voucher updated successfully",
     "materials_list": "Products List",
     "add_first_item_invoice": "Please add first item in invoice",
-    "add_item_for_invoice": " add new item for invoice"
+    "add_item_for_invoice": " add new item for invoice",
+    "output_type": "Output Type",
+    "from_branch": "From Branch",
+    "to_branch": "To Branch",
+    "add_first_item_voucher": "Please add first item in voucher",
+    "add_new_voucher_transfer": "Add New Voucher Transfer",
+    "list_vouchers_transfer": "List of Vouchers Transfer",
+    "damaged": "Damaged",
+    "normal_output": "Normal"
 }

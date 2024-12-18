@@ -7,12 +7,16 @@ import convertToFormData from '../utils/convertToFormData.js';
 
 const transformData = (data) => ({
     ...data,
+    DocDate: data.DocDate
+        ? new Date(data.DocDate).toISOString().split('T')[0]
+        : null,
 });
 
 
 export const voucherTransferApi = createDynamicApi({
     reducerPath: 'voucherTransferApi',
-    baseEndpoint: BASEURL + VOUCHER_TRANSFER
+    baseEndpoint: BASEURL + VOUCHER_TRANSFER,
+    transformData
 });
 
 export const voucherTransferDetailsApi = createApi({
@@ -27,7 +31,7 @@ export const voucherTransferDetailsApi = createApi({
     endpoints: (builder) => ({
         getAllVoucherTransferDetails: builder.query({
             query: ({ id }) => ({
-                url: `/GetDatailsByDocIDAll?DocID=${id}`,
+                url: `/GetDatailsByDocID?DocID=${id}`,
             }),
             keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response || response,

@@ -28,14 +28,11 @@ const EditInvoice = () => {
                 path={routes.invoice.list}
                 Form={InvoiceInfoForm}
                 editData={loaction.state}
-
             />
-
             <Button variant="success" onClick={() => setAddNew(!addNew)}>{t(AppStrings.add_item_for_invoice)}</Button>
             {
                 addNew && <ListInvoiceItems invoice={loaction.state} />
             }
-
         </Stack>
     )
 }

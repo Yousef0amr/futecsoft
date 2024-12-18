@@ -1,4 +1,5 @@
-import { voucherOutputsApi, useAddVoucherOutputMutation, useGetVoucherOutputsQuery, useUpdateVoucherOutputMutation, useDeleteVoucherOutputMutation } from "../features/voucherOutputSlice";
+import { voucherInputDetailsApi } from "../features/voucherInputSlice";
+import { voucherOutputsApi, useAddVoucherOutputMutation, useGetVoucherOutputsQuery, useUpdateVoucherOutputMutation, useDeleteVoucherOutputMutation, useGetAllVoucherOutputDetailsQuery, useUpdateVoucherOutputDetailsMutation, useDeleteVoucherOutputDetailsMutation } from "../features/voucherOutputSlice";
 import useEntityManagement from "./../hooks/useEntityManagement";
 
 const useVoucherOutputManagement = () => {
@@ -16,5 +17,22 @@ const useVoucherOutputManagement = () => {
         identifier: 'DocNo'
     });
 }
+
+
+export const useVoucherOutputItemsManagement = ({ id }) => {
+    return useEntityManagement({
+        apiSlice: voucherInputDetailsApi,
+        queryHook: useGetAllVoucherOutputDetailsQuery,
+        addMutationHook: useUpdateVoucherOutputDetailsMutation,
+        updateMutationHook: useUpdateVoucherOutputDetailsMutation,
+        deleteMutationHook: useDeleteVoucherOutputDetailsMutation,
+        cacheKey: 'getAllVoucherOutputDetails',
+        defaultQueryArgs: {
+            id
+        },
+        identifier: 'ItemID'
+    });
+}
+
 
 export default useVoucherOutputManagement

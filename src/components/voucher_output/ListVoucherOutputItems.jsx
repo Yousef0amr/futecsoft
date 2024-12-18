@@ -1,20 +1,23 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { faBarcode } from '@fortawesome/free-solid-svg-icons'
-import AppStrings from '../../config/appStrings'
-import useTableActions from '../../hooks/useTableActions'
-import { useTranslation } from 'react-i18next'
-import useEntityOperations from '../../hooks/useEntityOperations'
-import FilterSearch from '../common/FilterSearch'
-import FormCard from '../common/FormCard'
-import { useInvoiceItemsManagement } from '../../hook/useInvoiceManagement'
-import { defaultVoucherTypes } from '../../config/constants'
-import ListEditComponent from '../common/ListEditComponent'
-import InvoiceItemForm from './InvoiceItemForm';
+import React, { useState } from 'react'
+import { defaultVoucherTypes } from '../../config/constants';
+import useTableActions from '../../hooks/useTableActions';
+import { useTranslation } from 'react-i18next';
+import useEntityOperations from '../../hooks/useEntityOperations';
+import { useMemo } from 'react';
+import { useEffect } from 'react';
+import AppStrings from '../../config/appStrings';
+import FilterSearch from '../common/FilterSearch';
+import FormCard from '../common/FormCard';
+import { faTruck } from '@fortawesome/free-solid-svg-icons';
+import ListEditComponent from '../common/ListEditComponent';
+import VoucherOutputItemForm from './VoucherOutputItemForm';
 import { useInvoicesItemsColDefs } from '../../config/agGridColConfig';
-const ListInvoiceItems = ({ invoice }) => {
+import { useVoucherOutputItemsManagement } from '../../hook/useVoucherOutputManagement';
+
+const ListVoucherOutputItems = ({ voucher }) => {
     const [quickFilterText, setQuickFilterText] = useState();
     const { defaultActions, handleCancel, active } = useTableActions({ path: null });
-    const { data, isLoading, addEntity, isAdding, isUpdating, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useInvoiceItemsManagement({ id: invoice.DocID });
+    const { data, isLoading, addEntity, isAdding, isUpdating, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useVoucherOutputItemsManagement({ id: voucher.DocNo });
     const { t } = useTranslation();
     const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
     const isEditing = active.editable;
@@ -23,9 +26,7 @@ const ListInvoiceItems = ({ invoice }) => {
         ItemId: '',
         Unit: '',
         Qty: '',
-        UnitPrice: '',
-        ItemDiscountPercentage: 0,
-        ItemDiscount: 0
+        Cost: '',
     }), []);
 
     const [editData, setEditData] = useState(defaultValues);
@@ -36,14 +37,12 @@ const ListInvoiceItems = ({ invoice }) => {
                 ItemId: active?.data?.ItemID,
                 Unit: active?.data?.UnitID,
                 Qty: active?.data?.Qty,
-                UnitPrice: active?.data?.UnitPrice,
-                ItemDiscountPercentage: active?.data?.DiscountPercentage,
-                ItemDiscount: active?.data?.Discount,
+                Cost: active?.data?.Cost,
             });
         } else {
             setEditData(defaultValues);
         }
-    }, [isEditing, active, invoice, defaultValues]);
+    }, [isEditing, active, voucher, defaultValues]);
 
     const onSubmit = async (data) => {
         const operationType = isEditing ? "update" : "add";
@@ -59,11 +58,11 @@ const ListInvoiceItems = ({ invoice }) => {
                 : AppStrings.material_already_added,
         });
     };
-
+    console.log(voucher)
     const handleOnDeleteClick = async () => {
         handleEntityOperation({
             operation: "delete",
-            data: { ItemId: active.data.ItemID, DocID: active.data.DocID, Warehouse: invoice.Warehouse, Unit: active.data.UnitID },
+            data: { ItemId: active.data.ItemID, DocNo: active.data.DocNo, Warehouse: voucher.Warehouse, Unit: active.data.UnitID },
             cacheUpdater: deleteEntityFromCache(active.data.ItemID),
             successMessage: AppStrings.product_deleted_successfully,
             errorMessage: AppStrings.something_went_wrong,
@@ -77,18 +76,18 @@ const ListInvoiceItems = ({ invoice }) => {
     }
     return (
         <FormCard open={active.isOpen} handleDelete={handleOnDeleteClick} handleCancel={handleCancel} isLoading={isDeleting}
-            icon={faBarcode} title={t(AppStrings.list_products)} optionComponent={
+            icon={faTruck} title={t(AppStrings.list_products)} optionComponent={
                 <>
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }>
-            <ListEditComponent Form={InvoiceItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
+            <ListEditComponent Form={VoucherOutputItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
                 ...editData,
-                Vtype: defaultVoucherTypes.invoice,
-                ...invoice
+                DocType: defaultVoucherTypes.outputVoucher,
+                ...voucher
             }} />
         </FormCard>
     )
 }
 
-export default ListInvoiceItems
+export default ListVoucherOutputItems

@@ -7,7 +7,10 @@ import convertToFormData from '../utils/convertToFormData.js';
 
 const transformVoucherData = (data) => ({
     ...data,
-    DocID: data.DocId
+    DocID: data.DocId,
+    DocDate: data.DocDate
+        ? new Date(data.DocDate).toISOString().split('T')[0]
+        : null,
 });
 
 
@@ -29,7 +32,7 @@ export const voucherInputDetailsApi = createApi({
     endpoints: (builder) => ({
         getAllVoucherInputDetails: builder.query({
             query: ({ id }) => ({
-                url: `/GetDatailsByDocIDAll?DocID=${id}`,
+                url: `/GetDatailsByDocID?DocID=${id}`,
             }),
             keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response || response,

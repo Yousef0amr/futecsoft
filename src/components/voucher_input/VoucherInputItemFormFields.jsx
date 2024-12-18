@@ -19,11 +19,13 @@ const VoucherInputItemFormFields = ({ errors, register, watch, setValue }) => {
         if (watch('Warehouse')) {
             triggerGetStandardAndRawMaterials({ Warehouse: watch('Warehouse'), pageNumber: 1, pageSize: 10 });
         }
+    }, []);
+
+    useEffect(() => {
         if (watch('ItemId')) {
             triggerGetProductUnitsById(watch('ItemId'));
         }
-
-    }, [triggerGetStandardAndRawMaterials, watch, triggerGetProductUnitsById]);
+    }, [triggerGetProductUnitsById, watch]);
     const onSelectChange = (value, name) => {
         if (name === 'Warehouse') {
             triggerGetStandardAndRawMaterials({ Warehouse: value, pageNumber: 1, pageSize: 10 });

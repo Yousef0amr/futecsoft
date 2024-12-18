@@ -19,11 +19,15 @@ const VoucherTransferItemFormFields = ({ errors, register, watch, setValue }) =>
         if (watch('FromWarehouse')) {
             triggerGetStandardAndRawMaterials({ Warehouse: watch('FromWarehouse'), pageNumber: 1, pageSize: 10 });
         }
+
+
+    }, []);
+
+    useEffect(() => {
         if (watch('ItemID')) {
             triggerGetProductUnitsById(watch('ItemID'));
         }
-
-    }, [triggerGetStandardAndRawMaterials, watch, triggerGetProductUnitsById]);
+    }, [triggerGetProductUnitsById, watch]);
     const onSelectChange = (value, name) => {
         if (name === 'FromWarehouse') {
             triggerGetStandardAndRawMaterials({ Warehouse: value, pageNumber: 1, pageSize: 10 });

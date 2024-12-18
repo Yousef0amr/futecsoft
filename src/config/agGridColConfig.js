@@ -308,12 +308,12 @@ export const useInvoicesItemsColDefs = () => {
         { field: i18n.language === 'en' ? "ItemDescEn" : "ItemDescAr", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
         { field: i18n.language === 'en' ? "UnitDescEn" : "UnitDescAr", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
         { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
-        { field: "UnitPrice", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
-        { field: "Discount", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
-        { field: "Tax", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+        { field: "UnitPrice" || "Cost", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
         { field: "SubTotal", headerName: t(AppStrings.paymentType), filter: 'agTextColumnFilter' },
-        { field: "GrandTotal", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
-    ], [t]);
+        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t, i18n]);
 }
 
 

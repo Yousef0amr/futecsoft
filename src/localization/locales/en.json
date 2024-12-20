@@ -371,5 +371,7 @@
     "add_new_voucher_transfer": "Add New Voucher Transfer",
     "list_vouchers_transfer": "List of Vouchers Transfer",
     "damaged": "Damaged",
-    "normal_output": "Normal"
+    "normal_output": "Normal",
+    "edit_voucher_transfer": "Edit Voucher Transfer",
+    "add_item_for_voucher": "add new item for voucher"
 }

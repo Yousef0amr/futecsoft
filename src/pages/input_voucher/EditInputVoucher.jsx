@@ -20,16 +20,16 @@ const EditInputVoucher = () => {
         <Stack gap={2}>
             <EditComponent
                 errorMessage={AppStrings.something_went_wrong}
-                successMessage={AppStrings.invoice_updated_successfully}
+                successMessage={AppStrings.voucher_updated_successfully}
                 fetchHook={useVoucherInputManagement}
                 isRefetch={true}
                 icon={faTruck}
-                title={t(AppStrings.edit_invoice) + '  | ' + loaction.state.DocID}
+                title={t(AppStrings.edit_voucher_input) + '  | ' + loaction.state.DocID}
                 path={routes.input_voucher.list}
                 Form={VoucherInputForm}
                 editData={loaction.state}
             />
-            <Button variant="success" onClick={() => setAddNew(!addNew)}>{t(AppStrings.add_item_for_invoice)}</Button>
+            <Button variant="success" onClick={() => setAddNew(!addNew)}>{t(AppStrings.add_item_for_voucher)}</Button>
             {
                 addNew && <ListVoucherInputItem voucher={loaction.state} />
             }

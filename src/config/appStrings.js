@@ -360,7 +360,8 @@ const AppStrings = {
     list_vouchers_transfer: 'list_vouchers_transfer',
     damaged: 'damaged',
     normal_output: 'normal_output',
-
+    edit_voucher_transfer: 'edit_voucher_transfer',
+    add_item_for_voucher: 'add_item_for_voucher',
 }
 
 

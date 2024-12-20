@@ -6,7 +6,7 @@ import { useLazyGetProductUnitsByIdQuery, useLazyGetStandardAndRawMaterialsQuery
 const InvoiceItemFormFields = ({ register, errors, setValue, watch }) => {
     const [triggerGetProductUnitsById, { data: unitsData, isLoading: isLoadingUnits }] = useLazyGetProductUnitsByIdQuery();
     const [triggerGetStandardAndRawMaterials, { data: productsData, isLoading: isLoadingProducts }] = useLazyGetStandardAndRawMaterialsQuery();
-
+    console.log(watch('Warehouse'));
     const units = !isLoadingUnits
         ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
         : [];

@@ -366,5 +366,7 @@
     "add_new_voucher_transfer": "اضافة سند نقل جديد",
     "list_vouchers_transfer": "قائمة سندات النقل",
     "damaged": "تالف",
-    "normal_output": "اخراج عادي"
+    "normal_output": "اخراج عادي",
+    "edit_voucher_transfer": "تعديل سند النقل",
+    "add_item_for_voucher": "اضافة صنف جديد الي السند"
 }

@@ -14,7 +14,7 @@ const useDeliveryDiscountManagement = () => {
             pageNumber: 1,
             pageSize: 10,
         },
-        identifier: 'LindID',
+        identifier: 'LineID',
     });
 }
 

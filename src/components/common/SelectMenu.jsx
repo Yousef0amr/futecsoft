@@ -72,7 +72,7 @@ const SelectMenu = ({
                 open={open}
                 onClose={handleClose}
                 onOpen={handleOpen}
-                value={selectedValue || (options.length > 0 ? options[0].value : '')}  // Set the first option as selected by default
+                value={selectedValue || (options.length > 0 ? options[0].value : '')}
                 multiple={multiple}
                 onChange={handleChange}
                 displayEmpty
@@ -106,10 +106,6 @@ const SelectMenu = ({
                     disableAutoFocusItem: true,
                 }}
             >
-                <MenuItem value={'' || '-1'} className='d-flex align-items-center gap-2'>
-                    {t(`${AppStrings.choose}`) + ' ' + t(label)} {isLoading && <SpinnerLoader />}
-                </MenuItem>
-
                 {options.length > 0 ? (
                     options.map((option) => (
                         <MenuItem selected={selectedValue === option.value} key={option.value} value={option.value}>

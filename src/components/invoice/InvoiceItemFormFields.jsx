@@ -4,12 +4,7 @@ import FormFieldsComponent from '../common/FormFieldsComponent'
 import { useGetProductUnitsByIdQuery, useGetStandardAndRawMaterialsQuery } from '../../features/productSlice'
 
 const InvoiceItemFormFields = ({ register, errors, setValue, watch }) => {
-    const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
-        watch('ItemId') ? watch('ItemId') : null,
-        {
-            skip: !watch('ItemId')
-        }
-    );
+
     const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
         watch('Warehouse') ? {
             Warehouse: watch('Warehouse'),
@@ -20,7 +15,9 @@ const InvoiceItemFormFields = ({ register, errors, setValue, watch }) => {
             skip: !watch('Warehouse')
         }
     );
-
+    const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
+        watch('ItemId')
+    );
 
     const units = !isLoadingUnits
         ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
@@ -29,8 +26,6 @@ const InvoiceItemFormFields = ({ register, errors, setValue, watch }) => {
     const products = !isLoadingProducts
         ? productsData?.map((item) => ({ value: item.Id, label: item.NameAr }))
         : [];
-
-
 
     return (
         <FormFieldsComponent fields={invoiceItemsFormFields} options={{

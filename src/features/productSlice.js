@@ -126,8 +126,8 @@ export const productsApi = createApi({
             },
         }),
         getStandardAndRawMaterials: builder.query({
-            query: ({ branch, pageNumber, pageSize }) => ({
-                url: `/StandardAndRawMaterial?Warehouse=${branch}&paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
+            query: ({ Warehouse, pageNumber, pageSize }) => ({
+                url: `/StandardAndRawMaterial?Warehouse=${Warehouse}&paging.PageNumber=${pageNumber}&paging.PageSize=${pageSize}`,
             }),
             keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => {

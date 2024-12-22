@@ -29,6 +29,7 @@ const FormFieldsComponent = ({ isLoading, fields, options, triggerEvent = () => 
                                 setValue(field.name, e.target.value)
                                 triggerEvent && triggerEvent(e.target.value, field.name)
                             }}
+                            setValue={setValue}
                             errors={errors}
                             multiple={field.multiple}
                             name={field.name}

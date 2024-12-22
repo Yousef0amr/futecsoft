@@ -11,6 +11,7 @@ import { useMemo } from 'react';
 const SelectMenu = ({
     options,
     name,
+    setValue,
     label,
     watch,
     multiple = false,
@@ -30,18 +31,6 @@ const SelectMenu = ({
         : (watch(name) || (options.length > 0 ? options[0].value : "")),
         [options, watch, name, multiple]);
 
-
-    useEffect(() => {
-        if (watch(name) === undefined) {
-            onChange({
-                target: {
-                    name,
-                    value: selectedValue,
-                },
-            });
-        }
-    }, [watch, onChange, name, selectedValue]);
-
     const handleChange = (event) => {
         const value = event.target.value;
         onChange({
@@ -51,6 +40,20 @@ const SelectMenu = ({
             },
         });
     };
+
+
+    useEffect(() => {
+        if (watch(name) === undefined) {
+            onChange({
+                target: {
+                    name,
+                    value: selectedValue,
+                },
+            });
+            setValue(name, selectedValue);
+        }
+    }, [watch, onChange, name, selectedValue, setValue]);
+
 
     return (
         <FormControl

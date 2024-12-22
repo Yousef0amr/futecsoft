@@ -4,15 +4,20 @@ import FormFieldsComponent from '../common/FormFieldsComponent'
 import { useGetProductUnitsByIdQuery, useGetStandardAndRawMaterialsQuery } from '../../features/productSlice'
 
 const InvoiceItemFormFields = ({ register, errors, setValue, watch }) => {
-    const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(watch('ItemId'));
+    const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
+        watch('ItemId') ? watch('ItemId') : null,
+        {
+            skip: !watch('ItemId')
+        }
+    );
     const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
         watch('Warehouse') ? {
             Warehouse: watch('Warehouse'),
             pageNumber: 1,
             pageSize: 100
-        } : null, // Passing null or an empty object will prevent the query from being triggered
+        } : null,
         {
-            skip: !watch('Warehouse')  // Skipping the query when there is no value in Warehouse
+            skip: !watch('Warehouse')
         }
     );
 

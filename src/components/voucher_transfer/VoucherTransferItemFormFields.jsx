@@ -5,17 +5,17 @@ import { useGetProductUnitsByIdQuery, useGetStandardAndRawMaterialsQuery } from 
 
 const VoucherTransferItemFormFields = ({ errors, register, watch, setValue }) => {
     const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
-        watch('Warehouse') ? {
-            Warehouse: watch('Warehouse'),
+        watch('FromWarehouse') ? {
+            Warehouse: watch('FromWarehouse'),
             pageNumber: 1,
             pageSize: 100
         } : null,
         {
-            skip: !watch('Warehouse')
+            skip: !watch('FromWarehouse')
         }
     );
     const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
-        watch('ItemId')
+        watch('ItemID')
     );
     const units = !isLoadingUnits
         ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))

@@ -25,7 +25,15 @@ const SelectMenu = ({
 
     const handleClose = () => setOpen(false);
     const handleOpen = () => setOpen(true);
+    const [optionslist, setOptions] = useState(options);
 
+
+
+    useEffect(() => {
+        if (options.length > 0) {
+            setOptions(options);
+        }
+    }, [options]);
     const selectedValue = useMemo(() => multiple
         ? (Array.isArray(watch(name)) ? watch(name) : [options.length > 0 ? options[0].value : ""])
         : (watch(name) || (options.length > 0 ? options[0].value : "")),
@@ -43,7 +51,7 @@ const SelectMenu = ({
 
 
     useEffect(() => {
-        if (watch(name) === undefined) {
+        if (options.length > 0) {
             onChange({
                 target: {
                     name,
@@ -52,7 +60,7 @@ const SelectMenu = ({
             });
             setValue(name, selectedValue);
         }
-    }, [watch, onChange, name, selectedValue, setValue]);
+    }, [onChange, name, selectedValue, setValue, options]);
 
 
     return (
@@ -106,8 +114,8 @@ const SelectMenu = ({
                     disableAutoFocusItem: true,
                 }}
             >
-                {options.length > 0 ? (
-                    options.map((option) => (
+                {optionslist.length > 0 ? (
+                    optionslist.map((option) => (
                         <MenuItem selected={selectedValue === option.value} key={option.value} value={option.value}>
                             {multiple && (
                                 <Checkbox

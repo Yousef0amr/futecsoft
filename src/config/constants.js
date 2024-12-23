@@ -1,6 +1,7 @@
-import { faAddressBook, faBalanceScale, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faList, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWarehouse, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faChartPie, faList, faReceipt, faWarehouse, faClock, faAddressBook, faBalanceScale, faBarChart, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './../config/appStrings';
 import { useTranslation } from 'react-i18next';
+
 
 
 export const routes = {
@@ -105,7 +106,27 @@ export const routes = {
         list: '/purchases/transfer-vouchers/list',
         add: '/purchases/transfer-vouchers/add',
         edit: '/purchases/transfer-vouchers/edit'
-    }
+    },
+    reports: {
+        fullSales: '/reports/full-sales',
+        salesCategory: '/reports/sales-category',
+        salesItems: '/reports/sales-items',
+        salesCashier: '/reports/sales-cashier',
+        bestSellerItems: '/reports/best-seller-items',
+        bestSellerCategory: '/reports/best-seller-category',
+        salesByDays: '/reports/sales-by-days',
+        salesByHours: '/reports/sales-by-hours',
+        salesmanSales: '/reports/salesman-sales',
+        returnInvoices: '/reports/return-invoices',
+        returnItems: '/reports/return-items',
+        invoicesByDate: '/reports/invoices-by-date',
+        itemTransaction: '/reports/item-transaction',
+        inventoryStatement: '/reports/inventory-statement',
+        dailyProfit: '/reports/daily-profit',
+        itemsProfits: '/reports/items-profits',
+        itemSalesTransaction: '/reports/item-sales-transaction',
+        fullSalesWithDetails: '/reports/full-sales-with-details'
+    },
 }
 
 
@@ -167,7 +188,6 @@ export const menuList = [
                 subActions: [
                     { label: AppStrings.list, href: routes.discountType.list },
                     { label: AppStrings.add, href: routes.discountType.add },
-
                 ]
             },
             {
@@ -176,7 +196,6 @@ export const menuList = [
                 subActions: [
                     { label: AppStrings.list, href: routes.tax.list },
                     { label: AppStrings.add, href: routes.tax.add },
-
                 ]
             },
             {
@@ -185,7 +204,6 @@ export const menuList = [
                 subActions: [
                     { label: AppStrings.list, href: routes.currency.list },
                     { label: AppStrings.add, href: routes.currency.add },
-
                 ]
             },
             {
@@ -194,7 +212,6 @@ export const menuList = [
                 subActions: [
                     { label: AppStrings.list, href: routes.paymentMethod.list },
                     { label: AppStrings.add, href: routes.paymentMethod.add },
-
                 ]
             },
             {
@@ -203,7 +220,6 @@ export const menuList = [
                 subActions: [
                     { label: AppStrings.list, href: routes.supplier.list },
                     { label: AppStrings.add, href: routes.supplier.add },
-
                 ]
             }
         ]
@@ -215,7 +231,6 @@ export const menuList = [
             {
                 label: AppStrings.materials,
                 icon: faBarcode,
-
                 subActions: [
                     { label: AppStrings.list, href: routes.product.list, subHref: routes.product.edit },
                     { label: AppStrings.add, href: routes.product.add },
@@ -252,29 +267,23 @@ export const menuList = [
             {
                 label: AppStrings.input_vouchers,
                 icon: faTruck,
-
                 subActions: [{ label: AppStrings.list, href: routes.input_voucher.list },
                 { label: AppStrings.add, href: routes.input_voucher.add },
-
                 ]
             },
             {
                 label: AppStrings.output_vouchers,
                 icon: faTruck,
-
                 subActions: [{ label: AppStrings.list, href: routes.output_voucher.list },
                 { label: AppStrings.add, href: routes.output_voucher.add },
-
                 ]
             },
             {
                 label: AppStrings.transfer_vouchers,
                 icon: faTruck,
-
                 subActions: [
                     { label: AppStrings.list, href: routes.transfer_voucher.list },
                     { label: AppStrings.add, href: routes.transfer_voucher.add },
-
                 ]
             }
         ]
@@ -286,20 +295,16 @@ export const menuList = [
             {
                 label: AppStrings.define_companies,
                 icon: faCar,
-
                 subActions: [{ label: AppStrings.list, href: routes.delivery_company.list },
                 { label: AppStrings.add, href: routes.delivery_company.add },
-
                 ]
             },
             {
                 label: AppStrings.delivery_discounts,
                 icon: faCar,
-
                 subActions: [
                     { label: AppStrings.list, href: routes.delivery_discount.list },
                     { label: AppStrings.add, href: routes.delivery_discount.add },
-
                 ]
             }
         ]
@@ -311,21 +316,17 @@ export const menuList = [
             {
                 label: AppStrings.user_groups,
                 icon: faAddressBook,
-
                 subActions: [
                     { label: AppStrings.list, href: routes.user_group.list },
                     { label: AppStrings.add, href: routes.user_group.add },
-
                 ]
             },
             {
                 label: AppStrings.users,
                 icon: faUser,
-
                 subActions: [
                     { label: AppStrings.list, href: routes.user.list },
                     { label: AppStrings.add, href: routes.user.add },
-
                 ]
             },
             {
@@ -335,7 +336,79 @@ export const menuList = [
                 href: routes.permission.list
             }
         ]
-    }
+    },
+    {
+        label: AppStrings.reports,
+        icon: faBarChart,
+        subActions: [
+            {
+                label: AppStrings.invoices_by_date,
+                icon: faReceipt,
+                href: routes.reports.invoicesByDate,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.sales_category,
+                icon: faChartPie,
+                href: routes.reports.salesCategory,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.sales_items,
+                icon: faList,
+                href: routes.reports.salesItems,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.full_sales,
+                icon: faChartLine,
+                href: routes.reports.fullSales,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.full_sales_with_details,
+                icon: faList,
+                href: routes.reports.fullSalesWithDetails,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.return_invoices,
+                icon: faReceipt,
+                href: routes.reports.returnInvoices,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.return_items,
+                icon: faReceipt,
+                href: routes.reports.returnItems,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.item_transaction,
+                icon: faList,
+                href: routes.reports.itemTransaction,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.inventory_statement,
+                icon: faWarehouse,
+                href: routes.reports.inventoryStatement,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.daily_profit,
+                icon: faChartLine,
+                href: routes.reports.dailyProfit,
+                type: 'unExpanded',
+            },
+            {
+                label: AppStrings.items_profits,
+                icon: faChartPie,
+                href: routes.reports.itemsProfits,
+                type: 'unExpanded',
+            },
+        ]
+    },
 ];
 
 

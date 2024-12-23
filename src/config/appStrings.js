@@ -362,7 +362,34 @@ const AppStrings = {
     normal_output: 'normal_output',
     edit_voucher_transfer: 'edit_voucher_transfer',
     add_item_for_voucher: 'add_item_for_voucher',
+    reports: 'reports',
+    full_sales: 'full_sales',
+    sales_category: 'sales_category',
+    sales_items: 'sales_items',
+    sales_cashier: 'sales_cashier',
+    best_seller_items: 'best_seller_items',
+    best_seller_category: 'best_seller_category',
+    sales_by_days: 'sales_by_days',
+    sales_by_hours: 'sales_by_hours',
+    salesman_sales: 'salesman_sales',
+    return_invoices: 'return_invoices',
+    return_items: 'return_items',
+    invoices_by_date: 'invoices_by_date',
+    item_transaction: 'item_transaction',
+    inventory_statement: 'inventory_statement',
+    inventory_by_date: 'inventory_by_date',
+    daily_profit: 'daily_profit',
+    daily_profit_by_date: 'daily_profit_by_date',
+    items_profits: 'items_profits',
+    item_sales_transaction: 'item_sales_transaction',
+    full_sales_with_details: 'full_sales_with_details'
 }
+
+
+
+
+
+
 
 
 

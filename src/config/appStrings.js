@@ -382,7 +382,8 @@ const AppStrings = {
     daily_profit_by_date: 'daily_profit_by_date',
     items_profits: 'items_profits',
     item_sales_transaction: 'item_sales_transaction',
-    full_sales_with_details: 'full_sales_with_details'
+    full_sales_with_details: 'full_sales_with_details',
+    point_of_sale: 'point_of_sale',
 }
 
 

@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FormControl, MenuItem, Select } from '@mui/material';
+import { FormControl, MenuItem, Select, Checkbox } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../config/appStrings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import Checkbox from '@mui/material/Checkbox';
-import SpinnerLoader from '../common/Spinner';
-import { useMemo } from 'react';
 
 const SelectMenu = ({
     options,
@@ -18,58 +15,53 @@ const SelectMenu = ({
     onChange,
     required,
     errors,
-    isLoading
+    isLoading,
 }) => {
     const [open, setOpen] = useState(false);
     const { t } = useTranslation();
 
     const handleClose = () => setOpen(false);
     const handleOpen = () => setOpen(true);
-    const [optionslist, setOptions] = useState(options);
 
+    const selectedValue = multiple
+        ? Array.isArray(watch(name)) ? watch(name) : []
+        : watch(name) || (options.length > 0 ? options[0].value : "");
 
+    const menuItems = useMemo(() => (
+        options.length > 0 ? (
+            options.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                    {multiple && (
+                        <Checkbox
+                            checked={selectedValue.includes(option.value)}
+                        />
+                    )}
+                    {option.label}
+                </MenuItem>
+            ))
+        ) : (
+            <MenuItem disabled>
+                {t(`${AppStrings.noDataAvailable}`)}
+            </MenuItem>
+        )
+    ), [options, selectedValue, multiple, t]);
 
     useEffect(() => {
-        if (options.length > 0) {
-            setOptions(options);
+        if (options.length > 0 && selectedValue !== undefined) {
+            if (watch(name) !== selectedValue) {
+                setValue(name, selectedValue);
+                onChange({
+                    target: {
+                        name,
+                        value: selectedValue,
+                    },
+                });
+            }
         }
-    }, [options]);
-    const selectedValue = useMemo(() => multiple
-        ? (Array.isArray(watch(name)) ? watch(name) : [options.length > 0 ? options[0].value : ""])
-        : (watch(name) || (options.length > 0 ? options[0].value : "")),
-        [options, watch, name, multiple]);
-
-    const handleChange = (event) => {
-        const value = event.target.value;
-        onChange({
-            target: {
-                name,
-                value: multiple ? [...value] : value,
-            },
-        });
-    };
-
-
-    useEffect(() => {
-        if (options.length > 0) {
-            onChange({
-                target: {
-                    name,
-                    value: selectedValue,
-                },
-            });
-            setValue(name, selectedValue);
-        }
-    }, [onChange, name, selectedValue, setValue, options]);
-
+    }, [options, selectedValue, name, setValue, onChange, watch]);
 
     return (
-        <FormControl
-            className="select-menu mt-3"
-            style={{
-                width: '100%',
-            }}
-        >
+        <FormControl className="select-menu mt-3" style={{ width: '100%' }}>
             <span className="select-label mb-2">
                 {t(label)}
                 {required && <span style={{ color: 'red' }}>*</span>}
@@ -80,9 +72,18 @@ const SelectMenu = ({
                 open={open}
                 onClose={handleClose}
                 onOpen={handleOpen}
-                value={selectedValue || (options.length > 0 ? options[0].value : '')}
+                value={selectedValue}
                 multiple={multiple}
-                onChange={handleChange}
+                onChange={(event) => {
+                    const value = event.target.value;
+                    setValue(name, value);
+                    onChange({
+                        target: {
+                            name,
+                            value: multiple ? [...value] : value,
+                        },
+                    });
+                }}
                 displayEmpty
                 style={{
                     backgroundColor: 'var(--background-color)',
@@ -114,26 +115,9 @@ const SelectMenu = ({
                     disableAutoFocusItem: true,
                 }}
             >
-                {optionslist.length > 0 ? (
-                    optionslist.map((option) => (
-                        <MenuItem selected={selectedValue === option.value} key={option.value} value={option.value}>
-                            {multiple && (
-                                <Checkbox
-                                    checked={selectedValue.includes(option.value)}
-                                />
-                            )}
-                            {option.label}
-                        </MenuItem>
-                    ))
-                ) : (
-                    <MenuItem disabled>
-                        {t(`${AppStrings.noDataAvailable}`)}
-                    </MenuItem>
-                )}
+                {!multiple && <MenuItem value="">{t(`${AppStrings.choose}`)}</MenuItem>}
+                {menuItems}
             </Select>
-
-
-            {/* Error message */}
             {errors[name] && (
                 <div className="error-message">{errors[name].message}</div>
             )}
@@ -141,20 +125,4 @@ const SelectMenu = ({
     );
 };
 
-SelectMenu.propTypes = {
-    options: PropTypes.arrayOf(
-        PropTypes.shape({
-            value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-                .isRequired,
-            label: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-    label: PropTypes.string.isRequired,
-    watch: PropTypes.func.isRequired,
-    multiple: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-    required: PropTypes.bool,
-    errors: PropTypes.object,
-};
-
-export default SelectMenu;
+export default React.memo(SelectMenu);

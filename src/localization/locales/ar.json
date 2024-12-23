@@ -389,5 +389,6 @@
     "daily_profit_by_date": "الأرباح اليومية حسب التاريخ",
     "items_profits": "أرباح المواد",
     "item_sales_transaction": "معاملات مبيعات المواد",
-    "full_sales_with_details": "كامل المبيعات مع التفاصيل"
+    "full_sales_with_details": "كامل المبيعات مع التفاصيل",
+    "point_of_sale": "نقطة البيع"
 }

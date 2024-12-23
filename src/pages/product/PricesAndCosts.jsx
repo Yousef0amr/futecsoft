@@ -65,6 +65,7 @@ const PricesAndCosts = () => {
                                         <Col xs={12} md={6} key={field.name}>
                                             <SelectMenu
                                                 watch={watch}
+                                                setValue={setValue}
                                                 onChange={(e) => {
                                                     setValue(field.name, e.target.value);
                                                     if (field.name === 'Warehouse') {

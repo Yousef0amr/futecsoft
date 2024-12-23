@@ -71,7 +71,7 @@ export const branchFormFields = [
 ];
 
 export const pricesAndCostsFormFields = [
-    { name: 'Warehouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
     { name: 'CateID', label: AppStrings.category, required: true, options: [], type: 'select' },
 ];
 
@@ -338,6 +338,57 @@ export const voucherTransferItemsFormFields = [
     { name: 'Qty', label: AppStrings.quantity, required: true, type: 'number' },
     { name: 'Cost', label: AppStrings.price, required: true, type: 'number' },
 ]
+
+
+export const reportFormFields = [
+    { name: 'FromDate', label: AppStrings.from_date, required: false, type: 'date' },
+    { name: 'ToDate', label: AppStrings.to_date, required: false, type: 'date' },
+    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+]
+
+export const getFullSalesReportFormFields = [
+    ...reportFormFields,
+    { name: 'StationID', label: AppStrings.point_of_sale, required: false, options: [], type: 'select' },
+]
+
+export const getSalesByCategoryOrItemReportFormFields = [
+    ...getFullSalesReportFormFields,
+    { name: 'FatherID', label: AppStrings.category, required: false, options: [], type: 'select' },
+]
+
+export const getItemProfitReportFormFields = [
+    ...reportFormFields,
+    { name: 'FatherID', label: AppStrings.category, required: false, options: [], type: 'select' },
+]
+
+export const getSalesByCashierReportFormFields = [
+    ...getFullSalesReportFormFields,
+    { name: 'CashierNo', label: AppStrings.cashier, required: false, options: [], type: 'select' },
+    { name: 'PayType', label: AppStrings.cashier, required: false, options: [], type: 'select' },
+]
+
+
+export const getItemTranscationReportFormFields = [
+    ...reportFormFields,
+    { name: 'ItemID', label: AppStrings.product, required: false, options: [], type: 'select' },
+]
+
+export const getInventoryReportFormFields = [
+    { name: 'ToDate', label: AppStrings.to_date, required: false, type: 'date' },
+    { name: 'CateID', label: AppStrings.category, required: false, type: 'number' },
+    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+]
+
+export const getDailyProfitReportFormFields = [
+    { name: 'SalesDate', label: AppStrings.to_date, required: false, type: 'date' },
+    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+]
+
+
+
+
+
+
 
 
 

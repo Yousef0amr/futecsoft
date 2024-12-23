@@ -398,5 +398,6 @@
     "return_items": "Return Items",
     "items_profits": "Items Profits",
     "item_sales_transaction": "Item Sales Transaction",
-    "full_sales_with_details": "Full Sales with Details"
+    "full_sales_with_details": "Full Sales with Details",
+    "point_of_sale": "Point of Sale"
 }

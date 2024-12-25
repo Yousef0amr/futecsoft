@@ -221,5 +221,6 @@ export const {
     useGetAllProductsQuery,
     useGetStandardAndRawMaterialsQuery,
     useLazyGetStandardAndRawMaterialsQuery,
-    useLazyGetProductUnitsByIdQuery
+    useLazyGetProductUnitsByIdQuery,
+    useGetProductsCostsQuery
 } = productsApi;

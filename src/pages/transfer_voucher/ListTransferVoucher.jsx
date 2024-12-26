@@ -1,7 +1,7 @@
 import React from 'react'
 import ListComponent from '../../components/common/ListComponent'
 import useVoucherTransferManagement from '../../hook/useVoucherTransferManagement'
-import { useVoucherInputColDefs } from '../../config/agGridColConfig'
+import { useVoucherTransferColDefs } from '../../config/agGridColConfig'
 import { routes } from '../../config/constants'
 import { faTruckArrowRight } from '@fortawesome/free-solid-svg-icons'
 import AppStrings from '../../config/appStrings'
@@ -12,7 +12,7 @@ const ListTransferVoucher = () => {
             entityName="voucher_transfer"
             entityKey="DocNo"
             fetchHook={useVoucherTransferManagement}
-            columnDefsHook={useVoucherInputColDefs}
+            columnDefsHook={useVoucherTransferColDefs}
             routes={routes.transfer_voucher}
             icon={faTruckArrowRight}
             deleteSuccessMessage={AppStrings.voucher_deleted_successfully}

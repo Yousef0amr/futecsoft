@@ -11,7 +11,7 @@ import FormCard from '../common/FormCard';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import ListEditComponent from '../common/ListEditComponent';
 import VoucherOutputItemForm from './VoucherOutputItemForm';
-import { useInvoicesItemsColDefs } from '../../config/agGridColConfig';
+import { useVoucherItemsColDefs } from '../../config/agGridColConfig';
 import { useVoucherOutputItemsManagement } from '../../hook/useVoucherOutputManagement';
 
 const ListVoucherOutputItems = ({ voucher }) => {
@@ -81,7 +81,7 @@ const ListVoucherOutputItems = ({ voucher }) => {
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }>
-            <ListEditComponent Form={VoucherOutputItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
+            <ListEditComponent Form={VoucherOutputItemForm} useColDefs={useVoucherItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
                 ...editData,
                 DocType: defaultVoucherTypes.outputVoucher,
                 ...voucher

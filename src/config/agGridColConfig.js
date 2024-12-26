@@ -308,10 +308,10 @@ export const useInvoicesItemsColDefs = () => {
         { field: i18n.language === 'en' ? "ItemDescEn" : "ItemDescAr", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
         { field: i18n.language === 'en' ? "UnitDescEn" : "UnitDescAr", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
         { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
-        { field: "UnitPrice" || "Cost", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
+        { field: "UnitPrice", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
         { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
         { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
-        { field: "SubTotal", headerName: t(AppStrings.paymentType), filter: 'agTextColumnFilter' },
+        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
         { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
     ], [t, i18n]);
 }
@@ -341,6 +341,33 @@ export const useVoucherOutputColDefs = () => {
         { field: "Note", headerName: t(AppStrings.note), filter: 'agTextColumnFilter' },
         { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
     ], [t]);
+}
+
+
+export const useVoucherTransferColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "DocNo", headerName: t(AppStrings.invoiceId), filter: 'agTextColumnFilter' },
+        { field: "TransferNo", headerName: t(AppStrings.voucherId), filter: 'agTextColumnFilter' },
+        { field: "CreatedByDesc", headerName: t(AppStrings.createdBy), filter: 'agTextColumnFilter' },
+        { field: "DocDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "Note", headerName: t(AppStrings.note), filter: 'agTextColumnFilter' },
+        { field: "FromWarehouseName", headerName: t(AppStrings.from_branch), filter: 'agTextColumnFilter' },
+        { field: "ToWarehouseName", headerName: t(AppStrings.to_branch), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+export const useVoucherItemsColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "ItemID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "ItemDescEn" : "ItemDescAr", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "UnitDescEn" : "UnitDescAr", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
+        { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
+        { field: "Cost", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
+    ], [t, i18n]);
 }
 
 

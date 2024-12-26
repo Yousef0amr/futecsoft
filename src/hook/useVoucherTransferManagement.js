@@ -1,5 +1,5 @@
-import { voucherInputDetailsApi } from "../features/voucherInputSlice";
-import { voucherTransferApi, useAddVoucherTransferMutation, useGetVoucherTransfersQuery, useUpdateVoucherTransferMutation, useDeleteVoucherTransferMutation, useGetAllVoucherTransferDetailsQuery, useUpdateVoucherTransferDetailsMutation, useDeleteVoucherTransferDetailsMutation } from "../features/voucherTransferSlice";
+
+import { voucherTransferApi, voucherTransferDetailsApi, useAddVoucherTransferMutation, useGetVoucherTransfersQuery, useUpdateVoucherTransferMutation, useDeleteVoucherTransferMutation, useGetAllVoucherTransferDetailsQuery, useUpdateVoucherTransferDetailsMutation, useDeleteVoucherTransferDetailsMutation } from "../features/voucherTransferSlice";
 import useEntityManagement from "./../hooks/useEntityManagement";
 
 const useVoucherTransferManagement = () => {
@@ -19,9 +19,9 @@ const useVoucherTransferManagement = () => {
 }
 
 
-export const useVoucherInputItemsManagement = ({ id }) => {
+export const useVoucherTransferItemsManagement = ({ id }) => {
     return useEntityManagement({
-        apiSlice: voucherInputDetailsApi,
+        apiSlice: voucherTransferDetailsApi,
         queryHook: useGetAllVoucherTransferDetailsQuery,
         addMutationHook: useUpdateVoucherTransferDetailsMutation,
         updateMutationHook: useUpdateVoucherTransferDetailsMutation,

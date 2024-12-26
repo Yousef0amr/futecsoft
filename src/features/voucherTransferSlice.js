@@ -31,7 +31,7 @@ export const voucherTransferDetailsApi = createApi({
     endpoints: (builder) => ({
         getAllVoucherTransferDetails: builder.query({
             query: ({ id }) => ({
-                url: `/GetDatailsByDocID?DocID=${id}`,
+                url: `/GetDatailsByDocNo?DocNo=${id}`,
             }),
             keepUnusedDataFor: longCacheTime,
             transformResponse: (response) => response.Response || response,

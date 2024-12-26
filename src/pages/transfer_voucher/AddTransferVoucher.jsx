@@ -1,5 +1,5 @@
 import React from 'react'
-import useInvoiceManagement from '../../hook/useInvoiceManagement';
+import useVoucherTransferManagement from '../../hook/useVoucherTransferManagement';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../config/appStrings';
 import NavButton from '../../components/common/NavButton';
@@ -12,7 +12,7 @@ import useEntityOperations from '../../hooks/useEntityOperations';
 
 const AddTransferVoucher = () => {
     const { t } = useTranslation();
-    const { addEntity, isAdding, refetch } = useInvoiceManagement();
+    const { addEntity, isAdding, refetch } = useVoucherTransferManagement();
     const { handleEntityOperation } = useEntityOperations({ addEntity });
     const { data: currentKey } = useGetCurrentVoucherTransferKeyQuery();
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import useInvoiceManagement from '../../hook/useInvoiceManagement';
+import useVoucherInputManagement from '../../hook/useVoucherInputManagement';
 import { useTranslation } from 'react-i18next';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import FormCard from '../../components/common/FormCard';
@@ -12,7 +12,7 @@ import VoucherInputForm from '../../components/voucher_input/VoucherInputForm';
 
 const AddInputVoucher = () => {
     const { t } = useTranslation();
-    const { addEntity, isAdding, refetch } = useInvoiceManagement();
+    const { addEntity, isAdding, refetch } = useVoucherInputManagement();
     const { handleEntityOperation } = useEntityOperations({ addEntity });
     const { data: currentKey } = useGetCurrentVoucherInputKeyQuery();
 

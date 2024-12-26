@@ -1,5 +1,5 @@
 import React from 'react'
-import useInvoiceManagement from '../../hook/useInvoiceManagement';
+import useVoucherOutputManagement from '../../hook/useVoucherOutputManagement';
 import { useTranslation } from 'react-i18next';
 import FormCard from '../../components/common/FormCard';
 import VoucherOutputForm from '../../components/voucher_output/VoucherOutputForm';
@@ -13,7 +13,7 @@ import NavButton from '../../components/common/NavButton';
 
 const AddOutputVoucher = () => {
     const { t } = useTranslation();
-    const { addEntity, isAdding, refetch } = useInvoiceManagement();
+    const { addEntity, isAdding, refetch } = useVoucherOutputManagement();
     const { handleEntityOperation } = useEntityOperations({ addEntity });
     const { data: currentKey } = useGetCurrentVoucherOutputKeyQuery();
 

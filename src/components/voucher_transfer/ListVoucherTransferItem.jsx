@@ -2,7 +2,7 @@ import React from 'react'
 import { useMemo, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import AppStrings from '../../config/appStrings'
-import useVoucherTransferManagement from '../../hook/useVoucherTransferManagement'
+import { useVoucherTransferItemsManagement } from '../../hook/useVoucherTransferManagement'
 import useEntityOperations from '../../hooks/useEntityOperations'
 import useTableActions from '../../hooks/useTableActions'
 import { faTruck } from '@fortawesome/free-solid-svg-icons'
@@ -10,13 +10,13 @@ import FormCard from '../common/FormCard'
 import FilterSearch from '../common/FilterSearch'
 import ListEditComponent from '../common/ListEditComponent'
 import VoucherTransferItemForm from './VoucherTransferItemForm'
-import { useInvoicesItemsColDefs } from '../../config/agGridColConfig'
+import { useVoucherItemsColDefs } from '../../config/agGridColConfig'
 
 
 const ListVoucherTransferItem = ({ voucher }) => {
     const [quickFilterText, setQuickFilterText] = useState();
     const { defaultActions, handleCancel, active } = useTableActions({ path: null });
-    const { data, isLoading, addEntity, isAdding, isUpdating, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useVoucherTransferManagement({ id: voucher.DocNo });
+    const { data, isLoading, addEntity, isAdding, isUpdating, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useVoucherTransferItemsManagement({ id: voucher.DocNo });
     const { t } = useTranslation();
     const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
     const isEditing = active.editable;
@@ -29,7 +29,7 @@ const ListVoucherTransferItem = ({ voucher }) => {
     }), []);
 
     const [editData, setEditData] = useState(defaultValues);
-
+    console.log(editData)
     useEffect(() => {
         if (isEditing) {
             setEditData({
@@ -80,7 +80,7 @@ const ListVoucherTransferItem = ({ voucher }) => {
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }>
-            <ListEditComponent Form={VoucherTransferItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
+            <ListEditComponent Form={VoucherTransferItemForm} useColDefs={useVoucherItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
                 ...editData,
                 ...voucher
             }} />

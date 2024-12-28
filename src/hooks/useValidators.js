@@ -29,7 +29,8 @@ const useValidators = () => {
         voucherOutputSchemaValidator,
         voucherOutputUpdatedSchemaValidator,
         voucherTransferSchemaValidator,
-        voucherTransferUpdatedSchemaValidator
+        voucherTransferUpdatedSchemaValidator,
+        invoiceByDateSchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -59,6 +60,7 @@ const useValidators = () => {
     const voucherOutputUpdatedSchema = yup.object(voucherOutputUpdatedSchemaValidator);
     const voucherTransferSchema = yup.object(voucherTransferSchemaValidator);
     const voucherTransferUpdatedSchema = yup.object(voucherTransferUpdatedSchemaValidator);
+    const invoiceByDateSchema = yup.object(invoiceByDateSchemaValidator);
 
 
     return {
@@ -88,7 +90,8 @@ const useValidators = () => {
         voucherOutputSchema,
         voucherOutputUpdatedSchema,
         voucherTransferSchema,
-        voucherTransferUpdatedSchema
+        voucherTransferUpdatedSchema,
+        invoiceByDateSchema
     };
 };
 

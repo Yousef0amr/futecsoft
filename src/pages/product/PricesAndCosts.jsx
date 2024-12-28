@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import AppStrings from '../../config/appStrings'
 import { faMoneyBill1Wave } from '@fortawesome/free-solid-svg-icons'
-import { useGetBranchesQuery } from '../../features/branchesSlice'
+import useBranchManagement from '../../hook/useBranchManagement'
 import { useLazyGetAllCategoriesByBranchQuery } from '../../features/categorySlice'
 import { pricesAndCostsFormFields } from '../../config/formFields'
 import useValidators from '../../hooks/useValidators'
@@ -13,7 +13,7 @@ import ListReport from '../../components/report/ListReport'
 const PricesAndCosts = () => {
     const { pricesAndCostsSchema } = useValidators()
 
-    const { data: branchesData, isLoading: isLoadingBranches } = useGetBranchesQuery({ pageNumber: 1, pageSize: 10 });
+    const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const [triggerGetProductsCosts, { data, isLoading }] = useLazyGetProductsCostsQuery()
 
     const [

@@ -341,47 +341,47 @@ export const voucherTransferItemsFormFields = [
 
 
 export const reportFormFields = [
-    { name: 'FromDate', label: AppStrings.from_date, required: false, type: 'date' },
-    { name: 'ToDate', label: AppStrings.to_date, required: false, type: 'date' },
-    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+    { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
+    { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
 ]
 
 export const getFullSalesReportFormFields = [
     ...reportFormFields,
-    { name: 'StationID', label: AppStrings.point_of_sale, required: false, options: [], type: 'select' },
+    { name: 'StationID', label: AppStrings.point_of_sale, required: true, options: [], type: 'select' },
 ]
 
 export const getSalesByCategoryOrItemReportFormFields = [
     ...getFullSalesReportFormFields,
-    { name: 'FatherID', label: AppStrings.category, required: false, options: [], type: 'select' },
+    { name: 'FatherID', label: AppStrings.category, required: true, options: [], type: 'select' },
 ]
 
 export const getItemProfitReportFormFields = [
     ...reportFormFields,
-    { name: 'FatherID', label: AppStrings.category, required: false, options: [], type: 'select' },
+    { name: 'FatherID', label: AppStrings.category, required: true, options: [], type: 'select' },
 ]
 
 export const getSalesByCashierReportFormFields = [
     ...getFullSalesReportFormFields,
-    { name: 'CashierNo', label: AppStrings.cashier, required: false, options: [], type: 'select' },
-    { name: 'PayType', label: AppStrings.cashier, required: false, options: [], type: 'select' },
+    { name: 'CashierNo', label: AppStrings.cashier, required: true, options: [], type: 'select' },
+    { name: 'PayType', label: AppStrings.cashier, required: true, options: [], type: 'select' },
 ]
 
 
 export const getItemTranscationReportFormFields = [
     ...reportFormFields,
-    { name: 'ItemID', label: AppStrings.product, required: false, options: [], type: 'select' },
+    { name: 'ItemID', label: AppStrings.product, required: true, options: [], type: 'select' },
 ]
 
 export const getInventoryReportFormFields = [
-    { name: 'ToDate', label: AppStrings.to_date, required: false, type: 'date' },
-    { name: 'CateID', label: AppStrings.category, required: false, type: 'number' },
-    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+    { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
+    { name: 'CateID', label: AppStrings.category, required: true, type: 'number' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
 ]
 
 export const getDailyProfitReportFormFields = [
-    { name: 'SalesDate', label: AppStrings.to_date, required: false, type: 'date' },
-    { name: 'Warehouse', label: AppStrings.branch, required: false, options: [], type: 'select' },
+    { name: 'SalesDate', label: AppStrings.to_date, required: true, type: 'date' },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
 ]
 
 

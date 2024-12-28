@@ -13,6 +13,7 @@ const AppStrings = {
     materials_list: 'materials_list',
     save: 'save',
     cancel: 'cancel',
+    time: 'time',
     unit: 'unit',
     search: 'search',
     reset: 'reset',

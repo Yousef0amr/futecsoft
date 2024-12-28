@@ -1,10 +1,22 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_URL, REPORTS_CONTROLLER } from "../api/endpoints";
+import { BASEURL, REPORTS_CONTROLLER } from "../api/endpoints";
+import getCookie from "../utils/getCookie";
+
 
 export const reportsApi = createApi({
     reducerPath: 'reportsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL + REPORTS_CONTROLLER }),
+
+    baseQuery: fetchBaseQuery({
+        baseUrl: BASEURL + REPORTS_CONTROLLER,
+        prepareHeaders: (headers) => {
+            headers.set('Authorization', `Bearer ${getCookie('accessToken')}`);
+            return headers
+        }
+
+
+    }),
     endpoints: (builder) => ({
+
         getFullSales: builder.query({
             query: ({ from_date, to_date }) =>
                 `/GetFullSales?FromDate=${from_date}&ToDate=${to_date}`,
@@ -48,8 +60,8 @@ export const reportsApi = createApi({
                 `/ReturnByItems?ItemID=${item_id}`,
         }),
         getInvoicesByDate: builder.query({
-            query: ({ from_date, to_date }) =>
-                `/InvoicesByDate?FromDate=${from_date}&ToDate=${to_date}`,
+            transformResponse: (response) => response.Response || response,
+            query: ({ FromDate, ToDate, Warehouse }) => `/InvoicesByDate?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&FatherID=1`,
         }),
         getItemTransaction: builder.query({
             query: ({ item_id }) =>
@@ -75,21 +87,19 @@ export const reportsApi = createApi({
 });
 
 export const {
-    useGetFullSalesQuery,
-    useGetSalesCategoryQuery,
-    useGetSalesItemsQuery,
-    useGetSalesByCashierQuery,
-    useGetBestSellerItemsQuery,
-    useGetBestSellerCategoryQuery,
-    useGetSalesByDaysQuery,
-    useGetSalesByHoursQuery,
-    useGetSalesmanSalesQuery,
-    useGetReturnByInvoicesQuery,
-    useGetReturnByItemsQuery,
-    useGetInvoicesByDateQuery,
-    useGetItemTransactionQuery,
-    useGetInventoryStatementQuery,
-    useGetDailyProfitQuery,
-    useGetItemsProfitsQuery,
-    useGetItemSalesTransactionQuery,
+    useLazyGetBestSellerCategoryQuery,
+    useLazyGetBestSellerItemsQuery,
+    useLazyGetDailyProfitQuery,
+    useLazyGetFullSalesQuery,
+    useLazyGetInvoicesByDateQuery,
+    useLazyGetInventoryStatementQuery,
+    useLazyGetItemTransactionQuery,
+    useLazyGetItemsProfitsQuery,
+    useLazyGetReturnByInvoicesQuery,
+    useLazyGetReturnByItemsQuery,
+    useLazyGetSalesByCashierQuery,
+    useLazyGetSalesByDaysQuery,
+    useLazyGetSalesCategoryQuery,
+    useLazyGetSalesItemsQuery,
+    useLazyGetSalesmanSalesQuery,
 } = reportsApi;

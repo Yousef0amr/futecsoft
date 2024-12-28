@@ -21,6 +21,7 @@ import { invoiceDetailsApi, invoicesApi } from "../features/invoiceSlice";
 import { voucherInputDetailsApi, voucherInputsApi } from "../features/voucherInputSlice";
 import { voucherOutputsApi, voucherOutputDetailsApi } from "../features/voucherOutputSlice";
 import { voucherTransferDetailsApi, voucherTransferApi } from "../features/voucherTransferSlice";
+import { reportsApi } from "../features/reportsControllerSlice";
 
 const store = configureStore({
     reducer: {
@@ -48,7 +49,8 @@ const store = configureStore({
         [voucherOutputsApi.reducerPath]: voucherOutputsApi.reducer,
         [voucherOutputDetailsApi.reducerPath]: voucherOutputDetailsApi.reducer,
         [voucherTransferApi.reducerPath]: voucherTransferApi.reducer,
-        [voucherTransferDetailsApi.reducerPath]: voucherTransferDetailsApi.reducer
+        [voucherTransferDetailsApi.reducerPath]: voucherTransferDetailsApi.reducer,
+        [reportsApi.reducerPath]: reportsApi.reducer
 
 
     },
@@ -78,6 +80,7 @@ const store = configureStore({
         voucherOutputDetailsApi.middleware,
         voucherTransferApi.middleware,
         voucherTransferDetailsApi.middleware
+        , reportsApi.middleware
 
     ),
 });

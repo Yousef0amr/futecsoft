@@ -333,6 +333,14 @@ const MainMenuValidators = () => {
         ToWarehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
     }
 
+
+
+    const invoiceByDateSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+    }
+
     return {
         branchSchemaValidator,
         productSchemaValidator,
@@ -360,7 +368,8 @@ const MainMenuValidators = () => {
         voucherOutputSchemaValidator,
         voucherOutputUpdatedSchemaValidator,
         voucherTransferSchemaValidator,
-        voucherTransferUpdatedSchemaValidator
+        voucherTransferUpdatedSchemaValidator,
+        invoiceByDateSchemaValidator
     }
 }
 

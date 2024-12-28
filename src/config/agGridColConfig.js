@@ -373,6 +373,30 @@ export const useVoucherItemsColDefs = () => {
 
 
 
+export const useInvoicesByDateColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "InvoiceNo", headerName: t(AppStrings.invoiceNo), filter: 'agTextColumnFilter' },
+        { field: "RealTime", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "Time", headerName: t(AppStrings.time), filter: 'agTextColumnFilter' },
+        { field: "InvoiceSubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "InvoiceDiscountTotal", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "InvoiceTaxTotal", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "InvoiceGrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+        { field: "PaymentDesc", headerName: t(AppStrings.paymentType), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+
+
+
+
+
+
+
 
 
 

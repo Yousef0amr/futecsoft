@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import DefaultLayout from '../layout/DefaultLayout'
+import ReportsLayout from '../layout/ReportsLayout'
 import { ProtectedRoute, LoginRoute } from './../components/common/ProtectedRoute'
 import Login from '../pages/Login'
 import AddBranch from '../pages/branch/AddBranch'
@@ -68,6 +69,9 @@ import EditOutputVoucher from '../pages/output_voucher/EditOutputVoucher'
 import ListTransferVoucher from '../pages/transfer_voucher/ListTransferVoucher'
 import AddTransferVoucher from '../pages/transfer_voucher/AddTransferVoucher'
 import EditTransferVoucher from '../pages/transfer_voucher/EditTransferVoucher'
+import InvoicesByDate from '../pages/report/InvoicesByDate'
+
+
 
 
 
@@ -160,6 +164,29 @@ const pagesList = [
 
 ];
 
+const reportsPages = [
+    // { path: routes.reports.fullSales, component: <FullSales /> },
+    // { path: routes.reports.salesCategory, component: <SalesCategory /> },
+    // { path: routes.reports.salesItems, component: <SalesItems /> },
+    // { path: routes.reports.salesCashier, component: <SalesCashier /> },
+    // { path: routes.reports.bestSellerItems, component: <BestSellerItems /> },
+    // { path: routes.reports.bestSellerCategory, component: <BestSellerCategory /> },
+    // { path: routes.reports.salesByDays, component: <SalesByDays /> },
+    // { path: routes.reports.salesByHours, component: <SalesByHours /> },
+    // { path: routes.reports.salesmanSales, component: <SalesmanSales /> },
+    // { path: routes.reports.returnInvoices, component: <ReturnInvoices /> },
+    // { path: routes.reports.returnItems, component: <ReturnItems /> },
+    { path: routes.reports.invoicesByDate, component: <InvoicesByDate /> },
+    // { path: routes.reports.itemTransaction, component: <ItemTransaction /> },
+    // { path: routes.reports.inventoryStatement, component: <InventoryStatement /> },
+    // { path: routes.reports.dailyProfit, component: <DailyProfit /> },
+    // { path: routes.reports.itemsProfits, component: <ItemsProfits /> },
+    // { path: routes.reports.itemSalesTransaction, component: <ItemSalesTransaction /> },
+    // { path: routes.reports.fullSalesWithDetails, component: <FullSalesWithDetails /> },
+]
+
+
+
 const AppRoutes = ({ darkMode, toggleDarkMode }) => {
     return (
         <Suspense fallback={<Loader />}>
@@ -172,7 +199,18 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                                     <Route key={index} path={page.path} element={page.component} />
                                 )
                             })
+
                         }
+                        <Route path="/reports" element={<ReportsLayout />} >
+                            {
+                                reportsPages.map((page, index) => {
+                                    return (
+                                        <Route key={index} path={page.path} element={page.component} />
+                                    )
+                                })
+                            }
+                        </Route>
+
                     </Route>
                 </Route>
                 <Route element={<LoginRoute />} >

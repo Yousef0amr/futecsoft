@@ -385,7 +385,15 @@ const AppStrings = {
     item_sales_transaction: 'item_sales_transaction',
     full_sales_with_details: 'full_sales_with_details',
     point_of_sale: 'point_of_sale',
+    totalDiscount: 'totalDiscount',
+    totalGrandTotal: 'totalGrandTotal',
+    totalSubTotal: 'totalSubTotal',
+    totalTaxTotal: 'totalTaxTotal',
+    invoiceCount: 'invoiceCount',
+
 }
+
+
 
 
 

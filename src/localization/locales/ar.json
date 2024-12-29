@@ -391,5 +391,10 @@
     "items_profits": "أرباح المواد",
     "item_sales_transaction": "معاملات مبيعات المواد",
     "full_sales_with_details": "كامل المبيعات مع التفاصيل",
-    "point_of_sale": "نقطة البيع"
+    "point_of_sale": "نقطة البيع",
+    "totalDiscount": "الخصم الكلي",
+    "totalGrandTotal": "المجموع الكلي",
+    "totalSubTotal": "المجموع الفرعي",
+    "totalTaxTotal": "الضريبة الكلية",
+    "invoiceCount": "عدد الفواتير"
 }

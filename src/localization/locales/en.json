@@ -400,5 +400,10 @@
     "items_profits": "Items Profits",
     "item_sales_transaction": "Item Sales Transaction",
     "full_sales_with_details": "Full Sales with Details",
-    "point_of_sale": "Point of Sale"
+    "point_of_sale": "Point of Sale",
+    "totalDiscount": "Total Discount",
+    "totalGrandTotal": "Total",
+    "totalSubTotal": " Sub Total",
+    "totalTaxTotal": " Tax Total",
+    "invoiceCount": "Invoice Count"
 }

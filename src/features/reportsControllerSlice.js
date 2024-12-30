@@ -2,6 +2,19 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, REPORTS_CONTROLLER } from "../api/endpoints";
 import getCookie from "../utils/getCookie";
 
+const transformBestItemsData = (data) => {
+    return {
+        asset: data.Ar_Name,
+        amount: data.GrandTotal
+    }
+}
+
+const transformBestCategoriesData = (data) => {
+    return {
+        asset: data.CateName,
+        amount: data.GrandTotal
+    }
+}
 
 export const reportsApi = createApi({
     reducerPath: 'reportsApi',
@@ -34,18 +47,36 @@ export const reportsApi = createApi({
                 `/GetSalesByCashier?FromDate=${from_date}&ToDate=${to_date}&StationID=${station}&Warehouse=${warehouse}&CashierNo=${cashier_no}&PayType=${pay_type}`,
         }),
         getBestSellerItems: builder.query({
-            query: () => `/BestSellerItems`,
+            query: ({ from_date, to_date, warehouse }) => `/BestSellerItems?FromDate=${from_date}&ToDate=${to_date}&Warehouse=${warehouse}`,
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformBestItemsData(item));
+                } else {
+                    return [];
+                }
+            }
         }),
         getBestSellerCategory: builder.query({
-            query: () => `/BestSellerCategory`,
+            query: ({ from_date, to_date, warehouse }) => `/BestSellerCategory?FromDate=${from_date}&ToDate=${to_date}&Warehouse=${warehouse}`,
+            transformResponse: (response) => {
+                const data = response.Response || response;
+                if (Array.isArray(data)) {
+                    return data.map(item => transformBestCategoriesData(item));
+                } else {
+                    return [];
+                }
+            }
         }),
         getSalesByDays: builder.query({
-            query: ({ from_date, to_date }) =>
-                `/SalesByDays?FromDate=${from_date}&ToDate=${to_date}`,
+            query: ({ from_date, to_date, warehouse }) =>
+                `/SalesByDays?FromDate=${from_date}&ToDate=${to_date}&Warehouse=${warehouse}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getSalesByHours: builder.query({
-            query: ({ date }) =>
-                `/SalesByHours?Date=${date}`,
+            query: ({ from_date, to_date, warehouse }) =>
+                `/SalesByHours?FromDate=${from_date}&ToDate=${to_date}&Warehouse=${warehouse}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getSalesmanSales: builder.query({
             query: ({ from_date, to_date, salesman_id }) =>
@@ -102,4 +133,8 @@ export const {
     useLazyGetSalesCategoryQuery,
     useLazyGetSalesItemsQuery,
     useLazyGetSalesmanSalesQuery,
+    useGetBestSellerItemsQuery,
+    useGetBestSellerCategoryQuery,
+    useGetSalesByDaysQuery,
+    useGetSalesByHoursQuery,
 } = reportsApi;

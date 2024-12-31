@@ -1,76 +1,78 @@
-import React, { Suspense } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import DefaultLayout from '../layout/DefaultLayout'
-import ReportsLayout from '../layout/ReportsLayout'
-import { ProtectedRoute, LoginRoute } from './../components/common/ProtectedRoute'
-import Login from '../pages/Login'
-import AddBranch from '../pages/branch/AddBranch'
-import Home from '../pages/Home'
-import ListProduct from '../pages/product/ListProduct'
-import AddProduct from '../pages/product/AddProduct'
-import ListCompositeComponents from '../pages/product/ListCompositeComponents'
-import PricesAndCosts from '../pages/product/PricesAndCosts'
-import Loader from '../components/common/Loader'
-import AddComponent from '../pages/product/AddComponent'
-import EditProduct from '../pages/product/EditProduct'
-import { routes } from '../config/constants'
-import EditBranch from '../pages/branch/EditBranch'
-import ListBranch from '../pages/branch/ListBranch'
-import ListCategory from '../pages/category/ListCategory'
-import AddCategory from '../pages/category/AddCategory'
-import EditCategory from '../pages/category/EditCategory'
-import ListUnit from '../pages/unit/ListUnit'
-import AddUnit from '../pages/unit/AddUnit'
-import EditUnit from '../pages/unit/EditUnit'
-import ListFlavor from '../pages/flavor/ListFlavor'
-import AddFlavor from '../pages/flavor/AddFlavor'
-import EditFlavor from '../pages/flavor/EditFlavor'
-import ListOffer from '../pages/offer/ListOffer'
-import AddOffer from '../pages/offer/AddOffer'
-import EditOffer from '../pages/offer/EditOffer'
-import AddDiscount from '../pages/discount/AddDiscount'
-import ListDiscount from '../pages/discount/ListDiscount'
-import EditDiscount from '../pages/discount/EditDiscount'
-import ListTax from '../pages/tax/ListTax'
-import AddTax from '../pages/tax/AddTax'
-import EditTax from '../pages/tax/EditTax'
-import ListCurreny from '../pages/Currency/ListCurreny'
-import EditCurrency from '../pages/Currency/EditCurrency'
-import AddCurrency from '../pages/Currency/AddCurrency'
-import ListPaymentType from '../pages/payment_type/ListPaymentType'
-import AddPaymentType from '../pages/payment_type/AddPaymentType'
-import EditPaymentType from '../pages/payment_type/EditPaymentType'
-import ListSupplier from '../pages/supplier/ListSupplier'
-import AddSupplier from '../pages/supplier/AddSupplier'
-import EditSupplier from '../pages/supplier/EditSupplier'
-import ListDeliveryCompany from '../pages/delivery_company/ListDeliveryCompany'
-import AddDeliveryCompany from '../pages/delivery_company/AddDeliveryCompany'
-import EditDeliveryCompany from '../pages/delivery_company/EditDeliveryCompany'
-import ListDeliveryDiscount from '../pages/delivery_discount/ListDeliveryDiscount'
-import AddDeliveryDiscount from '../pages/delivery_discount/AddDeliveryDiscount'
-import EditDeliveryDiscount from '../pages/delivery_discount/EditDeliveryDiscount'
-import ListUserGroup from '../pages/user_group/ListUserGroup'
-import AddUserGroup from '../pages/user_group/AddUserGroup'
-import EditUserGroup from '../pages/user_group/EditUserGroup'
-import ListUser from '../pages/user/ListUser'
-import AddUser from '../pages/user/AddUser'
-import EditUser from '../pages/user/EditUser'
-import EditUserPermission from '../pages/user_permission/EditUserPermission'
-import ListUserPermission from '../pages/user_permission/ListUserPermission'
-import ListInvoice from '../pages/invoice/ListInvoice'
-import AddInvoice from '../pages/invoice/AddInvoice'
-import EditInvoice from '../pages/invoice/EditInvoice'
-import ListInputVoucher from '../pages/input_voucher/ListInputVoucher'
-import AddInputVoucher from '../pages/input_voucher/AddInputVoucher'
-import EditInputVoucher from '../pages/input_voucher/EditInputVoucher'
-import ListOutputVoucher from '../pages/output_voucher/ListOutputVoucher'
-import AddOutputVoucher from '../pages/output_voucher/AddOutputVoucher'
-import EditOutputVoucher from '../pages/output_voucher/EditOutputVoucher'
-import ListTransferVoucher from '../pages/transfer_voucher/ListTransferVoucher'
-import AddTransferVoucher from '../pages/transfer_voucher/AddTransferVoucher'
-import EditTransferVoucher from '../pages/transfer_voucher/EditTransferVoucher'
-import InvoicesByDate from '../pages/report/InvoicesByDate'
+import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import DefaultLayout from '../layout/DefaultLayout';
+import ReportsLayout from '../layout/ReportsLayout';
+import { ProtectedRoute, LoginRoute } from './../components/common/ProtectedRoute';
+import Loader from '../components/common/Loader';
+import { routes } from '../config/constants';
 
+// Lazy imports
+const Login = React.lazy(() => import('../pages/Login'));
+const AddBranch = React.lazy(() => import('../pages/branch/AddBranch'));
+const Home = React.lazy(() => import('../pages/Home'));
+const ListProduct = React.lazy(() => import('../pages/product/ListProduct'));
+const AddProduct = React.lazy(() => import('../pages/product/AddProduct'));
+const ListCompositeComponents = React.lazy(() => import('../pages/product/ListCompositeComponents'));
+const PricesAndCosts = React.lazy(() => import('../pages/product/PricesAndCosts'));
+const AddComponent = React.lazy(() => import('../pages/product/AddComponent'));
+const EditProduct = React.lazy(() => import('../pages/product/EditProduct'));
+const EditBranch = React.lazy(() => import('../pages/branch/EditBranch'));
+const ListBranch = React.lazy(() => import('../pages/branch/ListBranch'));
+const ListCategory = React.lazy(() => import('../pages/category/ListCategory'));
+const AddCategory = React.lazy(() => import('../pages/category/AddCategory'));
+const EditCategory = React.lazy(() => import('../pages/category/EditCategory'));
+const ListUnit = React.lazy(() => import('../pages/unit/ListUnit'));
+const AddUnit = React.lazy(() => import('../pages/unit/AddUnit'));
+const EditUnit = React.lazy(() => import('../pages/unit/EditUnit'));
+const ListFlavor = React.lazy(() => import('../pages/flavor/ListFlavor'));
+const AddFlavor = React.lazy(() => import('../pages/flavor/AddFlavor'));
+const EditFlavor = React.lazy(() => import('../pages/flavor/EditFlavor'));
+const ListOffer = React.lazy(() => import('../pages/offer/ListOffer'));
+const AddOffer = React.lazy(() => import('../pages/offer/AddOffer'));
+const EditOffer = React.lazy(() => import('../pages/offer/EditOffer'));
+const AddDiscount = React.lazy(() => import('../pages/discount/AddDiscount'));
+const ListDiscount = React.lazy(() => import('../pages/discount/ListDiscount'));
+const EditDiscount = React.lazy(() => import('../pages/discount/EditDiscount'));
+const ListTax = React.lazy(() => import('../pages/tax/ListTax'));
+const AddTax = React.lazy(() => import('../pages/tax/AddTax'));
+const EditTax = React.lazy(() => import('../pages/tax/EditTax'));
+const ListCurreny = React.lazy(() => import('../pages/Currency/ListCurreny'));
+const EditCurrency = React.lazy(() => import('../pages/Currency/EditCurrency'));
+const AddCurrency = React.lazy(() => import('../pages/Currency/AddCurrency'));
+const ListPaymentType = React.lazy(() => import('../pages/payment_type/ListPaymentType'));
+const AddPaymentType = React.lazy(() => import('../pages/payment_type/AddPaymentType'));
+const EditPaymentType = React.lazy(() => import('../pages/payment_type/EditPaymentType'));
+const ListSupplier = React.lazy(() => import('../pages/supplier/ListSupplier'));
+const AddSupplier = React.lazy(() => import('../pages/supplier/AddSupplier'));
+const EditSupplier = React.lazy(() => import('../pages/supplier/EditSupplier'));
+const ListDeliveryCompany = React.lazy(() => import('../pages/delivery_company/ListDeliveryCompany'));
+const AddDeliveryCompany = React.lazy(() => import('../pages/delivery_company/AddDeliveryCompany'));
+const EditDeliveryCompany = React.lazy(() => import('../pages/delivery_company/EditDeliveryCompany'));
+const ListDeliveryDiscount = React.lazy(() => import('../pages/delivery_discount/ListDeliveryDiscount'));
+const AddDeliveryDiscount = React.lazy(() => import('../pages/delivery_discount/AddDeliveryDiscount'));
+const EditDeliveryDiscount = React.lazy(() => import('../pages/delivery_discount/EditDeliveryDiscount'));
+const ListUserGroup = React.lazy(() => import('../pages/user_group/ListUserGroup'));
+const AddUserGroup = React.lazy(() => import('../pages/user_group/AddUserGroup'));
+const EditUserGroup = React.lazy(() => import('../pages/user_group/EditUserGroup'));
+const ListUser = React.lazy(() => import('../pages/user/ListUser'));
+const AddUser = React.lazy(() => import('../pages/user/AddUser'));
+const EditUser = React.lazy(() => import('../pages/user/EditUser'));
+const EditUserPermission = React.lazy(() => import('../pages/user_permission/EditUserPermission'));
+const ListUserPermission = React.lazy(() => import('../pages/user_permission/ListUserPermission'));
+const ListInvoice = React.lazy(() => import('../pages/invoice/ListInvoice'));
+const AddInvoice = React.lazy(() => import('../pages/invoice/AddInvoice'));
+const EditInvoice = React.lazy(() => import('../pages/invoice/EditInvoice'));
+const ListInputVoucher = React.lazy(() => import('../pages/input_voucher/ListInputVoucher'));
+const AddInputVoucher = React.lazy(() => import('../pages/input_voucher/AddInputVoucher'));
+const EditInputVoucher = React.lazy(() => import('../pages/input_voucher/EditInputVoucher'));
+const ListOutputVoucher = React.lazy(() => import('../pages/output_voucher/ListOutputVoucher'));
+const AddOutputVoucher = React.lazy(() => import('../pages/output_voucher/AddOutputVoucher'));
+const EditOutputVoucher = React.lazy(() => import('../pages/output_voucher/EditOutputVoucher'));
+const ListTransferVoucher = React.lazy(() => import('../pages/transfer_voucher/ListTransferVoucher'));
+const AddTransferVoucher = React.lazy(() => import('../pages/transfer_voucher/AddTransferVoucher'));
+const EditTransferVoucher = React.lazy(() => import('../pages/transfer_voucher/EditTransferVoucher'));
+const InvoicesByDate = React.lazy(() => import('../pages/report/InvoicesByDate'));
+const CategoriesSales = React.lazy(() => import('../pages/report/CategoriesSales'));
 
 
 
@@ -166,7 +168,7 @@ const pagesList = [
 
 const reportsPages = [
     // { path: routes.reports.fullSales, component: <FullSales /> },
-    // { path: routes.reports.salesCategory, component: <SalesCategory /> },
+    { path: routes.reports.salesCategory, component: <CategoriesSales /> },
     // { path: routes.reports.salesItems, component: <SalesItems /> },
     // { path: routes.reports.salesCashier, component: <SalesCashier /> },
     // { path: routes.reports.bestSellerItems, component: <BestSellerItems /> },

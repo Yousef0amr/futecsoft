@@ -35,8 +35,9 @@ export const reportsApi = createApi({
                 `/GetFullSales?FromDate=${from_date}&ToDate=${to_date}`,
         }),
         getSalesCategory: builder.query({
-            query: ({ from_date, to_date }) =>
-                `/GetSalesCategory?FromDate=${from_date}&ToDate=${to_date}`,
+            query: ({ FromDate, ToDate, Warehouse }) =>
+                `/GetSalesCategory?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&FatherID=1`,
+            transformResponse: (response) => response.Response || response,
         }),
         getSalesItems: builder.query({
             query: ({ from_date, to_date }) =>

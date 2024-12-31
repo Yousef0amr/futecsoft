@@ -24,7 +24,7 @@ const InvoicesByDate = () => {
 
 
     const onSubmit = async (data) => {
-        await getInvoicesByDate(data);
+        await getInvoicesByDate(data).unwrap();
     }
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {

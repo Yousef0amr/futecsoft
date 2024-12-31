@@ -29,20 +29,22 @@ const ListReport = ({ options, onSubmit, summary, schema, fields, icon, title, d
                     />
                 </Col>
                 <Col >
-                    <Stack direction="horizontal" gap={3}>
+                    <Row >
                         {
                             summary && Object.entries(summary)?.map(([key, value]) => (
-                                <Stack className='text-center'>
-                                    <span key={key} style={{ border: '1px solid var(--border-color-1)', padding: '5px', }}>
-                                        {t(AppStrings[key])}
-                                    </span>
-                                    <span key={key} style={{ border: '1px solid var(--border-color-1)', padding: '5px', }}>
-                                        {value}
-                                    </span>
-                                </Stack>
+                                <Col key={key} xs={12} sm={6} md={4}  >
+                                    <Stack className='text-center mt-2' style={{ border: '1px solid var(--border-color-1)', padding: '5px', }} >
+                                        <span >
+                                            {t(AppStrings[key])}
+                                        </span>
+                                        <span >
+                                            {value}
+                                        </span>
+                                    </Stack>
+                                </Col>
                             ))
                         }
-                    </Stack>
+                    </Row>
                 </Col>
             </Row>
         </FormCard>

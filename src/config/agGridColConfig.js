@@ -390,6 +390,20 @@ export const useInvoicesByDateColDefs = () => {
 }
 
 
+export const useSalesCategoryColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Column1", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "Category", headerName: t(AppStrings.category), filter: 'agTextColumnFilter' },
+        { field: "Subtotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "DiscountV", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "TaxV", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
 
 
 

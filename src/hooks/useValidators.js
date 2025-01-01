@@ -30,7 +30,13 @@ const useValidators = () => {
         voucherOutputUpdatedSchemaValidator,
         voucherTransferSchemaValidator,
         voucherTransferUpdatedSchemaValidator,
-        invoiceByDateSchemaValidator
+        invoiceByDateSchemaValidator,
+        salesItemSchemaValidator,
+        returnByInvoiceSchemaValidator,
+        ItemTransactionSchemaValidator,
+        inventoryStatementSchemaValidator,
+        dailyProfitSchemaValidator,
+        itemsProfitsSchemaValidator
     } = MainMenuValidators();
 
     const branchSchema = yup.object(branchSchemaValidator);
@@ -61,9 +67,17 @@ const useValidators = () => {
     const voucherTransferSchema = yup.object(voucherTransferSchemaValidator);
     const voucherTransferUpdatedSchema = yup.object(voucherTransferUpdatedSchemaValidator);
     const invoiceByDateSchema = yup.object(invoiceByDateSchemaValidator);
+    const salesItemSchema = yup.object(salesItemSchemaValidator);
+    const returnByInvoiceSchema = yup.object(returnByInvoiceSchemaValidator);
+    const itemTransactionSchema = yup.object(ItemTransactionSchemaValidator);
+    const inventoryStatementSchema = yup.object(inventoryStatementSchemaValidator);
+    const dailyProfitSchema = yup.object(dailyProfitSchemaValidator);
+    const itemsProfitsSchema = yup.object(itemsProfitsSchemaValidator);
 
 
     return {
+        returnByInvoiceSchema,
+        itemTransactionSchema,
         branchSchema,
         productSchema,
         componentSchema,
@@ -91,7 +105,11 @@ const useValidators = () => {
         voucherOutputUpdatedSchema,
         voucherTransferSchema,
         voucherTransferUpdatedSchema,
-        invoiceByDateSchema
+        invoiceByDateSchema,
+        salesItemSchema,
+        inventoryStatementSchema,
+        dailyProfitSchema,
+        itemsProfitsSchema
     };
 };
 

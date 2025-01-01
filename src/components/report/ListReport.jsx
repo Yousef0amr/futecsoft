@@ -10,14 +10,14 @@ import AppStrings from '../../config/appStrings'
 
 
 
-const ListReport = ({ options, onSubmit, summary, schema, fields, icon, title, data, isLoading, useComponentsColDefs }) => {
+const ListReport = ({ options, onChange, onSubmit, summary, schema, fields, icon, title, data, isLoading, useComponentsColDefs }) => {
     const { t } = useTranslation();
     const [quickFilterText, setQuickFilterText] = useState();
     return (
         <FormCard icon={icon} title={t(title)} optionComponent={<FilterSearch onFilterTextBoxChanged={setQuickFilterText} />}>
             <Row lg={1} md={1} sm={1} className='gap-3 w-100' >
                 <Col >
-                    <ReportForm options={options} fields={fields} isLoading={isLoading} schema={schema} onSubmit={onSubmit} />
+                    <ReportForm onChange={onChange} options={options} fields={fields} isLoading={isLoading} schema={schema} onSubmit={onSubmit} />
                 </Col>
                 <Col className=''>
                     <AgGridTable

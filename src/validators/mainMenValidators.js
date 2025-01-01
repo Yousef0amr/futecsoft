@@ -341,12 +341,55 @@ const MainMenuValidators = () => {
         ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
     }
 
+
+    const salesItemSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+        StationID: yup.string().optional().nullable(),
+    }
+
+    const returnByInvoiceSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+        StationID: yup.string().required(t(AppStrings.station_required)).nullable(),
+        PayType: yup.string().required(t(AppStrings.paymentTypeId_required)).nullable(),
+    }
+
+    const ItemTransactionSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+        ItemID: yup.string().required(t(AppStrings.product_required)).nullable(),
+    }
+
+    const inventoryStatementSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        CateID: yup.string().required(t(AppStrings.categoryId_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+    }
+
+    const dailyProfitSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        SalesDate: yup.string().required(t(AppStrings.date_required)).nullable(),
+    }
+
+    const itemsProfitsSchemaValidator = {
+        Warehouse: yup.string().required(t(AppStrings.branch_required)).nullable(),
+        FromDate: yup.string().required(t(AppStrings.from_date_required)).nullable(),
+        ToDate: yup.string().required(t(AppStrings.to_date_required)).nullable(),
+        FatherID: yup.string().required(t(AppStrings.categoryId_required)).nullable(),
+    }
+
     return {
         branchSchemaValidator,
+        ItemTransactionSchemaValidator,
         productSchemaValidator,
         componentSchemaValidator,
         pricesAndCostsSchemaValidator,
         categorySchemaValidator,
+        itemsProfitsSchemaValidator,
         unitSchemaValidator,
         flavorSchemaValidator,
         offerSchemaValidator,
@@ -360,6 +403,7 @@ const MainMenuValidators = () => {
         userGroupSchemaValidator,
         userSchemaValidator,
         userPermissionsSchemaValidator,
+        inventoryStatementSchemaValidator,
         permissionSchemaValidator,
         invoiceSchemaValidator,
         invoiceUpdatedSchemaValidator,
@@ -369,7 +413,10 @@ const MainMenuValidators = () => {
         voucherOutputUpdatedSchemaValidator,
         voucherTransferSchemaValidator,
         voucherTransferUpdatedSchemaValidator,
-        invoiceByDateSchemaValidator
+        invoiceByDateSchemaValidator,
+        salesItemSchemaValidator,
+        returnByInvoiceSchemaValidator,
+        dailyProfitSchemaValidator
     }
 }
 

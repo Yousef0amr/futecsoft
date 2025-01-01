@@ -31,8 +31,9 @@ export const reportsApi = createApi({
     endpoints: (builder) => ({
 
         getFullSales: builder.query({
-            query: ({ from_date, to_date }) =>
-                `/GetFullSales?FromDate=${from_date}&ToDate=${to_date}`,
+            query: ({ FromDate, ToDate, Warehouse, StationID }) =>
+                `/GetFullSales?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&StationID=${StationID}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getSalesCategory: builder.query({
             query: ({ FromDate, ToDate, Warehouse }) =>
@@ -40,12 +41,14 @@ export const reportsApi = createApi({
             transformResponse: (response) => response.Response || response,
         }),
         getSalesItems: builder.query({
-            query: ({ from_date, to_date }) =>
-                `/GetSalesItems?FromDate=${from_date}&ToDate=${to_date}`,
+            query: ({ FromDate, ToDate, Warehouse, StationID }) =>
+                `/GetSalesItems?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&StationID=${StationID}&FatherID=1`,
+            transformResponse: (response) => response.Response || response,
         }),
         getSalesByCashier: builder.query({
             query: ({ from_date, to_date, station, warehouse, cashier_no, pay_type }) =>
                 `/GetSalesByCashier?FromDate=${from_date}&ToDate=${to_date}&StationID=${station}&Warehouse=${warehouse}&CashierNo=${cashier_no}&PayType=${pay_type}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getBestSellerItems: builder.query({
             query: ({ from_date, to_date, warehouse }) => `/BestSellerItems?FromDate=${from_date}&ToDate=${to_date}&Warehouse=${warehouse}`,
@@ -82,14 +85,17 @@ export const reportsApi = createApi({
         getSalesmanSales: builder.query({
             query: ({ from_date, to_date, salesman_id }) =>
                 `/SalesmanSales?FromDate=${from_date}&ToDate=${to_date}&SalesmanID=${salesman_id}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getReturnByInvoices: builder.query({
-            query: ({ invoice_id }) =>
-                `/ReturnByInvoices?InvoiceID=${invoice_id}`,
+            query: ({ FromDate, ToDate, Warehouse, StationID, PayType }) =>
+                `/ReturnByInvoices?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&StationID=${StationID}&PayType=${PayType}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getReturnByItems: builder.query({
-            query: ({ item_id }) =>
-                `/ReturnByItems?ItemID=${item_id}`,
+            query: ({ FromDate, ToDate, Warehouse }) =>
+                `/ReturnByItems?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getInvoicesByDate: builder.query({
             transformResponse: (response) => response.Response || response,
@@ -98,22 +104,27 @@ export const reportsApi = createApi({
         getItemTransaction: builder.query({
             query: ({ item_id }) =>
                 `/ItemTransaction?ItemID=${item_id}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getInventoryStatement: builder.query({
-            query: ({ warehouse_id }) =>
-                `/InventoryStatement?WarehouseID=${warehouse_id}`,
+            query: ({ Warehouse, CateID, ToDate }) =>
+                `/InventoryStatement?Warehouse=${Warehouse}&CateID=${CateID}&ToDate=${ToDate}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getDailyProfit: builder.query({
-            query: ({ date }) =>
-                `/GetDailyProfit?Date=${date}`,
+            query: ({ SalesDate, Warehouse }) =>
+                `/GetDailyProfit?SalesDate=${SalesDate}&Warehouse=${Warehouse}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getItemsProfits: builder.query({
-            query: ({ from_date, to_date, item_id }) =>
-                `/ItemsProfits?FromDate=${from_date}&ToDate=${to_date}&ItemID=${item_id}`,
+            query: ({ FromDate, ToDate, Warehouse, FatherID }) =>
+                `/ItemsProfits?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&FatherID=${FatherID}`,
+            transformResponse: (response) => response.Response || response,
         }),
         getItemSalesTransaction: builder.query({
             query: ({ from_date, to_date, item_id }) =>
                 `/GetItemsSalesTransaction?FromDate=${from_date}&ToDate=${to_date}&ItemID=${item_id}`,
+            transformResponse: (response) => response.Response || response,
         }),
     }),
 });

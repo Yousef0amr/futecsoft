@@ -90,6 +90,12 @@ export const categoriesApi = createApi({
                 body: convertToFormData(id),
             }),
         }),
+        getCategoriesNoneCompostie: builder.query({
+            query: ({ Warehouse }) => ({
+                url: `/GetCateNoneComposite?BranchId=${Warehouse}`,
+            }),
+            transformResponse: (response) => response.Response
+        })
     }),
 });
 
@@ -101,5 +107,6 @@ export const {
     useUpdateCategoryMutation,
     useDeleteCategoryMutation,
     useGetAllCategoriesByBranchQuery,
-    useLazyGetAllCategoriesByBranchQuery
+    useLazyGetAllCategoriesByBranchQuery,
+    useGetCategoriesNoneCompostieQuery
 } = categoriesApi;

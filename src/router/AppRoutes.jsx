@@ -73,7 +73,15 @@ const AddTransferVoucher = React.lazy(() => import('../pages/transfer_voucher/Ad
 const EditTransferVoucher = React.lazy(() => import('../pages/transfer_voucher/EditTransferVoucher'));
 const InvoicesByDate = React.lazy(() => import('../pages/report/InvoicesByDate'));
 const CategoriesSales = React.lazy(() => import('../pages/report/CategoriesSales'));
-
+const ProductsSales = React.lazy(() => import('../pages/report/ProductsSales'));
+const FullSales = React.lazy(() => import('../pages/report/FullSales'));
+const FullSalesDetails = React.lazy(() => import('../pages/report/FullSalesDetails'));
+const ReturnByInvoices = React.lazy(() => import('../pages/report/ReturnByInvoices'));
+const ReturnByItems = React.lazy(() => import('../pages/report/ReturnByItems'));
+const ItemTransactions = React.lazy(() => import('../pages/report/ItemTransactions'));
+const InventoryStatement = React.lazy(() => import('../pages/report/InventoryStatement'));
+const ItemsProfit = React.lazy(() => import('../pages/report/ItemsProfit'));
+const DailyProfits = React.lazy(() => import('../pages/report/DailyProfits'));
 
 
 
@@ -131,7 +139,6 @@ const pagesList = [
     { path: routes.delivery_company.list, component: <ListDeliveryCompany /> },
     { path: routes.delivery_company.add, component: <AddDeliveryCompany /> },
     { path: routes.delivery_company.edit, component: <EditDeliveryCompany /> },
-
     // Delivery Discounts
     { path: routes.delivery_discount.list, component: <ListDeliveryDiscount /> },
     { path: routes.delivery_discount.add, component: <AddDeliveryDiscount /> },
@@ -167,24 +174,17 @@ const pagesList = [
 ];
 
 const reportsPages = [
-    // { path: routes.reports.fullSales, component: <FullSales /> },
+    { path: routes.reports.fullSales, component: <FullSales /> },
     { path: routes.reports.salesCategory, component: <CategoriesSales /> },
-    // { path: routes.reports.salesItems, component: <SalesItems /> },
-    // { path: routes.reports.salesCashier, component: <SalesCashier /> },
-    // { path: routes.reports.bestSellerItems, component: <BestSellerItems /> },
-    // { path: routes.reports.bestSellerCategory, component: <BestSellerCategory /> },
-    // { path: routes.reports.salesByDays, component: <SalesByDays /> },
-    // { path: routes.reports.salesByHours, component: <SalesByHours /> },
-    // { path: routes.reports.salesmanSales, component: <SalesmanSales /> },
-    // { path: routes.reports.returnInvoices, component: <ReturnInvoices /> },
-    // { path: routes.reports.returnItems, component: <ReturnItems /> },
+    { path: routes.reports.salesItems, component: <ProductsSales /> },
+    { path: routes.reports.returnInvoices, component: <ReturnByInvoices /> },
+    { path: routes.reports.returnItems, component: <ReturnByItems /> },
     { path: routes.reports.invoicesByDate, component: <InvoicesByDate /> },
-    // { path: routes.reports.itemTransaction, component: <ItemTransaction /> },
-    // { path: routes.reports.inventoryStatement, component: <InventoryStatement /> },
-    // { path: routes.reports.dailyProfit, component: <DailyProfit /> },
-    // { path: routes.reports.itemsProfits, component: <ItemsProfits /> },
-    // { path: routes.reports.itemSalesTransaction, component: <ItemSalesTransaction /> },
-    // { path: routes.reports.fullSalesWithDetails, component: <FullSalesWithDetails /> },
+    { path: routes.reports.itemTransaction, component: <ItemTransactions /> },
+    { path: routes.reports.inventoryStatement, component: <InventoryStatement /> },
+    { path: routes.reports.dailyProfit, component: <DailyProfits /> },
+    { path: routes.reports.itemsProfits, component: <ItemsProfit /> },
+    { path: routes.reports.fullSalesWithDetails, component: <FullSalesDetails /> },
 ]
 
 
@@ -201,7 +201,6 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                                     <Route key={index} path={page.path} element={page.component} />
                                 )
                             })
-
                         }
                         <Route path="/reports" element={<ReportsLayout />} >
                             {
@@ -212,7 +211,6 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                                 })
                             }
                         </Route>
-
                     </Route>
                 </Route>
                 <Route element={<LoginRoute />} >
@@ -221,7 +219,6 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                 <Route path="*" element={<h3>Page Not Found</h3>} />
             </Routes>
         </Suspense>
-
     )
 }
 

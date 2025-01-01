@@ -22,6 +22,8 @@ const AppStrings = {
     home: 'home',
     add: 'add',
     list: 'list',
+    date_required: 'date_required',
+    date: 'date',
     actions: 'actions',
     main_menu: 'main_menu',
     branches: 'branches',
@@ -390,6 +392,7 @@ const AppStrings = {
     totalSubTotal: 'totalSubTotal',
     totalTaxTotal: 'totalTaxTotal',
     invoiceCount: 'invoiceCount',
+    station_required: 'station_required',
 
 }
 

@@ -396,5 +396,7 @@
     "totalGrandTotal": "المجموع الكلي",
     "totalSubTotal": "المجموع الفرعي",
     "totalTaxTotal": "الضريبة الكلية",
-    "invoiceCount": "عدد الفواتير"
+    "invoiceCount": "عدد الفواتير",
+    "station_required": "نقطة البيع مطلوبة",
+    "date_required": "التاريخ مطلوب"
 }

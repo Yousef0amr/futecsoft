@@ -22,6 +22,7 @@ import { voucherInputDetailsApi, voucherInputsApi } from "../features/voucherInp
 import { voucherOutputsApi, voucherOutputDetailsApi } from "../features/voucherOutputSlice";
 import { voucherTransferDetailsApi, voucherTransferApi } from "../features/voucherTransferSlice";
 import { reportsApi } from "../features/reportsControllerSlice";
+import { posStationApi } from "../features/posStationSlice";
 
 const store = configureStore({
     reducer: {
@@ -50,9 +51,8 @@ const store = configureStore({
         [voucherOutputDetailsApi.reducerPath]: voucherOutputDetailsApi.reducer,
         [voucherTransferApi.reducerPath]: voucherTransferApi.reducer,
         [voucherTransferDetailsApi.reducerPath]: voucherTransferDetailsApi.reducer,
-        [reportsApi.reducerPath]: reportsApi.reducer
-
-
+        [reportsApi.reducerPath]: reportsApi.reducer,
+        [posStationApi.reducerPath]: posStationApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         authApi.middleware,
@@ -80,7 +80,8 @@ const store = configureStore({
         voucherOutputDetailsApi.middleware,
         voucherTransferApi.middleware,
         voucherTransferDetailsApi.middleware
-        , reportsApi.middleware
+        , reportsApi.middleware,
+        posStationApi.middleware
 
     ),
 });

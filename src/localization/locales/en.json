@@ -405,5 +405,7 @@
     "totalGrandTotal": "Total",
     "totalSubTotal": " Sub Total",
     "totalTaxTotal": " Tax Total",
-    "invoiceCount": "Invoice Count"
+    "invoiceCount": "Invoice Count",
+    "station_required": "Station is required",
+    "date_required": "Date is required"
 }

@@ -21,4 +21,5 @@ export const VOUCHER_INPUT = `VoucherInput/${VERSION}`;
 export const VOUCHER_OUTPUT = `VoucherOutput/${VERSION}`;
 export const VOUCHER_TRANSFER = `VoucherTransfer/${VERSION}`;
 export const REPORTS_CONTROLLER = `ReportsController/${VERSION}`;
+export const POS_STATIONS = `POSStations/${VERSION}`;
 

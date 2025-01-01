@@ -233,15 +233,6 @@ export const usersFormFields = [
 ]
 
 
-// export const userPermissionsFormFields = [
-//     { name: 'UserNo' },
-//     { name: 'PermissionId' },
-//     { name: 'WarehouseId' },
-//     { name: 'Allow' },
-// ]
-
-
-
 export const permissionsFormFields = [
     { name: '0101', label: AppStrings.permission0101, type: 'check' },
     { name: '0102', label: AppStrings.permission0102, type: 'check' },
@@ -363,8 +354,13 @@ export const getItemProfitReportFormFields = [
 
 export const getSalesByCashierReportFormFields = [
     ...getFullSalesReportFormFields,
-    { name: 'CashierNo', label: AppStrings.cashier, required: true, options: [], type: 'select' },
+    { name: 'CashierNo', label: AppStrings.cashier, required: false, options: [], type: 'select' },
     { name: 'PayType', label: AppStrings.cashier, required: true, options: [], type: 'select' },
+]
+
+export const getReturnByInvoiceReportFormFields = [
+    ...getFullSalesReportFormFields,
+    { name: 'PayType', label: AppStrings.paymentType, required: true, options: [], type: 'select' },
 ]
 
 
@@ -375,14 +371,18 @@ export const getItemTranscationReportFormFields = [
 
 export const getInventoryReportFormFields = [
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
-    { name: 'CateID', label: AppStrings.category, required: true, type: 'number' },
+    { name: 'CateID', label: AppStrings.category, required: true, options: [], type: 'select' },
     { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
 ]
 
 export const getDailyProfitReportFormFields = [
-    { name: 'SalesDate', label: AppStrings.to_date, required: true, type: 'date' },
+    { name: 'SalesDate', label: AppStrings.date, required: true, type: 'date' },
     { name: 'Warehouse', label: AppStrings.branch, required: true, options: [], type: 'select' },
 ]
+
+
+
+
 
 
 

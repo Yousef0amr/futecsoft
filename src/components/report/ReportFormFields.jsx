@@ -2,9 +2,9 @@ import React from 'react'
 import FormFieldsComponent from '../common/FormFieldsComponent'
 
 
-const ReportFormFields = ({ fields, register, errors, options, setValue, watch }) => {
+const ReportFormFields = ({ onChange, fields, register, errors, options, setValue, watch }) => {
     return (
-        <FormFieldsComponent errors={errors} register={register} setValue={setValue} options={options} watch={watch} fields={fields} />
+        <FormFieldsComponent triggerEvent={onChange} errors={errors} register={register} setValue={setValue} options={options} watch={watch} fields={fields} />
     )
 }
 

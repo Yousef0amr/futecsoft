@@ -11,7 +11,6 @@ import './../styles/drawer.css';
 import { LogoutTwoTone } from '@mui/icons-material';
 import SwitchMode from '../components/common/SwitchMode';
 import SwitchLanguage from '../components/common/SwitchLanguage';
-import { useTranslation } from 'react-i18next';
 import { useAuth } from '../utils/auth';
 import CustomMenu from '../components/common/CustomMenu';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -116,7 +115,6 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
   const [open, setOpen] = React.useState(false);
   const [directionVal, setDirection] = React.useState(localStorage.getItem('lang') === 'en' ? 'ltr' : 'rtl');
   const { logoutLocal } = useAuth()
-  const { t } = useTranslation();
   const location = useLocation();
 
 

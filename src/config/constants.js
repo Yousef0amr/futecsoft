@@ -1,4 +1,4 @@
-import { faChartLine, faChartPie, faList, faReceipt, faWarehouse, faClock, faAddressBook, faBalanceScale, faBarChart, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faChartPie, faList, faReceipt, faWarehouse, faAddressBook, faBalanceScale, faBarChart, faBarcode, faCar, faCreditCard, faFileInvoice, faHeart, faMoneyBill, faMoneyBill1Wave, faPercent, faShuffle, faStar, faTruck, faUsd, faUser, faUserLock, faVcard, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import AppStrings from './../config/appStrings';
 import { useTranslation } from 'react-i18next';
 

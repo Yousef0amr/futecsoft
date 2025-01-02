@@ -404,6 +404,79 @@ export const useSalesCategoryColDefs = () => {
 }
 
 
+export const useItemsProfitColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Item", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: "ItemDesc", headerName: t(AppStrings.product), filter: 'agTextColumnFilter' },
+        { field: "Qty", headerName: t(AppStrings.quantitySold), filter: 'agTextColumnFilter' },
+        { field: "Subtotal", headerName: t(AppStrings.totalSales), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "ReturnQty", headerName: t(AppStrings.quantityReturned), filter: 'agTextColumnFilter' },
+        { field: "Return", headerName: t(AppStrings.totalReturn), filter: 'agTextColumnFilter' },
+        { field: "Cost", headerName: t(AppStrings.unitCost), filter: 'agTextColumnFilter' },
+        { field: "Profit", headerName: t(AppStrings.profitValue), filter: 'agTextColumnFilter' },
+        { field: "ProfitPer", headerName: t(AppStrings.profitPercentage), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+export const useDailyProfitColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Item", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: "ItemDesc", headerName: t(AppStrings.product), filter: 'agTextColumnFilter' },
+        { field: "SalesDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "Qty", headerName: t(AppStrings.quantitySold), filter: 'agTextColumnFilter' },
+        { field: "Subtotal", headerName: t(AppStrings.totalSales), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "ReturnQty", headerName: t(AppStrings.quantityReturned), filter: 'agTextColumnFilter' },
+        { field: "Return", headerName: t(AppStrings.totalReturn), filter: 'agTextColumnFilter' },
+        { field: "Cost", headerName: t(AppStrings.unitCost), filter: 'agTextColumnFilter' },
+        { field: "Profit", headerName: t(AppStrings.profitValue), filter: 'agTextColumnFilter' },
+        { field: "ProfitPer", headerName: t(AppStrings.profitPercentage), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+export const useInventoryStatementColDefs = () => {
+    const { t, i18n } = useTranslation();
+
+    return useMemo(() => [
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "ID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "En_Name" : "Ar_Name", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
+        { field: i18n.language === 'en' ? "Unit_EN" : "Unit_AR", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
+        { field: "QTY", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
+        { field: "COST", headerName: t(AppStrings.unitCost), filter: 'agTextColumnFilter' },
+        { field: "Column1", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t, i18n]);
+}
+
+
+export const useItemTransactionColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "ItemDesc", headerName: t(AppStrings.product), filter: 'agTextColumnFilter' },
+        { field: "NOTE", headerName: t(AppStrings.description), filter: 'agTextColumnFilter' },
+        { field: "DOCDATE", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "DOCNO", headerName: t(AppStrings.voucherId), filter: 'agTextColumnFilter' },
+        { field: "INQTY", headerName: t(AppStrings.quantityIncoming), filter: 'agTextColumnFilter' },
+        { field: "INCOST", headerName: t(AppStrings.costIncoming), filter: 'agTextColumnFilter' },
+        { field: "OUTQTY", headerName: t(AppStrings.quantityOutgoing), filter: 'agTextColumnFilter' },
+        { field: "OUTCOST", headerName: t(AppStrings.costOutgoing), filter: 'agTextColumnFilter' },
+        { field: "BALANCEQTY", headerName: t(AppStrings.quantityBalance), filter: 'agTextColumnFilter' },
+        { field: "BALANCECOST", headerName: t(AppStrings.costBalance), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+
+
+
+
 
 
 

@@ -339,7 +339,6 @@ const AppStrings = {
     grandTotal: 'grandTotal',
     invoiceId: 'invoiceId',
     invoiceNo: 'invoiceNo',
-    date: 'date',
     subTotal: 'subTotal',
     taxValue: 'taxValue',
     createdBy: 'createdBy',
@@ -393,8 +392,23 @@ const AppStrings = {
     totalTaxTotal: 'totalTaxTotal',
     invoiceCount: 'invoiceCount',
     station_required: 'station_required',
+    profitPercentage: 'profitPercentage',
+    profitValue: 'profitValue',
+    unitCost: 'unitCost',
+    totalReturn: 'totalReturn',
+    quantityReturned: 'quantityReturned',
+    quantitySold: 'quantitySold',
+    totalSales: 'totalSales',
+    quantityIncoming: 'quantityIncoming',
+    costIncoming: 'costIncoming',
+    quantityOutgoing: 'quantityOutgoing',
+    costOutgoing: 'costOutgoing',
+    quantityBalance: 'quantityBalance',
+    costBalance: 'costBalance',
 
 }
+
+
 
 
 

@@ -4,13 +4,12 @@ import { useTranslation } from 'react-i18next';
 import AccordionWithExpend from '../sideBar/AccordionWithExpend';
 import AccordionWithoutExpend from '../sideBar/AccordionWithoutExpend';
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import InboxIcon from '@mui/icons-material/Inbox';
 import { ListItemIcon, Typography } from '@mui/material';
 import AppStrings from '../../config/appStrings';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { ExpandCircleDownRounded, ExpandLess } from '@mui/icons-material';
+import { ExpandCircleDownRounded } from '@mui/icons-material';
 const CustomMenu = ({ open, directionVal, handleDrawerOpen, selected }) => {
     const [activeAccordion, setActiveAccordion] = useState(null);
     const { t } = useTranslation();

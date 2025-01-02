@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import useBranchManagement from '../../hook/useBranchManagement';
 import AppStrings from '../../config/appStrings';
 import ListReport from './../../components/report/ListReport';
@@ -10,7 +10,7 @@ import {
     useGetCategoriesNoneCompostieQuery
 } from '../../features/categorySlice';
 import { getItemProfitReportFormFields } from '../../config/formFields';
-import { useInvoicesByDateColDefs } from '../../config/agGridColConfig';
+import { useItemsProfitColDefs } from '../../config/agGridColConfig';
 import useValidators from '../../hooks/useValidators';
 const ItemsProfit = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
@@ -42,26 +42,6 @@ const ItemsProfit = () => {
         await getItemsProfits(data).unwrap();
     }
 
-    const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
-        // return invoices?.reduce(
-        //     (summary, invoice) => {
-        //         summary.totalDiscount += invoice.InvoiceDiscountTotal || 0;
-        //         summary.totalGrandTotal += invoice.InvoiceGrandTotal || 0;
-        //         summary.totalSubTotal += invoice.InvoiceSubTotal || 0;
-        //         summary.totalTaxTotal += invoice.InvoiceTaxTotal || 0;
-        //         summary.invoiceCount += 1;
-        //         return summary;
-        //     },
-        //     {
-        //         invoiceCount: 0,
-        //         totalSubTotal: 0,
-        //         totalDiscount: 0,
-        //         totalTaxTotal: 0,
-        //         totalGrandTotal: 0,
-        //     }
-        // );
-    }, []);
-
     const onChange = (value, name) => {
         if (name === 'Warehouse')
             setBranch(value);
@@ -69,9 +49,7 @@ const ItemsProfit = () => {
 
 
     return (
-        <ListReport summary={
-            calculateInvoiceSummary(data)
-        }
+        <ListReport
             onChange={onChange}
             title={AppStrings.items_profits}
             icon={faChartPie}
@@ -80,7 +58,7 @@ const ItemsProfit = () => {
             schema={itemsProfitsSchema}
             options={{ Warehouse: branches ? branches : [], FatherID: categories ? categories : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useInvoicesByDateColDefs()} />
+            useComponentsColDefs={useItemsProfitColDefs()} />
     )
 }
 

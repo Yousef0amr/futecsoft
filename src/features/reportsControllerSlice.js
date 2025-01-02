@@ -102,8 +102,8 @@ export const reportsApi = createApi({
             query: ({ FromDate, ToDate, Warehouse }) => `/InvoicesByDate?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&FatherID=1`,
         }),
         getItemTransaction: builder.query({
-            query: ({ item_id }) =>
-                `/ItemTransaction?ItemID=${item_id}`,
+            query: ({ FromDate, ToDate, ItemID, Warehouse }) =>
+                `/ItemTransaction?FromDate=${FromDate}&ToDate=${ToDate}&ItemID=${ItemID}&Warehouse=${Warehouse}`,
             transformResponse: (response) => response.Response || response,
         }),
         getInventoryStatement: builder.query({
@@ -118,7 +118,7 @@ export const reportsApi = createApi({
         }),
         getItemsProfits: builder.query({
             query: ({ FromDate, ToDate, Warehouse, FatherID }) =>
-                `/ItemsProfits?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&FatherID=${FatherID}`,
+                `/ItmesProfits?FromDate=${FromDate}&ToDate=${ToDate}&Warehouse=${Warehouse}&FatherID=${FatherID}`,
             transformResponse: (response) => response.Response || response,
         }),
         getItemSalesTransaction: builder.query({

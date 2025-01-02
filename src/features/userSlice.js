@@ -1,11 +1,6 @@
 import createDynamicApi from "../utils/generateApiSlice";
 import { BASEURL, USERS } from "../api/endpoints";
 
-const transformUserData = (data) => {
-    return {
-        ...data,
-    };
-};
 
 
 export const usersApi = createDynamicApi({

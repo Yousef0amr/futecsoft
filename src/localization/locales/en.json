@@ -407,5 +407,18 @@
     "totalTaxTotal": " Tax Total",
     "invoiceCount": "Invoice Count",
     "station_required": "Station is required",
-    "date_required": "Date is required"
+    "date_required": "Date is required",
+    "profitPercentage": "Profit Percentage %",
+    "profitValue": "Profit Value",
+    "unitCost": "Unit Cost",
+    "totalReturn": "Total Return",
+    "quantityReturned": "Quantity Returned",
+    "quantitySold": "Quantity Sold",
+    "totalSales": "Total Sales",
+    "quantityIncoming": "Incoming Quantity",
+    "costIncoming": "Incoming Cost",
+    "quantityOutgoing": "Outgoing Quantity",
+    "costOutgoing": "Outgoing Cost",
+    "quantityBalance": "Balance Quantity",
+    "costBalance": "Balance Cost"
 }

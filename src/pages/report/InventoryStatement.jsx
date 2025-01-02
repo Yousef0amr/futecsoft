@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import useBranchManagement from '../../hook/useBranchManagement';
 import AppStrings from '../../config/appStrings';
 import ListReport from './../../components/report/ListReport';
@@ -10,7 +10,7 @@ import {
     useGetCategoriesNoneCompostieQuery
 } from '../../features/categorySlice';
 import { getInventoryReportFormFields } from '../../config/formFields';
-import { useInvoicesByDateColDefs } from '../../config/agGridColConfig';
+import { useInventoryStatementColDefs } from '../../config/agGridColConfig';
 import useValidators from '../../hooks/useValidators';
 const InventoryStatement = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
@@ -42,36 +42,14 @@ const InventoryStatement = () => {
         await getInventoryStatement(data).unwrap();
     }
 
-    const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
-        // return invoices?.reduce(
-        //     (summary, invoice) => {
-        //         summary.totalDiscount += invoice.InvoiceDiscountTotal || 0;
-        //         summary.totalGrandTotal += invoice.InvoiceGrandTotal || 0;
-        //         summary.totalSubTotal += invoice.InvoiceSubTotal || 0;
-        //         summary.totalTaxTotal += invoice.InvoiceTaxTotal || 0;
-        //         summary.invoiceCount += 1;
-        //         return summary;
-        //     },
-        //     {
-        //         invoiceCount: 0,
-        //         totalSubTotal: 0,
-        //         totalDiscount: 0,
-        //         totalTaxTotal: 0,
-        //         totalGrandTotal: 0,
-        //     }
-        // );
-    }, []);
 
     const onChange = (value, name) => {
         if (name === 'Warehouse')
             setBranch(value);
     }
 
-
     return (
-        <ListReport summary={
-            calculateInvoiceSummary(data)
-        }
+        <ListReport
             onChange={onChange}
             title={AppStrings.inventory_statement}
             icon={faWarehouse}
@@ -80,7 +58,7 @@ const InventoryStatement = () => {
             schema={inventoryStatementSchema}
             options={{ Warehouse: branches ? branches : [], CateID: categories ? categories : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useInvoicesByDateColDefs()} />
+            useComponentsColDefs={useInventoryStatementColDefs()} />
     )
 }
 

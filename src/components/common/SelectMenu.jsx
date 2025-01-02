@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import { FormControl, MenuItem, Select, Checkbox } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../config/appStrings';

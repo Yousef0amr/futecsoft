@@ -398,5 +398,18 @@
     "totalTaxTotal": "الضريبة الكلية",
     "invoiceCount": "عدد الفواتير",
     "station_required": "نقطة البيع مطلوبة",
-    "date_required": "التاريخ مطلوب"
+    "date_required": "التاريخ مطلوب",
+    "profitPercentage": "نسبة الربح %",
+    "profitValue": "قيمة الربح",
+    "unitCost": "كلفة الوحدة",
+    "totalReturn": "مجموع المرتجع",
+    "quantityReturned": "كمية المرتجع",
+    "quantitySold": "كمية البيع",
+    "totalSales": "مجموع البيع",
+    "quantityIncoming": "الكمية الداخلة",
+    "costIncoming": "كلفة الإدخال",
+    "quantityOutgoing": "الكمية الخارجة",
+    "costOutgoing": "كلفة الإخراج",
+    "quantityBalance": "كمية الرصيد",
+    "costBalance": "كلفة الرصيد"
 }

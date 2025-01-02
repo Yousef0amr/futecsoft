@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     i18n.changeLanguage(localStorage.getItem('lang') || 'ar');
     document.body.style.direction = localStorage.getItem('lang') === 'en' ? 'ltr' : 'rtl';
-  }, []);
+  }, [i18n]);
 
 
   return (

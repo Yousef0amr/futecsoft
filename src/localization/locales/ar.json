@@ -26,6 +26,8 @@
     "taxes": "الضرائب",
     "currencies": "العملات",
     "payment_methods": "طرق الدفع",
+    "credit_cards": "بطاقات الائتمان",
+    "returnValue": "المردود",
     "suppliers": "الموردين",
     "materials": "المواد",
     "finished_materials": "المواد الجاهزة",
@@ -375,6 +377,8 @@
     "sales_category": "مبيعات الأصناف",
     "sales_items": "مبيعات المواد",
     "sales_cashier": "مبيعات حسب الكاشير",
+    "cashier": "الكاشير",
+    "returnId": "رقم المردود",
     "best_seller_items": "أفضل العناصر مبيعًا",
     "best_seller_category": "أفضل الفئات مبيعًا",
     "sales_by_days": "المبيعات حسب الأيام",
@@ -411,5 +415,10 @@
     "quantityOutgoing": "الكمية الخارجة",
     "costOutgoing": "كلفة الإخراج",
     "quantityBalance": "كمية الرصيد",
-    "costBalance": "كلفة الرصيد"
+    "costBalance": "كلفة الرصيد",
+    "visa": "فيزا",
+    "cashReturnValue": "مردود نقدي",
+    "visaReturnValue": "مردود فيزا",
+    "cashReturnValueTotal": "مجموع مردود نقدي",
+    "visaReturnValueTotal": "مجموع مردود فيزا"
 }

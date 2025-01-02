@@ -7,7 +7,7 @@ import useBranchManagement from '../../hook/useBranchManagement';
 import ListReport from '../../components/report/ListReport';
 import { useGetAllPosStationsQuery } from '../../features/posStationSlice';
 import { getFullSalesReportFormFields } from '../../config/formFields';
-import { useSalesCategoryColDefs } from '../../config/agGridColConfig';
+import { useItemSalesColDefs } from '../../config/agGridColConfig';
 
 const ProductsSales = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
@@ -31,23 +31,23 @@ const ProductsSales = () => {
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
 
-        // return invoices?.reduce(
-        //     (summary, invoice) => {
-        //         summary.totalDiscount += invoice.DiscountV || 0;
-        //         summary.totalGrandTotal += invoice.GrandTotal || 0;
-        //         summary.totalSubTotal += invoice.Subtotal || 0;
-        //         summary.totalTaxTotal += invoice.TaxV || 0;
-        //         summary.invoiceCount += 1;
-        //         return summary;
-        //     },
-        //     {
-        //         invoiceCount: 0,
-        //         totalSubTotal: 0,
-        //         totalDiscount: 0,
-        //         totalTaxTotal: 0,
-        //         totalGrandTotal: 0,
-        //     }
-        // );
+        return invoices?.reduce(
+            (summary, invoice) => {
+                summary.totalDiscount += invoice.Discount || 0;
+                summary.totalGrandTotal += invoice.GrandTotal || 0;
+                summary.totalSubTotal += invoice.Subtotal || 0;
+                summary.totalTaxTotal += invoice.TotalTax || 0;
+                summary.invoiceCount += 1;
+                return summary;
+            },
+            {
+                invoiceCount: 0,
+                totalSubTotal: 0,
+                totalDiscount: 0,
+                totalTaxTotal: 0,
+                totalGrandTotal: 0,
+            }
+        );
     }, []);
 
 
@@ -62,7 +62,7 @@ const ProductsSales = () => {
             schema={salesItemSchema}
             options={{ Warehouse: branches ? branches : [], StationID: posStations ? posStations : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useSalesCategoryColDefs()} />
+            useComponentsColDefs={useItemSalesColDefs()} />
 
     )
 }

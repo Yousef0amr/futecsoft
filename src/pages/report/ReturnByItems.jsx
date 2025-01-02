@@ -7,7 +7,7 @@ import {
     useLazyGetReturnByItemsQuery
 } from '../../features/reportsControllerSlice';
 import { reportFormFields } from '../../config/formFields';
-import { useInvoicesByDateColDefs } from '../../config/agGridColConfig';
+import { useReturnByItemColDefs } from '../../config/agGridColConfig';
 import useValidators from '../../hooks/useValidators';
 const ReturnByItems = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
@@ -26,23 +26,25 @@ const ReturnByItems = () => {
     }
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
-        // return invoices?.reduce(
-        //     (summary, invoice) => {
-        //         summary.totalDiscount += invoice.InvoiceDiscountTotal || 0;
-        //         summary.totalGrandTotal += invoice.InvoiceGrandTotal || 0;
-        //         summary.totalSubTotal += invoice.InvoiceSubTotal || 0;
-        //         summary.totalTaxTotal += invoice.InvoiceTaxTotal || 0;
-        //         summary.invoiceCount += 1;
-        //         return summary;
-        //     },
-        //     {
-        //         invoiceCount: 0,
-        //         totalSubTotal: 0,
-        //         totalDiscount: 0,
-        //         totalTaxTotal: 0,
-        //         totalGrandTotal: 0,
-        //     }
-        // );
+        return invoices?.reduce(
+            (summary, invoice) => {
+                summary.totalDiscount += invoice.Discount || 0;
+                summary.totalGrandTotal += invoice.GrandTotal || 0;
+                summary.totalSubTotal += invoice.SubTotal || 0;
+                summary.totalTaxTotal += invoice.TaxValue || 0;
+                summary.quantity += invoice.Qty || 0;
+                summary.invoiceCount += 1;
+                return summary;
+            },
+            {
+                invoiceCount: 0,
+                quantity: 0,
+                totalSubTotal: 0,
+                totalDiscount: 0,
+                totalTaxTotal: 0,
+                totalGrandTotal: 0,
+            }
+        );
     }, []);
 
 
@@ -59,7 +61,7 @@ const ReturnByItems = () => {
             schema={invoiceByDateSchema}
             options={{ Warehouse: branches ? branches : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useInvoicesByDateColDefs()} />
+            useComponentsColDefs={useReturnByItemColDefs()} />
     )
 }
 

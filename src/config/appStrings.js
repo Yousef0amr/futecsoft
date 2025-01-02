@@ -41,6 +41,8 @@ const AppStrings = {
     materials: 'materials',
     finished_materials: 'finished_materials',
     raw_materials: 'raw_materials',
+    returnValue: 'returnValue',
+    credit_cards: 'credit_cards',
     assembled_materials: 'assembled_materials',
     assembled_material_components: 'assembled_material_components',
     prices_and_costs: 'prices_and_costs',
@@ -405,6 +407,14 @@ const AppStrings = {
     costOutgoing: 'costOutgoing',
     quantityBalance: 'quantityBalance',
     costBalance: 'costBalance',
+    visa: 'visa',
+    cashier: 'cashier',
+    returnId: 'returnId',
+    cashReturnValue: 'cashReturnValue',
+    visaReturnValue: 'visaReturnValue',
+    cashReturnValueTotal: 'cashReturnValueTotal',
+    visaReturnValueTotal: 'visaReturnValueTotal',
+
 
 }
 

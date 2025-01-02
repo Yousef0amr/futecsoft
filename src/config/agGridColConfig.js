@@ -473,6 +473,93 @@ export const useItemTransactionColDefs = () => {
 }
 
 
+export const useItemSalesColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "Warehouse", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "ID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: "Product", headerName: t(AppStrings.product), filter: 'agTextColumnFilter' },
+        { field: "FromDate", headerName: t(AppStrings.from_date), filter: 'agTextColumnFilter' },
+        { field: "ToDate", headerName: t(AppStrings.to_date), filter: 'agTextColumnFilter' },
+        { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
+        { field: "Subtotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "TotalTax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+export const useFullSalesColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "ZDATE", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "Payment0", headerName: t(AppStrings.cashMoney), filter: 'agTextColumnFilter' },
+        { field: "Payment1", headerName: t(AppStrings.credit_cards), filter: 'agTextColumnFilter' },
+        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "RETURN", headerName: t(AppStrings.returnValue), filter: 'agTextColumnFilter' },
+        { field: "TaxReturn", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "SALES", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+export const useFullSalesDetailsColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "ZDATE", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "Payment0", headerName: t(AppStrings.cashMoney), filter: 'agTextColumnFilter' },
+        { field: "Payment1", headerName: t(AppStrings.visa), filter: 'agTextColumnFilter' },
+        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "CashReturn", headerName: t(AppStrings.cashReturnValue), filter: 'agTextColumnFilter' },
+        { field: "VisaReturn", headerName: t(AppStrings.visaReturnValue), filter: 'agTextColumnFilter' },
+        { field: "TaxReturn", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "SALES", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+
+export const useReturnByInvoiceColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "ReturnID", headerName: t(AppStrings.returnId), filter: 'agTextColumnFilter' },
+        { field: "ReturnDate", headerName: t(AppStrings.date), filter: 'agTextColumnFilter' },
+        { field: "InvoiceNo", headerName: t(AppStrings.invoiceNo), filter: 'agTextColumnFilter' },
+        { field: "ReturnedBy", headerName: t(AppStrings.cashier), filter: 'agTextColumnFilter' },
+        { field: "ReturnsSubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "ReturnsDiscountTotal", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "ReturnsTaxTotal", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "ReturnsGrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+export const useReturnByItemColDefs = () => {
+    const { t } = useTranslation();
+
+    return useMemo(() => [
+        { field: "WarehouseName", headerName: t(AppStrings.branch), filter: 'agTextColumnFilter' },
+        { field: "ID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+        { field: "Item", headerName: t(AppStrings.product), filter: 'agTextColumnFilter' },
+        { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
+        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+        { field: "TaxValue", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+    ], [t]);
+}
+
+
+
+
+
 
 
 

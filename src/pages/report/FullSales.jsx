@@ -7,7 +7,7 @@ import useBranchManagement from '../../hook/useBranchManagement';
 import ListReport from '../../components/report/ListReport';
 import { useGetAllPosStationsQuery } from '../../features/posStationSlice';
 import { getFullSalesReportFormFields } from '../../config/formFields';
-import { useSalesCategoryColDefs } from '../../config/agGridColConfig';
+import { useFullSalesColDefs } from '../../config/agGridColConfig';
 const FullSales = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const { data: posStationsData, isLoading: isLoadingPosStations } = useGetAllPosStationsQuery();
@@ -30,23 +30,30 @@ const FullSales = () => {
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
 
-        // return invoices?.reduce(
-        //     (summary, invoice) => {
-        //         summary.totalDiscount += invoice.DiscountV || 0;
-        //         summary.totalGrandTotal += invoice.GrandTotal || 0;
-        //         summary.totalSubTotal += invoice.Subtotal || 0;
-        //         summary.totalTaxTotal += invoice.TaxV || 0;
-        //         summary.invoiceCount += 1;
-        //         return summary;
-        //     },
-        //     {
-        //         invoiceCount: 0,
-        //         totalSubTotal: 0,
-        //         totalDiscount: 0,
-        //         totalTaxTotal: 0,
-        //         totalGrandTotal: 0,
-        //     }
-        // );
+        return invoices?.reduce(
+            (summary, invoice) => {
+                summary.totalDiscount += invoice.Discount || 0;
+                summary.totalGrandTotal += invoice.SALES || 0;
+                summary.totalSubTotal += invoice.SubTotal || 0;
+                summary.totalTaxTotal += invoice.TaxReturn || 0;
+
+                summary.cashMoney += invoice.Payment0 || 0;
+                summary.visa += invoice.Payment1 || 0;
+                summary.returnValue += invoice.RETURN || 0;
+                summary.invoiceCount += 1;
+                return summary;
+            },
+            {
+                invoiceCount: 0,
+                totalSubTotal: 0,
+                totalDiscount: 0,
+                cashMoney: 0,
+                visa: 0,
+                returnValue: 0,
+                totalTaxTotal: 0,
+                totalGrandTotal: 0,
+            }
+        );
     }, []);
 
 
@@ -61,7 +68,7 @@ const FullSales = () => {
             schema={salesItemSchema}
             options={{ Warehouse: branches ? branches : [], StationID: posStations ? posStations : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useSalesCategoryColDefs()} />
+            useComponentsColDefs={useFullSalesColDefs()} />
 
     )
 }

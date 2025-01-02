@@ -8,7 +8,7 @@ import usePaymentTypeManagement from '../../hook/usePaymentTypeManagement';
 import ListReport from '../../components/report/ListReport';
 import { useGetAllPosStationsQuery } from '../../features/posStationSlice';
 import { getReturnByInvoiceReportFormFields } from '../../config/formFields';
-import { useSalesCategoryColDefs } from '../../config/agGridColConfig';
+import { useReturnByInvoiceColDefs } from '../../config/agGridColConfig';
 
 const ReturnByInvoices = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
@@ -37,23 +37,23 @@ const ReturnByInvoices = () => {
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
 
-        // return invoices?.reduce(
-        //     (summary, invoice) => {
-        //         summary.totalDiscount += invoice.DiscountV || 0;
-        //         summary.totalGrandTotal += invoice.GrandTotal || 0;
-        //         summary.totalSubTotal += invoice.Subtotal || 0;
-        //         summary.totalTaxTotal += invoice.TaxV || 0;
-        //         summary.invoiceCount += 1;
-        //         return summary;
-        //     },
-        //     {
-        //         invoiceCount: 0,
-        //         totalSubTotal: 0,
-        //         totalDiscount: 0,
-        //         totalTaxTotal: 0,
-        //         totalGrandTotal: 0,
-        //     }
-        // );
+        return invoices?.reduce(
+            (summary, invoice) => {
+                summary.totalDiscount += invoice.ReturnsDiscountTotal || 0;
+                summary.totalGrandTotal += invoice.ReturnsGrandTotal || 0;
+                summary.totalSubTotal += invoice.ReturnsSubTotal || 0;
+                summary.totalTaxTotal += invoice.ReturnsTaxTotal || 0;
+                summary.invoiceCount += 1;
+                return summary;
+            },
+            {
+                invoiceCount: 0,
+                totalSubTotal: 0,
+                totalDiscount: 0,
+                totalTaxTotal: 0,
+                totalGrandTotal: 0,
+            }
+        );
     }, []);
 
 
@@ -68,7 +68,7 @@ const ReturnByInvoices = () => {
             schema={returnByInvoiceSchema}
             options={{ Warehouse: branches ? branches : [], StationID: posStations ? posStations : [], PayType: paymentTypes ? paymentTypes : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useSalesCategoryColDefs()} />
+            useComponentsColDefs={useReturnByInvoiceColDefs()} />
 
     )
 }

@@ -32,8 +32,8 @@ const ListReport = ({ options, onChange, onSubmit, summary, schema, fields, icon
                     <Row >
                         {
                             summary && Object.entries(summary)?.map(([key, value]) => (
-                                <Col key={key} xs={12} sm={6} md={4}  >
-                                    <Stack className='text-center mt-2' style={{ border: '1px solid var(--border-color-1)', padding: '5px', }} >
+                                <Col key={key} xs={12} sm={6} md={4} lg={2} >
+                                    <Stack className='text-center mt-2' style={{ borderRadius: '5px', color: 'white', backgroundColor: 'var( --border-color-1)', border: '1px solid var(--border-color-1)', padding: '2px', }} >
                                         <span >
                                             {t(AppStrings[key])}
                                         </span>

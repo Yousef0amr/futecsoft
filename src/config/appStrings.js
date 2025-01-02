@@ -16,6 +16,7 @@ const AppStrings = {
     time: 'time',
     unit: 'unit',
     search: 'search',
+    all: 'all',
     reset: 'reset',
     edit: 'edit',
     delete: 'delete',

@@ -429,5 +429,6 @@
     "cashReturnValueTotal": "Cash Return Value Total",
     "visaReturnValueTotal": "Visa Return Value Total",
     "cashier": "Cashier",
-    "returnId": "Return ID"
+    "returnId": "Return ID",
+    "all": "--All--"
 }

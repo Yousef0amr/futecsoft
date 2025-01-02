@@ -8,13 +8,14 @@ import ListReport from '../../components/report/ListReport';
 import { useGetAllPosStationsQuery } from '../../features/posStationSlice';
 import { getFullSalesReportFormFields } from '../../config/formFields';
 import { useItemSalesColDefs } from '../../config/agGridColConfig';
+import { useTranslation } from 'react-i18next';
 
 const ProductsSales = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const { data: posStationsData, isLoading: isLoadingPosStations } = useGetAllPosStationsQuery();
     const [getSalesItems, { data, isLoading }] = useLazyGetSalesItemsQuery();
     const { salesItemSchema } = useValidators()
-
+    const { t } = useTranslation()
 
     const branches = !isLoadingBranches
         ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
@@ -60,7 +61,7 @@ const ProductsSales = () => {
             data={data}
             fields={getFullSalesReportFormFields}
             schema={salesItemSchema}
-            options={{ Warehouse: branches ? branches : [], StationID: posStations ? posStations : [] }}
+            options={{ Warehouse: branches ? branches : [], StationID: posStations ? [{ value: -1, label: t(AppStrings.all) }, ...posStations] : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
             useComponentsColDefs={useItemSalesColDefs()} />
 

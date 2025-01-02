@@ -9,6 +9,7 @@ import ListReport from '../../components/report/ListReport';
 import { useGetAllPosStationsQuery } from '../../features/posStationSlice';
 import { getReturnByInvoiceReportFormFields } from '../../config/formFields';
 import { useReturnByInvoiceColDefs } from '../../config/agGridColConfig';
+import { useTranslation } from 'react-i18next';
 
 const ReturnByInvoices = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
@@ -16,6 +17,7 @@ const ReturnByInvoices = () => {
     const { data: paymentTypesData, isLoading: isLoadingPaymentTypes } = usePaymentTypeManagement();
     const [getReturnByInvoices, { data, isLoading }] = useLazyGetReturnByInvoicesQuery();
     const { returnByInvoiceSchema } = useValidators()
+    const { t } = useTranslation();
 
 
     const branches = !isLoadingBranches
@@ -66,7 +68,7 @@ const ReturnByInvoices = () => {
             data={data}
             fields={getReturnByInvoiceReportFormFields}
             schema={returnByInvoiceSchema}
-            options={{ Warehouse: branches ? branches : [], StationID: posStations ? posStations : [], PayType: paymentTypes ? paymentTypes : [] }}
+            options={{ Warehouse: branches ? branches : [], StationID: posStations ? [{ value: -1, label: t(AppStrings.all) }, ...posStations] : [], PayType: paymentTypes ? [{ value: -1, label: t(AppStrings.all) }, ...paymentTypes] : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
             useComponentsColDefs={useReturnByInvoiceColDefs()} />
 

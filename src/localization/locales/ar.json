@@ -420,5 +420,6 @@
     "cashReturnValue": "مردود نقدي",
     "visaReturnValue": "مردود فيزا",
     "cashReturnValueTotal": "مجموع مردود نقدي",
-    "visaReturnValueTotal": "مجموع مردود فيزا"
+    "visaReturnValueTotal": "مجموع مردود فيزا",
+    "all": "--الكل--"
 }

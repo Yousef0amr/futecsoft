@@ -26,6 +26,7 @@ const ItemTransactions = () => {
     );
     const [getItemTransaction, { data, isLoading }] = useLazyGetItemTransactionQuery();
     const { itemTransactionSchema } = useValidators()
+    const [searchData, setSearchData] = React.useState({});
 
     const branches = !isLoadingBranches
         ? branchesData?.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
@@ -38,6 +39,7 @@ const ItemTransactions = () => {
 
     const onSubmit = async (data) => {
         await getItemTransaction(data).unwrap();
+        setSearchData(data);
     }
 
     const onChange = (value, name) => {
@@ -55,7 +57,9 @@ const ItemTransactions = () => {
             schema={itemTransactionSchema}
             options={{ Warehouse: branches ? branches : [], ItemID: products ? products : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useItemTransactionColDefs()} />
+            useComponentsColDefs={useItemTransactionColDefs()}
+            searchData={searchData}
+        />
     )
 }
 

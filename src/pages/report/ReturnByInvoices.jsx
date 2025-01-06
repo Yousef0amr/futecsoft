@@ -18,7 +18,7 @@ const ReturnByInvoices = () => {
     const [getReturnByInvoices, { data, isLoading }] = useLazyGetReturnByInvoicesQuery();
     const { returnByInvoiceSchema } = useValidators()
     const { t } = useTranslation();
-
+    const [searchData, setSearchData] = React.useState({});
 
     const branches = !isLoadingBranches
         ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
@@ -34,6 +34,8 @@ const ReturnByInvoices = () => {
 
     const onSubmit = async (data) => {
         await getReturnByInvoices(data).unwrap();
+        setSearchData(data);
+
     }
 
 
@@ -70,7 +72,9 @@ const ReturnByInvoices = () => {
             schema={returnByInvoiceSchema}
             options={{ Warehouse: branches ? branches : [], StationID: posStations ? [{ value: -1, label: t(AppStrings.all) }, ...posStations] : [], PayType: paymentTypes ? [{ value: -1, label: t(AppStrings.all) }, ...paymentTypes] : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useReturnByInvoiceColDefs()} />
+            useComponentsColDefs={useReturnByInvoiceColDefs()}
+            searchData={searchData}
+        />
 
     )
 }

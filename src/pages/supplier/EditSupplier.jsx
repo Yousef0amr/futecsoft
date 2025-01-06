@@ -12,7 +12,6 @@ const EditSupplier = () => {
     const loaction = useLocation()
     const { t } = useTranslation();
 
-
     return (
         <EditComponent
             errorMessage={AppStrings.something_went_wrong}
@@ -22,7 +21,7 @@ const EditSupplier = () => {
             title={t(AppStrings.edit_supplier) + '  | ' + loaction.state.SupplierId}
             path={routes.supplier.list}
             Form={SupplierForm}
-            editData={loaction.state}
+            editData={{ ...loaction.state, Warehouse: loaction.state.Warehouse.split(',') }}
         />
     )
 }

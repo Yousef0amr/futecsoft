@@ -15,12 +15,13 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import 'react-toastify/dist/ReactToastify.css';
 import NotificationProvider from './context/NotificationProvider.jsx';
+import ErrorBoundaryComponent from './components/common/ErrorBoundaryComponent.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary fallback={<h3>Something went wrong</h3>}>
+    <ErrorBoundary fallback={<ErrorBoundaryComponent />}>
       <NotificationProvider>
         <BrowserRouter >
           <ThemeProvider >

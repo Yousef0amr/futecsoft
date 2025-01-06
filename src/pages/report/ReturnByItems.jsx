@@ -13,7 +13,7 @@ const ReturnByItems = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const [getReturnByItems, { data, isLoading }] = useLazyGetReturnByItemsQuery();
     const { invoiceByDateSchema } = useValidators()
-
+    const [searchData, setSearchData] = React.useState({});
 
 
     const branches = !isLoadingBranches
@@ -23,6 +23,7 @@ const ReturnByItems = () => {
 
     const onSubmit = async (data) => {
         await getReturnByItems(data).unwrap();
+        setSearchData(data);
     }
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
@@ -61,7 +62,9 @@ const ReturnByItems = () => {
             schema={invoiceByDateSchema}
             options={{ Warehouse: branches ? branches : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useReturnByItemColDefs()} />
+            useComponentsColDefs={useReturnByItemColDefs()}
+            searchData={searchData}
+        />
     )
 }
 

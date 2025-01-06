@@ -11,6 +11,7 @@ import { useLoginMutation } from '../../features/authSlice';
 import { useAuth } from '../../utils/auth';
 import { useNavigate } from 'react-router-dom';
 import SpinnerLoader from '../common/Spinner';
+import useNotification from '../../hooks/useNotification';
 
 const LoginForm = () => {
     const { t } = useTranslation()
@@ -22,7 +23,7 @@ const LoginForm = () => {
         UserName: yup.string().required(t(AppStrings.username_required)),
         Password: yup.string().required(t(AppStrings.password_required)),
     }).required();
-
+    const { notify } = useNotification()
     const {
         register,
         handleSubmit,
@@ -33,7 +34,6 @@ const LoginForm = () => {
 
 
     const onSubmit = async (data) => {
-
         try {
             const result = await login(data).unwrap();
             if (result.Success) {
@@ -43,15 +43,13 @@ const LoginForm = () => {
                 }, 1000);
             }
         } catch (error) {
-            console.log(error)
+            notify(error.data.ErrorMessage ? error.data.ErrorMessage : t(AppStrings.something_went_wrong), 'error');
         }
     };
-
 
     return (
         <Box className='login-form' sx={{ borderRadius: '8px', backgroundColor: 'white', zIndex: 5, width: 800, maxWidth: '100%', overflow: 'hidden' }} >
             <Row xs={1} sm={1} md={2} lg={2} >
-
                 <Col style={{ padding: '30px' }}>
                     <h3 style={{ fontWeight: 'bold', fontSize: '30px' }}>{t(AppStrings.login)}</h3>
                     <p >  {t(AppStrings.sign_to_your_account)}  </p>
@@ -60,7 +58,6 @@ const LoginForm = () => {
                             type="text"
                             placeholder={t(AppStrings.username)}
                             {...register("UserName")}
-
                         />
                         {errors.UserName && <div className='error-message'> {errors.UserName.message}</div>}
                         <Form.Control
@@ -70,7 +67,6 @@ const LoginForm = () => {
                             {...register("Password")}
                         />
                         {errors.Password && <div className='error-message'> {errors.Password.message}</div>}
-
                         <Button className="mt-3 login-btn" disabled={isLoading} type="submit">{isLoading ? <SpinnerLoader /> : t(AppStrings.login)}</Button>
                     </Form>
                 </Col>
@@ -78,8 +74,6 @@ const LoginForm = () => {
                     <h3 className='text-uppercase' style={{ color: 'white', fontSize: '30px' }}>Futec-soft © 2024</h3>
                 </Col>
             </Row>
-
-
         </Box>
     )
 }

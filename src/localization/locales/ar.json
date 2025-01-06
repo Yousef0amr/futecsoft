@@ -402,6 +402,7 @@
     "totalTaxTotal": "الضريبة الكلية",
     "invoiceCount": "عدد الفواتير",
     "station_required": "نقطة البيع مطلوبة",
+    "print": "طباعة",
     "date_required": "التاريخ مطلوب",
     "profitPercentage": "نسبة الربح %",
     "profitValue": "قيمة الربح",
@@ -421,5 +422,14 @@
     "visaReturnValue": "مردود فيزا",
     "cashReturnValueTotal": "مجموع مردود نقدي",
     "visaReturnValueTotal": "مجموع مردود فيزا",
-    "all": "--الكل--"
+    "all": "--الكل--",
+    "page_not_found": "الصفحة غير موجودة",
+    "go_back_home": "العودة للصفحة الرئيسية",
+    "reload_page": "تحديث الصفحة",
+    "try_in_a_while": "حاول في وقت لاحق",
+    "relogin": "تسجيل الدخول مرة أخرى",
+    "relogin_message": "الرجاء تسجيل الدخول مرة أخرى",
+    "session_expired": "انتهت صلاحية الجلسة"
 }
+
+

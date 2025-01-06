@@ -15,13 +15,14 @@ const DailyProfits = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const [getDailyProfit, { data, isLoading }] = useLazyGetDailyProfitQuery();
     const { dailyProfitSchema } = useValidators()
-
+    const [searchData, setSearchData] = React.useState({});
     const branches = !isLoadingBranches
         ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
         : [];
 
     const onSubmit = async (data) => {
         await getDailyProfit(data).unwrap();
+        setSearchData(data);
     }
 
     return (
@@ -33,7 +34,9 @@ const DailyProfits = () => {
             schema={dailyProfitSchema}
             options={{ Warehouse: branches ? branches : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useDailyProfitColDefs()} />
+            useComponentsColDefs={useDailyProfitColDefs()}
+            searchData={searchData}
+        />
     )
 }
 

@@ -6,12 +6,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function DialogModel({ open, children }) {
+export default function DialogModel({ open, fullScreen = false, children }) {
     return (
         <Dialog
             open={open}
             TransitionComponent={Transition}
             keepMounted
+            fullScreen={fullScreen}
             disableScrollLock
             aria-describedby="alert-dialog-slide-description"
         >

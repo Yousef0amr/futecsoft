@@ -23,7 +23,7 @@ const InventoryStatement = () => {
             skip: !branch
         }
     );
-
+    const [searchData, setSearchData] = React.useState({});
     const [getInventoryStatement, { data, isLoading }] = useLazyGetInventoryStatementQuery();
     const { inventoryStatementSchema } = useValidators()
 
@@ -40,6 +40,7 @@ const InventoryStatement = () => {
 
     const onSubmit = async (data) => {
         await getInventoryStatement(data).unwrap();
+        setSearchData(data);
     }
 
 
@@ -58,7 +59,9 @@ const InventoryStatement = () => {
             schema={inventoryStatementSchema}
             options={{ Warehouse: branches ? branches : [], CateID: categories ? categories : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useInventoryStatementColDefs()} />
+            useComponentsColDefs={useInventoryStatementColDefs()}
+            searchData={searchData}
+        />
     )
 }
 

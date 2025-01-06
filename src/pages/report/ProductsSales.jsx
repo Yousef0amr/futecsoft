@@ -16,7 +16,7 @@ const ProductsSales = () => {
     const [getSalesItems, { data, isLoading }] = useLazyGetSalesItemsQuery();
     const { salesItemSchema } = useValidators()
     const { t } = useTranslation()
-
+    const [searchData, setSearchData] = React.useState({});
     const branches = !isLoadingBranches
         ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
         : [];
@@ -27,6 +27,7 @@ const ProductsSales = () => {
 
     const onSubmit = async (data) => {
         await getSalesItems(data).unwrap();
+        setSearchData(data);
     }
 
 
@@ -63,7 +64,9 @@ const ProductsSales = () => {
             schema={salesItemSchema}
             options={{ Warehouse: branches ? branches : [], StationID: posStations ? [{ value: -1, label: t(AppStrings.all) }, ...posStations] : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useItemSalesColDefs()} />
+            useComponentsColDefs={useItemSalesColDefs()}
+            searchData={searchData}
+        />
 
     )
 }

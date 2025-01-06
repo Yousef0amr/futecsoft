@@ -21,7 +21,7 @@ const EditCategory = () => {
             title={t(AppStrings.edit_category) + '  | ' + loaction.state.Id}
             path={routes.category.list}
             Form={CategoryForm}
-            editData={{ ...loaction.state, Warehouse: loaction.state.BranchId }}
+            editData={{ ...loaction.state, Warehouse: loaction.state.BranchId.split(',') }}
         />
     )
 }

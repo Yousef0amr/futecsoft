@@ -14,6 +14,7 @@ const FullSales = () => {
     const { data: posStationsData, isLoading: isLoadingPosStations } = useGetAllPosStationsQuery();
     const [getFullSales, { data, isLoading }] = useLazyGetFullSalesQuery();
     const { salesItemSchema } = useValidators()
+    const [searchData, setSearchData] = React.useState({});
     const { t } = useTranslation()
 
     const branches = !isLoadingBranches
@@ -26,6 +27,7 @@ const FullSales = () => {
 
     const onSubmit = async (data) => {
         await getFullSales(data).unwrap();
+        setSearchData(data);
     }
 
 
@@ -69,7 +71,9 @@ const FullSales = () => {
             schema={salesItemSchema}
             options={{ Warehouse: branches ? branches : [], StationID: posStations ? [{ value: -1, label: t(AppStrings.all) }, ...posStations] : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useFullSalesColDefs()} />
+            useComponentsColDefs={useFullSalesColDefs()}
+            searchData={searchData}
+        />
 
     )
 }

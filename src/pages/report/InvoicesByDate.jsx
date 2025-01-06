@@ -15,7 +15,7 @@ const InvoicesByDate = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const [getInvoicesByDate, { data, isLoading }] = useLazyGetInvoicesByDateQuery();
     const { invoiceByDateSchema } = useValidators()
-
+    const [searchData, setSearchData] = React.useState({});
 
 
     const branches = !isLoadingBranches
@@ -25,6 +25,7 @@ const InvoicesByDate = () => {
 
     const onSubmit = async (data) => {
         await getInvoicesByDate(data).unwrap();
+        setSearchData(data);
     }
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
@@ -61,7 +62,9 @@ const InvoicesByDate = () => {
             schema={invoiceByDateSchema}
             options={{ Warehouse: branches ? branches : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
+            searchData={searchData}
             useComponentsColDefs={useInvoicesByDateColDefs()} />
+
     )
 }
 

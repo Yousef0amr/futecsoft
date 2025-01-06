@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo, memo } from 'react';
+import React, { useRef, useEffect, useMemo, memo, useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -12,7 +12,7 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
     const gridApiRef = useRef(null);
     const isRtl = useMemo(() => i18n.language !== 'en', [i18n.language]);
     const localeText = useMemo(() => (isRtl ? AG_GRID_LOCALE_EG : AG_GRID_LOCALE_EN), [isRtl]);
-
+    const containerStyle = useMemo(() => ({ width: "100%", height: "70vh" }), []);
     const colDefs = useMemo(() => [
         enableActions ? {
             field: t(AppStrings.actions),
@@ -38,13 +38,14 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
             mode: 'singleRow',
             checkboxes: false,
             enableClickSelection: true,
-
         };
     }, []);
 
+
+
     <AgGridReact rowSelection={rowSelection} />
     return (
-        <div className="ag-theme-alpine w-100 p-1 mt-4" style={{ height: '70vh' }}>
+        <div style={containerStyle} className="ag-theme-alpine w-100 p-1 mt-4">
             <AgGridReact
                 key={i18n.language}
                 rowSelection={rowSelection}

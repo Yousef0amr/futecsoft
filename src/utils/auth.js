@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useCallback, useEffect } fr
 import { jwtDecode } from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 import Loader from '../components/common/Loader';
-import DialogModel from '../components/common/DialogModel';
 import { useNavigate } from 'react-router-dom';
+import Relogin from '../components/auth/Relogin';
 
 
 const AuthContext = createContext();
@@ -24,10 +24,12 @@ const AuthProvider = ({ children }) => {
     }, []);
 
     const getAccessToken = useCallback(() => cookies.accessToken, [cookies.accessToken]);
-    const logoutLocal = useCallback(() => () => {
+
+
+    const logoutLocal = () => {
         removeCookie('accessToken');
         setIsAuthenticated(false);
-    }, [removeCookie]);
+    };
 
     const checkAuth = useCallback(() => {
         const token = getAccessToken();
@@ -36,13 +38,11 @@ const AuthProvider = ({ children }) => {
             setIsLoading(false);
             return;
         }
-
         const decodedToken = getDecodedToken(token);
         const currentTime = Date.now() / 1000;
-
         if (decodedToken?.exp < currentTime) {
             logoutLocal();
-            setShowLoginModal(true); // Show modal when token is expired
+            setShowLoginModal(true);
         } else {
             setIsAuthenticated(true);
         }
@@ -55,12 +55,9 @@ const AuthProvider = ({ children }) => {
     }, [checkAuth]);
 
     const loginLocal = useCallback((token) => {
-        setCookie('accessToken', token, { path: '/', secure: true, sameSite: 'strict' });
+        setCookie('accessToken', token, { path: '/', secure: true, httpOnly: false, sameSite: 'strict' });
         setIsAuthenticated(true);
-        setShowLoginModal(false);
     }, [setCookie]);
-
-
 
     const handleNavigateToLogin = () => {
         setShowLoginModal(false);
@@ -72,18 +69,15 @@ const AuthProvider = ({ children }) => {
         return <Loader />;
     }
 
+    if (showLoginModal) {
+        return (
+            <Relogin handleNavigateToLogin={handleNavigateToLogin} showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
+        );
+    }
+
     return (
         <AuthContext.Provider value={{ isAuthenticated, logoutLocal, loginLocal, getAccessToken }}>
             {children}
-            {showLoginModal && (
-                <DialogModel open={showLoginModal} onClose={() => setShowLoginModal(false)}>
-                    <div style={{ textAlign: 'center' }}>
-                        <h2>Session Expired</h2>
-                        <p>Please log in again to continue.</p>
-                        <button onClick={handleNavigateToLogin}>Re-Login</button>
-                    </div>
-                </DialogModel>
-            )}
         </AuthContext.Provider>
     );
 };

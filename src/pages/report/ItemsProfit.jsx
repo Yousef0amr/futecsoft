@@ -23,7 +23,7 @@ const ItemsProfit = () => {
             skip: !branch
         }
     );
-
+    const [searchData, setSearchData] = React.useState({});
     const [getItemsProfits, { data, isLoading }] = useLazyGetItemsProfitsQuery();
     const { itemsProfitsSchema } = useValidators()
 
@@ -40,6 +40,7 @@ const ItemsProfit = () => {
 
     const onSubmit = async (data) => {
         await getItemsProfits(data).unwrap();
+        setSearchData(data);
     }
 
     const onChange = (value, name) => {
@@ -58,7 +59,9 @@ const ItemsProfit = () => {
             schema={itemsProfitsSchema}
             options={{ Warehouse: branches ? branches : [], FatherID: categories ? categories : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useItemsProfitColDefs()} />
+            useComponentsColDefs={useItemsProfitColDefs()}
+            searchData={searchData}
+        />
     )
 }
 

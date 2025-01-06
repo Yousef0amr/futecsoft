@@ -15,7 +15,7 @@ const PricesAndCosts = () => {
 
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const [triggerGetProductsCosts, { data, isLoading }] = useLazyGetProductsCostsQuery()
-
+    const [searchData, setSearchData] = React.useState({});
     const [
         triggerGetCategories,
         { data: categoriesData, isLoading: isLoadingCategories }
@@ -37,10 +37,11 @@ const PricesAndCosts = () => {
 
     const onSubmit = async (data) => {
         await triggerGetProductsCosts(data).unwrap();
+        setSearchData(data);
     }
 
     return (
-        <ListReport title={AppStrings.prices_and_costs} icon={faMoneyBill1Wave} data={data} fields={pricesAndCostsFormFields} schema={pricesAndCostsSchema} options={{ Warehouse: branches ? branches : [], CateID: categories ? categories : [] }} onSubmit={onSubmit} isLoading={isLoading} useComponentsColDefs={usePricesAndCostsColDefs()} />
+        <ListReport searchData={searchData} title={AppStrings.prices_and_costs} icon={faMoneyBill1Wave} data={data} fields={pricesAndCostsFormFields} schema={pricesAndCostsSchema} options={{ Warehouse: branches ? branches : [], CateID: categories ? categories : [] }} onSubmit={onSubmit} isLoading={isLoading} useComponentsColDefs={usePricesAndCostsColDefs()} />
     )
 }
 

@@ -11,6 +11,8 @@ const AppStrings = {
     sign_to_your_account: 'sign_to_your_account',
     add_new_component: 'add_new_component',
     materials_list: 'materials_list',
+    try_in_a_while: 'try_in_a_while',
+    print: 'print',
     save: 'save',
     cancel: 'cancel',
     time: 'time',
@@ -21,6 +23,10 @@ const AppStrings = {
     edit: 'edit',
     delete: 'delete',
     home: 'home',
+    reload_page: 'reload_page',
+    relogin: 'relogin',
+    relogin_message: 'relogin_message',
+    session_expired: 'session_expired',
     add: 'add',
     list: 'list',
     date_required: 'date_required',
@@ -415,7 +421,8 @@ const AppStrings = {
     visaReturnValue: 'visaReturnValue',
     cashReturnValueTotal: 'cashReturnValueTotal',
     visaReturnValueTotal: 'visaReturnValueTotal',
-
+    page_not_found: 'page_not_found',
+    go_back_home: 'go_back_home',
 
 }
 

@@ -412,6 +412,7 @@
     "date_required": "Date is required",
     "profitPercentage": "Profit Percentage %",
     "profitValue": "Profit Value",
+    "print": "Print",
     "unitCost": "Unit Cost",
     "totalReturn": "Total Return",
     "quantityReturned": "Quantity Returned",
@@ -430,5 +431,12 @@
     "visaReturnValueTotal": "Visa Return Value Total",
     "cashier": "Cashier",
     "returnId": "Return ID",
-    "all": "--All--"
+    "all": "--All--",
+    "page_not_found": "Page Not Found",
+    "go_back_home": "Go Back Home",
+    "reload_page": "Reload Page",
+    "try_in_a_while": "Try in a while",
+    "relogin": "Re-Login",
+    "relogin_message": "Please re-login",
+    "session_expired": "Session Expired"
 }

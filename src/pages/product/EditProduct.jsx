@@ -23,7 +23,7 @@ const EditProduct = () => {
             title={t(AppStrings.edit_product) + '  | ' + loaction.state.Id}
             path={routes.product.list}
             Form={ProductForm}
-            editData={{ ...loaction.state, Icon: loaction.state.Icon ? loaction.state.Icon : 'لا يوجد صورة', Father: loaction.state.CatID, Warehouse: loaction.state.Tag }}
+            editData={{ ...loaction.state, Icon: loaction.state.Icon ? loaction.state.Icon : 'لا يوجد صورة', Father: loaction.state.CatID, Warehouse: loaction.state.Tag.split(',') }}
         />
     )
 }

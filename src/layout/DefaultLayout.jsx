@@ -190,7 +190,9 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           justifyContent: 'flex-end',
           borderTop: '1px solid rgba(255, 255, 255, 0.12)'
         }}>
-          <IconButton color='inherit' onClick={logoutLocal} >
+          <IconButton color='inherit' onClick={() =>
+            logoutLocal()
+          } >
             {directionVal === 'rtl' ? <LogoutTwoTone style={{ transform: 'rotate(180deg)' }} /> : <LogoutTwoTone />}
           </IconButton>
         </DrawerHeader>

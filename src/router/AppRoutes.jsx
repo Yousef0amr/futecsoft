@@ -5,6 +5,7 @@ import ReportsLayout from '../layout/ReportsLayout';
 import { ProtectedRoute, LoginRoute } from './../components/common/ProtectedRoute';
 import Loader from '../components/common/Loader';
 import { routes } from '../config/constants';
+import NotFound from '../components/common/NotFound';
 
 // Lazy imports
 const Login = React.lazy(() => import('../pages/Login'));
@@ -216,7 +217,7 @@ const AppRoutes = ({ darkMode, toggleDarkMode }) => {
                 <Route element={<LoginRoute />} >
                     <Route path="/login" element={<Login />} />
                 </Route>
-                <Route path="*" element={<h3>Page Not Found</h3>} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Suspense>
     )

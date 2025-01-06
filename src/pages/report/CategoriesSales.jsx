@@ -13,7 +13,7 @@ const CategoriesSales = () => {
     const { data: branchesData, isLoading: isLoadingBranches } = useBranchManagement();
     const [getSalesCategory, { data, isLoading }] = useLazyGetSalesCategoryQuery();
     const { invoiceByDateSchema } = useValidators()
-
+    const [searchData, setSearchData] = React.useState({});
     const branches = !isLoadingBranches
         ? branchesData.map((item) => ({ value: item.BranchId, label: item.BranchNameAr }))
         : [];
@@ -21,6 +21,7 @@ const CategoriesSales = () => {
 
     const onSubmit = async (data) => {
         await getSalesCategory(data).unwrap();
+        setSearchData(data);
     }
 
     const calculateInvoiceSummary = useMemo(() => (invoices = []) => {
@@ -55,7 +56,9 @@ const CategoriesSales = () => {
             schema={invoiceByDateSchema}
             options={{ Warehouse: branches ? branches : [] }}
             onSubmit={onSubmit} isLoading={isLoading}
-            useComponentsColDefs={useSalesCategoryColDefs()} />
+            useComponentsColDefs={useSalesCategoryColDefs()}
+            searchData={searchData}
+        />
     )
 }
 

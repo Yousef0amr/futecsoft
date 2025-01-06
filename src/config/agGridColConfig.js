@@ -26,19 +26,16 @@ export const useProductColDefs = () => {
 
     return useMemo(() => [
         {
-            field: "Icon",
+            field: "ImgPath",
             headerName: t(AppStrings.icon),
             filter: 'agTextColumnFilter',
             cellRenderer: (params) => {
                 const base64String = params.value;
-                if (!base64String) return <div>----</div>;
-                const result = convertBase64ToBlob(base64String);
-                if (result) {
-                    const url = URL.createObjectURL(result);
+                if (base64String) {
                     return (
                         <img
-                            src={url}
-                            style={{ margin: '10px', width: 72, height: 72, borderRadius: '50%' }}
+                            src={params.value}
+                            style={{ margin: '10px', width: 64, height: 64 }}
                             alt="----"
                         />
                     );

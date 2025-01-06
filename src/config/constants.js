@@ -427,7 +427,8 @@ export const defaultProductValues = {
         IsActive: true,
         Saleable: true,
         Taxable: true,
-        Icon: 'لا يوجد صورة'
+        Icon: 'لا يوجد صورة',
+        PreparationTime: 0
     }
 
 }

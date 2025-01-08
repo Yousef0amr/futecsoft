@@ -10,6 +10,11 @@ import InboxIcon from '@mui/icons-material/Inbox';
 
 const AccordionWithExpend = ({ index, subIndex, open, handleDrawerOpen, handleExpansion, activeAccordion, directionVal, subItem, selected }) => {
     const { t } = useTranslation();
+    const handleClick = () => {
+        if (window.innerWidth < 768) {
+            handleDrawerOpen();
+        }
+    };
     return (
         <Accordion
             expanded={activeAccordion === `main-${index}-${subIndex}` || localStorage.getItem('selectedIndex') === `main-${index}-${subIndex}`}
@@ -43,7 +48,7 @@ const AccordionWithExpend = ({ index, subIndex, open, handleDrawerOpen, handleEx
                 expandIcon={open ? <ExpandMoreIcon sx={{ color: 'rgba(255, 255, 255, 0.38)' }} /> : null}
                 aria-controls={`panel-${index}-${subIndex}-content`}
                 id={`panel-${index}-${subIndex}-header`}
-                sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '' }, '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' } }}
+                sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '' }, '&:hover': { backgroundColor: 'var(--primary-color)', color: 'white' } }}
             >
                 <ListItemIcon>
                     {<FontAwesomeIcon icon={subItem.icon} /> || <InboxIcon />}
@@ -53,7 +58,9 @@ const AccordionWithExpend = ({ index, subIndex, open, handleDrawerOpen, handleEx
             <AccordionDetails sx={{ padding: '4px', color: 'white' }}>
                 <Stack style={{ width: '100%', padding: '0 20px' }} gap={1}>
                     {subItem.subActions.map((action, actionIndex) => (
-                        <Link key={`action-${index}-${subIndex}-${actionIndex}`} to={action.href}>
+                        <Link key={`action-${index}-${subIndex}-${actionIndex}`} to={action.href} onClick={() =>
+                            handleClick()}
+                        >
                             <Typography
                                 component={'div'}
                                 className='d-flex align-items-center justify-content-start'
@@ -61,8 +68,8 @@ const AccordionWithExpend = ({ index, subIndex, open, handleDrawerOpen, handleEx
                                     padding: '4px',
                                     borderRadius: '10px',
                                     cursor: 'pointer',
-                                    '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)' },
-                                    backgroundColor: selected === action.href || selected === action.subHref ? 'rgb(41.5, 48, 61)' : 'transparent'
+                                    '&:hover': { backgroundColor: 'var(--primary-color)', color: 'white' },
+                                    backgroundColor: selected === action.href || selected === action.subHref ? 'var(--primary-color)' : 'transparent'
                                 }}
                             >
                                 {selected === action.href || selected === action.subHref ? <RadioButtonChecked fontSize='2px' /> : <RadioButtonUnchecked fontSize='2px' />}

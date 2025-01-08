@@ -6,10 +6,18 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import { Link } from 'react-router-dom';
 
 
-const AccordionWithoutExpend = ({ open, location, subItem, directionVal }) => {
+const AccordionWithoutExpend = ({ open, location, subItem, handleDrawerOpen, directionVal }) => {
     const { t } = useTranslation();
+    const handleClick = () => {
+        if (window.innerWidth < 768) {
+            handleDrawerOpen();
+        }
+    };
     return (
-        <Link to={subItem.href} onClick={() => localStorage.setItem('selectedIndex', null)}>
+        <Link to={subItem.href} onClick={() => {
+            localStorage.setItem('selectedIndex', null)
+            handleClick();
+        }}>
             <Accordion
                 disableGutters
                 elevation={0}
@@ -18,7 +26,7 @@ const AccordionWithoutExpend = ({ open, location, subItem, directionVal }) => {
                 <AccordionSummary
                     aria-controls="panel1-content"
                     id="panel1-header"
-                    sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '56px' }, '&:hover': { backgroundColor: 'rgb(41.5, 48, 61)', color: 'white' }, backgroundColor: location === subItem.href || location === subItem.subHref ? 'rgb(41.5, 48, 61)' : 'transparent', color: location === subItem.href || location === subItem.subHref ? 'white' : 'white' }}
+                    sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '56px' }, '&:hover': { backgroundColor: 'var(--primary-color)', color: 'white' }, backgroundColor: location === subItem.href || location === subItem.subHref ? 'var(--primary-color)' : 'transparent', color: location === subItem.href || location === subItem.subHref ? 'white' : 'white' }}
                 >
                     <ListItemIcon style={directionVal === 'rtl' ? { marginRight: open ? '' : '32px' } : { marginLeft: open ? '' : '32px' }}>
                         {<FontAwesomeIcon color='rgba(255, 255, 255, 0.38)' icon={subItem.icon} /> || <InboxIcon />}

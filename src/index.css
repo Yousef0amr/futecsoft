@@ -8,17 +8,17 @@
 :root {
   --background-color: #FFFFFF;
   --text-color: #000000;
-  --background-color-dark: #212631;
-  --border-color-1: rgb(41.5, 48, 61);
+  --background-color-dark: #0d1b2a;
+  --border-color-1: #1b263b;
   --border-color-2: rgb(206, 212, 218);
-  --primary-color: #4e54c8;
-  --secondary-color: #DA4453;
+  --primary-color: #415a77;
+  --secondary-color: #e63946;
   --row-color: rgb(0, 0, 0, 0.03);
   --shadow-effect: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .dark-mode {
-  --background-color: #212631;
+  --background-color: #0d1b2a;
   --text-color: #ffffff;
   --row-color: var(--border-color-1);
 
@@ -149,11 +149,15 @@ html,
   --ag-header-background-color: var(--row-color) !important;
   --ag-odd-row-background-color: var(--row-color) !important;
   --ag-header-column-resize-handle-color: var(--primary-color) !important;
-
   --ag-font-family: 'NeoSansArabic' !important;
   --ag-font-weight: normal !important;
-  --ag-font-size: 12px !important;
-  --ag-row-height: 55px !important;
+  --ag-font-size: 10px !important;
+
+
+}
+
+.ag-icon-group {
+  font-size: 10px !important;
 }
 
 
@@ -180,7 +184,6 @@ html,
 .buttonCell {
   display: flex;
   gap: 8px;
-
   padding: 10px;
 
   button {
@@ -620,6 +623,7 @@ input[type="checkbox"]:checked+.cbx:after {
 
 
 @media (max-width: 768px) {
+
   .radio-inputs {
     font-size: 12px;
     min-width: 100%;
@@ -629,10 +633,21 @@ input[type="checkbox"]:checked+.cbx:after {
   .radio-inputs .radio .name {
     padding: 6px 8px;
   }
+
+  .buttonCell {
+    gap: 4px;
+    padding: 8px;
+
+    button {
+      padding: 0.375em 0.75em 0.5em;
+      font-size: 14px;
+    }
+  }
 }
 
 
 @media (max-width: 480px) {
+
   .radio-inputs {
     font-size: 11px;
 
@@ -641,5 +656,14 @@ input[type="checkbox"]:checked+.cbx:after {
 
   .radio-inputs .radio .name {
     padding: 5px 7px;
+  }
+
+  .buttonCell {
+    padding: 4px;
+
+    button {
+      padding: 0.25em 0.5em 0.375em;
+      font-size: 10px;
+    }
   }
 }

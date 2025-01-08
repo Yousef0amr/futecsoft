@@ -14,7 +14,7 @@ import SwitchLanguage from '../components/common/SwitchLanguage';
 import { useAuth } from '../utils/auth';
 import CustomMenu from '../components/common/CustomMenu';
 import { Outlet, useLocation } from 'react-router-dom';
-
+import logo from './../assets/images/logo.png'
 
 const drawerWidth = 270;
 
@@ -179,7 +179,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           justifyContent: 'center',
 
         }}>
-          <span>{open ? 'FUTEC-SOFT' : 'LOGO'}</span>
+          {open ? <span>FUTEC-SOFT</span> : <img src={logo} alt="logo" style={{ width: '42px', height: '42px' }} />}
         </DrawerHeader>
         <ul className='menu' style={{ direction: directionVal }}>
           <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} selected={location.pathname} />

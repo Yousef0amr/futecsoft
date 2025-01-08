@@ -42,6 +42,18 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
     }, []);
 
 
+    const defaultColDef = useMemo(() => {
+        return {
+
+            width: 150,
+            cellStyle: {
+                display: 'flex',
+                alignItems: 'center',
+            },
+            resizable: true
+        };
+    }, []);
+
 
     <AgGridReact rowSelection={rowSelection} />
     return (
@@ -56,7 +68,7 @@ const AgGridTable = memo(({ enableActions = true, actions, actionsCellRenderer =
                 paginationPageSizeSelector={[10, 20, 50, 100]}
                 columnDefs={colDefs}
                 quickFilterText={quickFilterText}
-                defaultColDef={{ cellStyle: { display: 'flex', alignItems: 'center' } }}
+                defaultColDef={defaultColDef}
                 domLayout='normal'
                 enableRtl={isRtl}
                 localeText={localeText}

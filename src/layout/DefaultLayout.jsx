@@ -179,7 +179,7 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           justifyContent: 'center',
 
         }}>
-          {open ? <span>FUTEC-SOFT</span> : <img src={logo} alt="logo" style={{ width: '42px', height: '42px' }} />}
+          {open ? <h1 style={{ fontSize: '20px' }}>FUTEC-SOFT</h1> : <img src={logo} alt="logo" style={{ width: '42px', height: '42px' }} />}
         </DrawerHeader>
         <ul className='menu' style={{ direction: directionVal }}>
           <CustomMenu open={open} directionVal={directionVal} handleDrawerOpen={handleDrawerOpen} selected={location.pathname} />
@@ -190,14 +190,14 @@ export default function MiniDrawer({ darkMode, toggleDarkMode }) {
           justifyContent: 'flex-end',
           borderTop: '1px solid rgba(255, 255, 255, 0.12)'
         }}>
-          <IconButton color='inherit' onClick={() =>
+          <IconButton color='inherit' sx={{ "&:hover": { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }} onClick={() =>
             logoutLocal()
           } >
             {directionVal === 'rtl' ? <LogoutTwoTone style={{ transform: 'rotate(180deg)' }} /> : <LogoutTwoTone />}
           </IconButton>
         </DrawerHeader>
       </Drawer>
-      <Box component="main" sx={{ overflow: 'auto', flexGrow: 1, p: 3, minHeight: '100vh', backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
+      <Box component="main" sx={{ overflow: 'auto', flexGrow: 1, p: 1, minHeight: '100vh', backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
         <DrawerHeader />
         <Outlet />
       </Box>

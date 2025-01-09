@@ -9,7 +9,7 @@ const SelectMenu = ({
     name,
     setValue,
     label,
-    watch,
+    watch = () => { },
     multiple = false,
     onChange,
     required,

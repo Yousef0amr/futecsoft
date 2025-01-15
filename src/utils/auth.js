@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import Loader from '../components/common/Loader';
 import { useNavigate } from 'react-router-dom';
 import Relogin from '../components/auth/Relogin';
-
+import { useDispatch } from "react-redux";
 
 const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     const [cookies, setCookie, removeCookie] = useCookies();
     const [showLoginModal, setShowLoginModal] = useState(false);
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const getDecodedToken = useCallback((token) => {
         try {
             return jwtDecode(token);
@@ -33,13 +33,31 @@ const AuthProvider = ({ children }) => {
 
     const checkAuth = useCallback(() => {
         const token = getAccessToken();
-        if (!token) {
+
+        if (!token || typeof token !== 'string') {
             setIsAuthenticated(false);
             setIsLoading(false);
             return;
         }
+
+        const isJwtToken = token.split('.').length === 3;
+
+        if (!isJwtToken) {
+            setIsAuthenticated(false);
+            setIsLoading(false);
+            return;
+        }
+
         const decodedToken = getDecodedToken(token);
+
+        if (!decodedToken) {
+            setIsAuthenticated(false);
+            setIsLoading(false);
+            return;
+        }
+
         const currentTime = Date.now() / 1000;
+
         if (decodedToken?.exp < currentTime) {
             logoutLocal();
             setShowLoginModal(true);
@@ -49,6 +67,8 @@ const AuthProvider = ({ children }) => {
 
         setIsLoading(false);
     }, [getAccessToken, getDecodedToken, logoutLocal]);
+
+
 
     useEffect(() => {
         checkAuth();
@@ -76,7 +96,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, logoutLocal, loginLocal, getAccessToken }}>
+        <AuthContext.Provider value={{ setShowLoginModal, isAuthenticated, logoutLocal, loginLocal, getAccessToken }}>
             {children}
         </AuthContext.Provider>
     );

@@ -5,10 +5,10 @@ import BarChart from '../components/common/BarChart';
 import { Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../config/appStrings';
-import FilterStatisForm from '../components/home/FilterStatisForm';
 import FormCard from '../components/common/FormCard';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
+const FilterStatisForm = React.lazy(() => import('../components/home/FilterStatisForm'));
 
 
 const Home = () => {
@@ -34,10 +34,12 @@ const Home = () => {
         });
     const { t } = useTranslation();
 
-
+    const handleFilterChange = (newFilter) => {
+        setFilter(newFilter);
+    };
 
     return (
-        <FormCard title={t(AppStrings.home)} icon={faHome} navButton={<FilterStatisForm onSubmit={setFilter} filter={filter} />} >
+        <FormCard title={t(AppStrings.home)} icon={faHome} navButton={<FilterStatisForm onSubmit={handleFilterChange} filter={filter} />} >
             <Row>
 
                 <Col xs={12} md={6}>

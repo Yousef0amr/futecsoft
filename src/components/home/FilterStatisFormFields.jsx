@@ -17,10 +17,14 @@ const FilterStatisFormFields = ({ setFilter, filter }) => {
 
 
     useEffect(() => {
-        if (branches.length > 0 && !filter) {
-            setFilter(branches[0].value);
+        if (
+            !isLoadingBranches
+        ) {
+            if (branches?.length > 0 && !filter) {
+                setFilter(branches[0]?.value);
+            }
         }
-    }, [branches, filter, setFilter]);
+    }, [branches, filter, setFilter, isLoadingBranches]);
 
     return (
         <FormControl >

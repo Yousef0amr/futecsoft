@@ -1,6 +1,7 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { useAuth } from '../utils/auth';
+import getCookie from './../utils/getCookie.js';
 /**
  * A helper function to dynamically update query data in RTK Query cache.
  *
@@ -33,11 +34,14 @@ const useEntityManagement = ({
     defaultQueryArgs,
     identifier = 'Id',
 }) => {
-    const { data, isLoading, refetch } = queryHook(defaultQueryArgs);
+    const { data, isLoading, error, refetch } = queryHook(defaultQueryArgs);
     const [addEntity, { isLoading: isAdding }] = addMutationHook();
     const [updateEntity, { isLoading: isUpdating }] = updateMutationHook();
     const [deleteEntity, { isLoading: isDeleting }] = deleteMutationHook();
     const dispatch = useDispatch();
+    const { setShowLoginModal } = useAuth()
+    const [isLoaded] = useState(isLoading);
+
     const deleteEntityFromCache = useCallback(
         (id) => {
             updateCache({
@@ -97,6 +101,15 @@ const useEntityManagement = ({
         },
         [apiSlice, cacheKey, defaultQueryArgs, identifier, dispatch]
     );
+
+    if (isLoaded) {
+        if (error) {
+            console.log(error)
+            if (error.status === 401) {
+                setShowLoginModal(true)
+            }
+        }
+    }
 
     return {
         data,

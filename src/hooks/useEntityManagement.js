@@ -104,7 +104,6 @@ const useEntityManagement = ({
 
     if (isLoaded) {
         if (error) {
-            console.log(error)
             if (error.status === 401) {
                 setShowLoginModal(true)
             }

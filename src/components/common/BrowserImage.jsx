@@ -54,7 +54,6 @@ const BrowserImage = ({ errors, setValue, field, watch }) => {
         };
     };
 
-
     return (
         <Row md={1} lg={2} className="p-0 mt-3 gap-3"  >
             <Col className="file-preview" style={{ flex: 1 }} md={12} lg={3}>
@@ -67,7 +66,7 @@ const BrowserImage = ({ errors, setValue, field, watch }) => {
                     <div className="uploaded-file-preview">
                         {uploadedFile.type.startsWith("image/") ? (
                             <img
-                                src={URL.createObjectURL(uploadedFile)}
+                                src={watch(field.name) || URL.createObjectURL(uploadedFile)}
                                 alt="Uploaded"
                                 className="uploaded-image-preview"
                             />

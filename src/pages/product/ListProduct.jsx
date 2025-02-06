@@ -56,9 +56,12 @@ const ListProduct = () => {
             isLoading={isDeleting}
             icon={faBarcode}
             title={t(AppStrings.list_products)}
-            navButton={<NavButton icon={'add'} title={AppStrings.add_new_product} path={routes.product.add} />}
+            navButton={
+                <NavButton icon={'add'} title={AppStrings.add_new_product} path={routes.product.add} />
+            }
             optionComponent={
                 <>
+
                     <TabsSelect handleTabClick={handleTabClick} activeTab={activeTab} options={productTypeFormFields} />
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>

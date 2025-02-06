@@ -10,8 +10,10 @@ import { routes } from '../../config/constants'
 
 
 const EditProduct = () => {
-    const loaction = useLocation()
+    const location = useLocation()
     const { t } = useTranslation();
+
+    console.log(location)
 
     return (
         <EditComponent
@@ -20,10 +22,10 @@ const EditProduct = () => {
             isRefetch={true}
             fetchHook={useProductManagement}
             icon={faBarcode}
-            title={t(AppStrings.edit_product) + '  | ' + loaction.state.Id}
+            title={t(AppStrings.edit_product) + '  | ' + location.state.Id}
             path={routes.product.list}
             Form={ProductForm}
-            editData={{ ...loaction.state, Icon: loaction.state.Icon ? loaction.state.Icon : 'لا يوجد صورة', Father: loaction.state.CatID, Warehouse: loaction.state.Tag.split(',') }}
+            editData={{ ...location.state, Icon: location.state.ImgPath ? location.state.ImgPath : 'لا يوجد صورة', Father: location.state.CatID, Warehouse: location.state.Tag.split(',') }}
         />
     )
 }

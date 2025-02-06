@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import FormCard from '../../components/common/FormCard'
 import ProductForm from '../../components/product/ProductForm'
-import { faList, faBarcode } from '@fortawesome/free-solid-svg-icons';
+import { faBarcode } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../config/appStrings';
 import NavButton from '../../components/common/NavButton';
@@ -34,11 +34,17 @@ const AddProduct = () => {
     };
 
     return (
-        <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)} navButton={<NavButton icon={faList} title={AppStrings.list_products} path={routes.product.list} />} optionComponent={
-            <>
-                <TabsSelect handleTabClick={handleTabClick} activeTab={type} options={productTypeFormFields} />
-            </>
-        }  >
+        <FormCard icon={faBarcode} title={t(AppStrings.add_new_product)}
+            navButton={
+                <div className='d-flex gap-3'>
+                    {type === 'Composite' && <NavButton icon={"add"} title={AppStrings.add_new_component} path={routes.product.compositeComponents} />}
+                    <NavButton icon={"list"} title={AppStrings.list_products} path={routes.product.list} />
+                </div>
+            } optionComponent={
+                <>
+                    <TabsSelect handleTabClick={handleTabClick} activeTab={type} options={productTypeFormFields} />
+                </>
+            }  >
             <ProductForm isLoading={isAdding} resetForm={!isAdding} onSubmit={onSubmit} defaultValuesEdit={defaultValues} composite={type === 'Composite'} />
         </FormCard>
     )

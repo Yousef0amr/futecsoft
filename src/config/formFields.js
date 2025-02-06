@@ -23,9 +23,10 @@ export const productImageField = {
 
 export const productFormFields = [
     { name: 'Id', label: AppStrings.productId, required: false, type: 'number', disabled: true },
+    { name: 'Barcode', label: AppStrings.barcode, required: false, type: 'text' },
     { name: 'NameAr', label: AppStrings.productNameAr, required: true, type: 'text' },
     { name: 'NameEn', label: AppStrings.productNameEn, required: true, type: 'text' },
-    { name: 'Barcode', label: AppStrings.barcode, required: false, type: 'text' },
+
 ];
 
 export const productSelectFormFields = [
@@ -58,9 +59,9 @@ export const productTypeFormFields = [
 
 export const branchFormFields = [
     { name: 'BranchId', label: AppStrings.branchId, required: true, type: 'number', disabled: true },
+    { name: 'TaxId', label: AppStrings.taxId, required: false, type: 'number' },
     { name: 'BranchNameAr', label: AppStrings.branchNameAr, required: true, type: 'text' },
     { name: 'BranchNameEn', label: AppStrings.branchNameEn, required: true, type: 'text' },
-    { name: 'TaxId', label: AppStrings.taxId, required: false, type: 'number' },
     { name: 'Phones', label: AppStrings.phones, required: false, type: 'number' },
     { name: 'Mobiles', label: AppStrings.mobiles, required: false, type: 'number' },
     { name: 'Website', label: AppStrings.website, required: false, type: 'text' },
@@ -77,9 +78,10 @@ export const pricesAndCostsFormFields = [
 
 export const categoryFormFields = [
     { name: 'Id', label: AppStrings.categoryId, required: true, type: 'number', disabled: true },
+    { name: 'Warehouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'NameAr', label: AppStrings.categoryNameAr, required: true, type: 'text' },
     { name: 'NameEn', label: AppStrings.categoryNameEn, required: true, type: 'text' },
-    { name: 'Warehouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
+
     { name: 'Saleable', label: AppStrings.saleable, required: false, type: 'check' },
     { name: 'IsActive', label: AppStrings.isActive, required: false, type: 'check' },
 ]
@@ -94,9 +96,10 @@ export const unitsFormFields = [
 
 export const flavorsFormFields = [
     { name: 'FlavorNo', label: AppStrings.flavorId, required: true, type: 'number', disabled: true },
+    { name: 'Price', label: AppStrings.price, required: true, type: 'text' },
     { name: 'FlavorAR', label: AppStrings.flavorNameAr, required: true, type: 'text' },
     { name: 'FlavorEN', label: AppStrings.flavorNameEn, required: true, type: 'text' },
-    { name: 'Price', label: AppStrings.price, required: true, type: 'text' },
+
 
     { name: 'WareHouse', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'Category', label: AppStrings.category, required: true, multiple: true, options: [], type: 'select' },
@@ -108,9 +111,10 @@ export const flavorsFormFields = [
 
 export const offersFormFields = [
     { name: 'OfferId', label: AppStrings.offerId, required: true, type: 'number', disabled: true },
+    { name: 'Branch', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
     { name: 'FromDate', label: AppStrings.from_date, required: true, type: 'date' },
     { name: 'ToDate', label: AppStrings.to_date, required: true, type: 'date' },
-    { name: 'Branch', label: AppStrings.branch, required: true, multiple: true, options: [], type: 'select' },
+
     { name: 'Product', label: AppStrings.product, required: true, options: [], type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]
@@ -166,9 +170,10 @@ export const currenciesFormFields = [
 
 export const paymentTypesFormFields = [
     { name: 'Ptype', label: AppStrings.paymentTypeId, required: true, type: 'number', disabled: true },
+    { name: 'Commissions', label: AppStrings.commissions, required: false, type: 'number' },
     { name: 'PaymentArDesc', label: AppStrings.paymentTypeAr, required: true, type: 'text' },
     { name: 'PaymentEnDesc', label: AppStrings.paymentTypeEn, required: true, type: 'text' },
-    { name: 'Commissions', label: AppStrings.commissions, required: false, type: 'number' },
+
     { name: 'CompanyID', label: AppStrings.deliveryCompany, options: [], required: false, type: 'select' },
     { name: 'IsActive', label: AppStrings.isActive, type: 'check' },
 ]

@@ -34,7 +34,7 @@ const AddFlavor = () => {
                 <NavButton icon={'list'} title={AppStrings.list_flavors} path={routes.flavor.list} />
             </>
         }  >
-            <FlavorForm isLoading={isAdding} resetForm={!isAdding} onSubmit={onSubmit} defaultValuesEdit={{ FlavorNo: currentKey, IsActive: true }} />
+            <FlavorForm isLoading={isAdding} resetForm={!isAdding} onSubmit={onSubmit} defaultValuesEdit={{ Price: 0, FlavorNo: currentKey, IsActive: true }} />
         </FormCard>
     )
 }

@@ -72,7 +72,7 @@ const SelectMenu = ({
     }, [options, selectedValue, name, setValue, onChange, watch]);
 
     return (
-        <FormControl className="select-menu mt-3" style={{ width: '100%' }}>
+        <FormControl className="select-menu" style={{ width: '100%' }}>
             <span className="select-label mb-2">
                 {t(label)}
                 {required && <span style={{ color: 'red' }}>*</span>}

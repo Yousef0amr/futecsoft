@@ -81,7 +81,7 @@
     "price3": "السعر الثالث",
     "price4": "السعر الرابع",
     "unit": "الوحدة",
-    "taxPercentage": "نسبة الضريبة",
+    "taxPercentage": "نسبة الضريبة (%)",
     "taxable": "خاضع  للضريبة",
     "branch": "الفرع",
     "saleable": "قابل  للبيع",
@@ -200,7 +200,7 @@
     "free_product": "مادة مجانية",
     "from_date_required": "تاريخ البدء مطلوب",
     "to_date_required": "تاريخ الانتهاء مطلوب",
-    "discount_percentage": "نسبة الخصم",
+    "discount_percentage": " نسبة الخصم (%) ",
     "discount_percentage_required": "نسبة الخصم مطلوبة",
     "discount_type_ar": "نوع الخصم (بالعربية)",
     "discount_type_en": "نوع الخصم (بالإنجليزية)",
@@ -431,5 +431,3 @@
     "relogin_message": "الرجاء تسجيل الدخول مرة أخرى",
     "session_expired": "انتهت صلاحية الجلسة"
 }
-
-

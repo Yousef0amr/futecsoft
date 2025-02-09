@@ -4,7 +4,7 @@ import AppStrings from '../../config/appStrings';
 
 const InputField = ({ name, label, disabled = false, register, errors, required, type = 'text', min }) => {
     const { t } = useTranslation()
-    return <Form.Group controlId={name} className='mt-4'>
+    return <Form.Group controlId={name} >
         <Form.Label style={{ color: 'var(--text-color)' }}>
             {t(label)}
             {required && <span style={{ color: 'red' }}>*</span>}

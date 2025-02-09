@@ -4,18 +4,19 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 
-const useTableActions = ({ path }) => {
+const useTableActions = ({ path, tab }) => {
     const navigate = useNavigate();
     const [active, setActive] = useState({ isOpen: false, editable: false, data: null });
 
     const handleCancel = () => {
         setActive({ isOpen: false, editable: false, data: null });
     }
+
     const defaultActions = useMemo(
         () => ({
             handleOnEditClick: (data) => {
                 if (path) {
-                    navigate(path, { state: data });
+                    navigate(path, { state: { ...data, tab } });
                 } else {
                     setActive({ isOpen: false, editable: true, data });
                 }
@@ -24,7 +25,7 @@ const useTableActions = ({ path }) => {
                 setActive({ isOpen: true, editable: false, data });
             },
         }),
-        [navigate, path]
+        [navigate, path, tab]
     );
 
     return {

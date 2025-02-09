@@ -5,8 +5,8 @@ import FormCard from './FormCard'
 import NavButton from './NavButton'
 import useEntityOperations from '../../hooks/useEntityOperations'
 
-const EditComponent = ({ icon, title, successMessage, errorMessage, isRefetch, editData, path, Form, fetchHook, optionComponent }) => {
-    const { updateEntity, isUpdating, updateEntityInCache, refetch } = fetchHook()
+const EditComponent = ({ icon, title, successMessage, errorMessage, isRefetch, editData, path, Form, fetchHook, defaultQuery = {}, optionComponent }) => {
+    const { updateEntity, isUpdating, updateEntityInCache, refetch } = fetchHook(defaultQuery)
     const { handleEntityOperation } = useEntityOperations({ updateEntity })
 
     const onSubmit = async (data) => {
@@ -18,6 +18,8 @@ const EditComponent = ({ icon, title, successMessage, errorMessage, isRefetch, e
             errorMessage
         })
     }
+
+
 
     return (
         <FormCard open={false} icon={icon} title={title} optionComponent={optionComponent} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={path} />}>

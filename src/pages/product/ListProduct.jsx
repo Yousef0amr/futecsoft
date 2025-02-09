@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../../config/appStrings';
 import AgGridTable from '../../components/common/AgGridTable';
@@ -14,16 +14,18 @@ import { routes } from '../../config/constants';
 import { productTypeFormFields } from '../../config/formFields';
 import useEntityOperations from '../../hooks/useEntityOperations';
 
+
 const ListProduct = () => {
     const { t } = useTranslation();
-    const productColDefs = useProductColDefs();
+
     const [activeTab, setActiveTab] = useState(productTypeFormFields[0].name);
-    const { data, isLoading, deleteEntity, isDeleting, deleteEntityFromCache } = useProductManagement(activeTab);
-    const { handleEntityOperation } = useEntityOperations({ deleteEntity });
+    const { data, isLoading, deleteEntity, isDeleting, updateEntity, refetch, deleteEntityFromCache } = useProductManagement(activeTab);
+    const { handleEntityOperation } = useEntityOperations({ deleteEntity, updateEntity });
     const [quickFilterText, setQuickFilterText] = useState();
     const [loading, setLoading] = useState(true);
     const { defaultActions, active, handleCancel } = useTableActions({
-        path: routes.product.edit
+        path: routes.product.edit,
+        tab: activeTab
     });
 
     useEffect(() => {
@@ -31,6 +33,19 @@ const ListProduct = () => {
             setLoading(false);
         }
     }, [data, isLoading]);
+
+    const handleActiveChange = (data) => {
+        handleEntityOperation({
+            operation: 'update',
+            data: { ...data, Father: data.CatID, Warehouse: data.Tag, Icon: "..." },
+            cacheUpdater: refetch,
+            successMessage: AppStrings.product_updated_successfully,
+            errorMessage: AppStrings.something_went_wrong
+        })
+    }
+
+
+    const productColDefs = useProductColDefs({ handleActiveChange })
 
     const handleTabClick = (type) => {
         setActiveTab(type);
@@ -70,6 +85,7 @@ const ListProduct = () => {
             <AgGridTable
                 actions={defaultActions}
                 dynamicColumns={productColDefs}
+
                 rowData={data}
                 isLoading={loading}
                 quickFilterText={quickFilterText}

@@ -9,7 +9,7 @@ const FormFieldsComponent = ({ isLoading, fields, options, triggerEvent = () => 
     return (
         <Row style={{ marginTop: '10px' }}>
             {fields.map((field) => {
-                return <Col xs={12} md={6} key={field.name}>
+                return <Col xs={12} md={6} key={field.name} style={{ marginBottom: '10px' }} >
                     {(field.type === 'text' || field.type === 'number' || field.type === 'email' || field.type === 'date' || field.type === 'password') &&
                         <InputField
                             name={field.name}
@@ -42,7 +42,8 @@ const FormFieldsComponent = ({ isLoading, fields, options, triggerEvent = () => 
                         />
                     }
                     {
-                        field.type === 'check' && <CheckBox
+                        field.type === 'check' &&
+                        <CheckBox
                             label={field.label}
                             isChecked={watch(field.name)}
                             onChange={(value) => setValue(field.name, value)}

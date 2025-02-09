@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../config/appStrings';
-import convertBase64ToBlob from '../utils/ConvertBase64ToBlob';
+import ActiveCellRenderer from '../components/common/ActiveCellRenderer';
+import ActiveEditor from '../components/common/ActiveEditor';
+
 
 export const useBranchColDefs = () => {
     const { t } = useTranslation();
@@ -21,7 +23,7 @@ export const useBranchColDefs = () => {
     ], [t]);
 };
 
-export const useProductColDefs = () => {
+export const useProductColDefs = ({ handleActiveChange }) => {
     const { t, i18n } = useTranslation();
 
     return useMemo(() => [
@@ -51,18 +53,60 @@ export const useProductColDefs = () => {
         { field: "Father", headerName: t(AppStrings.category), filter: 'agTextColumnFilter' },
         { field: "Barcode", headerName: t(AppStrings.barcode), filter: 'agTextColumnFilter' },
         { field: "Price", headerName: t(AppStrings.price), filter: 'agNumberColumnFilter' },
-        // { field: "Price2", headerName: t(AppStrings.price2), filter: 'agNumberColumnFilter' },
-        // { field: "Price3", headerName: t(AppStrings.price3), filter: 'agNumberColumnFilter' },
-        // { field: "Price4", headerName: t(AppStrings.price4), filter: 'agNumberColumnFilter' },
-        // { field: "UnitID", headerName: t(AppStrings.unit), filter: 'agTextColumnFilter' },
         { field: "TaxPercentage", headerName: t(AppStrings.taxPercentage), filter: 'agNumberColumnFilter' },
-        { field: "Discountable", headerName: t(AppStrings.discountable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
-        { field: "IsService", headerName: t(AppStrings.isService), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
-        { field: "IsActive", headerName: t(AppStrings.isActive), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
-        { field: "Saleable", headerName: t(AppStrings.saleable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
-        { field: "Taxable", headerName: t(AppStrings.taxable), filter: 'agTextColumnFilter', cellRenderer: (params) => params.value ? t(AppStrings.yes) : t(AppStrings.no) },
+        {
+            field: "Discountable",
+            headerName: t(AppStrings.discountable),
+            filter: 'agTextColumnFilter',
+            cellRenderer: ActiveEditor,
+            cellRendererParams: {
+                handleActiveChange: handleActiveChange,
+                field: "Discountable"
+            }
+        },
+        {
+            field: "IsService",
+            headerName: t(AppStrings.isService),
+            filter: 'agTextColumnFilter',
+            cellRenderer: ActiveEditor,
+            cellRendererParams: {
+                handleActiveChange: handleActiveChange,
+                field: "IsService"
+            }
+        },
+        {
+            field: "IsActive",
+            headerName: t(AppStrings.isActive),
+            filter: 'agTextColumnFilter',
+            cellRenderer: ActiveEditor,
+            cellRendererParams: {
+                handleActiveChange: handleActiveChange,
+                field: "IsActive"
+            }
+
+        },
+        {
+            field: "Saleable",
+            headerName: t(AppStrings.saleable),
+            filter: 'agTextColumnFilter',
+            cellRenderer: ActiveEditor,
+            cellRendererParams: {
+                handleActiveChange: handleActiveChange,
+                field: "Saleable"
+            }
+        },
+        {
+            field: "Taxable",
+            headerName: t(AppStrings.taxable),
+            filter: 'agTextColumnFilter',
+            cellRenderer: ActiveEditor,
+            cellRendererParams: {
+                handleActiveChange: handleActiveChange,
+                field: "Taxable"
+            }
+        },
         { field: "PreparationTime", headerName: t(AppStrings.preparationTime), filter: 'agTextColumnFilter' },
-    ], [t, i18n]);
+    ], [t, i18n, handleActiveChange]);
 };
 
 export const useComponentsColDefs = () => {

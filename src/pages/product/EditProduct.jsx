@@ -13,14 +13,13 @@ const EditProduct = () => {
     const location = useLocation()
     const { t } = useTranslation();
 
-    console.log(location)
-
     return (
         <EditComponent
             errorMessage={AppStrings.something_went_wrong}
             successMessage={AppStrings.product_updated_successfully}
             isRefetch={true}
             fetchHook={useProductManagement}
+            defaultQuery={location.state.tab}
             icon={faBarcode}
             title={t(AppStrings.edit_product) + '  | ' + location.state.Id}
             path={routes.product.list}

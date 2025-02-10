@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../../config/appStrings';
 import AgGridTable from '../../components/common/AgGridTable';
@@ -19,7 +19,7 @@ const ListProduct = () => {
     const { t } = useTranslation();
 
     const [activeTab, setActiveTab] = useState(productTypeFormFields[0].name);
-    const { data, isLoading, deleteEntity, isDeleting, updateEntity, refetch, deleteEntityFromCache } = useProductManagement(activeTab);
+    const { data, isLoading, deleteEntity, isDeleting, updateEntity, updateEntityInCache, deleteEntityFromCache } = useProductManagement(activeTab);
     const { handleEntityOperation } = useEntityOperations({ deleteEntity, updateEntity });
     const [quickFilterText, setQuickFilterText] = useState();
     const [loading, setLoading] = useState(true);
@@ -38,7 +38,7 @@ const ListProduct = () => {
         handleEntityOperation({
             operation: 'update',
             data: { ...data, Father: data.CatID, Warehouse: data.Tag, Icon: "..." },
-            cacheUpdater: refetch,
+            cacheUpdater: updateEntityInCache(data),
             successMessage: AppStrings.product_updated_successfully,
             errorMessage: AppStrings.something_went_wrong
         })

@@ -9,15 +9,25 @@ import NavButton from '../../components/common/NavButton';
 import { useProductColDefs } from '../../config/agGridColConfig';
 import useProductManagement from '../../hook/useProductManagement';
 import { routes } from '../../config/constants';
+import useEntityOperations from '../../hooks/useEntityOperations';
 
 const ListCompositeComponents = () => {
     const [quickFilterText, setQuickFilterText] = useState();
     const { t } = useTranslation();
-    const productColDefs = useProductColDefs();
-    const { data, isLoading } = useProductManagement();
+    const { data, updateEntityInCache, isLoading, updateEntity } = useProductManagement();
+    const { handleEntityOperation } = useEntityOperations({ updateEntity });
 
+    const handleActiveChange = (data) => {
+        handleEntityOperation({
+            operation: 'update',
+            data: { ...data, Father: data.CatID, Warehouse: data.Tag, Icon: "..." },
+            cacheUpdater: updateEntityInCache(data),
+            successMessage: AppStrings.product_updated_successfully,
+            errorMessage: AppStrings.something_went_wrong
+        })
+    }
 
-
+    const productColDefs = useProductColDefs({ handleActiveChange });
     return (
         <FormCard icon={faBarcode} title={t(AppStrings.list_composite_components)} navButton={<NavButton icon={faAdd} title={AppStrings.add_new_product} path={routes.product.add} />} optionComponent={
             <>

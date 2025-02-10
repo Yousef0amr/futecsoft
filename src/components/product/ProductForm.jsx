@@ -16,6 +16,7 @@ const ProductForm = ({ onSubmit, isLoading, resetForm, enableReset, defaultValue
                     <ProductImageField errors={errors} setValue={setValue} watch={watch} />
                     <ProductFormFields1 register={register} errors={errors} watch={watch} setValue={setValue} />
                     <ProductFormFields2 register={register} errors={errors} watch={watch} setValue={setValue} composite={composite} />
+
                 </Row>
             )}
         </FormComponent>

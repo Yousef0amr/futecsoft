@@ -26,7 +26,7 @@ const AccordionWithoutExpend = ({ open, location, subItem, handleDrawerOpen, dir
                 <AccordionSummary
                     aria-controls="panel1-content"
                     id="panel1-header"
-                    sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '56px' }, '&:hover': { backgroundColor: 'var(--primary-color)', color: 'white' }, backgroundColor: location === subItem.href || location === subItem.subHref ? 'var(--primary-color)' : 'transparent', color: location === subItem.href || location === subItem.subHref ? 'white' : 'white' }}
+                    sx={{ '.css-cokf1l-MuiListItemIcon-root': { minWidth: open ? '34px' : '50px' }, '&:hover': { backgroundColor: 'var(--primary-color)', color: 'white' }, backgroundColor: location === subItem.href || location === subItem.subHref ? 'var(--primary-color)' : 'transparent', color: location === subItem.href || location === subItem.subHref ? 'white' : 'white' }}
                 >
                     <ListItemIcon style={directionVal === 'rtl' ? { marginRight: open ? '' : '32px' } : { marginLeft: open ? '' : '32px' }}>
                         {<FontAwesomeIcon color='rgba(255, 255, 255, 0.38)' icon={subItem.icon} /> || <InboxIcon />}

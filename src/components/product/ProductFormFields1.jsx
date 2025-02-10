@@ -60,6 +60,7 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
                     UnitID: units
                 }}
             />
+
         </Col>
     );
 };

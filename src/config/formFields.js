@@ -284,6 +284,7 @@ export const invoiceItemsFormFields = [
     { name: 'ItemDiscount', label: AppStrings.taxValue, required: false, type: 'number' },
 ]
 
+
 export const voucherInputFormFields = [
     { name: 'DocID', label: AppStrings.voucherId, required: true, type: 'number', disabled: true },
     { name: 'DocDate', label: AppStrings.date, required: false, type: 'date' },

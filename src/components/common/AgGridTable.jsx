@@ -75,6 +75,7 @@ const AgGridTable = ({ enableActions = true, actions, actionsCellRenderer = Acti
                 domLayout='normal'
                 enableRtl={isRtl}
                 localeText={localeText}
+
             />
         </div>
     );

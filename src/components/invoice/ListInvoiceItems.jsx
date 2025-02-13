@@ -11,6 +11,9 @@ import { defaultVoucherTypes } from '../../config/constants'
 import ListEditComponent from '../common/ListEditComponent'
 import InvoiceItemForm from './InvoiceItemForm';
 import { useInvoicesItemsColDefs } from '../../config/agGridColConfig';
+import TableWithCRUD from '../common/TableWithCRUD'
+import { invoiceItemsGridColumns } from '../../config/formFields'
+import { useGetProductUnitsByIdQuery, useGetStandardAndRawMaterialsQuery } from '../../features/productSlice'
 const ListInvoiceItems = ({ invoice }) => {
     const [quickFilterText, setQuickFilterText] = useState();
     const { defaultActions, handleCancel, active } = useTableActions({ path: null });
@@ -29,6 +32,27 @@ const ListInvoiceItems = ({ invoice }) => {
     }), []);
 
     const [editData, setEditData] = useState(defaultValues);
+    const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
+        invoice.Warehouse ? {
+            Warehouse: invoice.Warehouse,
+            pageNumber: 1,
+            pageSize: 100
+        } : null,
+        {
+            skip: !invoice.Warehouse
+        }
+    );
+    const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
+        productsData ? productsData[0]?.Id : null
+    );
+
+    const units = !isLoadingUnits
+        ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
+        : [];
+
+    const products = !isLoadingProducts
+        ? productsData?.map((item) => ({ value: item.Id, label: item.NameAr }))
+        : [];
 
     useEffect(() => {
         if (isEditing) {
@@ -82,11 +106,14 @@ const ListInvoiceItems = ({ invoice }) => {
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>
             }>
-            <ListEditComponent Form={InvoiceItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
+            {/* <ListEditComponent Form={InvoiceItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
                 ...editData,
                 Vtype: defaultVoucherTypes.invoice,
                 ...invoice
-            }} />
+            }} /> */}
+
+            <TableWithCRUD columns={
+                useInvoicesItemsColDefs({ producs: products, units: units })} initialRows={data} />
         </FormCard>
     )
 }

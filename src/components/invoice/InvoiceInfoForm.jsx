@@ -5,6 +5,7 @@ import InvoiceItemFormFields from './InvoiceItemFormFields';
 import FormComponent from './../common/FormComponent';
 import AppStrings from '../../config/appStrings';
 import { useTranslation } from 'react-i18next';
+
 const InvoiceInfoForm = ({ onSubmit, isLoading, defaultValuesEdit = {}, isAdd = false }) => {
     const { invoiceSchema, invoiceUpdatedSchema } = useValidators();
     const { t } = useTranslation();
@@ -21,6 +22,7 @@ const InvoiceInfoForm = ({ onSubmit, isLoading, defaultValuesEdit = {}, isAdd = 
                             <InvoiceItemFormFields register={register} errors={errors} setValue={setValue} watch={watch} />
                         </>
                     }
+
                 </>
             }
         </FormComponent>

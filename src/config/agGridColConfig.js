@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppStrings from './../config/appStrings';
-import ActiveCellRenderer from '../components/common/ActiveCellRenderer';
+
 import ActiveEditor from '../components/common/ActiveEditor';
 
 
@@ -132,10 +132,6 @@ export const usePricesAndCostsColDefs = () => {
         { field: "Price2", headerName: t(AppStrings.price2), filter: 'agNumberColumnFilter' },
         { field: "Price3", headerName: t(AppStrings.price3), filter: 'agNumberColumnFilter' },
         { field: "Price4", headerName: t(AppStrings.price4), filter: 'agTextColumnFilter' },
-
-        // { field: "DeliveryCost", headerName: t(AppStrings.deliveryCost), filter: 'agTextColumnFilter' },
-        // { field: "DineINCost", headerName: t(AppStrings.dineINCost), filter: 'agTextColumnFilter' },
-        // { field: "TakeawayCost", headerName: t(AppStrings.takeawayCost), filter: 'agTextColumnFilter' },
     ], [t, i18n]);
 };
 
@@ -342,21 +338,89 @@ export const useInvoicesColDefs = () => {
     ], [t]);
 }
 
-export const useInvoicesItemsColDefs = () => {
+export const useInvoicesItemsColDefs = ({
+    producs = [],
+    units = [],
+}) => {
     const { t, i18n } = useTranslation();
 
     return useMemo(() => [
-        { field: "ItemID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
-        { field: i18n.language === 'en' ? "ItemDescEn" : "ItemDescAr", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
-        { field: i18n.language === 'en' ? "UnitDescEn" : "UnitDescAr", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
-        { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
-        { field: "UnitPrice", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
-        { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
-        { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
-        { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
-        { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+
+        {
+            field: 'ItemID',
+            headerName: t(AppStrings.productId),
+            type: 'singleSelect',
+
+            editable: true,
+            valueOptions: producs.map((product) => product.value),
+            getOptionLabel: (value) => {
+                const selectedProduct = producs.find((product) => product.value === value);
+                return selectedProduct ? selectedProduct.label : '';
+            },
+            required: true
+        },
+        {
+            field: 'UnitID',
+            headerName: t(AppStrings.unit),
+            type: 'singleSelect',
+
+            editable: true,
+            valueOptions: units.map((unit) => unit.value),
+            getOptionLabel: (value) => {
+                const selectedUnit = units.find((unit) => unit.value === value);
+                return selectedUnit ? selectedUnit.label : '';
+            },
+            required: true
+        },
+        {
+            field: 'Qty',
+            headerName: t(AppStrings.quantity),
+            type: 'number',
+
+            editable: true,
+            required: true
+        },
+        {
+            field: 'UnitPrice',
+            headerName: t(AppStrings.price),
+            type: 'number',
+
+            editable: true,
+            required: true
+        },
+        {
+            field: 'DiscountPercentage',
+            headerName: t(AppStrings.discount_percentage),
+            type: 'number',
+
+            editable: true,
+            required: false
+        },
+        {
+            field: 'Discount',
+            headerName: t(AppStrings.taxValue),
+            type: 'number',
+
+            editable: true,
+            required: false
+        },
+
     ], [t, i18n]);
 }
+
+// [
+//         { field: "ItemID", headerName: t(AppStrings.productId), filter: 'agTextColumnFilter' },
+//         { field: i18n.language === 'en' ? "ItemDescEn" : "ItemDescAr", headerName: t(i18n.language === 'en' ? AppStrings.productNameEn : AppStrings.productNameAr), filter: 'agTextColumnFilter' },
+//         { field: i18n.language === 'en' ? "UnitDescEn" : "UnitDescAr", headerName: t(i18n.language === 'en' ? AppStrings.unitNameEn : AppStrings.unitNameAr), filter: 'agTextColumnFilter' },
+//         { field: "Qty", headerName: t(AppStrings.quantity), filter: 'agTextColumnFilter' },
+//         { field: "UnitPrice", headerName: t(AppStrings.price), filter: 'agTextColumnFilter' },
+//         { field: "Discount", headerName: t(AppStrings.discount_percentage), filter: 'agTextColumnFilter' },
+//         { field: "Tax", headerName: t(AppStrings.taxValue), filter: 'agTextColumnFilter' },
+//         { field: "SubTotal", headerName: t(AppStrings.subTotal), filter: 'agTextColumnFilter' },
+//         { field: "GrandTotal", headerName: t(AppStrings.grandTotal), filter: 'agTextColumnFilter' },
+//     ]
+
+
 
 
 export const useVoucherInputColDefs = () => {

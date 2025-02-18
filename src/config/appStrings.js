@@ -13,6 +13,7 @@ const AppStrings = {
     units_can_used: 'units_can_used',
     materials_list: 'materials_list',
     try_in_a_while: 'try_in_a_while',
+    opertion_saved: 'opertion_saved',
     print: 'print',
     save: 'save',
     cancel: 'cancel',

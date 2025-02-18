@@ -5,7 +5,7 @@ import FormCard from './FormCard'
 import NavButton from './NavButton'
 import useEntityOperations from '../../hooks/useEntityOperations'
 
-const EditComponent = ({ icon, title, successMessage, errorMessage, isRefetch, editData, path, Form, fetchHook, defaultQuery = {}, optionComponent }) => {
+const EditComponent = ({ composite = false, icon, title, successMessage, errorMessage, isRefetch, editData, path, Form, fetchHook, defaultQuery = {}, optionComponent }) => {
     const { updateEntity, isUpdating, updateEntityInCache, refetch } = fetchHook(defaultQuery)
     const { handleEntityOperation } = useEntityOperations({ updateEntity })
 
@@ -23,7 +23,7 @@ const EditComponent = ({ icon, title, successMessage, errorMessage, isRefetch, e
 
     return (
         <FormCard open={false} icon={icon} title={title} optionComponent={optionComponent} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={path} />}>
-            <Form isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={editData} onSubmit={onSubmit} />
+            <Form composite={composite} isLoading={isUpdating} resetForm={false} enableReset={false} defaultValuesEdit={editData} onSubmit={onSubmit} />
         </FormCard>
     )
 }

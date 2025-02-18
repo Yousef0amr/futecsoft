@@ -18,6 +18,7 @@ export const invoicesApi = createDynamicApi({
     reducerPath: 'invoicesApi',
     baseEndpoint: BASEURL + INVOICES,
     transformData: (data) => transformData(data),
+    active: false
 });
 
 export const invoiceDetailsApi = createApi({
@@ -56,7 +57,7 @@ export const invoiceDetailsApi = createApi({
 
 
 export const {
-    useGetCurrentKeyQuery: useGetCurrentInvoiceKeyQuery,
+    useLazyGetCurrentKeyQuery: useGetCurrentInvoiceKeyQuery,
     useGetAllQuery: useGetInvoicesQuery,
     useAddMutation: useAddInvoiceMutation,
     useUpdateMutation: useUpdateInvoiceMutation,

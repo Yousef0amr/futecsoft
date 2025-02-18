@@ -12,23 +12,20 @@ import { useGetStandardAndRawMaterialsQuery, useGetProductUnitsByIdQuery } from 
 
 import Loader from '../common/Loader'
 import { Button } from 'react-bootstrap'
-const ListInvoiceItems = ({ invoice }) => {
-    const { data, isLoading, addEntity, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useInvoiceItemsManagement({ id: invoice.DocID });
+const ListInvoiceItems = ({ onFirstSubmit, invoice = [] }) => {
     const { data: allUnits } = useUnitManagement();
     const { t, } = useTranslation();
-    const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
-
 
     const [selectedItem, setSelectedItem] = useState(null);
 
     const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
-        invoice.Warehouse ? {
+        invoice?.Warehouse ? {
             Warehouse: invoice.Warehouse,
             pageNumber: 1,
             pageSize: 100
         } : null,
         {
-            skip: !invoice.Warehouse
+            skip: !invoice?.Warehouse
         }
     );
 
@@ -40,7 +37,11 @@ const ListInvoiceItems = ({ invoice }) => {
     );
     const [infoOpen, setInfoOpen] = React.useState(false);
 
-
+    const { data, isLoading, addEntity, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch }
+        = useInvoiceItemsManagement({
+            id: invoice?.DocID
+        });
+    const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
 
     const units = !isLoadingUnits
         ? allUnits?.map((item) => ({ value: item.UnitID, label: item.Unit_AR }))
@@ -53,9 +54,14 @@ const ListInvoiceItems = ({ invoice }) => {
     const onSubmit = async (data) => {
         const operationType = data.isNew ? "add" : "update";
         setInfoOpen(false);
+
+        const invoiceData = { ...invoice, UnitPrice: data.UnitPrice, Qty: data.Qty, ItemId: data.ItemID, Unit: data.UnitID, ItemDiscountPercentage: data.DiscountPercentage, ItemDiscount: data.Discount }
+        if (data.id === 0) {
+            return await onFirstSubmit(invoiceData)
+        }
         return await handleEntityOperation({
             operation: operationType,
-            data: { ...invoice, UnitPrice: data.UnitPrice, Qty: data.Qty, ItemId: data.ItemID, Unit: data.UnitID, ItemDiscountPercentage: data.DiscountPercentage, ItemDiscount: data.Discount },
+            data: invoiceData,
             cacheUpdater: refetch,
             successMessage: operationType === "update"
                 ? AppStrings.product_updated_successfully
@@ -91,6 +97,7 @@ const ListInvoiceItems = ({ invoice }) => {
     return (
         <FormCard icon={faBarcode} title={t(AppStrings.list_products)} >
             {!isLoadingProducts && <TableWithCRUD
+
                 info={
                     infoOpen && <div className='fs-6 d-flex align-items-center  gap-2'>
                         <p className='mb-0'>
@@ -114,7 +121,14 @@ const ListInvoiceItems = ({ invoice }) => {
                 handleOnDeleteClick={handleOnDeleteClick}
                 onSubmit={onSubmit}
                 columns={columns}
-                initialRows={data} />}
+                initialRows={data ? data : [{
+                    ItemID: "",
+                    UnitID: "",
+                    Qty: 0,
+                    UnitPrice: 0,
+                    DiscountPercentage: 0,
+                    Discount: 0
+                }]} />}
         </FormCard>
     )
 }

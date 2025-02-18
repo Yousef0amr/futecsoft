@@ -84,7 +84,10 @@ const AddComponent = () => {
 
     return (
         <FormCard open={active.isOpen} handleDelete={handleOnDeleteClick} handleCancel={handleCancel} isLoading={isDeleting}
-            icon={faBarcode} title={t(AppStrings.list_components)} navButton={<NavButton icon={faArrowRight} title={AppStrings.back} path={routes.product.compositeComponents} />} optionComponent={
+            icon={faBarcode} title={t(AppStrings.list_components)} navButton={
+                location.pathname === routes.product.compositeComponents ?
+                    <NavButton icon={faArrowRight} title={AppStrings.back} path={routes.product.compositeComponents} /> : null
+            } optionComponent={
                 <>
                     <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
                 </>

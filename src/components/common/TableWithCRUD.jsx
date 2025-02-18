@@ -15,19 +15,11 @@ import {
 } from '@mui/x-data-grid';
 import { enUS, arSD } from '@mui/x-data-grid/locales';
 import { useTranslation } from 'react-i18next';
-import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
-import { prefixer } from 'stylis';
-import rtlPlugin from 'stylis-plugin-rtl';
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
 import AppStrings from '../../config/appStrings';
 import DialogModel from './DialogModel';
 import DeleteComponent from './DeleteComponent';
 
-const cacheRtl = createCache({
-    key: 'data-grid-rtl-demo',
-    stylisPlugins: [prefixer, rtlPlugin],
-});
+
 function EditToolbar(props) {
     const { t, i18n } = useTranslation()
     const { columns, id, setRows, setRowModesModel } = props;
@@ -60,7 +52,7 @@ function EditToolbar(props) {
                 <GridToolbarQuickFilter />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Button className='d-flex align-items-center gap-2' variant='outlined'
+                <Button variant='outlined'
                     sx={{
                         textTransform: "capitalize ",
                         backgroundColor: 'var(--border-color-1)',
@@ -86,21 +78,12 @@ export default function TableWithCRUD({
     isDeleting, isLoading, info, setInfoOpen
 }) {
     const { t, i18n } = useTranslation()
-    const existingTheme = useTheme();
-    const [rows, setRows] = React.useState({});
+    const [rows, setRows] = React.useState([]);
     const [rowModesModel, setRowModesModel] = React.useState({});
     const [open, setOpen] = React.useState({
         data: null,
         isOpen: false
     });
-
-    const theme = React.useMemo(
-        () =>
-            createTheme({}, arSD, existingTheme, {
-                direction: 'rtl',
-            }),
-        [existingTheme],
-    );
 
     const handleRowEditStop = (params, event) => {
         if (params.reason === GridRowEditStopReasons.rowFocusOut) {
@@ -109,7 +92,7 @@ export default function TableWithCRUD({
     };
 
     React.useEffect(() => {
-        if (initialRows) {
+        if (initialRows && Array.isArray(initialRows)) {
             setRows(initialRows.map((row, index) => ({ ...row, id: index })));
         }
     }, [initialRows]);
@@ -177,115 +160,112 @@ export default function TableWithCRUD({
         })
     }
 
-
-
     return (
+        <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'} style={{ height: 500, width: '100%' }}>
+            <DataGrid
+                rowCount={rows.length}
+                paginationMode="server"
+                rows={rows}
+                density="compact"
+                autosizeOptions={{
+                    includeHeaders: true,
+                    includeFooter: true,
+                    columns: columns.map(col => col.field),
+                }}
+                sx={{
+                    '& .MuiDataGrid-cell': {
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
 
-        <CacheProvider value={cacheRtl}>
-            <ThemeProvider theme={theme}>
-                <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'} style={{ height: 500, width: '100%' }}>
-                    <DataGrid
+                    },
+                    '& .MuiDataGrid-columnHeader': {
+                        justifyContent: 'center',
 
-                        rows={rows}
-                        density="compact"
-                        autosizeOptions={{
-                            includeHeaders: true,
-                            includeFooter: true,
-                            columns: columns.map(col => col.field),
-                        }}
-                        sx={{
-                            '& .MuiDataGrid-cell': {
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
+                    },
+                }}
 
-                            },
-                            '& .MuiDataGrid-columnHeader': {
-                                justifyContent: 'center',
+                columns={[
+                    {
+                        field: 'actions',
+                        type: 'actions',
+                        headerName: t(AppStrings.actions),
+                        width: 200,
+                        align: 'center',
+                        getActions: (data) => {
+                            const isInEditMode = rowModesModel[data.id]?.mode === GridRowModes.Edit;
 
-                            },
-                        }}
-                        columns={[
-                            {
-                                field: 'actions',
-                                type: 'actions',
-                                headerName: t(AppStrings.actions),
-                                width: 200,
-                                align: 'center',
-                                getActions: (data) => {
-                                    const isInEditMode = rowModesModel[data.id]?.mode === GridRowModes.Edit;
+                            if (isInEditMode) {
+                                return [
+                                    <GridActionsCellItem
+                                        icon={<SaveIcon />}
+                                        label="Save"
+                                        sx={{ color: 'primary.main' }}
+                                        onClick={handleSaveClick(data)}
+                                    />,
+                                    <GridActionsCellItem
+                                        icon={<CancelIcon />}
+                                        label="Cancel"
+                                        className="textPrimary"
+                                        onClick={handleCancelClick(data.id)}
+                                        color="inherit"
+                                    />,
+                                ];
+                            }
 
-                                    if (isInEditMode) {
-                                        return [
-                                            <GridActionsCellItem
-                                                icon={<SaveIcon />}
-                                                label="Save"
-                                                sx={{ color: 'primary.main' }}
-                                                onClick={handleSaveClick(data)}
-                                            />,
-                                            <GridActionsCellItem
-                                                icon={<CancelIcon />}
-                                                label="Cancel"
-                                                className="textPrimary"
-                                                onClick={handleCancelClick(data.id)}
-                                                color="inherit"
-                                            />,
-                                        ];
-                                    }
+                            return [
+                                <GridActionsCellItem
+                                    icon={<EditIcon />}
+                                    label="Edit"
+                                    className="textPrimary"
+                                    onClick={handleEditClick(data.id)}
+                                    color="inherit"
+                                />,
+                                <GridActionsCellItem
+                                    icon={<DeleteIcon />}
+                                    label="Delete"
+                                    onClick={() => handleOpen(data)}
+                                    color="inherit"
+                                />,
+                            ];
+                        },
+                    },
+                ].concat(columns)}
+                editMode="row"
+                localeText={
+                    i18n.language === 'en' ? enUS.components.MuiDataGrid.defaultProps.localeText : arSD.components.MuiDataGrid.defaultProps.localeText
+                }
+                rowModesModel={rowModesModel}
+                onRowModesModelChange={handleRowModesModelChange}
+                onRowEditStop={handleRowEditStop}
+                processRowUpdate={processRowUpdate}
+                slots={{
+                    toolbar: EditToolbar
+                }}
 
-                                    return [
-                                        <GridActionsCellItem
-                                            icon={<EditIcon />}
-                                            label="Edit"
-                                            className="textPrimary"
-                                            onClick={handleEditClick(data.id)}
-                                            color="inherit"
-                                        />,
-                                        <GridActionsCellItem
-                                            icon={<DeleteIcon />}
-                                            label="Delete"
-                                            onClick={() => handleOpen(data)}
-                                            color="inherit"
-                                        />,
-                                    ];
-                                },
-                            },
-                        ].concat(columns)}
-                        editMode="row"
-                        localeText={
-                            i18n.language === 'en' ? enUS.components.MuiDataGrid.defaultProps.localeText : arSD.components.MuiDataGrid.defaultProps.localeText
-                        }
-                        rowModesModel={rowModesModel}
-                        onRowModesModelChange={handleRowModesModelChange}
-                        onRowEditStop={handleRowEditStop}
-                        processRowUpdate={processRowUpdate}
-                        slots={{
-                            toolbar: EditToolbar
-                        }}
-                        loading={isLoading}
-                        slotProps={{
-                            toolbar: {
-                                setRows,
-                                setRowModesModel,
-                                id: rows.length,
-                                info,
-                                showQuickFilter: true,
-                                columns: columns.map((column) => ({
-                                    field: column.field
-                                })),
+                loading={isLoading}
+                slotProps={{
+                    toolbar: {
+                        setRows,
+                        setRowModesModel,
+                        id: rows.length,
+                        info,
+                        showQuickFilter: true,
+                        columns: columns.map((column) => ({
+                            field: column.field
+                        })),
 
-                            },
-                        }}
-                    />
-                    <DialogModel open={open.isOpen}    >
-                        <DeleteComponent
-                            handleDelete={handleDeleteClick}
-                            handleCancel={handleClose}
-                            isLoading={isDeleting}
-                        />
-                    </DialogModel>
-                </div>
-            </ThemeProvider>
-        </CacheProvider>
+                    },
+                }}
+            />
+            <DialogModel open={open.isOpen}    >
+                <DeleteComponent
+                    handleDelete={handleDeleteClick}
+                    handleCancel={handleClose}
+                    isLoading={isDeleting}
+                />
+            </DialogModel>
+        </div>
+
     );
 }

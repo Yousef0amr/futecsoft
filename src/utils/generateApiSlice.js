@@ -3,7 +3,7 @@ import convertToFormData from './../utils/convertToFormData.js';
 import getCookie from './../utils/getCookie.js';
 import { longCacheTime } from '../config/constants.js';
 
-const createDynamicApi = ({ reducerPath, baseEndpoint, transformData }) => {
+const createDynamicApi = ({ active = true, reducerPath, baseEndpoint, transformData }) => {
     const api = createApi({
         reducerPath,
         baseQuery: fetchBaseQuery({
@@ -19,7 +19,7 @@ const createDynamicApi = ({ reducerPath, baseEndpoint, transformData }) => {
                     query: () => ({
                         url: '/GetCurrentKey',
                     }),
-                    providesTags: [`${reducerPath}_id`],
+                    providesTags: active ? [`${reducerPath}_id`] : null,
                     transformResponse: (response) => response.Response,
                 }),
                 getAll: builder.query({
@@ -46,7 +46,7 @@ const createDynamicApi = ({ reducerPath, baseEndpoint, transformData }) => {
                         try {
                             const { data: responseData } = await queryFulfilled;
                             if (responseData?.Success) {
-                                dispatch(api.util.invalidateTags([`${reducerPath}_id`]));
+                                active && dispatch(api.util.invalidateTags([`${reducerPath}_id`]));
                             }
                         } catch (error) {
                             return error;

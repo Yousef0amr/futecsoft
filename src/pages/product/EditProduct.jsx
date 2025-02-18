@@ -7,25 +7,36 @@ import ProductForm from '../../components/product/ProductForm'
 import EditComponent from '../../components/common/EditComponent'
 import useProductManagement from '../../hook/useProductManagement'
 import { routes } from '../../config/constants'
+import AddComponent from './AddComponent'
 
 
 const EditProduct = () => {
     const location = useLocation()
     const { t } = useTranslation();
 
+
+    console.log(location)
     return (
-        <EditComponent
-            errorMessage={AppStrings.something_went_wrong}
-            successMessage={AppStrings.product_updated_successfully}
-            isRefetch={true}
-            fetchHook={useProductManagement}
-            defaultQuery={location.state.tab}
-            icon={faBarcode}
-            title={t(AppStrings.edit_product) + '  | ' + location.state.Id}
-            path={routes.product.list}
-            Form={ProductForm}
-            editData={{ ...location.state, Icon: location.state.ImgPath ? location.state.ImgPath : 'لا يوجد صورة', Father: location.state.CatID, Warehouse: location.state.Tag.split(',') }}
-        />
+        <>
+            <EditComponent
+                errorMessage={AppStrings.something_went_wrong}
+                successMessage={AppStrings.product_updated_successfully}
+                isRefetch={true}
+                fetchHook={useProductManagement}
+                defaultQuery={location.state.tab}
+                icon={faBarcode}
+                title={t(AppStrings.edit_product) + '  | ' + location.state.Id}
+                path={routes.product.list}
+                Form={ProductForm}
+                composite={location.state.tab === "Composite"}
+                editData={{ ...location.state, Icon: location.state.ImgPath ? location.state.ImgPath : 'لا يوجد صورة', Father: location.state.CatID, Warehouse: location.state.Tag.split(',') }}
+            />
+            {location.state.tab === "Composite" &&
+                <div className='mt-4'>
+                    <AddComponent />
+                </div>
+            }
+        </>
     )
 }
 

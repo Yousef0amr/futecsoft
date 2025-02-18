@@ -137,15 +137,15 @@ const SelectMenu = ({
                     if (multiple) {
                         return selected.length === 0 ? t(AppStrings.choose) : selected.map(val => options.find(opt => opt.value === val)?.label).join(', ');
                     }
-                    const valueSelected = options.find(opt => opt.value === selected)
-                    return typeof valueSelected === 'string' ? valueSelected : valueSelected?.label.toString();
+                    const valueSelected = options.find(opt => +opt.value === +selected)
+                    return valueSelected?.label;
                 }}
             >
 
                 <MenuItem>
 
                     <input
-                        fullWidth
+
                         placeholder={t(`${AppStrings.search}`)}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}

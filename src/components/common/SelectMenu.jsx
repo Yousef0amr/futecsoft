@@ -135,9 +135,9 @@ const SelectMenu = ({
                 }}
                 renderValue={(selected) => {
                     if (multiple) {
-                        return selected.length === 0 ? t(`${AppStrings.choose}`) : selected.map(val => options.find(opt => opt.value === val)?.label).join(', ');
+                        return selected.length === 0 ? t(AppStrings.choose) : selected.map(val => options.find(opt => opt.value === val)?.label).join(', ');
                     }
-                    return options.find(opt => opt.value === selected)?.label || t(`${AppStrings.choose}`);
+                    return selected ? options.find(opt => opt.value === selected.toString())?.label : t(AppStrings.choose);
                 }}
             >
 

@@ -543,11 +543,11 @@ export const useDefaultOutputType = () => {
         [
             {
                 label: t(AppStrings.normal_output),
-                value: -1
+                value: "-1"
             },
             {
                 label: t(AppStrings.damaged),
-                value: 1
+                value: "1"
             },
         ]
     )

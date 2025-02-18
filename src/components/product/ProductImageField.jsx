@@ -1,13 +1,22 @@
 import React from 'react'
-import { Col } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import BrowserImage from '../common/BrowserImage'
-import { productImageField } from '../../config/formFields'
+import { productImageField, productFormFields } from '../../config/formFields'
+import FormFieldsComponent from '../common/FormFieldsComponent'
 
-const ProductImageField = ({ errors, setValue, watch }) => {
+
+const ProductImageField = ({ errors, setValue, watch, register }) => {
 
     return (
-        <Col lg={12} >
-            <BrowserImage errors={errors} setValue={setValue} field={productImageField} watch={watch} />
+        <Col xs={12}  >
+            <Row >
+                <Col xs={12} md={6} >
+                    <BrowserImage errors={errors} setValue={setValue} field={productImageField} watch={watch} />
+                </Col>
+                <Col xs={12} md={6} >
+                    <FormFieldsComponent errors={errors} register={register} setValue={setValue} watch={watch} fields={productFormFields} />
+                </Col>
+            </Row>
         </Col>
     )
 }

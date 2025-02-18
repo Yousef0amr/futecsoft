@@ -282,7 +282,6 @@ html,
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .file-upload-form {
@@ -344,11 +343,9 @@ html,
 }
 
 .uploaded-image-preview {
-  max-height: 150px;
-  margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
-
+  max-height: 100px;
 }
 
 .select-menu {

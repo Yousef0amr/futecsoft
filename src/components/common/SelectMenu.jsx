@@ -137,7 +137,8 @@ const SelectMenu = ({
                     if (multiple) {
                         return selected.length === 0 ? t(AppStrings.choose) : selected.map(val => options.find(opt => opt.value === val)?.label).join(', ');
                     }
-                    return selected ? options.find(opt => opt.value === selected.toString())?.label : t(AppStrings.choose);
+                    const valueSelected = options.find(opt => opt.value === selected)
+                    return typeof valueSelected === 'string' ? valueSelected : valueSelected?.label.toString();
                 }}
             >
 

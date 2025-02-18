@@ -50,18 +50,14 @@ const ProductFormFields1 = ({ register, errors, watch, setValue }) => {
     };
 
     return (
-        <Col>
-            <FormFieldsComponent errors={errors} register={register} setValue={setValue} watch={watch} fields={productFormFields} />
-            <FormFieldsComponent errors={errors} register={register} setValue={setValue} watch={watch} triggerEvent={onSelectChange} fields={productSelectFormFields} options={
-                {
-                    Warehouse: branches,
-                    Father: categories,
-                    TaxPercentage: taxes,
-                    UnitID: units
-                }}
-            />
-
-        </Col>
+        <FormFieldsComponent errors={errors} register={register} setValue={setValue} watch={watch} triggerEvent={onSelectChange} fields={productSelectFormFields} options={
+            {
+                Warehouse: branches,
+                Father: categories,
+                TaxPercentage: taxes,
+                UnitID: units
+            }}
+        />
     );
 };
 

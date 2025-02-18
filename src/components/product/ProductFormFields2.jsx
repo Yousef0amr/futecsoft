@@ -4,6 +4,7 @@ import InputField from '../common/InputFiled'
 import CheckBox from '../common/CheckBox'
 import { productCheckFormFields, productPriceFormFields } from '../../config/formFields'
 import FormFieldsComponent from '../common/FormFieldsComponent'
+import ProductFormFields1 from './ProductFormFields1';
 
 const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) => {
 
@@ -14,23 +15,31 @@ const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) =>
         });
     }, [priceChange, setValue]);
     return (
-        <Col>
-            <FormFieldsComponent fields={productPriceFormFields} setValue={setValue} errors={errors} register={register} watch={watch} />
+        <Col >
+            <Row >
+                <Col>
+                    <FormFieldsComponent fields={productPriceFormFields} setValue={setValue} errors={errors} register={register} watch={watch} />
+                </Col>
+                <Col>
+                    <ProductFormFields1 register={register} errors={errors} watch={watch} setValue={setValue} />
+                </Col>
+            </Row>
             <Row className=''>
                 {productCheckFormFields.map((field) => (
 
                     <Col xs={12} md={6} key={field.name}>
                         {
                             field.name === 'PreparationTime' && composite ?
-                                <InputField
-                                    name={field.name}
-                                    label={field.label}
-                                    register={register}
-                                    errors={errors}
-                                    required={field.required}
-                                    type={field.type}
-                                    min={0}
-                                /> : field.name === 'PreparationTime' && !composite ?
+                                <div className='mt-1'>
+                                    <InputField
+                                        name={field.name}
+                                        label={field.label} s
+                                        register={register}
+                                        errors={errors}
+                                        required={field.required}
+                                        type={field.type}
+                                        min={0}
+                                    />    </div> : field.name === 'PreparationTime' && !composite ?
                                     null : <CheckBox
                                         label={field.label}
                                         isChecked={watch(field.name)}

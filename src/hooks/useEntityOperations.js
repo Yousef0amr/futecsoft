@@ -33,11 +33,13 @@ const useEntityOperations = ({ addEntity = () => { }, updateEntity = () => { }, 
             if (result?.Success) {
                 cacheUpdater && cacheUpdater(data);
                 success(t(successMessage));
+                return result;
             } else {
                 throw new Error(result?.Success);
             }
         } catch (e) {
             error(t(errorMessage));
+            return e;
         } finally {
             finalCallback && finalCallback();
         }

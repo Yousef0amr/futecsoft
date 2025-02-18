@@ -1,89 +1,120 @@
 import React from 'react'
-import { useMemo, useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AppStrings from '../../config/appStrings'
 import { useVoucherTransferItemsManagement } from '../../hook/useVoucherTransferManagement'
 import useEntityOperations from '../../hooks/useEntityOperations'
-import useTableActions from '../../hooks/useTableActions'
 import { faTruck } from '@fortawesome/free-solid-svg-icons'
 import FormCard from '../common/FormCard'
-import FilterSearch from '../common/FilterSearch'
-import ListEditComponent from '../common/ListEditComponent'
-import VoucherTransferItemForm from './VoucherTransferItemForm'
 import { useVoucherItemsColDefs } from '../../config/agGridColConfig'
-
+import TableWithCRUD from '../common/TableWithCRUD'
+import { useGetStandardAndRawMaterialsQuery, useGetProductUnitsByIdQuery } from '../../features/productSlice'
+import useUnitManagement from '../../hook/useUnitManagement'
+import Loader from '../common/Loader';
+import { Button } from 'react-bootstrap';
 
 const ListVoucherTransferItem = ({ voucher }) => {
-    const [quickFilterText, setQuickFilterText] = useState();
-    const { defaultActions, handleCancel, active } = useTableActions({ path: null });
-    const { data, isLoading, addEntity, isAdding, isUpdating, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useVoucherTransferItemsManagement({ id: voucher.DocNo });
+    const { data, isLoading, addEntity, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useVoucherTransferItemsManagement({ id: voucher.DocNo });
     const { t } = useTranslation();
     const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
-    const isEditing = active.editable;
+    const { data: allUnits } = useUnitManagement();
 
-    const defaultValues = useMemo(() => ({
-        ItemID: '',
-        Unit: '',
-        Qty: '',
-        Cost: '',
-    }), []);
 
-    const [editData, setEditData] = useState(defaultValues);
-    console.log(editData)
-    useEffect(() => {
-        if (isEditing) {
-            setEditData({
-                ItemID: active?.data?.ItemID,
-                Unit: active?.data?.UnitID,
-                Qty: active?.data?.Qty,
-                Cost: active?.data?.Cost,
-            });
-        } else {
-            setEditData(defaultValues);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
+        voucher.FromWarehouse ? {
+            Warehouse: voucher.FromWarehouse,
+            pageNumber: 1,
+            pageSize: 100
+        } : null,
+        {
+            skip: !voucher.FromWarehouse
         }
-    }, [isEditing, active, voucher, defaultValues]);
+    );
+
+    const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
+        selectedItem ? selectedItem : null,
+        {
+            skip: !selectedItem
+        }
+    );
+    const [infoOpen, setInfoOpen] = React.useState(false);
+
+
+
+    const units = !isLoadingUnits
+        ? allUnits?.map((item) => ({ value: item.UnitID, label: item.Unit_AR }))
+        : [];
+
+    const products = !isLoadingProducts
+        ? productsData?.map((item) => ({ value: item.Id, label: item.NameAr }))
+        : [];
 
     const onSubmit = async (data) => {
-        const operationType = isEditing ? "update" : "add";
-        await handleEntityOperation({
+        const operationType = data.isNew ? "add" : "update";
+        setInfoOpen(false);
+        return await handleEntityOperation({
             operation: operationType,
-            data,
+            data: { ...voucher, Cost: data.Cost, Qty: data.Qty, ItemId: data.ItemID, Unit: data.UnitID },
             cacheUpdater: refetch,
-            successMessage: isEditing
+            successMessage: operationType === "update"
                 ? AppStrings.product_updated_successfully
                 : AppStrings.product_added_successfully,
-            errorMessage: isEditing
+            errorMessage: operationType === "add"
                 ? AppStrings.something_went_wrong
                 : AppStrings.material_already_added,
         });
     };
 
-    const handleOnDeleteClick = async () => {
-        handleEntityOperation({
+    const handleOnDeleteClick = async (data) => {
+        return await handleEntityOperation({
             operation: "delete",
-            data: { ItemID: active.data.ItemID, DocNo: active.data.DocNo, Unit: active.data.UnitID },
-            cacheUpdater: deleteEntityFromCache(active.data.ItemID),
+            data: { ItemID: data.ItemID, DocNo: data.DocNo, Unit: data.UnitID },
+            cacheUpdater: deleteEntityFromCache(data.ItemID),
             successMessage: AppStrings.product_deleted_successfully,
             errorMessage: AppStrings.something_went_wrong,
-            finalCallback: handleCancel
         })
     };
 
-    const handleAddClick = () => {
-        handleCancel();
-        localStorage.removeItem("selectedRows");
+
+    const columns = useVoucherItemsColDefs({
+        products, units, getSelectedVaule: (value) => {
+            setSelectedItem(value);
+            setInfoOpen(true);
+        }
+    })
+
+    if (isLoadingProducts) {
+        return <Loader />;
     }
     return (
-        <FormCard open={active.isOpen} handleDelete={handleOnDeleteClick} handleCancel={handleCancel} isLoading={isDeleting}
-            icon={faTruck} title={t(AppStrings.list_products)} optionComponent={
-                <>
-                    <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
-                </>
-            }>
-            <ListEditComponent Form={VoucherTransferItemForm} useColDefs={useVoucherItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
-                ...editData,
-                ...voucher
-            }} />
+        <FormCard icon={faTruck} title={t(AppStrings.list_products)} >
+            {!isLoadingProducts && <TableWithCRUD
+                info={
+                    infoOpen && <div className='fs-6 d-flex align-items-center  gap-2'>
+                        <p className='mb-0'>
+                            {
+                                t(AppStrings.units_can_used)
+                            }
+                        </p>
+                        <div className='d-flex gap-2'>
+                            {
+                                unitsData?.map((item) =>
+                                    <Button disabled classsName='fw-bold fs-6' variant='danger' size='sm' key={item.UnitId
+                                    }>{item.UnitAr}</Button>
+                                )
+                            }
+                        </div>
+                    </div>
+                }
+                setInfoOpen={setInfoOpen}
+                isLoading={isLoading}
+                isDeleting={isDeleting}
+                handleOnDeleteClick={handleOnDeleteClick}
+                onSubmit={onSubmit}
+                columns={columns}
+                initialRows={data} />}
         </FormCard>
     )
 }

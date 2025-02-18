@@ -1,37 +1,26 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { faBarcode } from '@fortawesome/free-solid-svg-icons'
 import AppStrings from '../../config/appStrings'
-import useTableActions from '../../hooks/useTableActions'
 import { useTranslation } from 'react-i18next'
 import useEntityOperations from '../../hooks/useEntityOperations'
-import FilterSearch from '../common/FilterSearch'
 import FormCard from '../common/FormCard'
 import { useInvoiceItemsManagement } from '../../hook/useInvoiceManagement'
-import { defaultVoucherTypes } from '../../config/constants'
-import ListEditComponent from '../common/ListEditComponent'
-import InvoiceItemForm from './InvoiceItemForm';
+import useUnitManagement from '../../hook/useUnitManagement'
 import { useInvoicesItemsColDefs } from '../../config/agGridColConfig';
 import TableWithCRUD from '../common/TableWithCRUD'
-import { invoiceItemsGridColumns } from '../../config/formFields'
-import { useGetProductUnitsByIdQuery, useGetStandardAndRawMaterialsQuery } from '../../features/productSlice'
+import { useGetStandardAndRawMaterialsQuery, useGetProductUnitsByIdQuery } from '../../features/productSlice'
+
+import Loader from '../common/Loader'
+import { Button } from 'react-bootstrap'
 const ListInvoiceItems = ({ invoice }) => {
-    const [quickFilterText, setQuickFilterText] = useState();
-    const { defaultActions, handleCancel, active } = useTableActions({ path: null });
-    const { data, isLoading, addEntity, isAdding, isUpdating, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useInvoiceItemsManagement({ id: invoice.DocID });
-    const { t } = useTranslation();
+    const { data, isLoading, addEntity, updateEntity, deleteEntityFromCache, deleteEntity, isDeleting, refetch } = useInvoiceItemsManagement({ id: invoice.DocID });
+    const { data: allUnits } = useUnitManagement();
+    const { t, } = useTranslation();
     const { handleEntityOperation } = useEntityOperations({ addEntity, updateEntity, deleteEntity });
-    const isEditing = active.editable;
 
-    const defaultValues = useMemo(() => ({
-        ItemId: '',
-        Unit: '',
-        Qty: '',
-        UnitPrice: '',
-        ItemDiscountPercentage: 0,
-        ItemDiscount: 0
-    }), []);
 
-    const [editData, setEditData] = useState(defaultValues);
+    const [selectedItem, setSelectedItem] = useState(null);
+
     const { data: productsData, isLoading: isLoadingProducts } = useGetStandardAndRawMaterialsQuery(
         invoice.Warehouse ? {
             Warehouse: invoice.Warehouse,
@@ -42,80 +31,94 @@ const ListInvoiceItems = ({ invoice }) => {
             skip: !invoice.Warehouse
         }
     );
+
     const { data: unitsData, isLoading: isLoadingUnits } = useGetProductUnitsByIdQuery(
-        productsData ? productsData[0]?.Id : null
+        selectedItem ? selectedItem : null,
+        {
+            skip: !selectedItem
+        }
     );
+    const [infoOpen, setInfoOpen] = React.useState(false);
+
+
 
     const units = !isLoadingUnits
-        ? unitsData?.map((item) => ({ value: item.UnitId, label: item.UnitAr }))
+        ? allUnits?.map((item) => ({ value: item.UnitID, label: item.Unit_AR }))
         : [];
 
     const products = !isLoadingProducts
         ? productsData?.map((item) => ({ value: item.Id, label: item.NameAr }))
         : [];
 
-    useEffect(() => {
-        if (isEditing) {
-            setEditData({
-                ItemId: active?.data?.ItemID,
-                Unit: active?.data?.UnitID,
-                Qty: active?.data?.Qty,
-                UnitPrice: active?.data?.UnitPrice,
-                ItemDiscountPercentage: active?.data?.DiscountPercentage,
-                ItemDiscount: active?.data?.Discount,
-            });
-        } else {
-            setEditData(defaultValues);
-        }
-    }, [isEditing, active, invoice, defaultValues]);
-
     const onSubmit = async (data) => {
-        const operationType = isEditing ? "update" : "add";
-        await handleEntityOperation({
+        const operationType = data.isNew ? "add" : "update";
+        setInfoOpen(false);
+        return await handleEntityOperation({
             operation: operationType,
-            data,
+            data: { ...invoice, UnitPrice: data.UnitPrice, Qty: data.Qty, ItemId: data.ItemID, Unit: data.UnitID, ItemDiscountPercentage: data.DiscountPercentage, ItemDiscount: data.Discount },
             cacheUpdater: refetch,
-            successMessage: isEditing
+            successMessage: operationType === "update"
                 ? AppStrings.product_updated_successfully
                 : AppStrings.product_added_successfully,
-            errorMessage: isEditing
+            errorMessage: operationType === "add"
                 ? AppStrings.something_went_wrong
                 : AppStrings.material_already_added,
         });
     };
 
-    const handleOnDeleteClick = async () => {
-        handleEntityOperation({
+    const handleOnDeleteClick = async (data) => {
+        return await handleEntityOperation({
             operation: "delete",
-            data: { ItemId: active.data.ItemID, DocID: active.data.DocID, Warehouse: invoice.Warehouse, Unit: active.data.UnitID },
-            cacheUpdater: deleteEntityFromCache(active.data.ItemID),
+            data: { ItemId: data.ItemID, DocID: invoice.DocID, Warehouse: invoice.Warehouse, Unit: data.UnitID },
+            cacheUpdater: deleteEntityFromCache(data.ItemID),
             successMessage: AppStrings.product_deleted_successfully,
             errorMessage: AppStrings.something_went_wrong,
-            finalCallback: handleCancel
         })
     };
 
-    const handleAddClick = () => {
-        handleCancel();
-        localStorage.removeItem("selectedRows");
-    }
-    return (
-        <FormCard open={active.isOpen} handleDelete={handleOnDeleteClick} handleCancel={handleCancel} isLoading={isDeleting}
-            icon={faBarcode} title={t(AppStrings.list_products)} optionComponent={
-                <>
-                    <FilterSearch onFilterTextBoxChanged={setQuickFilterText} />
-                </>
-            }>
-            {/* <ListEditComponent Form={InvoiceItemForm} useColDefs={useInvoicesItemsColDefs} isEditing={isEditing} handleAddClick={handleAddClick} resetForm={isAdding} actionLoading={isEditing ? isUpdating : isAdding} onSubmit={onSubmit} data={data} isLoading={isLoading} actions={defaultActions} quickFilterText={quickFilterText} defaultValuesEdit={{
-                ...editData,
-                Vtype: defaultVoucherTypes.invoice,
-                ...invoice
-            }} /> */}
 
-            <TableWithCRUD columns={
-                useInvoicesItemsColDefs({ producs: products, units: units })} initialRows={data} />
+    const columns = useInvoicesItemsColDefs({
+        products, units, getSelectedVaule: (value) => {
+            setSelectedItem(value);
+            setInfoOpen(true);
+        }
+    })
+
+    if (isLoadingProducts) {
+        return <Loader />;
+    }
+
+    return (
+        <FormCard icon={faBarcode} title={t(AppStrings.list_products)} >
+            {!isLoadingProducts && <TableWithCRUD
+                info={
+                    infoOpen && <div className='fs-6 d-flex align-items-center  gap-2'>
+                        <p className='mb-0'>
+                            {
+                                t(AppStrings.units_can_used)
+                            }
+                        </p>
+                        <div className='d-flex gap-2'>
+                            {
+                                unitsData?.map((item) =>
+                                    <Button disabled classsName='fw-bold fs-6' variant='danger' size='sm' key={item.UnitId
+                                    }>{item.UnitAr}</Button>
+                                )
+                            }
+                        </div>
+                    </div>
+                }
+                setInfoOpen={setInfoOpen}
+                isLoading={isLoading}
+                isDeleting={isDeleting}
+                handleOnDeleteClick={handleOnDeleteClick}
+                onSubmit={onSubmit}
+                columns={columns}
+                initialRows={data} />}
         </FormCard>
     )
 }
 
 export default ListInvoiceItems
+
+

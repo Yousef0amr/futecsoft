@@ -10,6 +10,7 @@ const AppStrings = {
     password_required: 'password_required',
     sign_to_your_account: 'sign_to_your_account',
     add_new_component: 'add_new_component',
+    units_can_used: 'units_can_used',
     materials_list: 'materials_list',
     try_in_a_while: 'try_in_a_while',
     print: 'print',

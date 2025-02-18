@@ -16,7 +16,7 @@ const ProductFormFields2 = ({ register, errors, watch, setValue, composite }) =>
     }, [priceChange, setValue]);
     return (
         <Col >
-            <Row >
+            <Row xs={1} lg={2} >
                 <Col>
                     <FormFieldsComponent fields={productPriceFormFields} setValue={setValue} errors={errors} register={register} watch={watch} />
                 </Col>

@@ -10,6 +10,7 @@ const useEntityOperations = ({ addEntity = () => { }, updateEntity = () => { }, 
         operation,
         data,
         cacheUpdater,
+        cacheData,
         successMessage,
         errorMessage,
         finalCallback = () => { }
@@ -31,7 +32,7 @@ const useEntityOperations = ({ addEntity = () => { }, updateEntity = () => { }, 
             }
 
             if (result?.Success) {
-                cacheUpdater && cacheUpdater(data);
+                cacheUpdater && cacheUpdater(cacheData);
                 success(t(successMessage));
                 return result;
             } else {

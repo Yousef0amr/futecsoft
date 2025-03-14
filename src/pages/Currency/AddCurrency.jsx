@@ -18,7 +18,8 @@ const AddCurrency = () => {
         handleEntityOperation({
             operation: 'add',
             data,
-            cacheUpdater: addEntityToCache(data),
+            cacheUpdater: addEntityToCache,
+            cacheData: data,
             successMessage: AppStrings.currency_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })

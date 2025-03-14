@@ -21,7 +21,8 @@ const AddTax = () => {
         handleEntityOperation({
             operation: 'add',
             data,
-            cacheUpdater: addEntityToCache(data),
+            cacheUpdater: addEntityToCache,
+            cacheData: data,
             successMessage: AppStrings.tax_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })

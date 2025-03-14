@@ -56,7 +56,8 @@ const ListProduct = () => {
         handleEntityOperation({
             operation: "delete",
             data: { Id: active.data.Id },
-            cacheUpdater: deleteEntityFromCache(active.data.Id),
+            cacheUpdater: deleteEntityFromCache,
+            cacheData: { id: active.data.Id },
             successMessage: AppStrings.product_deleted_successfully,
             errorMessage: AppStrings.something_went_wrong,
             finalCallback: handleCancel

@@ -14,8 +14,6 @@ const EditProduct = () => {
     const location = useLocation()
     const { t } = useTranslation();
 
-
-    console.log(location)
     return (
         <>
             <EditComponent

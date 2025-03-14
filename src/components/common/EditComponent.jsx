@@ -13,7 +13,8 @@ const EditComponent = ({ composite = false, icon, title, successMessage, errorMe
         handleEntityOperation({
             operation: 'update',
             data,
-            cacheUpdater: isRefetch ? refetch : updateEntityInCache(data),
+            cacheUpdater: isRefetch ? refetch : updateEntityInCache,
+            cacheData: data,
             successMessage,
             errorMessage
         })

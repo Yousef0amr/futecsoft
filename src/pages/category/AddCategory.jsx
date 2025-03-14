@@ -20,7 +20,8 @@ const AddCategory = () => {
         handleEntityOperation({
             operation: 'add',
             data,
-            cacheUpdater: addEntityToCache(data),
+            cacheUpdater: addEntityToCache,
+            cacheData: data,
             successMessage: AppStrings.category_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })

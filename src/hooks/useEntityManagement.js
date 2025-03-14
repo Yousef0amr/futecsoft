@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../utils/auth';
-import getCookie from './../utils/getCookie.js';
+
 /**
  * A helper function to dynamically update query data in RTK Query cache.
  *
@@ -43,7 +43,7 @@ const useEntityManagement = ({
     const [isLoaded] = useState(isLoading);
 
     const deleteEntityFromCache = useCallback(
-        (id) => {
+        ({ id }) => {
             updateCache({
                 apiSlice,
                 cacheKey,

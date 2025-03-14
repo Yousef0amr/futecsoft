@@ -33,7 +33,8 @@ const ListComponent = ({
         handleEntityOperation({
             operation: "delete",
             data: optionId ? { [entityKey]: active.data[entityKey], [optionId]: active.data[optionId] } : { [entityKey]: active.data[entityKey] },
-            cacheUpdater: deleteEntityFromCache(active.data[entityKey]),
+            cacheUpdater: deleteEntityFromCache,
+            cacheData: { id: active.data[entityKey] },
             successMessage: deleteSuccessMessage,
             errorMessage: deleteErrorMessage,
             finalCallback: handleCancel,

@@ -24,6 +24,7 @@ const AddProduct = () => {
             operation: 'add',
             data: { type: productType, product: data },
             cacheUpdater: addEntityToCache,
+            cacheData: data,
             successMessage: AppStrings.product_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })

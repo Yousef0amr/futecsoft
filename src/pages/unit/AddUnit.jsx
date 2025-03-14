@@ -20,7 +20,8 @@ const AddUnit = () => {
         handleEntityOperation({
             operation: 'add',
             data,
-            cacheUpdater: addEntityToCache(data),
+            cacheUpdater: addEntityToCache,
+            cacheData: data,
             successMessage: AppStrings.unit_added_successfully,
             errorMessage: AppStrings.something_went_wrong
         })
